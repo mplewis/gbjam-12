@@ -8,7 +8,8 @@ const WINDOW_SCALE = 8
 
 
 func _ready():
-	get_window().size *= Vector2i(WINDOW_SCALE, WINDOW_SCALE)
+	if OS.get_name() != "Web":
+		get_window().size *= Vector2i(WINDOW_SCALE, WINDOW_SCALE)
 
 
 func _process(delta):

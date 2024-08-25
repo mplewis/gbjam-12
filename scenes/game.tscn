@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://v4r31pe85up6"]
+[gd_scene load_steps=10 format=4 uid="uid://v4r31pe85up6"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_fjjoo"]
 [ext_resource type="AudioStream" uid="uid://d148867s1uqg" path="res://assets/demo/music/dootdoot.mp3" id="1_jt50d"]
 [ext_resource type="TileSet" uid="uid://mmphjs6i1tvh" path="res://tilesets/road-trip.tres" id="2_0dn8i"]
 [ext_resource type="Texture2D" uid="uid://c3v3f8x6sl2y7" path="res://assets/demo/images/road-trip.png" id="2_gg0dq"]
+[ext_resource type="Script" path="res://scripts/bgm.gd" id="3_nblro"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dt4gt"]
 
@@ -26,8 +27,8 @@ script = ExtResource("1_fjjoo")
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_jt50d")
-autoplay = true
-parameters/looping = true
+parameters/looping = false
+script = ExtResource("3_nblro")
 
 [node name="Sky2" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAJAAQAAAAAAAIAAAAJAAMAAAAAAAIAAAAJAAIAAAAAAAIAAAAJAAEAAAAAAAIAAAAJAAAAAAAAAAIAAAAIAAAAAAAAAAIAAAAHAAAAAAAAAAIAAAAGAAAAAAAAAAIAAAAFAAAAAAAAAAIAAAAEAAAAAAAAAAIAAAADAAAAAAAAAAIAAAACAAAAAAAAAAIAAAABAAAAAAAAAAIAAAAAAAAAAAAAAAIAAAAAAAEAAAAAAAIAAAAAAAIAAAAAAAIAAAAAAAMAAAAAAAIAAAAAAAQAAAAAAAIAAAAEAAQAAAAAAAIAAAAFAAQAAAAAAAIAAAAGAAQAAAAAAAIAAAAHAAQAAAAAAAIAAAAIAAQAAAAAAAIAAAAIAAMAAAAAAAIAAAAHAAMAAAAAAAIAAAAGAAMAAAAAAAIAAAAFAAMAAAAAAAIAAAAEAAMAAAAAAAIAAAADAAMAAAAAAAIAAAACAAMAAAAAAAIAAAABAAMAAAAAAAIAAAABAAIAAAAAAAIAAAACAAIAAAAAAAIAAAADAAIAAAAAAAIAAAAEAAIAAAAAAAIAAAAFAAIAAAAAAAIAAAAGAAIAAAAAAAIAAAAHAAIAAAAAAAIAAAAIAAIAAAAAAAIAAAAIAAEAAAAAAAIAAAAHAAEAAAAAAAIAAAAGAAEAAAAAAAIAAAAFAAEAAAAAAAIAAAAEAAEAAAAAAAIAAAADAAEAAAAAAAIAAAACAAEAAAAAAAIAAAABAAEAAAAAAAIAAAABAAQAAAAAAAIAAAACAAQAAAAAAAIAAAADAAQAAAAAAAIAAAA=")
