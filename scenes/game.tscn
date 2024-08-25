@@ -1,10 +1,13 @@
-[gd_scene load_steps=10 format=4 uid="uid://v4r31pe85up6"]
+[gd_scene load_steps=13 format=4 uid="uid://v4r31pe85up6"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_fjjoo"]
 [ext_resource type="AudioStream" uid="uid://d148867s1uqg" path="res://assets/demo/music/dootdoot.mp3" id="1_jt50d"]
 [ext_resource type="TileSet" uid="uid://mmphjs6i1tvh" path="res://tilesets/road-trip.tres" id="2_0dn8i"]
 [ext_resource type="Texture2D" uid="uid://c3v3f8x6sl2y7" path="res://assets/demo/images/road-trip.png" id="2_gg0dq"]
 [ext_resource type="Script" path="res://scripts/bgm.gd" id="3_nblro"]
+[ext_resource type="AudioStream" uid="uid://waadkj2piknd" path="res://assets/demo/sfx/jump.wav" id="6_mbs6m"]
+[ext_resource type="AudioStream" uid="uid://ep0jupwqe64f" path="res://assets/demo/sfx/turbo.wav" id="7_gwx0s"]
+[ext_resource type="Texture2D" uid="uid://bfcc2px0xstlg" path="res://assets/ui/controls.png" id="8_ba2m7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dt4gt"]
 
@@ -78,19 +81,43 @@ tile_map_data = PackedByteArray("AAAAAAUAAAACAAIAAAAAAAYAAAABAAIAAAABAAYAAAABAAI
 tile_set = ExtResource("2_0dn8i")
 
 [node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(0, 56)
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Player"]
+position = Vector2(0, -56)
 sprite_frames = SubResource("SpriteFrames_dt4gt")
 
 [node name="Camera" type="Camera2D" parent="Player"]
 position = Vector2(80, 56)
 
 [node name="Car" type="TileMapLayer" parent="Player"]
-position = Vector2(8, 0)
+position = Vector2(8, -56)
 tile_map_data = PackedByteArray("AAAEAAQAAAAAAAQAAAA=")
 tile_set = SubResource("TileSet_cq8eu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(80, 74)
+position = Vector2(80, 18)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_mygas")
+
+[node name="JumpSFX" type="AudioStreamPlayer2D" parent="Player"]
+position = Vector2(80, 18)
+stream = ExtResource("6_mbs6m")
+
+[node name="TurboSFX" type="AudioStreamPlayer2D" parent="Player"]
+position = Vector2(80, 18)
+stream = ExtResource("7_gwx0s")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="BG" type="ColorRect" parent="UI"]
+custom_minimum_size = Vector2(160, 112)
+offset_top = 112.0
+offset_right = 160.0
+offset_bottom = 224.0
+
+[node name="Controls" type="TextureRect" parent="UI"]
+offset_top = 112.0
+offset_right = 160.0
+offset_bottom = 224.0
+texture = ExtResource("8_ba2m7")
