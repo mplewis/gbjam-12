@@ -131,12 +131,12 @@ offset_bottom = 112.0
 texture = ExtResource("8_ba2m7")
 script = ExtResource("9_2k42r")
 
-[node name="B" type="TouchScreenButton" parent="UI/UI/Controls"]
-position = Vector2(138, 44)
+[node name="A" type="TouchScreenButton" parent="UI/UI/Controls"]
+position = Vector2(113, 69)
 scale = Vector2(1.25, 1.25)
 shape = SubResource("CircleShape2D_tr0wg")
 
-[node name="A" type="TouchScreenButton" parent="UI/UI/Controls"]
-position = Vector2(113, 69)
+[node name="B" type="TouchScreenButton" parent="UI/UI/Controls"]
+position = Vector2(138, 44)
 scale = Vector2(1.25, 1.25)
 shape = SubResource("CircleShape2D_tr0wg")
