@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://v4r31pe85up6"]
+[gd_scene load_steps=15 format=4 uid="uid://v4r31pe85up6"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_fjjoo"]
 [ext_resource type="AudioStream" uid="uid://d148867s1uqg" path="res://assets/demo/music/dootdoot.mp3" id="1_jt50d"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://waadkj2piknd" path="res://assets/demo/sfx/jump.wav" id="6_mbs6m"]
 [ext_resource type="AudioStream" uid="uid://ep0jupwqe64f" path="res://assets/demo/sfx/turbo.wav" id="7_gwx0s"]
 [ext_resource type="Texture2D" uid="uid://bfcc2px0xstlg" path="res://assets/ui/controls.png" id="8_ba2m7"]
+[ext_resource type="Script" path="res://scripts/controls.gd" id="9_2k42r"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dt4gt"]
 
@@ -24,6 +25,8 @@ sources/0 = SubResource("TileSetAtlasSource_lqpoo")
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mygas"]
 radius = 6.0
 height = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tr0wg"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_fjjoo")
@@ -110,14 +113,30 @@ stream = ExtResource("7_gwx0s")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="BG" type="ColorRect" parent="UI"]
-custom_minimum_size = Vector2(160, 112)
+[node name="UI" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
 offset_top = 112.0
-offset_right = 160.0
-offset_bottom = 224.0
+offset_right = 40.0
+offset_bottom = 152.0
 
-[node name="Controls" type="TextureRect" parent="UI"]
-offset_top = 112.0
+[node name="BG" type="ColorRect" parent="UI/UI"]
+custom_minimum_size = Vector2(160, 112)
 offset_right = 160.0
-offset_bottom = 224.0
+offset_bottom = 112.0
+
+[node name="Controls" type="TextureRect" parent="UI/UI"]
+offset_right = 160.0
+offset_bottom = 112.0
 texture = ExtResource("8_ba2m7")
+script = ExtResource("9_2k42r")
+
+[node name="B" type="TouchScreenButton" parent="UI/UI/Controls"]
+position = Vector2(138, 44)
+scale = Vector2(1.25, 1.25)
+shape = SubResource("CircleShape2D_tr0wg")
+
+[node name="A" type="TouchScreenButton" parent="UI/UI/Controls"]
+position = Vector2(113, 69)
+scale = Vector2(1.25, 1.25)
+shape = SubResource("CircleShape2D_tr0wg")
