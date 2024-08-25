@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://v4r31pe85up6"]
+[gd_scene load_steps=9 format=4 uid="uid://v4r31pe85up6"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_fjjoo"]
 [ext_resource type="AudioStream" uid="uid://d148867s1uqg" path="res://assets/demo/music/dootdoot.mp3" id="1_jt50d"]
@@ -16,6 +16,10 @@ texture = ExtResource("2_gg0dq")
 
 [sub_resource type="TileSet" id="TileSet_cq8eu"]
 sources/0 = SubResource("TileSetAtlasSource_lqpoo")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mygas"]
+radius = 6.0
+height = 16.0
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_fjjoo")
@@ -81,5 +85,11 @@ sprite_frames = SubResource("SpriteFrames_dt4gt")
 position = Vector2(80, 56)
 
 [node name="Car" type="TileMapLayer" parent="Player"]
+position = Vector2(8, 0)
 tile_map_data = PackedByteArray("AAAEAAQAAAAAAAQAAAA=")
 tile_set = SubResource("TileSet_cq8eu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(80, 74)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_mygas")

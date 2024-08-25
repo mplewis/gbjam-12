@@ -1,12 +1,15 @@
 class_name Game
 extends Node2D
 
-var frame = 0
+const RATE = 120
+const WINDOW_SCALE = 8
 
 @onready var player: CharacterBody2D = $Player
 
 
+func _ready():
+	get_window().size *= Vector2i(WINDOW_SCALE, WINDOW_SCALE)
+
+
 func _process(delta):
-	# for x in range(delta * 60):  # HACK
-	frame += 1
-	player.position.x += 1
+	player.position.x += RATE * delta
