@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://v4r31pe85up6"]
+[gd_scene load_steps=17 format=4 uid="uid://v4r31pe85up6"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_fjjoo"]
 [ext_resource type="AudioStream" uid="uid://d148867s1uqg" path="res://assets/demo/music/dootdoot.mp3" id="1_jt50d"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/bgm.gd" id="3_nblro"]
 [ext_resource type="AudioStream" uid="uid://waadkj2piknd" path="res://assets/demo/sfx/jump.wav" id="6_mbs6m"]
 [ext_resource type="AudioStream" uid="uid://ep0jupwqe64f" path="res://assets/demo/sfx/turbo.wav" id="7_gwx0s"]
+[ext_resource type="FontFile" uid="uid://blvetr83u1kk0" path="res://assets/ui/editundo.ttf" id="8_a18dx"]
 [ext_resource type="Texture2D" uid="uid://bfcc2px0xstlg" path="res://assets/ui/controls.png" id="8_ba2m7"]
 [ext_resource type="Script" path="res://scripts/controls.gd" id="9_2k42r"]
 
@@ -27,6 +28,8 @@ radius = 6.0
 height = 16.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tr0wg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fipnq"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_fjjoo")
@@ -122,21 +125,74 @@ offset_bottom = 152.0
 
 [node name="BG" type="ColorRect" parent="UI/UI"]
 custom_minimum_size = Vector2(160, 112)
+layout_mode = 0
 offset_right = 160.0
 offset_bottom = 112.0
 
+[node name="ControlDebug" type="Label" parent="UI/UI"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = -109.0
+offset_right = 48.0
+offset_bottom = -59.0
+theme_override_colors/font_color = Color(0.796078, 0.858824, 0.988235, 1)
+theme_override_colors/font_outline_color = Color(0.196078, 0.235294, 0.223529, 1)
+theme_override_constants/line_spacing = -2
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("8_a18dx")
+theme_override_font_sizes/font_size = 14
+text = "A
+B
+Select
+Start"
+
 [node name="Controls" type="TextureRect" parent="UI/UI"]
+layout_mode = 0
 offset_right = 160.0
 offset_bottom = 112.0
 texture = ExtResource("8_ba2m7")
 script = ExtResource("9_2k42r")
 
 [node name="A" type="TouchScreenButton" parent="UI/UI/Controls"]
-position = Vector2(113, 69)
-scale = Vector2(1.25, 1.25)
+position = Vector2(114, 67)
+scale = Vector2(1.2, 1.2)
 shape = SubResource("CircleShape2D_tr0wg")
 
 [node name="B" type="TouchScreenButton" parent="UI/UI/Controls"]
-position = Vector2(138, 44)
-scale = Vector2(1.25, 1.25)
+position = Vector2(139, 42)
+scale = Vector2(1.2, 1.2)
 shape = SubResource("CircleShape2D_tr0wg")
+
+[node name="Select" type="TouchScreenButton" parent="UI/UI/Controls"]
+position = Vector2(55, 102)
+scale = Vector2(1.2, 0.41)
+shape = SubResource("RectangleShape2D_fipnq")
+
+[node name="Start" type="TouchScreenButton" parent="UI/UI/Controls"]
+position = Vector2(105, 102)
+scale = Vector2(1.2, 0.41)
+shape = SubResource("RectangleShape2D_fipnq")
+
+[node name="Up" type="TouchScreenButton" parent="UI/UI/Controls"]
+position = Vector2(44, 18)
+scale = Vector2(1.2, 1.2)
+shape = SubResource("CircleShape2D_tr0wg")
+passby_press = true
+
+[node name="Down" type="TouchScreenButton" parent="UI/UI/Controls"]
+position = Vector2(44, 67)
+scale = Vector2(1.2, 1.2)
+shape = SubResource("CircleShape2D_tr0wg")
+passby_press = true
+
+[node name="Left" type="TouchScreenButton" parent="UI/UI/Controls"]
+position = Vector2(19, 43)
+scale = Vector2(1.2, 1.2)
+shape = SubResource("CircleShape2D_tr0wg")
+passby_press = true
+
+[node name="Right" type="TouchScreenButton" parent="UI/UI/Controls"]
+position = Vector2(68, 43)
+scale = Vector2(1.2, 1.2)
+shape = SubResource("CircleShape2D_tr0wg")
+passby_press = true
