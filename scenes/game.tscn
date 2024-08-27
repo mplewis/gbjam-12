@@ -35,11 +35,9 @@ height = 16.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7fog1"]
 shader = ExtResource("5_111ew")
-shader_parameter/threshold0 = 0.0
-shader_parameter/threshold1 = 0.227
-shader_parameter/threshold2 = 0.433
-shader_parameter/threshold3 = 0.666
-shader_parameter/threshold4 = 1.0
+shader_parameter/threshold1 = 0.25
+shader_parameter/threshold2 = 0.5
+shader_parameter/threshold3 = 0.75
 shader_parameter/color1 = Color(0, 0, 0, 1)
 shader_parameter/color2 = Color(0.160784, 0.172549, 0.266667, 1)
 shader_parameter/color3 = Color(0.294118, 0.411765, 0.631373, 1)
@@ -210,12 +208,13 @@ shape = SubResource("CircleShape2D_tr0wg")
 passby_press = true
 
 [node name="DemoFaderLayer" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("11_j5adf")
 
 [node name="ColorRect" type="ColorRect" parent="DemoFaderLayer"]
 offset_right = 160.0
 offset_bottom = 112.0
-color = Color(0, 0, 0, 0.498039)
+color = Color(0, 0, 0, 1)
 
 [node name="RecolorLayer" type="CanvasLayer" parent="."]
 

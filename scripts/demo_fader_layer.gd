@@ -1,7 +1,7 @@
 class_name DemoFaderLayer
 extends CanvasLayer
 
-const FADE_DURATION_SEC = 3.0
+const FADE_DURATION_SEC = 2.0
 
 var fade_in = false
 
