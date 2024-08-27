@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=4 uid="uid://v4r31pe85up6"]
+[gd_scene load_steps=19 format=4 uid="uid://v4r31pe85up6"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_fjjoo"]
 [ext_resource type="AudioStream" uid="uid://d148867s1uqg" path="res://assets/demo/music/dootdoot.mp3" id="1_jt50d"]
 [ext_resource type="TileSet" uid="uid://mmphjs6i1tvh" path="res://tilesets/road-trip.tres" id="2_0dn8i"]
 [ext_resource type="Texture2D" uid="uid://c3v3f8x6sl2y7" path="res://assets/demo/images/road-trip.png" id="2_gg0dq"]
 [ext_resource type="Script" path="res://scripts/bgm.gd" id="3_nblro"]
+[ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="5_111ew"]
 [ext_resource type="AudioStream" uid="uid://waadkj2piknd" path="res://assets/demo/sfx/jump.wav" id="6_mbs6m"]
 [ext_resource type="AudioStream" uid="uid://ep0jupwqe64f" path="res://assets/demo/sfx/turbo.wav" id="7_gwx0s"]
 [ext_resource type="FontFile" uid="uid://blvetr83u1kk0" path="res://assets/ui/editundo.ttf" id="8_a18dx"]
@@ -12,6 +13,9 @@
 [ext_resource type="Script" path="res://scripts/controls.gd" id="9_2k42r"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dt4gt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7fog1"]
+shader = ExtResource("5_111ew")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lqpoo"]
 texture = ExtResource("2_gg0dq")
@@ -95,6 +99,13 @@ sprite_frames = SubResource("SpriteFrames_dt4gt")
 
 [node name="Camera" type="Camera2D" parent="Player"]
 position = Vector2(80, 56)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Player/Camera"]
+
+[node name="ColorRect" type="ColorRect" parent="Player/Camera/CanvasLayer"]
+material = SubResource("ShaderMaterial_7fog1")
+offset_right = 160.0
+offset_bottom = 112.0
 
 [node name="Car" type="TileMapLayer" parent="Player"]
 position = Vector2(8, -56)
