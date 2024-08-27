@@ -16,6 +16,13 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7fog1"]
 shader = ExtResource("5_111ew")
+shader_parameter/threshold1 = 0.25
+shader_parameter/threshold2 = 0.5
+shader_parameter/threshold3 = 0.75
+shader_parameter/color1 = Color(0.160784, 0.172549, 0.266667, 1)
+shader_parameter/color2 = Color(0.00392157, 0.25098, 0.294118, 1)
+shader_parameter/color3 = Color(0.356863, 0.658824, 0.733333, 1)
+shader_parameter/color4 = Color(1, 1, 1, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lqpoo"]
 texture = ExtResource("2_gg0dq")
@@ -102,7 +109,7 @@ position = Vector2(80, 56)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Player/Camera"]
 
-[node name="ColorRect" type="ColorRect" parent="Player/Camera/CanvasLayer"]
+[node name="Recolor" type="ColorRect" parent="Player/Camera/CanvasLayer"]
 material = SubResource("ShaderMaterial_7fog1")
 offset_right = 160.0
 offset_bottom = 112.0
