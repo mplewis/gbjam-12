@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://v4r31pe85up6"]
+[gd_scene load_steps=20 format=4 uid="uid://v4r31pe85up6"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_fjjoo"]
 [ext_resource type="AudioStream" uid="uid://d148867s1uqg" path="res://assets/demo/music/dootdoot.mp3" id="1_jt50d"]
@@ -11,18 +11,9 @@
 [ext_resource type="FontFile" uid="uid://blvetr83u1kk0" path="res://assets/ui/editundo.ttf" id="8_a18dx"]
 [ext_resource type="Texture2D" uid="uid://bfcc2px0xstlg" path="res://assets/ui/controls.png" id="8_ba2m7"]
 [ext_resource type="Script" path="res://scripts/controls.gd" id="9_2k42r"]
+[ext_resource type="Script" path="res://scripts/demo_fader_layer.gd" id="11_j5adf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dt4gt"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7fog1"]
-shader = ExtResource("5_111ew")
-shader_parameter/threshold1 = 0.25
-shader_parameter/threshold2 = 0.5
-shader_parameter/threshold3 = 0.75
-shader_parameter/color1 = Color(0.160784, 0.172549, 0.266667, 1)
-shader_parameter/color2 = Color(0.00392157, 0.25098, 0.294118, 1)
-shader_parameter/color3 = Color(0.356863, 0.658824, 0.733333, 1)
-shader_parameter/color4 = Color(1, 1, 1, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lqpoo"]
 texture = ExtResource("2_gg0dq")
@@ -41,6 +32,16 @@ height = 16.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_tr0wg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fipnq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7fog1"]
+shader = ExtResource("5_111ew")
+shader_parameter/threshold1 = 0.25
+shader_parameter/threshold2 = 0.5
+shader_parameter/threshold3 = 0.75
+shader_parameter/color1 = Color(0, 0, 0, 1)
+shader_parameter/color2 = Color(0.160784, 0.172549, 0.266667, 1)
+shader_parameter/color3 = Color(0.294118, 0.411765, 0.631373, 1)
+shader_parameter/color4 = Color(0.615686, 0.698039, 0.756863, 1)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_fjjoo")
@@ -106,13 +107,6 @@ sprite_frames = SubResource("SpriteFrames_dt4gt")
 
 [node name="Camera" type="Camera2D" parent="Player"]
 position = Vector2(80, 56)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="Player/Camera"]
-
-[node name="Recolor" type="ColorRect" parent="Player/Camera/CanvasLayer"]
-material = SubResource("ShaderMaterial_7fog1")
-offset_right = 160.0
-offset_bottom = 112.0
 
 [node name="Car" type="TileMapLayer" parent="Player"]
 position = Vector2(8, -56)
@@ -212,3 +206,19 @@ position = Vector2(68, 43)
 scale = Vector2(1.2, 1.2)
 shape = SubResource("CircleShape2D_tr0wg")
 passby_press = true
+
+[node name="DemoFaderLayer" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("11_j5adf")
+
+[node name="ColorRect" type="ColorRect" parent="DemoFaderLayer"]
+offset_right = 160.0
+offset_bottom = 112.0
+color = Color(0, 0, 0, 1)
+
+[node name="RecolorLayer" type="CanvasLayer" parent="."]
+
+[node name="RecolorShader" type="ColorRect" parent="RecolorLayer"]
+material = SubResource("ShaderMaterial_7fog1")
+offset_right = 160.0
+offset_bottom = 112.0
