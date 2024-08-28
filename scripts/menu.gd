@@ -20,7 +20,11 @@ var input_states = {
 	"ui_right": false,
 }
 
-var menu_items := ["New Game", "Options", "Credits"]
+var menu_items := {
+	"new_game": "New Game",
+	"options": "Options",
+	"credits": "Credits",
+}
 var selected := 0
 
 @onready var menu_items_label: Label = %MenuItems
@@ -52,7 +56,7 @@ func check_inputs():
 
 
 func update_menu():
-	var items = menu_items.duplicate()
+	var items = menu_items.values()
 	items[selected] = "> %s <" % items[selected]
 	menu_items_label.text = "\n".join(items)
 
@@ -69,7 +73,8 @@ func _on_btn_ui_down():
 
 func _on_btn_ui_gameboy_a():
 	sfx_select.play()
-	print("Selected %s" % menu_items[selected])
+	var item = menu_items.keys()[selected]
+	call("_on_menu_%s" % item)
 
 
 func _on_btn_ui_gameboy_b():
@@ -91,3 +96,15 @@ func _on_btn_ui_left():
 
 func _on_btn_ui_right():
 	pass
+
+
+func _on_menu_new_game():
+	print("New Game")
+
+
+func _on_menu_options():
+	print("Options")
+
+
+func _on_menu_credits():
+	print("Credits")
