@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://v4r31pe85up6"]
+[gd_scene load_steps=17 format=4 uid="uid://v4r31pe85up6"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_fjjoo"]
 [ext_resource type="AudioStream" uid="uid://d148867s1uqg" path="res://assets/demo/music/dootdoot.mp3" id="1_jt50d"]
@@ -9,8 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://waadkj2piknd" path="res://assets/demo/sfx/jump.wav" id="6_mbs6m"]
 [ext_resource type="AudioStream" uid="uid://ep0jupwqe64f" path="res://assets/demo/sfx/turbo.wav" id="7_gwx0s"]
 [ext_resource type="FontFile" uid="uid://blvetr83u1kk0" path="res://assets/ui/editundo.ttf" id="8_a18dx"]
-[ext_resource type="Texture2D" uid="uid://bfcc2px0xstlg" path="res://assets/ui/controls.png" id="8_ba2m7"]
-[ext_resource type="Script" path="res://scripts/controls.gd" id="9_2k42r"]
+[ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/controls.tscn" id="9_t76tr"]
 [ext_resource type="Script" path="res://scripts/demo_fader_layer.gd" id="11_j5adf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dt4gt"]
@@ -28,10 +27,6 @@ sources/0 = SubResource("TileSetAtlasSource_lqpoo")
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mygas"]
 radius = 6.0
 height = 16.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_tr0wg"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fipnq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7fog1"]
 shader = ExtResource("5_111ew")
@@ -128,25 +123,11 @@ stream = ExtResource("7_gwx0s")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="UI" type="Control" parent="UI"]
-layout_mode = 3
-anchors_preset = 0
-offset_top = 144.0
-offset_right = 40.0
-offset_bottom = 184.0
-
-[node name="BG" type="ColorRect" parent="UI/UI"]
-custom_minimum_size = Vector2(160, 112)
-layout_mode = 0
-offset_right = 160.0
-offset_bottom = 112.0
-
-[node name="ControlDebug" type="Label" parent="UI/UI"]
-layout_mode = 0
+[node name="ControlDebug" type="Label" parent="UI"]
 offset_left = 5.0
-offset_top = -141.0
+offset_top = 3.0
 offset_right = 48.0
-offset_bottom = -91.0
+offset_bottom = 53.0
 theme_override_colors/font_color = Color(0.196078, 0.235294, 0.223529, 1)
 theme_override_constants/line_spacing = -2
 theme_override_fonts/font = ExtResource("8_a18dx")
@@ -155,57 +136,6 @@ text = "A
 B
 Select
 Start"
-
-[node name="Controls" type="TextureRect" parent="UI/UI"]
-layout_mode = 0
-offset_right = 160.0
-offset_bottom = 112.0
-texture = ExtResource("8_ba2m7")
-script = ExtResource("9_2k42r")
-
-[node name="A" type="TouchScreenButton" parent="UI/UI/Controls"]
-position = Vector2(139, 36)
-scale = Vector2(1.38125, 1.38125)
-shape = SubResource("CircleShape2D_tr0wg")
-
-[node name="B" type="TouchScreenButton" parent="UI/UI/Controls"]
-position = Vector2(110, 65)
-scale = Vector2(1.381, 1.381)
-shape = SubResource("CircleShape2D_tr0wg")
-
-[node name="Select" type="TouchScreenButton" parent="UI/UI/Controls"]
-position = Vector2(55, 102)
-scale = Vector2(1.2, 0.41)
-shape = SubResource("RectangleShape2D_fipnq")
-
-[node name="Start" type="TouchScreenButton" parent="UI/UI/Controls"]
-position = Vector2(105, 102)
-scale = Vector2(1.2, 0.41)
-shape = SubResource("RectangleShape2D_fipnq")
-
-[node name="Up" type="TouchScreenButton" parent="UI/UI/Controls"]
-position = Vector2(44, 18)
-scale = Vector2(1.2, 1.2)
-shape = SubResource("CircleShape2D_tr0wg")
-passby_press = true
-
-[node name="Down" type="TouchScreenButton" parent="UI/UI/Controls"]
-position = Vector2(44, 67)
-scale = Vector2(1.2, 1.2)
-shape = SubResource("CircleShape2D_tr0wg")
-passby_press = true
-
-[node name="Left" type="TouchScreenButton" parent="UI/UI/Controls"]
-position = Vector2(19, 43)
-scale = Vector2(1.2, 1.2)
-shape = SubResource("CircleShape2D_tr0wg")
-passby_press = true
-
-[node name="Right" type="TouchScreenButton" parent="UI/UI/Controls"]
-position = Vector2(68, 43)
-scale = Vector2(1.2, 1.2)
-shape = SubResource("CircleShape2D_tr0wg")
-passby_press = true
 
 [node name="DemoFaderLayer" type="CanvasLayer" parent="."]
 visible = false
@@ -217,9 +147,10 @@ offset_bottom = 112.0
 color = Color(0, 0, 0, 1)
 
 [node name="RecolorLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="RecolorShader" type="ColorRect" parent="RecolorLayer"]
 material = SubResource("ShaderMaterial_7fog1")
 offset_right = 160.0
-offset_bottom = 112.0
+offset_bottom = 256.0
+
+[node name="Controls" parent="." instance=ExtResource("9_t76tr")]

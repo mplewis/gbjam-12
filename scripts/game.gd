@@ -30,7 +30,7 @@ var player_up_vel := 0.0
 @onready var player: CharacterBody2D = $Player
 @onready var jump_sfx: AudioStreamPlayer2D = $Player/JumpSFX
 @onready var turbo_sfx: AudioStreamPlayer2D = $Player/TurboSFX
-@onready var control_debug: Label = $UI/UI/ControlDebug
+@onready var control_debug: Label = $UI/ControlDebug
 
 @onready var floor_y := player.position.y
 
