@@ -38,10 +38,10 @@ shader = ExtResource("5_111ew")
 shader_parameter/threshold1 = 0.25
 shader_parameter/threshold2 = 0.5
 shader_parameter/threshold3 = 0.75
-shader_parameter/color1 = Color(0, 0, 0, 1)
-shader_parameter/color2 = Color(0.160784, 0.172549, 0.266667, 1)
-shader_parameter/color3 = Color(0.294118, 0.411765, 0.631373, 1)
-shader_parameter/color4 = Color(0.615686, 0.698039, 0.756863, 1)
+shader_parameter/color1 = Color(0.0313726, 0.0941176, 0.12549, 1)
+shader_parameter/color2 = Color(0.203922, 0.407843, 0.337255, 1)
+shader_parameter/color3 = Color(0.533333, 0.752941, 0.439216, 1)
+shader_parameter/color4 = Color(0.878431, 0.972549, 0.815686, 1)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_fjjoo")
@@ -164,13 +164,13 @@ texture = ExtResource("8_ba2m7")
 script = ExtResource("9_2k42r")
 
 [node name="A" type="TouchScreenButton" parent="UI/UI/Controls"]
-position = Vector2(114, 67)
-scale = Vector2(1.2, 1.2)
+position = Vector2(139, 36)
+scale = Vector2(1.38125, 1.38125)
 shape = SubResource("CircleShape2D_tr0wg")
 
 [node name="B" type="TouchScreenButton" parent="UI/UI/Controls"]
-position = Vector2(139, 42)
-scale = Vector2(1.2, 1.2)
+position = Vector2(110, 65)
+scale = Vector2(1.381, 1.381)
 shape = SubResource("CircleShape2D_tr0wg")
 
 [node name="Select" type="TouchScreenButton" parent="UI/UI/Controls"]
