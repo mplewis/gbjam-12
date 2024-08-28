@@ -1,0 +1,132 @@
+[gd_scene load_steps=10 format=3 uid="uid://bs0ucq7uj35vy"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_ugpda"]
+[ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="4_up8lg"]
+[ext_resource type="AudioStream" uid="uid://djnprkkn3ojip" path="res://assets/demo/sfx/3g.wav" id="5_5lr5l"]
+[ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="5_111ew"]
+[ext_resource type="AudioStream" uid="uid://5dopu805p4ow" path="res://assets/demo/sfx/4c.wav" id="6_xdwu1"]
+[ext_resource type="AudioStream" uid="uid://bsf1vhpkw2md2" path="res://assets/demo/sfx/4c-4f.wav" id="7_4e0jg"]
+[ext_resource type="AudioStream" uid="uid://bbct4e1v7vkju" path="res://assets/demo/sfx/4c-3g.wav" id="8_kauqn"]
+[ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/controls.tscn" id="9_t76tr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7fog1"]
+shader = ExtResource("5_111ew")
+shader_parameter/threshold1 = 0.25
+shader_parameter/threshold2 = 0.5
+shader_parameter/threshold3 = 0.75
+shader_parameter/color1 = Color(0.0313726, 0.0941176, 0.12549, 1)
+shader_parameter/color2 = Color(0.203922, 0.407843, 0.337255, 1)
+shader_parameter/color3 = Color(0.533333, 0.752941, 0.439216, 1)
+shader_parameter/color4 = Color(0.878431, 0.972549, 0.815686, 1)
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_ugpda")
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="Up" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("5_5lr5l")
+
+[node name="Down" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("6_xdwu1")
+
+[node name="Select" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("7_4e0jg")
+
+[node name="Back" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("8_kauqn")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI"]
+custom_minimum_size = Vector2(160, 144)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 160.0
+offset_bottom = 144.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_up8lg")
+alignment = 1
+
+[node name="MarginL" type="Control" parent="UI/Control/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_up8lg")
+
+[node name="MarginT" type="Control" parent="UI/Control/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="UI/Control/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_up8lg")
+text = "CROW & FRIENDS
+GBJAM 12"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Flex Space" type="Control" parent="UI/Control/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MenuItems" type="Label" parent="UI/Control/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("4_up8lg")
+text = "> Line 1 <
+Big menu item
+Another item here"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Flex Space2" type="Control" parent="UI/Control/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Hints" type="HBoxContainer" parent="UI/Control/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Hints L" type="Label" parent="UI/Control/HBoxContainer/VBoxContainer/Hints"]
+layout_mode = 2
+theme = ExtResource("4_up8lg")
+text = "B: Back"
+
+[node name="Flex Space" type="Control" parent="UI/Control/HBoxContainer/VBoxContainer/Hints"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Hints R" type="Label" parent="UI/Control/HBoxContainer/VBoxContainer/Hints"]
+layout_mode = 2
+theme = ExtResource("4_up8lg")
+text = "A: Select"
+
+[node name="MarginB" type="Control" parent="UI/Control/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="MarginR" type="Control" parent="UI/Control/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="RecolorLayer" type="CanvasLayer" parent="."]
+
+[node name="RecolorShader" type="ColorRect" parent="RecolorLayer"]
+material = SubResource("ShaderMaterial_7fog1")
+offset_right = 160.0
+offset_bottom = 256.0
+
+[node name="Controls" parent="." instance=ExtResource("9_t76tr")]

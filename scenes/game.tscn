@@ -5,10 +5,10 @@
 [ext_resource type="TileSet" uid="uid://mmphjs6i1tvh" path="res://tilesets/road-trip.tres" id="2_0dn8i"]
 [ext_resource type="Texture2D" uid="uid://c3v3f8x6sl2y7" path="res://assets/demo/images/road-trip.png" id="2_gg0dq"]
 [ext_resource type="Script" path="res://scripts/bgm.gd" id="3_nblro"]
+[ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="4_up8lg"]
 [ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="5_111ew"]
 [ext_resource type="AudioStream" uid="uid://waadkj2piknd" path="res://assets/demo/sfx/jump.wav" id="6_mbs6m"]
 [ext_resource type="AudioStream" uid="uid://ep0jupwqe64f" path="res://assets/demo/sfx/turbo.wav" id="7_gwx0s"]
-[ext_resource type="FontFile" uid="uid://blvetr83u1kk0" path="res://assets/ui/editundo.ttf" id="8_a18dx"]
 [ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/controls.tscn" id="9_t76tr"]
 [ext_resource type="Script" path="res://scripts/demo_fader_layer.gd" id="11_j5adf"]
 
@@ -128,10 +128,8 @@ offset_left = 5.0
 offset_top = 3.0
 offset_right = 48.0
 offset_bottom = 53.0
-theme_override_colors/font_color = Color(0.196078, 0.235294, 0.223529, 1)
-theme_override_constants/line_spacing = -2
-theme_override_fonts/font = ExtResource("8_a18dx")
-theme_override_font_sizes/font_size = 14
+theme = ExtResource("4_up8lg")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "A
 B
 Select

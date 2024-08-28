@@ -1,0 +1,20 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://ffvkc1fawd3o"]
+
+[ext_resource type="FontFile" uid="uid://l5v7uoo8ktrg" path="res://assets/ui/PixelOperator.ttf" id="1_vw5w2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_462no"]
+
+[resource]
+HBoxContainer/constants/separation = 0
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+Label/constants/line_spacing = -2
+Label/constants/outline_size = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 16
+Label/fonts/font = ExtResource("1_vw5w2")
+Label/styles/normal = SubResource("StyleBoxEmpty_462no")
+VBoxContainer/constants/separation = 0
