@@ -80,7 +80,7 @@ func _on_btn_ui_gameboy_a():
 
 
 func _on_menu_new_game():
-	SceneMgr.open("game")
+	SceneMgr.open("roadtrip")
 
 
 func _on_menu_options():

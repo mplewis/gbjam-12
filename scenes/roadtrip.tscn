@@ -1,21 +1,21 @@
 [gd_scene load_steps=17 format=4 uid="uid://v4r31pe85up6"]
 
-[ext_resource type="Script" path="res://scripts/game.gd" id="1_fjjoo"]
-[ext_resource type="AudioStream" uid="uid://d148867s1uqg" path="res://assets/demo/music/dootdoot.mp3" id="1_jt50d"]
-[ext_resource type="TileSet" uid="uid://mmphjs6i1tvh" path="res://tilesets/road-trip.tres" id="2_0dn8i"]
-[ext_resource type="Texture2D" uid="uid://c3v3f8x6sl2y7" path="res://assets/demo/images/road-trip.png" id="2_gg0dq"]
-[ext_resource type="Script" path="res://scripts/bgm.gd" id="3_nblro"]
-[ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="4_up8lg"]
-[ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="5_111ew"]
-[ext_resource type="AudioStream" uid="uid://waadkj2piknd" path="res://assets/demo/sfx/jump.wav" id="6_mbs6m"]
-[ext_resource type="AudioStream" uid="uid://ep0jupwqe64f" path="res://assets/demo/sfx/turbo.wav" id="7_gwx0s"]
-[ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/controls.tscn" id="9_t76tr"]
-[ext_resource type="Script" path="res://scripts/demo_fader_layer.gd" id="11_j5adf"]
+[ext_resource type="Script" path="res://scripts/roadtrip.gd" id="1_qf3xh"]
+[ext_resource type="AudioStream" uid="uid://d148867s1uqg" path="res://assets/demo/music/dootdoot.mp3" id="2_fiocu"]
+[ext_resource type="Script" path="res://scripts/bgm.gd" id="3_q1k62"]
+[ext_resource type="TileSet" uid="uid://mmphjs6i1tvh" path="res://tilesets/road-trip.tres" id="4_qxlgs"]
+[ext_resource type="Texture2D" uid="uid://c3v3f8x6sl2y7" path="res://assets/demo/images/road-trip.png" id="5_hwbwk"]
+[ext_resource type="AudioStream" uid="uid://waadkj2piknd" path="res://assets/demo/sfx/jump.wav" id="6_fyyf0"]
+[ext_resource type="AudioStream" uid="uid://ep0jupwqe64f" path="res://assets/demo/sfx/turbo.wav" id="7_ustkh"]
+[ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="8_ljysj"]
+[ext_resource type="Script" path="res://scripts/demo_fader_layer.gd" id="9_pvyhk"]
+[ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="10_um8bj"]
+[ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/controls.tscn" id="11_70l61"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dt4gt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lqpoo"]
-texture = ExtResource("2_gg0dq")
+texture = ExtResource("5_hwbwk")
 0:4/animation_columns = 2
 0:4/animation_frame_0/duration = 0.2
 0:4/animation_frame_1/duration = 0.2
@@ -29,7 +29,7 @@ radius = 6.0
 height = 16.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7fog1"]
-shader = ExtResource("5_111ew")
+shader = ExtResource("10_um8bj")
 shader_parameter/threshold1 = 0.25
 shader_parameter/threshold2 = 0.5
 shader_parameter/threshold3 = 0.75
@@ -39,16 +39,16 @@ shader_parameter/color3 = Color(0.533333, 0.752941, 0.439216, 1)
 shader_parameter/color4 = Color(0.878431, 0.972549, 0.815686, 1)
 
 [node name="Game" type="Node2D"]
-script = ExtResource("1_fjjoo")
+script = ExtResource("1_qf3xh")
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1_jt50d")
+stream = ExtResource("2_fiocu")
 parameters/looping = false
-script = ExtResource("3_nblro")
+script = ExtResource("3_q1k62")
 
 [node name="Sky2" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAJAAQAAAAAAAIAAAAJAAMAAAAAAAIAAAAJAAIAAAAAAAIAAAAJAAEAAAAAAAIAAAAJAAAAAAAAAAIAAAAIAAAAAAAAAAIAAAAHAAAAAAAAAAIAAAAGAAAAAAAAAAIAAAAFAAAAAAAAAAIAAAAEAAAAAAAAAAIAAAADAAAAAAAAAAIAAAACAAAAAAAAAAIAAAABAAAAAAAAAAIAAAAAAAAAAAAAAAIAAAAAAAEAAAAAAAIAAAAAAAIAAAAAAAIAAAAAAAMAAAAAAAIAAAAAAAQAAAAAAAIAAAAEAAQAAAAAAAIAAAAFAAQAAAAAAAIAAAAGAAQAAAAAAAIAAAAHAAQAAAAAAAIAAAAIAAQAAAAAAAIAAAAIAAMAAAAAAAIAAAAHAAMAAAAAAAIAAAAGAAMAAAAAAAIAAAAFAAMAAAAAAAIAAAAEAAMAAAAAAAIAAAADAAMAAAAAAAIAAAACAAMAAAAAAAIAAAABAAMAAAAAAAIAAAABAAIAAAAAAAIAAAACAAIAAAAAAAIAAAADAAIAAAAAAAIAAAAEAAIAAAAAAAIAAAAFAAIAAAAAAAIAAAAGAAIAAAAAAAIAAAAHAAIAAAAAAAIAAAAIAAIAAAAAAAIAAAAIAAEAAAAAAAIAAAAHAAEAAAAAAAIAAAAGAAEAAAAAAAIAAAAFAAEAAAAAAAIAAAAEAAEAAAAAAAIAAAADAAEAAAAAAAIAAAACAAEAAAAAAAIAAAABAAEAAAAAAAIAAAABAAQAAAAAAAIAAAACAAQAAAAAAAIAAAADAAQAAAAAAAIAAAA=")
-tile_set = ExtResource("2_0dn8i")
+tile_set = ExtResource("4_qxlgs")
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -58,7 +58,7 @@ repeat_size = Vector2(160, 112)
 
 [node name="Sky" type="TileMapLayer" parent="Background/Sky"]
 tile_map_data = PackedByteArray("AAAJAAQAAAAAAAIAAAAJAAMAAAAAAAIAAAAJAAIAAAAAAAIAAAAJAAEAAAAAAAIAAAAJAAAAAAAAAAIAAAAIAAAAAAAAAAIAAAAHAAAAAAAAAAIAAAAGAAAAAAAAAAIAAAAFAAAAAAAAAAIAAAAEAAAAAAAAAAIAAAADAAAAAAAAAAIAAAACAAAAAAAAAAIAAAABAAAAAAAAAAIAAAAAAAAAAAAAAAIAAAAAAAEAAAAAAAIAAAAAAAIAAAAAAAIAAAAAAAMAAAAAAAIAAAAAAAQAAAAAAAIAAAAEAAQAAAAAAAIAAAAFAAQAAAAAAAIAAAAGAAQAAAAAAAIAAAAHAAQAAAAAAAIAAAAIAAQAAAAAAAIAAAAIAAMAAAAAAAIAAAAHAAMAAAAAAAIAAAAGAAMAAAAAAAIAAAAFAAMAAAAAAAIAAAAEAAMAAAAAAAIAAAADAAMAAAAAAAIAAAACAAMAAAAAAAIAAAABAAMAAAAAAAIAAAABAAIAAAAAAAIAAAACAAIAAAAAAAIAAAADAAIAAAAAAAIAAAAEAAIAAAAAAAIAAAAFAAIAAAAAAAIAAAAGAAIAAAAAAAIAAAAHAAIAAAAAAAIAAAAIAAIAAAAAAAIAAAAIAAEAAAAAAAIAAAAHAAEAAAAAAAIAAAAGAAEAAAAAAAIAAAAFAAEAAAAAAAIAAAAEAAEAAAAAAAIAAAADAAEAAAAAAAIAAAACAAEAAAAAAAIAAAABAAEAAAAAAAIAAAABAAQAAAAAAAIAAAACAAQAAAAAAAIAAAADAAQAAAAAAAIAAAAAAAUAAAAAAAIAAAABAAUAAAAAAAIAAAACAAUAAAAAAAIAAAADAAUAAAAAAAIAAAAEAAUAAAAAAAIAAAAFAAUAAAAAAAIAAAAGAAUAAAAAAAIAAAAHAAUAAAAAAAIAAAAIAAUAAAAAAAIAAAAJAAUAAAAAAAIAAAAJAAYAAAAAAAIAAAAIAAYAAAAAAAIAAAAHAAYAAAAAAAIAAAAGAAYAAAAAAAIAAAAFAAYAAAAAAAIAAAAEAAYAAAAAAAIAAAADAAYAAAAAAAIAAAACAAYAAAAAAAIAAAABAAYAAAAAAAIAAAAAAAYAAAAAAAIAAAAAAAcAAAAAAAIAAAABAAcAAAAAAAIAAAACAAcAAAAAAAIAAAADAAcAAAAAAAIAAAAEAAcAAAAAAAIAAAAFAAcAAAAAAAIAAAAGAAcAAAAAAAIAAAAHAAcAAAAAAAIAAAAIAAcAAAAAAAIAAAAJAAcAAAAAAAIAAAA=")
-tile_set = ExtResource("2_0dn8i")
+tile_set = ExtResource("4_qxlgs")
 
 [node name="Clouds" type="Parallax2D" parent="Background"]
 scroll_scale = Vector2(0.5, 0.5)
@@ -67,7 +67,7 @@ repeat_times = 3
 
 [node name="Clouds" type="TileMapLayer" parent="Background/Clouds"]
 tile_map_data = PackedByteArray("AAABAAMAAAADAAIAAAACAAMAAAAEAAIAAAAGAAEAAAADAAIAAAAHAAEAAAAEAAIAAAA=")
-tile_set = ExtResource("2_0dn8i")
+tile_set = ExtResource("4_qxlgs")
 
 [node name="Hills" type="Parallax2D" parent="Background"]
 scroll_scale = Vector2(0.75, 0.75)
@@ -76,14 +76,14 @@ repeat_times = 3
 
 [node name="Hills" type="TileMapLayer" parent="Background/Hills"]
 tile_map_data = PackedByteArray("AAAAAAUAAAADAAAAAAAAAAYAAAACAAAAAAAAAAcAAAABAAAAAAABAAUAAAAEAAAAAAABAAYAAAABAAAAAAABAAcAAAABAAAAAAACAAUAAAAFAAAAAAACAAYAAAABAAAAAAACAAcAAAABAAAAAAADAAUAAAAAAAEAAAADAAYAAAABAAAAAAADAAcAAAABAAAAAAAEAAUAAAACAAEAAAAEAAYAAAABAAAAAAAEAAcAAAABAAAAAAAFAAUAAAABAAEAAAAFAAYAAAABAAAAAAAFAAcAAAABAAAAAAAGAAUAAAADAAEAAAAGAAYAAAABAAAAAAAGAAcAAAABAAAAAAAHAAUAAAAEAAEAAAAHAAYAAAAFAAEAAAAHAAcAAAABAAAAAAAIAAcAAAABAAAAAAAJAAcAAAABAAAAAAAAAAgAAAABAAAAAAABAAgAAAABAAAAAAACAAgAAAABAAAAAAADAAgAAAABAAAAAAAEAAgAAAABAAAAAAAFAAgAAAABAAAAAAAGAAgAAAABAAAAAAAHAAgAAAABAAAAAAAIAAgAAAABAAAAAAAJAAgAAAABAAAAAAA=")
-tile_set = ExtResource("2_0dn8i")
+tile_set = ExtResource("4_qxlgs")
 
 [node name="Buildings" type="Parallax2D" parent="Background"]
 repeat_size = Vector2(160, 0)
 
 [node name="Buildings" type="TileMapLayer" parent="Background/Buildings"]
 tile_map_data = PackedByteArray("AAAAAAMAAAACAAMAAAAAAAQAAAABAAMAAAAAAAUAAAAAAAMAAAAGAAUAAAAAAAMAAAAAAAYAAAAFAAIAAAAAAAcAAAABAAIAAAABAAcAAAABAAIAAAACAAYAAAAEAAMAAAACAAcAAAABAAIAAAADAAYAAAAFAAMAAAADAAcAAAABAAIAAAAEAAcAAAABAAIAAAAFAAcAAAABAAIAAAAGAAYAAAAFAAIAAAAGAAcAAAABAAIAAAAHAAcAAAABAAIAAAAIAAYAAAADAAMAAAAIAAcAAAABAAIAAAAJAAcAAAABAAIAAAA=")
-tile_set = ExtResource("2_0dn8i")
+tile_set = ExtResource("4_qxlgs")
 
 [node name="Road" type="Parallax2D" parent="Background"]
 scroll_scale = Vector2(1.25, 1.25)
@@ -91,7 +91,7 @@ repeat_size = Vector2(160, 0)
 
 [node name="Road" type="TileMapLayer" parent="Background/Road"]
 tile_map_data = PackedByteArray("AAAAAAcAAAACAAIAAAAAAAgAAAABAAIAAAABAAcAAAABAAIAAAABAAgAAAABAAIAAAACAAcAAAACAAIAAAACAAgAAAABAAIAAAADAAcAAAABAAIAAAADAAgAAAABAAIAAAAEAAcAAAACAAIAAAAEAAgAAAABAAIAAAAFAAcAAAABAAIAAAAFAAgAAAABAAIAAAAGAAcAAAACAAIAAAAGAAgAAAABAAIAAAAHAAcAAAABAAIAAAAHAAgAAAABAAIAAAAIAAcAAAACAAIAAAAIAAgAAAABAAIAAAAJAAcAAAABAAIAAAAJAAgAAAABAAIAAAA=")
-tile_set = ExtResource("2_0dn8i")
+tile_set = ExtResource("4_qxlgs")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(0, 56)
@@ -115,11 +115,11 @@ shape = SubResource("CapsuleShape2D_mygas")
 
 [node name="JumpSFX" type="AudioStreamPlayer2D" parent="Player"]
 position = Vector2(80, 50)
-stream = ExtResource("6_mbs6m")
+stream = ExtResource("6_fyyf0")
 
 [node name="TurboSFX" type="AudioStreamPlayer2D" parent="Player"]
 position = Vector2(80, 50)
-stream = ExtResource("7_gwx0s")
+stream = ExtResource("7_ustkh")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -128,7 +128,7 @@ offset_left = 5.0
 offset_top = 3.0
 offset_right = 48.0
 offset_bottom = 53.0
-theme = ExtResource("4_up8lg")
+theme = ExtResource("8_ljysj")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "A
 B
@@ -137,7 +137,7 @@ Start"
 
 [node name="DemoFaderLayer" type="CanvasLayer" parent="."]
 visible = false
-script = ExtResource("11_j5adf")
+script = ExtResource("9_pvyhk")
 
 [node name="ColorRect" type="ColorRect" parent="DemoFaderLayer"]
 offset_right = 160.0
@@ -151,4 +151,4 @@ material = SubResource("ShaderMaterial_7fog1")
 offset_right = 160.0
 offset_bottom = 256.0
 
-[node name="Controls" parent="." instance=ExtResource("9_t76tr")]
+[node name="Controls" parent="." instance=ExtResource("11_70l61")]
