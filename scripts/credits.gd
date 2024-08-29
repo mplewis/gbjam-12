@@ -26,56 +26,37 @@ var pages = [
 		]
 	],
 ]
-var pressed = {
-	"left": false,
-	"right": false,
-	"a": false,
-}
 
 
 func _ready():
 	SceneMgr.set_appropriate_window_size()
+	GBtn.on_left.connect(left)
+	GBtn.on_right.connect(right)
+	GBtn.on_a.connect(a)
+	GBtn.on_b.connect(SceneMgr.close)
 	update_page()
 
-	pressed["left"] = Input.is_action_pressed("ui_left")
-	pressed["right"] = Input.is_action_pressed("ui_right")
-	pressed["a"] = Input.is_action_pressed("ui_gameboy_a")
+
+func left():
+	if page > 0:
+		sfx_left.play()
+		page -= 1
+		update_page()
 
 
-func _process(_delta):
-	if Input.is_action_pressed("ui_gameboy_b"):
-		SceneMgr.close()
+func right():
+	if page < pages.size() - 1:
+		sfx_right.play()
+		page += 1
+		update_page()
 
-	if Input.is_action_pressed("ui_left"):
-		if !pressed["left"]:
-			pressed["left"] = true
-			if page > 0:
-				sfx_left.play()
-				page -= 1
-				update_page()
-	else:
-		pressed["left"] = false
 
-	if Input.is_action_pressed("ui_right"):
-		if !pressed["right"]:
-			pressed["right"] = true
-			if page < pages.size() - 1:
-				sfx_right.play()
-				page += 1
-				update_page()
-	else:
-		pressed["right"] = false
-
-	if Input.is_action_pressed("ui_gameboy_a"):
-		if !pressed["a"]:
-			pressed["a"] = true
-			var link = pages[page][1]
-			if !link:
-				return
-			var url: String = link[1]
-			OS.shell_open(url)
-	else:
-		pressed["a"] = false
+func a():
+	var link = pages[page][1]
+	if !link:
+		return
+	var url: String = link[1]
+	OS.shell_open(url)
 
 
 func update_page():

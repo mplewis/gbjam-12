@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://v4r31pe85up6"]
+[gd_scene load_steps=16 format=4 uid="uid://v4r31pe85up6"]
 
 [ext_resource type="Script" path="res://scripts/roadtrip.gd" id="1_qf3xh"]
 [ext_resource type="AudioStream" uid="uid://d148867s1uqg" path="res://assets/demo/music/dootdoot.mp3" id="2_fiocu"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://c3v3f8x6sl2y7" path="res://assets/demo/images/road-trip.png" id="5_hwbwk"]
 [ext_resource type="AudioStream" uid="uid://waadkj2piknd" path="res://assets/demo/sfx/jump.wav" id="6_fyyf0"]
 [ext_resource type="AudioStream" uid="uid://ep0jupwqe64f" path="res://assets/demo/sfx/turbo.wav" id="7_ustkh"]
-[ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="8_ljysj"]
 [ext_resource type="Script" path="res://scripts/demo_fader_layer.gd" id="9_pvyhk"]
 [ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="10_um8bj"]
 [ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/controls.tscn" id="11_70l61"]
@@ -120,20 +119,6 @@ stream = ExtResource("6_fyyf0")
 [node name="TurboSFX" type="AudioStreamPlayer2D" parent="Player"]
 position = Vector2(80, 50)
 stream = ExtResource("7_ustkh")
-
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="ControlDebug" type="Label" parent="UI"]
-offset_left = 5.0
-offset_top = 3.0
-offset_right = 48.0
-offset_bottom = 53.0
-theme = ExtResource("8_ljysj")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "A
-B
-Select
-Start"
 
 [node name="DemoFaderLayer" type="CanvasLayer" parent="."]
 visible = false

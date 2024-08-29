@@ -7,17 +7,6 @@ const DECEL_STR = 240
 const JUMP_STR = 120
 const GRAVITY_STR = 480
 
-var input_states = {
-	"ui_gameboy_a": false,
-	"ui_gameboy_b": false,
-	"ui_gameboy_select": false,
-	"ui_gameboy_start": false,
-	"ui_up": false,
-	"ui_down": false,
-	"ui_left": false,
-	"ui_right": false,
-}
-
 var menu_items := {
 	"roadtrip": "Road Trip",
 	"danceoff": "Dance-Off",
@@ -35,10 +24,9 @@ var selected := 0
 
 func _ready():
 	SceneMgr.set_appropriate_window_size()
-
-
-func _process(_delta):
-	check_inputs()
+	GBtn.on_up.connect(up)
+	GBtn.on_down.connect(down)
+	GBtn.on_a.connect(select)
 	update_menu()
 
 
@@ -47,34 +35,25 @@ func safe_call(f: String) -> void:
 		call(f)
 
 
-func check_inputs():
-	for action in input_states.keys():
-		if Input.is_action_pressed(action):
-			if !input_states[action]:
-				safe_call("_on_btn_%s" % action)
-				input_states[action] = true
-		else:
-			if input_states[action]:
-				input_states[action] = false
-
-
 func update_menu():
 	var items = menu_items.values()
 	items[selected] = "> %s <" % items[selected]
 	menu_items_label.text = "\n".join(items)
 
 
-func _on_btn_ui_up():
+func up():
 	sfx_up.play()
 	selected = (selected - 1) % menu_items.size()
+	update_menu()
 
 
-func _on_btn_ui_down():
+func down():
 	sfx_down.play()
 	selected = (selected + 1) % menu_items.size()
+	update_menu()
 
 
-func _on_btn_ui_gameboy_a():
+func select():
 	sfx_select.play()
 	var item = menu_items.keys()[selected]
 	safe_call("_on_menu_%s" % item)
