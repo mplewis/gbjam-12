@@ -84,8 +84,8 @@ func _on_menu_new_game():
 
 
 func _on_menu_options():
-	print("Options")
+	print("Not implemented")
 
 
 func _on_menu_credits():
-	print("Credits")
+	SceneMgr.open("credits")
