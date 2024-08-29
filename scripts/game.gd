@@ -7,8 +7,6 @@ const DECEL_STR = 240
 const JUMP_STR = 120
 const GRAVITY_STR = 480
 
-const WINDOW_SCALE = 8
-
 var input_names = {
 	"ui_gameboy_a": "A",
 	"ui_gameboy_b": "B",
@@ -36,12 +34,14 @@ var player_up_vel := 0.0
 
 
 func _ready():
-	if OS.get_name() != "Web":
-		get_window().size *= Vector2i(WINDOW_SCALE, WINDOW_SCALE)
+	SceneMgr.set_appropriate_window_size()
 
 
 func _process(delta):
 	update_control_debug_label()
+
+	if Input.is_action_pressed("ui_gameboy_start"):
+		SceneMgr.close()
 
 	if Input.is_action_pressed("ui_gameboy_a"):
 		jump()

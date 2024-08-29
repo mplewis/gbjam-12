@@ -19,7 +19,9 @@ shader_parameter/color2 = Color(0.203922, 0.407843, 0.337255, 1)
 shader_parameter/color3 = Color(0.533333, 0.752941, 0.439216, 1)
 shader_parameter/color4 = Color(0.878431, 0.972549, 0.815686, 1)
 
-[node name="Menu" type="Node2D"]
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_ugpda")
 
 [node name="SFX" type="Node" parent="."]
@@ -100,16 +102,24 @@ size_flags_vertical = 3
 layout_mode = 2
 alignment = 1
 
+[node name="Hints" type="Label" parent="UI/Control/HBoxContainer/VBoxContainer/Hints"]
+layout_mode = 2
+theme = ExtResource("4_up8lg")
+text = "A: Select"
+
 [node name="Hints L" type="Label" parent="UI/Control/HBoxContainer/VBoxContainer/Hints"]
+visible = false
 layout_mode = 2
 theme = ExtResource("4_up8lg")
 text = "B: Back"
 
 [node name="Flex Space" type="Control" parent="UI/Control/HBoxContainer/VBoxContainer/Hints"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Hints R" type="Label" parent="UI/Control/HBoxContainer/VBoxContainer/Hints"]
+visible = false
 layout_mode = 2
 theme = ExtResource("4_up8lg")
 text = "A: Select"

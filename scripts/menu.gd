@@ -1,13 +1,11 @@
 class_name Menu
-extends Node2D
+extends Control
 
 const BASE_SPEED = 120
 const TURBO_MULT = 3.0
 const DECEL_STR = 240
 const JUMP_STR = 120
 const GRAVITY_STR = 480
-
-const WINDOW_SCALE = 8
 
 var input_states = {
 	"ui_gameboy_a": false,
@@ -35,8 +33,7 @@ var selected := 0
 
 
 func _ready():
-	if OS.get_name() != "Web":
-		get_window().size *= Vector2i(WINDOW_SCALE, WINDOW_SCALE)
+	SceneMgr.set_appropriate_window_size()
 
 
 func _process(_delta):
@@ -44,11 +41,16 @@ func _process(_delta):
 	update_menu()
 
 
+func safe_call(f: String) -> void:
+	if has_method(f):
+		call(f)
+
+
 func check_inputs():
 	for action in input_states.keys():
 		if Input.is_action_pressed(action):
 			if !input_states[action]:
-				call("_on_btn_%s" % action)
+				safe_call("_on_btn_%s" % action)
 				input_states[action] = true
 		else:
 			if input_states[action]:
@@ -74,32 +76,11 @@ func _on_btn_ui_down():
 func _on_btn_ui_gameboy_a():
 	sfx_select.play()
 	var item = menu_items.keys()[selected]
-	call("_on_menu_%s" % item)
-
-
-func _on_btn_ui_gameboy_b():
-	sfx_back.play()
-	print("Back")
-
-
-func _on_btn_ui_gameboy_select():
-	pass
-
-
-func _on_btn_ui_gameboy_start():
-	pass
-
-
-func _on_btn_ui_left():
-	pass
-
-
-func _on_btn_ui_right():
-	pass
+	safe_call("_on_menu_%s" % item)
 
 
 func _on_menu_new_game():
-	print("New Game")
+	SceneMgr.open("game")
 
 
 func _on_menu_options():
