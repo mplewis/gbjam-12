@@ -102,11 +102,6 @@ size_flags_vertical = 3
 layout_mode = 2
 alignment = 1
 
-[node name="Hints" type="Label" parent="UI/Control/HBoxContainer/VBoxContainer/Hints"]
-layout_mode = 2
-theme = ExtResource("4_up8lg")
-text = "A: Select"
-
 [node name="Hints L" type="Label" parent="UI/Control/HBoxContainer/VBoxContainer/Hints"]
 visible = false
 layout_mode = 2
@@ -114,12 +109,10 @@ theme = ExtResource("4_up8lg")
 text = "B: Back"
 
 [node name="Flex Space" type="Control" parent="UI/Control/HBoxContainer/VBoxContainer/Hints"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Hints R" type="Label" parent="UI/Control/HBoxContainer/VBoxContainer/Hints"]
-visible = false
 layout_mode = 2
 theme = ExtResource("4_up8lg")
 text = "A: Select"
