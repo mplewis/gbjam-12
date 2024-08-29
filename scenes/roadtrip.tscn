@@ -38,7 +38,7 @@ shader_parameter/color2 = Color(0.203922, 0.407843, 0.337255, 1)
 shader_parameter/color3 = Color(0.533333, 0.752941, 0.439216, 1)
 shader_parameter/color4 = Color(0.878431, 0.972549, 0.815686, 1)
 
-[node name="Game" type="Node2D"]
+[node name="Roadtrip" type="Node2D"]
 script = ExtResource("1_qf3xh")
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]

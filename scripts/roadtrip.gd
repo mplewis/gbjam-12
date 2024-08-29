@@ -1,4 +1,4 @@
-class_name Game
+class_name Roadtrip
 extends Node2D
 
 const BASE_SPEED = 120

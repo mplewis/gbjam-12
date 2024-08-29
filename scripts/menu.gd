@@ -19,7 +19,8 @@ var input_states = {
 }
 
 var menu_items := {
-	"new_game": "New Game",
+	"roadtrip": "Road Trip",
+	"danceoff": "Dance-Off",
 	"options": "Options",
 	"credits": "Credits",
 }
@@ -79,8 +80,12 @@ func _on_btn_ui_gameboy_a():
 	safe_call("_on_menu_%s" % item)
 
 
-func _on_menu_new_game():
+func _on_menu_roadtrip():
 	SceneMgr.open("roadtrip")
+
+
+func _on_menu_danceoff():
+	SceneMgr.open("danceoff")
 
 
 func _on_menu_options():
