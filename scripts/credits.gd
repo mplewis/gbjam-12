@@ -49,18 +49,20 @@ func _process(_delta):
 	if Input.is_action_pressed("ui_left"):
 		if !pressed["left"]:
 			pressed["left"] = true
-			sfx_left.play()
-			page = max(0, page - 1)
-			update_page()
+			if page > 0:
+				sfx_left.play()
+				page -= 1
+				update_page()
 	else:
 		pressed["left"] = false
 
 	if Input.is_action_pressed("ui_right"):
 		if !pressed["right"]:
 			pressed["right"] = true
-			sfx_right.play()
-			page = min(pages.size() - 1, page + 1)
-			update_page()
+			if page < pages.size() - 1:
+				sfx_right.play()
+				page += 1
+				update_page()
 	else:
 		pressed["right"] = false
 
