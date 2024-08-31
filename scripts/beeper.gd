@@ -1,6 +1,8 @@
 class_name Beeper
 extends Node
 
+enum Timing { EARLY, ON, LATE }
+
 signal on_beat(beat: int, end_of_seq: bool)
 
 @export_range(1, 400) var bpm: float = 120
@@ -15,6 +17,7 @@ var beat_dur_sec := 0.0
 var loop := false
 var playing := false
 var beat_ts := 0.0
+var beat_anchor_ms := 0
 var beat := 0
 
 # HACK: time gets wonky on the first play
@@ -39,6 +42,22 @@ func stop():
 		sample_nodes[i].stop()
 
 
+func off_by() -> Array:
+	var now := Time.get_ticks_msec()
+	var time_from_curr_beat = abs(now - beat_anchor_ms)
+	var time_from_next_beat = abs(time_from_curr_beat - beat_dur_sec * 1000)
+
+	var timing := Timing.ON
+	if time_from_curr_beat < time_from_next_beat:
+		timing = Timing.EARLY
+	elif time_from_curr_beat > time_from_next_beat:
+		timing = Timing.LATE
+
+	var pct_off = time_from_curr_beat / (beat_dur_sec * 1000 * 2)
+
+	return [timing, time_from_curr_beat, pct_off]
+
+
 func _process(delta):
 	if !playing:
 		return
@@ -49,6 +68,7 @@ func _process(delta):
 		beat_ts += delta
 
 	if beat_ts >= beat_dur_sec:
+		beat_anchor_ms = Time.get_ticks_msec()
 		beat_ts = _fmod(beat_ts, beat_dur_sec)
 		var to_play = notes[beat]
 		for i in range(to_play.size()):

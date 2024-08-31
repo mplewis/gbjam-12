@@ -26,12 +26,30 @@ const base_song = [
 func _ready():
 	SceneMgr.set_appropriate_window_size()
 	GBtn.on_start.connect(SceneMgr.close)
+	GBtn.on_a.connect(_on_a)
 
 	beeper.on_beat.connect(_on_beat)
 
 	var song = generate_new_song()
 	beeper.configure(song)
 	beeper.play()
+
+
+func _on_a():
+	var result = beeper.off_by()
+	var timing = result[0]
+	var ms = result[1]
+	var pct_off = result[2]
+
+	var timing_str := ""
+	match timing:
+		Beeper.Timing.EARLY:
+			timing_str = "early"
+		Beeper.Timing.LATE:
+			timing_str = "late"
+		_:
+			timing_str = "on"
+	print("%s, %dms, pct off: %0.0f" % [timing_str, ms, pct_off * 100])
 
 
 func generate_notes(count: int) -> Array[int]:
