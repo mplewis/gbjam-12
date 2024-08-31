@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://kjq4hl3kib6h"]
+[gd_scene load_steps=9 format=3 uid="uid://kjq4hl3kib6h"]
 
 [ext_resource type="Script" path="res://scripts/danceoff.gd" id="1_ow6c8"]
 [ext_resource type="AudioStream" uid="uid://c63pjssf12p5y" path="res://assets/demo/music/dance-backtrack.mp3" id="2_jdho1"]
-[ext_resource type="Script" path="res://scripts/bgm.gd" id="3_lkbpd"]
+[ext_resource type="Script" path="res://scripts/beeper.gd" id="2_uqyru"]
 [ext_resource type="AudioStream" uid="uid://u542k1hpu331" path="res://assets/demo/music/beep1.ogg" id="4_yjgwi"]
 [ext_resource type="AudioStream" uid="uid://k1mu6dugkwdu" path="res://assets/demo/music/beep2.ogg" id="5_vhsm2"]
-[ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="8_jdory"]
 [ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="10_j3xg6"]
 [ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/controls.tscn" id="11_u3jeb"]
 
@@ -22,16 +21,10 @@ shader_parameter/color4 = Color(0.878431, 0.972549, 0.815686, 1)
 [node name="Danceoff" type="Node2D"]
 script = ExtResource("1_ow6c8")
 
-[node name="BGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_jdho1")
-parameters/looping = false
-script = ExtResource("3_lkbpd")
-
-[node name="Beep1" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_yjgwi")
-
-[node name="Beep2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_vhsm2")
+[node name="Beeper" type="Node" parent="."]
+script = ExtResource("2_uqyru")
+bpm = 240.0
+samples = Array[AudioStream]([ExtResource("2_jdho1"), ExtResource("4_yjgwi"), ExtResource("5_vhsm2")])
 
 [node name="RecolorLayer" type="CanvasLayer" parent="."]
 
@@ -41,16 +34,3 @@ offset_right = 160.0
 offset_bottom = 256.0
 
 [node name="Controls" parent="." instance=ExtResource("11_u3jeb")]
-
-[node name="DebugNotes" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-theme = ExtResource("8_jdory")
-text = "A _ A _ B A B A"
-
-[node name="DebugPos" type="Label" parent="."]
-offset_top = 14.0
-offset_right = 80.0
-offset_bottom = 37.0
-theme = ExtResource("8_jdory")
-text = "     ^"
