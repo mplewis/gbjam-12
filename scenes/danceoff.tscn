@@ -23,7 +23,6 @@ script = ExtResource("1_ow6c8")
 
 [node name="Beeper" type="Node" parent="."]
 script = ExtResource("2_uqyru")
-bpm = 240.0
 samples = Array[AudioStream]([ExtResource("2_jdho1"), ExtResource("4_yjgwi"), ExtResource("5_vhsm2")])
 
 [node name="RecolorLayer" type="CanvasLayer" parent="."]

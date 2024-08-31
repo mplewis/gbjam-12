@@ -44,18 +44,21 @@ func stop():
 
 func off_by() -> Array:
 	var now := Time.get_ticks_msec()
-	var time_from_curr_beat = abs(now - beat_anchor_ms)
-	var time_from_next_beat = abs(time_from_curr_beat - beat_dur_sec * 1000)
+	var ms_from_curr_beat = abs(now - beat_anchor_ms)
+	var ms_from_next_beat = abs(ms_from_curr_beat - beat_dur_sec * 1000)
+	print("ms_from_curr_beat: %d" % ms_from_curr_beat)
+	print("ms_from_next_beat: %d" % ms_from_next_beat)
+
+	var ms_from_closest_beat = min(ms_from_curr_beat, ms_from_next_beat)
+	var pct_off = ms_from_closest_beat / (beat_dur_sec * 1000 * 2)
 
 	var timing := Timing.ON
-	if time_from_curr_beat < time_from_next_beat:
-		timing = Timing.EARLY
-	elif time_from_curr_beat > time_from_next_beat:
+	if ms_from_curr_beat < ms_from_next_beat:
 		timing = Timing.LATE
+	elif ms_from_curr_beat > ms_from_next_beat:
+		timing = Timing.EARLY
 
-	var pct_off = time_from_curr_beat / (beat_dur_sec * 1000 * 2)
-
-	return [timing, time_from_curr_beat, pct_off]
+	return [beat, timing, ms_from_closest_beat, pct_off]
 
 
 func _process(delta):
