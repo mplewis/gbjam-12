@@ -42,6 +42,7 @@ func _process(delta):
 		beat += 1
 
 	if seq_ts >= seq_dur_sec:
+		print("seq_ts: %f, seq_dur_sec: %f" % [seq_ts, seq_dur_sec])
 		if loop:
 			seq_ts = fmod(seq_ts, seq_dur_sec)
 			beat = 0
