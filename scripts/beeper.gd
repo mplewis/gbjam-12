@@ -4,6 +4,7 @@ extends Node
 enum Timing { EARLY, ON, LATE }
 
 signal on_beat(beat: int, end_of_seq: bool)
+signal on_progress(pct: float)
 
 @export_range(1, 400) var bpm: float = 120
 @export var samples: Array[AudioStream] = []
@@ -11,7 +12,6 @@ signal on_beat(beat: int, end_of_seq: bool)
 var sample_nodes: Array[AudioStreamPlayer] = []
 ## Array[Array[int]]
 var notes := []
-var seq_dur_sec := 0.0
 var beat_dur_sec := 0.0
 
 var loop := false
@@ -42,6 +42,12 @@ func stop():
 		sample_nodes[i].stop()
 
 
+func pluck(i: int):
+	if i < 0 or i >= notes.size():
+		return
+	sample_nodes[i].play()
+
+
 func off_by() -> Array:
 	var now := Time.get_ticks_msec()
 	var ms_from_curr_beat = abs(now - beat_anchor_ms)
@@ -64,11 +70,19 @@ func off_by() -> Array:
 func _process(delta):
 	if !playing:
 		return
+	if notes.size() == 0:
+		return
 
 	if first:
 		first = false
 	else:
 		beat_ts += delta
+
+	# % of the way through the current seq
+	var seq_dur_sec := beat_dur_sec * notes.size()
+	var seq_pos_sec := beat_ts + beat * beat_dur_sec
+	var pct := seq_pos_sec / seq_dur_sec
+	on_progress.emit(pct)
 
 	if beat_ts >= beat_dur_sec:
 		beat_anchor_ms = Time.get_ticks_msec()
@@ -92,8 +106,7 @@ func _process(delta):
 func _update_local_song():
 	if notes.size() == 0:
 		return
-	seq_dur_sec = 60.0 / bpm * notes.size()
-	beat_dur_sec = seq_dur_sec / notes.size()
+	beat_dur_sec = 60.0 / bpm
 
 	for i in range(sample_nodes.size()):
 		var existing_node := sample_nodes[i]

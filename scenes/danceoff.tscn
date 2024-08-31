@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://kjq4hl3kib6h"]
+[gd_scene load_steps=12 format=3 uid="uid://kjq4hl3kib6h"]
 
 [ext_resource type="Script" path="res://scripts/danceoff.gd" id="1_ow6c8"]
 [ext_resource type="AudioStream" uid="uid://c63pjssf12p5y" path="res://assets/demo/music/dance-backtrack.mp3" id="2_jdho1"]
 [ext_resource type="Script" path="res://scripts/beeper.gd" id="2_uqyru"]
 [ext_resource type="AudioStream" uid="uid://u542k1hpu331" path="res://assets/demo/music/beep1.ogg" id="4_yjgwi"]
 [ext_resource type="AudioStream" uid="uid://k1mu6dugkwdu" path="res://assets/demo/music/beep2.ogg" id="5_vhsm2"]
+[ext_resource type="Texture2D" uid="uid://o0rjnu2agyio" path="res://assets/ui/white.png" id="8_070e5"]
+[ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="9_lpydx"]
 [ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="10_j3xg6"]
 [ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/controls.tscn" id="11_u3jeb"]
 
@@ -18,14 +20,29 @@ shader_parameter/color2 = Color(0.203922, 0.407843, 0.337255, 1)
 shader_parameter/color3 = Color(0.533333, 0.752941, 0.439216, 1)
 shader_parameter/color4 = Color(0.878431, 0.972549, 0.815686, 1)
 
+[sub_resource type="Curve2D" id="Curve2D_ewr7w"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 8, 41, 0, 0, 0, 0, 152, 41)
+}
+point_count = 2
+
 [node name="Danceoff" type="Node2D"]
 script = ExtResource("1_ow6c8")
 
+[node name="Marker" type="Label" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("9_lpydx")
+text = "!"
+
 [node name="Beeper" type="Node" parent="."]
 script = ExtResource("2_uqyru")
+bpm = 240.0
 samples = Array[AudioStream]([ExtResource("2_jdho1"), ExtResource("4_yjgwi"), ExtResource("5_vhsm2")])
 
 [node name="RecolorLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="RecolorShader" type="ColorRect" parent="RecolorLayer"]
 material = SubResource("ShaderMaterial_7fog1")
@@ -33,3 +50,60 @@ offset_right = 160.0
 offset_bottom = 256.0
 
 [node name="Controls" parent="." instance=ExtResource("11_u3jeb")]
+
+[node name="CoachTL" type="Path2D" parent="."]
+position = Vector2(0, -25)
+curve = SubResource("Curve2D_ewr7w")
+
+[node name="BG" type="Sprite2D" parent="CoachTL"]
+position = Vector2(80, 41)
+scale = Vector2(144.08, 1)
+texture = ExtResource("8_070e5")
+
+[node name="Follow" type="PathFollow2D" parent="CoachTL"]
+position = Vector2(8, 41)
+
+[node name="Slider" type="Sprite2D" parent="CoachTL/Follow"]
+scale = Vector2(1, 13)
+texture = ExtResource("8_070e5")
+
+[node name="MarkerAnchor" type="Label" parent="CoachTL/Follow"]
+visible = false
+offset_left = -4.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 27.0
+theme = ExtResource("9_lpydx")
+text = "A"
+
+[node name="PlayerTL" type="Path2D" parent="."]
+position = Vector2(0, 8)
+curve = SubResource("Curve2D_ewr7w")
+
+[node name="BG" type="Sprite2D" parent="PlayerTL"]
+position = Vector2(80, 41)
+scale = Vector2(144.08, 1)
+texture = ExtResource("8_070e5")
+
+[node name="Follow" type="PathFollow2D" parent="PlayerTL"]
+position = Vector2(8, 41)
+
+[node name="Slider" type="Sprite2D" parent="PlayerTL/Follow"]
+scale = Vector2(1, 13)
+texture = ExtResource("8_070e5")
+
+[node name="MarkerAnchor" type="Label" parent="PlayerTL/Follow"]
+visible = false
+offset_left = -4.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 27.0
+theme = ExtResource("9_lpydx")
+text = "A"
+
+[node name="Debug" type="Label" parent="."]
+offset_top = 76.0
+offset_right = 43.0
+offset_bottom = 99.0
+theme = ExtResource("9_lpydx")
+text = "Beat: 0"
