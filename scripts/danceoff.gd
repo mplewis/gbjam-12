@@ -11,6 +11,7 @@ extends Node2D
 
 var markers: Array[Label] = []
 var pct := 0.0
+var beat := 0
 var notes: Array[int] = []
 
 const base_song = [
@@ -62,13 +63,16 @@ func _on_b():
 func generate_notes(count: int):
 	notes = []
 	for i in range(count):
-		match int(randf() * 4):
-			0:
-				notes.append(1)
-			1:
-				notes.append(2)
-			_:
-				notes.append(-1)
+		if i == 0:
+			notes.append(1)
+		else:
+			match int(randf() * 4):
+				0:
+					notes.append(1)
+				1:
+					notes.append(2)
+				_:
+					notes.append(-1)
 
 
 func generate_new_song() -> Array:
@@ -92,7 +96,8 @@ func _player_phase():
 	return !_coach_phase()
 
 
-func _on_beat(beat: int, end_of_seq: bool):
+func _on_beat(_beat: int, end_of_seq: bool):
+	beat = _beat
 	debug.text = "Beat: %d" % beat
 
 	if end_of_seq:
@@ -104,11 +109,11 @@ func _on_beat(beat: int, end_of_seq: bool):
 		markers = []
 
 	if _coach_phase():
-		_mark_coach_beat(beat)
+		_mark_coach_beat()
 
 
-func _on_progress(percent: float):
-	pct = percent
+func _on_progress(_pct: float):
+	pct = _pct
 	if _coach_phase():
 		coach_follow.progress_ratio = pct * 2
 		player_follow.progress_ratio = 0
@@ -117,7 +122,8 @@ func _on_progress(percent: float):
 		coach_follow.progress_ratio = 1
 
 
-func _mark_coach_beat(beat: int):
+func _mark_coach_beat():
+	print("pct: %f, beat: %d" % [pct, beat])
 	if beat >= notes.size():
 		return
 	var note = notes[beat]
@@ -128,6 +134,9 @@ func _mark_coach_beat(beat: int):
 
 
 func _mark_active_tl(s: String):
+	if beat == 0:
+		breakpoint
+
 	var m: Label = marker.duplicate()
 	m.text = s
 

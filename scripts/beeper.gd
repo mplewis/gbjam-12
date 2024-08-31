@@ -1,6 +1,8 @@
 class_name Beeper
 extends Node
 
+# FIXME: Need timing offset configuration
+
 enum Timing { EARLY, ON, LATE }
 
 signal on_beat(beat: int, end_of_seq: bool)
@@ -84,6 +86,8 @@ func _process(delta):
 	var pct := seq_pos_sec / seq_dur_sec
 	on_progress.emit(pct)
 
+	# FIXME: Beat 0 is not emitting
+	print("beat_ts: %f, beat_dur_sec: %f" % [beat_ts, beat_dur_sec])
 	if beat_ts >= beat_dur_sec:
 		beat_anchor_ms = Time.get_ticks_msec()
 		beat_ts = _fmod(beat_ts, beat_dur_sec)
