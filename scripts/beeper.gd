@@ -14,12 +14,29 @@ var beat_dur_sec := 0.0
 
 var loop := false
 var playing := false
-var seq_ts := 0.0
 var beat_ts := 0.0
 var beat := 0
 
 # HACK: time gets wonky on the first play
 var first = false
+
+
+func configure(newNotes: Array, looping = true):
+	notes = newNotes
+	loop = looping
+	_update_local_song()
+
+
+func play():
+	playing = true
+
+
+func stop():
+	playing = false
+	beat_ts = 0
+	beat = 0
+	for i in range(sample_nodes.size()):
+		sample_nodes[i].stop()
 
 
 func _process(delta):
@@ -29,25 +46,24 @@ func _process(delta):
 	if first:
 		first = false
 	else:
-		seq_ts += delta
 		beat_ts += delta
 
-	# HACK: non-deterministic delta shifting sometimes leads to "too many beats" right before a loop
-	if beat_ts >= beat_dur_sec && beat < notes.size():
-		beat_ts = fmod(beat_ts, beat_dur_sec)
-		on_beat.emit(beat, seq_ts >= seq_dur_sec)
+	if beat_ts >= beat_dur_sec:
+		beat_ts = _fmod(beat_ts, beat_dur_sec)
 		var to_play = notes[beat]
 		for i in range(to_play.size()):
 			sample_nodes[to_play[i]].play()
 		beat += 1
 
-	if seq_ts >= seq_dur_sec:
-		print("seq_ts: %f, seq_dur_sec: %f" % [seq_ts, seq_dur_sec])
-		if loop:
-			seq_ts = fmod(seq_ts, seq_dur_sec)
+		var end_of_seq = beat >= notes.size()
+		if end_of_seq:
 			beat = 0
-		else:
-			playing = false
+			if loop:
+				beat = 0
+			else:
+				playing = false
+
+		on_beat.emit(beat, end_of_seq)
 
 
 func _update_local_song():
@@ -71,24 +87,5 @@ func _update_local_song():
 		add_child(new_node)
 
 
-func configure(newNotes: Array, looping = true):
-	notes = newNotes
-	loop = looping
-	_update_local_song()
-
-
-func play():
-	playing = true
-
-
-func stop():
-	playing = false
-	seq_ts = 0
-	beat_ts = 0
-	beat = 0
-	for i in range(sample_nodes.size()):
-		sample_nodes[i].stop()
-
-
-func fmod(a: float, b: float) -> float:
+func _fmod(a: float, b: float) -> float:
 	return a - b * floor(a / b)

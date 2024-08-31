@@ -60,7 +60,6 @@ func generate_new_song() -> Array:
 	return song
 
 
-func _on_beat(beat: int, end_of_seq: bool):
-	print("beat: %d, end_of_seq: %s" % [beat, end_of_seq])
+func _on_beat(_beat: int, end_of_seq: bool):
 	if end_of_seq:
 		beeper.configure(generate_new_song())
