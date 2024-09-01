@@ -38,3 +38,4 @@ func close() -> void:
 
 	scene_paths.pop_back()
 	get_tree().change_scene_to_file(scene_paths.back())
+	UiSounds.cancel()

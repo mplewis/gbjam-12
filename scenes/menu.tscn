@@ -1,12 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bs0ucq7uj35vy"]
+[gd_scene load_steps=6 format=3 uid="uid://bs0ucq7uj35vy"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_ugpda"]
 [ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="4_up8lg"]
-[ext_resource type="AudioStream" uid="uid://djnprkkn3ojip" path="res://assets/demo/sfx/3g.wav" id="5_5lr5l"]
 [ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="5_111ew"]
-[ext_resource type="AudioStream" uid="uid://5dopu805p4ow" path="res://assets/demo/sfx/4c.wav" id="6_xdwu1"]
-[ext_resource type="AudioStream" uid="uid://bsf1vhpkw2md2" path="res://assets/demo/sfx/4c-4f.wav" id="7_4e0jg"]
-[ext_resource type="AudioStream" uid="uid://bbct4e1v7vkju" path="res://assets/demo/sfx/4c-3g.wav" id="8_kauqn"]
 [ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/controls.tscn" id="9_t76tr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7fog1"]
@@ -23,20 +19,6 @@ shader_parameter/color4 = Color(0.878431, 0.972549, 0.815686, 1)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_ugpda")
-
-[node name="SFX" type="Node" parent="."]
-
-[node name="Up" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("5_5lr5l")
-
-[node name="Down" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("6_xdwu1")
-
-[node name="Select" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("7_4e0jg")
-
-[node name="Back" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("8_kauqn")
 
 [node name="UI" type="CanvasLayer" parent="."]
 

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SceneMgr="*res://scripts/scene_mgr.gd"
 GBtn="*res://scripts/g_btn.gd"
+UiSounds="*res://scripts/ui_sounds.gd"
 
 [display]
 

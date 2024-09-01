@@ -1,8 +1,6 @@
 class_name Credits
 extends Control
 
-@onready var sfx_left: AudioStreamPlayer = $SFX/Left
-@onready var sfx_right: AudioStreamPlayer = $SFX/Right
 @onready var title_label: Label = %Title
 @onready var body_label: Label = %Body
 @onready var arrow_left: TextureRect = %ArrowLeft
@@ -39,14 +37,14 @@ func _ready():
 
 func left():
 	if page > 0:
-		sfx_left.play()
+		UiSounds.up()
 		page -= 1
 		update_page()
 
 
 func right():
 	if page < pages.size() - 1:
-		sfx_right.play()
+		UiSounds.down()
 		page += 1
 		update_page()
 

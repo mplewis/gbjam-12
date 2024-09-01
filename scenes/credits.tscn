@@ -1,10 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://qrvhfsa3bh71"]
+[gd_scene load_steps=8 format=3 uid="uid://qrvhfsa3bh71"]
 
 [ext_resource type="Script" path="res://scripts/credits.gd" id="1_gepxa"]
-[ext_resource type="AudioStream" uid="uid://djnprkkn3ojip" path="res://assets/demo/sfx/3g.wav" id="2_vcfmw"]
-[ext_resource type="AudioStream" uid="uid://5dopu805p4ow" path="res://assets/demo/sfx/4c.wav" id="3_o1ce7"]
-[ext_resource type="AudioStream" uid="uid://bsf1vhpkw2md2" path="res://assets/demo/sfx/4c-4f.wav" id="4_ilctt"]
-[ext_resource type="AudioStream" uid="uid://bbct4e1v7vkju" path="res://assets/demo/sfx/4c-3g.wav" id="5_n8e1f"]
 [ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="6_xrbx8"]
 [ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="7_6gyib"]
 [ext_resource type="Texture2D" uid="uid://c2xiawoqxu46h" path="res://assets/ui/arrow_left.png" id="7_buckb"]
@@ -25,20 +21,6 @@ shader_parameter/color4 = Color(0.878431, 0.972549, 0.815686, 1)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_gepxa")
-
-[node name="SFX" type="Node" parent="."]
-
-[node name="Left" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("2_vcfmw")
-
-[node name="Right" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("3_o1ce7")
-
-[node name="Select" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("4_ilctt")
-
-[node name="Back" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("5_n8e1f")
 
 [node name="UI" type="CanvasLayer" parent="."]
 

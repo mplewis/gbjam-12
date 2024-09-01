@@ -16,10 +16,6 @@ var menu_items := {
 var selected := 0
 
 @onready var menu_items_label: Label = %MenuItems
-@onready var sfx_up: AudioStreamPlayer = $SFX/Up
-@onready var sfx_down: AudioStreamPlayer = $SFX/Down
-@onready var sfx_select: AudioStreamPlayer = $SFX/Select
-@onready var sfx_back: AudioStreamPlayer = $SFX/Back
 
 
 func _ready():
@@ -42,19 +38,19 @@ func update_menu():
 
 
 func up():
-	sfx_up.play()
+	UiSounds.up()
 	selected = (selected - 1) % menu_items.size()
 	update_menu()
 
 
 func down():
-	sfx_down.play()
+	UiSounds.down()
 	selected = (selected + 1) % menu_items.size()
 	update_menu()
 
 
 func select():
-	sfx_select.play()
+	UiSounds.select()
 	var item = menu_items.keys()[selected]
 	safe_call("_on_menu_%s" % item)
 
