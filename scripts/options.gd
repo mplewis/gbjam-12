@@ -32,22 +32,20 @@ func _on_b():
 func _on_up():
 	UiSounds.up()
 	index = (index - 1 + indicators.size()) % indicators.size()
-	print(index)
 	update()
 
 
 func _on_down():
 	UiSounds.down()
 	index = (index + 1) % indicators.size()
-	print(index)
 	update()
 
 
 func _on_left():
 	if index == 0:
-		Settings.volume_music -= 1
+		Volume.music -= 1
 	else:
-		Settings.volume_sfx -= 1
+		Volume.sfx -= 1
 	update()
 	if index == 1:
 		demo_sfx.play()
@@ -55,9 +53,9 @@ func _on_left():
 
 func _on_right():
 	if index == 0:
-		Settings.volume_music += 1
+		Volume.music += 1
 	else:
-		Settings.volume_sfx += 1
+		Volume.sfx += 1
 	update()
 	if index == 1:
 		demo_sfx.play()
@@ -76,5 +74,5 @@ func update():
 			s = ">"
 		indicators[i].text = s
 
-	bar_music.scale.x = Settings.volume_music / 10.0
-	bar_sfx.scale.x = Settings.volume_sfx / 10.0
+	bar_music.scale.x = Volume.music / 10.0
+	bar_sfx.scale.x = Volume.sfx / 10.0

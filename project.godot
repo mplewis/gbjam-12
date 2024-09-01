@@ -24,7 +24,7 @@ buses/default_bus_layout="res://audio/audio_bus_layout.tres"
 SceneMgr="*res://scripts/scene_mgr.gd"
 GBtn="*res://scripts/g_btn.gd"
 UiSounds="*res://scripts/ui_sounds.gd"
-Settings="*res://scripts/settings.gd"
+Volume="*res://scripts/volume.gd"
 
 [display]
 

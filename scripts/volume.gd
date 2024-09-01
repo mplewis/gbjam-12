@@ -1,14 +1,19 @@
 extends Node
 
-@onready var volume_music := _get_bus_volume("Music"):
-	set(vol):
-		volume_music = clamp(vol, 0, 10)
-		_set_bus_volume("Music", volume_music)
+const DB_LOWER = -30
+const DB_UPPER = 0
 
-@onready var volume_sfx := _get_bus_volume("SFX"):
+## The volume (from 0-10) of the music bus.
+@onready var music := _get_bus_volume("Music"):
 	set(vol):
-		volume_sfx = clamp(vol, 0, 10)
-		_set_bus_volume("SFX", volume_sfx)
+		music = clamp(vol, 0, 10)
+		_set_bus_volume("Music", music)
+
+## The volume (from 0-10) of the SFX bus.
+@onready var sfx := _get_bus_volume("SFX"):
+	set(vol):
+		sfx = clamp(vol, 0, 10)
+		_set_bus_volume("SFX", sfx)
 
 
 func remap_range(lo1: float, hi1: float, lo2: float, hi2: float, x: float) -> float:
@@ -21,11 +26,8 @@ func _set_bus_volume(bus_name: String, vol: int):
 
 	var db = -INF
 	if vol > 0:
-		db = remap_range(1, 10, -60, 0, vol)
-
-	print("Setting %s bus (%d) to %f dB" % [bus_name, bus_i, db])
+		db = remap_range(1, 10, DB_LOWER, DB_UPPER, vol)
 	AudioServer.set_bus_volume_db(bus_i, db)
-	print(AudioServer.get_bus_volume_db(bus_i))
 
 
 func _get_bus_volume(bus_name: String) -> int:
@@ -33,7 +35,6 @@ func _get_bus_volume(bus_name: String) -> int:
 	assert(bus_i != -1)
 
 	var db = AudioServer.get_bus_volume_db(bus_i)
-	print("Getting %s bus (%d) volume: %f dB" % [bus_name, bus_i, db])
 	if db == -INF:
 		return 0
-	return int(remap_range(-60, 0, 1, 10, db))
+	return int(remap_range(DB_LOWER, DB_UPPER, 1, 10, db))
