@@ -42,7 +42,7 @@ func up():
 	selected = (selected - 1) % menu_items.size()
 	update_menu()
 
-I
+
 func down():
 	UiSounds.down()
 	selected = (selected + 1) % menu_items.size()
