@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dky0ea237irek"]
+[gd_scene load_steps=10 format=3 uid="uid://dky0ea237irek"]
 
 [ext_resource type="Script" path="res://scripts/options.gd" id="1_gf8mq"]
+[ext_resource type="AudioStream" uid="uid://d148867s1uqg" path="res://assets/demo/music/dootdoot.mp3" id="2_fdwnk"]
 [ext_resource type="AudioStream" uid="uid://ep0jupwqe64f" path="res://assets/demo/sfx/turbo.wav" id="2_i0fte"]
 [ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="2_jimtg"]
 [ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="3_bst8g"]
@@ -22,6 +23,11 @@ shader_parameter/color4 = Color(0.878431, 0.972549, 0.815686, 1)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_gf8mq")
+
+[node name="DemoMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_fdwnk")
+bus = &"Music"
+parameters/looping = true
 
 [node name="DemoSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_i0fte")

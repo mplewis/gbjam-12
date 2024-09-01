@@ -7,11 +7,11 @@ var index := 0
 @onready var indicator_sfx: Label = %IndicatorSFX
 @onready var bar_music: TextureRect = %BarMusic
 @onready var bar_sfx: TextureRect = %BarSFX
+@onready var demo_music: AudioStreamPlayer = $DemoMusic
 @onready var demo_sfx: AudioStreamPlayer = $DemoSFX
 
 @onready var indicators = [indicator_music, indicator_sfx]
 @onready var bars = [bar_music, bar_sfx]
-@onready var demo = [demo_sfx, demo_sfx]
 
 
 func _ready():
@@ -44,7 +44,8 @@ func _on_left():
 	else:
 		Settings.volume_sfx -= 1
 	update()
-	demo[index].play()
+	if index == 1:
+		demo_sfx.play()
 
 
 func _on_right():
@@ -53,10 +54,17 @@ func _on_right():
 	else:
 		Settings.volume_sfx += 1
 	update()
-	demo[index].play()
+	if index == 1:
+		demo_sfx.play()
 
 
 func update():
+	if index == 0:
+		if !demo_music.playing:
+			demo_music.play()
+	else:
+		demo_music.stop()
+
 	for i in range(indicators.size()):
 		var s := " "
 		if i == index:
