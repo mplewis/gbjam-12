@@ -15,11 +15,16 @@ run/main_scene="res://scenes/menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://audio/audio_bus_layout.tres"
+
 [autoload]
 
 SceneMgr="*res://scripts/scene_mgr.gd"
 GBtn="*res://scripts/g_btn.gd"
 UiSounds="*res://scripts/ui_sounds.gd"
+Settings="*res://scripts/settings.gd"
 
 [display]
 

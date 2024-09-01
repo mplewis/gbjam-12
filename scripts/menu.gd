@@ -42,7 +42,7 @@ func up():
 	selected = (selected - 1) % menu_items.size()
 	update_menu()
 
-
+I
 func down():
 	UiSounds.down()
 	selected = (selected + 1) % menu_items.size()
@@ -64,7 +64,7 @@ func _on_menu_danceoff():
 
 
 func _on_menu_options():
-	print("Not implemented")
+	SceneMgr.open("options")
 
 
 func _on_menu_credits():

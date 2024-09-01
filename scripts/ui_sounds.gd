@@ -12,6 +12,10 @@ var sfxDown := AudioStreamPlayer.new()
 
 
 func _ready():
+	sfxLo.bus = "SFX"
+	sfxHi.bus = "SFX"
+	sfxUp.bus = "SFX"
+	sfxDown.bus = "SFX"
 	sfxLo.stream = load(sfxLoPath)
 	sfxHi.stream = load(sfxHiPath)
 	sfxUp.stream = load(sfxUpPath)
