@@ -28,33 +28,37 @@ var pages = [
 
 func _ready():
 	SceneMgr.set_appropriate_window_size()
-	GBtn.on_left.connect(left)
-	GBtn.on_right.connect(right)
-	GBtn.on_a.connect(a)
-	GBtn.on_b.connect(SceneMgr.close)
+	GBtn.on_left.connect(_on_left)
+	GBtn.on_right.connect(_on_right)
+	GBtn.on_a.connect(_on_a)
+	GBtn.on_b.connect(_on_b)
 	update_page()
 
 
-func left():
+func _on_left():
 	if page > 0:
 		UiSounds.up()
 		page -= 1
 		update_page()
 
 
-func right():
+func _on_right():
 	if page < pages.size() - 1:
 		UiSounds.down()
 		page += 1
 		update_page()
 
 
-func a():
+func _on_a():
 	var link = pages[page][1]
 	if !link:
 		return
 	var url: String = link[1]
 	OS.shell_open(url)
+
+
+func _on_b():
+	SceneMgr.close()
 
 
 func update_page():

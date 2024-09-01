@@ -22,9 +22,9 @@ func _ready():
 
 
 func _process(delta):
-	GBtn.on_start.connect(SceneMgr.close)
 	GBtn.on_a.connect(jump)
 	GBtn.on_b.connect(turbo)
+	GBtn.on_start.connect(close)
 
 	player_up_vel -= GRAVITY_STR * delta
 	player.position.y = min(floor_y, player.position.y - player_up_vel * delta)
@@ -45,3 +45,7 @@ func turbo():
 		return
 	turbo_sfx.play()
 	player_fwd_vel *= TURBO_MULT
+
+
+func close():
+	SceneMgr.close()

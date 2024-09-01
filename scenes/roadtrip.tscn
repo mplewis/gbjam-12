@@ -116,10 +116,12 @@ shape = SubResource("CapsuleShape2D_mygas")
 [node name="JumpSFX" type="AudioStreamPlayer2D" parent="Player"]
 position = Vector2(80, 50)
 stream = ExtResource("6_fyyf0")
+bus = &"SFX"
 
 [node name="TurboSFX" type="AudioStreamPlayer2D" parent="Player"]
 position = Vector2(80, 50)
 stream = ExtResource("7_ustkh")
+bus = &"SFX"
 
 [node name="DemoFaderLayer" type="CanvasLayer" parent="."]
 visible = false

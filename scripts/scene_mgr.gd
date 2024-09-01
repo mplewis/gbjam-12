@@ -30,7 +30,9 @@ func open(scene_name: String) -> void:
 	get_tree().change_scene_to_file(path)
 
 
-## Close the current scene and return to the previous one
+## Close the current scene and return to the previous one.
+## Don't connect this directly, i.e. `GBtn.on_b.connect(SceneMgr.close)`!
+## It will cause all presses to close the scene. Bind to a local method instead.
 func close() -> void:
 	if scene_paths.size() < 2:
 		print_debug("No scenes remaining")

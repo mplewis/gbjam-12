@@ -36,9 +36,9 @@ const base_song = [
 
 func _ready():
 	SceneMgr.set_appropriate_window_size()
-	GBtn.on_start.connect(SceneMgr.close)
 	GBtn.on_a.connect(_on_a)
 	GBtn.on_b.connect(_on_b)
+	GBtn.on_start.connect(_on_start)
 
 	beeper.on_beat.connect(_on_beat)
 	beeper.on_progress.connect(_on_progress)
@@ -58,6 +58,10 @@ func _on_b():
 	if _player_phase():
 		beeper.pluck(2)
 		_mark_active_tl("B")
+
+
+func _on_start():
+	SceneMgr.close()
 
 
 func generate_notes(count: int):
