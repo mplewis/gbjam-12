@@ -42,6 +42,7 @@ script = ExtResource("1_qf3xh")
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_fiocu")
+bus = &"Music"
 parameters/looping = false
 script = ExtResource("3_q1k62")
 
