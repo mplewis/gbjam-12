@@ -59,8 +59,8 @@ func _on_menu_roadtrip():
 	SceneMgr.open("roadtrip")
 
 
-func _on_menu_danceoff():
-	SceneMgr.open("danceoff")
+# func _on_menu_danceoff():
+# 	SceneMgr.open("danceoff")
 
 
 func _on_menu_options():
