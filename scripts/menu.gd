@@ -9,7 +9,7 @@ const GRAVITY_STR = 480
 
 var menu_items := {
 	"roadtrip": "Road Trip",
-	"danceoff": "Dance-Off",
+	"dance": "Dance Dance",
 	"options": "Options",
 	"credits": "Credits",
 }
@@ -59,8 +59,8 @@ func _on_menu_roadtrip():
 	SceneMgr.open("roadtrip")
 
 
-# func _on_menu_danceoff():
-# 	SceneMgr.open("danceoff")
+func _on_menu_dance():
+	SceneMgr.open("dance")
 
 
 func _on_menu_options():
