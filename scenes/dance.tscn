@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cyjr4bggc0tl3"]
+[gd_scene load_steps=7 format=3 uid="uid://cyjr4bggc0tl3"]
 
 [ext_resource type="Script" path="res://scripts/dance.gd" id="1_rqy3q"]
 [ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="2_wi16h"]
 [ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="3_5cy5f"]
+[ext_resource type="Texture2D" uid="uid://cmr66b2xioc8m" path="res://assets/demo/images/ddr/ddr_notes_16x8.png" id="3_gxbdb"]
 [ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/controls.tscn" id="4_6dpa7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7fog1"]
@@ -15,17 +16,42 @@ shader_parameter/color2 = Color(0.203922, 0.407843, 0.337255, 1)
 shader_parameter/color3 = Color(0.533333, 0.752941, 0.439216, 1)
 shader_parameter/color4 = Color(0.878431, 0.972549, 0.815686, 1)
 
-[node name="Dance" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="Dance" type="Node2D"]
 script = ExtResource("1_rqy3q")
 
 [node name="MidiPlayer" parent="." instance=ExtResource("2_wi16h")]
 file = "res://assets/demo/music/lucca.mid"
 playing = true
+volume_db = 0.0
 loop = true
-soundfont = "res://assets/demo/music/8bitsf.SF2"
+soundfont = "res://assets/demo/music/8bit.sf2"
 bus = &"Music"
+
+[node name="GoalL" type="Sprite2D" parent="."]
+position = Vector2(40, 116)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_gxbdb")
+hframes = 16
+vframes = 8
+frame = 21
+
+[node name="GoalC" type="Sprite2D" parent="."]
+position = Vector2(80, 116)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_gxbdb")
+hframes = 16
+vframes = 8
+frame = 21
+
+[node name="GoalR" type="Sprite2D" parent="."]
+position = Vector2(120, 116)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_gxbdb")
+hframes = 16
+vframes = 8
+frame = 21
 
 [node name="RecolorLayer" type="CanvasLayer" parent="."]
 
