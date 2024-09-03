@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfqooswnmcad7"]
+
+[ext_resource type="Texture2D" uid="uid://cmr66b2xioc8m" path="res://assets/demo/images/ddr/ddr_notes_16x8.png" id="1_xo0pe"]
+[ext_resource type="Script" path="res://scripts/goal.gd" id="2_nfhix"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u764l"]
+size = Vector2(4, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6gxmq"]
+size = Vector2(4, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o2nr4"]
+size = Vector2(4, 52)
+
+[node name="Goal" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("2_nfhix")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_xo0pe")
+hframes = 16
+vframes = 8
+frame = 21
+
+[node name="ScoreGreat" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="Hitbox" type="CollisionShape2D" parent="ScoreGreat"]
+shape = SubResource("RectangleShape2D_u764l")
+
+[node name="ScoreGood" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="Hitbox" type="CollisionShape2D" parent="ScoreGood"]
+shape = SubResource("RectangleShape2D_6gxmq")
+
+[node name="ScoreOK" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="Hitbox" type="CollisionShape2D" parent="ScoreOK"]
+shape = SubResource("RectangleShape2D_o2nr4")

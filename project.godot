@@ -92,6 +92,10 @@ ui_gameboy_start={
 
 pointing/emulate_touch_from_mouse=true
 
+[layer_names]
+
+2d_physics/layer_1="Music Game Arrows"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

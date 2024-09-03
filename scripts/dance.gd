@@ -6,6 +6,9 @@ const ARROW_SPAWN_TO_HIT_SEC = 0.8
 
 @onready var midi_player_spawn: MidiPlayer = $MidiPlayerSpawn
 @onready var midi_player_audio: MidiPlayer = $MidiPlayerAudio
+@onready var GoalL: Goal = $GoalL
+@onready var GoalC: Goal = $GoalC
+@onready var GoalR: Goal = $GoalR
 @onready var ArrowL: Arrow = $ArrowL
 @onready var ArrowC: Arrow = $ArrowC
 @onready var ArrowR: Arrow = $ArrowR
@@ -18,6 +21,9 @@ var start_playing_at_ms: float
 func _ready():
 	SceneMgr.set_appropriate_window_size()
 	GBtn.on_start.connect(_on_start)
+	GBtn.on_left.connect(_on_left)
+	GBtn.on_down.connect(_on_down)
+	GBtn.on_right.connect(_on_right)
 
 	ArrowL.duration_to_goal_sec = ARROW_SPAWN_TO_HIT_SEC
 	ArrowC.duration_to_goal_sec = ARROW_SPAWN_TO_HIT_SEC
@@ -32,7 +38,7 @@ func _ready():
 
 	midi_player_spawn.play()
 	midi_player_spawn.seek(START_FRAME)
-	start_playing_at_ms = Time.get_ticks_msec() + ARROW_SPAWN_TO_HIT_SEC * 1000.0
+	start_playing_at_ms = Time.get_ticks_msec() + (ARROW_SPAWN_TO_HIT_SEC - AudioServer.get_output_latency()) * 1000.0
 
 
 func _process(_delta):
@@ -48,6 +54,18 @@ func _process(_delta):
 
 func _on_start():
 	SceneMgr.close()
+
+
+func _on_left():
+	print(GoalL.score())
+
+
+func _on_down():
+	print(GoalC.score())
+
+
+func _on_right():
+	print(GoalR.score())
 
 
 func _on_midi_event(channel, event):
