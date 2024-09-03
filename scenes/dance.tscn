@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cyjr4bggc0tl3"]
+[gd_scene load_steps=10 format=3 uid="uid://cyjr4bggc0tl3"]
 
 [ext_resource type="Script" path="res://scripts/dance.gd" id="1_rqy3q"]
 [ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="2_wi16h"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://cfqooswnmcad7" path="res://scenes/goal.tscn" id="3_lb5dq"]
 [ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/controls.tscn" id="4_6dpa7"]
 [ext_resource type="PackedScene" uid="uid://cmw25ugp67twq" path="res://scenes/arrow.tscn" id="4_swmvo"]
+[ext_resource type="Texture2D" uid="uid://6mmsv4jk3gye" path="res://assets/demo/images/ddr/ddr_judgment_1x6.png" id="5_or8r2"]
+[ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="6_u6fk1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7fog1"]
 shader = ExtResource("3_5cy5f")
@@ -74,6 +76,20 @@ goal = NodePath("../GoalC")
 position = Vector2(120, -21)
 rotation = -1.5708
 goal = NodePath("../GoalR")
+
+[node name="Judgment" type="Sprite2D" parent="."]
+position = Vector2(80, 34)
+texture = ExtResource("5_or8r2")
+vframes = 6
+frame = 2
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Score" type="Label" parent="UI"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("6_u6fk1")
+text = "Score: 0"
 
 [node name="RecolorLayer" type="CanvasLayer" parent="."]
 

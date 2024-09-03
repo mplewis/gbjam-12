@@ -12,10 +12,13 @@ const ARROW_SPAWN_TO_HIT_SEC = 0.8
 @onready var ArrowL: Arrow = $ArrowL
 @onready var ArrowC: Arrow = $ArrowC
 @onready var ArrowR: Arrow = $ArrowR
+@onready var Score: Label = $UI/Score
+@onready var Judgment: Sprite2D = $Judgment
 
 @onready var arrows = [ArrowL, ArrowC, ArrowR]
 
 var start_playing_at_ms: float
+var score = 0
 
 
 func _ready():
@@ -38,16 +41,19 @@ func _ready():
 
 	midi_player_spawn.play()
 	midi_player_spawn.seek(START_FRAME)
-	start_playing_at_ms = Time.get_ticks_msec() + (ARROW_SPAWN_TO_HIT_SEC - AudioServer.get_output_latency()) * 1000.0
+	start_playing_at_ms = (
+		Time.get_ticks_msec() + (ARROW_SPAWN_TO_HIT_SEC - AudioServer.get_output_latency()) * 1000.0
+	)
 
 
 func _process(_delta):
+	Score.text = "Score: %d" % score
+
 	if Time.get_ticks_msec() < start_playing_at_ms:
 		return
 	if midi_player_audio.playing:
 		return
 
-	print("Playing audio now")
 	midi_player_audio.play()
 	midi_player_audio.seek(START_FRAME)
 
@@ -57,15 +63,30 @@ func _on_start():
 
 
 func _on_left():
-	print(GoalL.score())
+	tally(GoalL.score())
 
 
 func _on_down():
-	print(GoalC.score())
+	tally(GoalC.score())
 
 
 func _on_right():
-	print(GoalR.score())
+	tally(GoalR.score())
+
+
+func tally(s: Goal.SCORE):
+	match s:
+		Goal.SCORE.GREAT:
+			score += 100
+			Judgment.frame = 2
+		Goal.SCORE.GOOD:
+			score += 50
+			Judgment.frame = 3
+		Goal.SCORE.OK:
+			score += 25
+			Judgment.frame = 4
+		Goal.SCORE.MISS:
+			Judgment.frame = 5
 
 
 func _on_midi_event(channel, event):
