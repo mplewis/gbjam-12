@@ -27,7 +27,7 @@ func _physics_process(delta):
 
 	alive_sec += delta
 	var dist = global_position.distance_to(goal.global_position)
-	if dist > 1.0: # Allow arrows to fly past the goal
+	if dist > 1.0:  # Allow arrows to fly past the goal
 		var remain_sec = duration_to_goal_sec - alive_sec
 		var speed = dist / remain_sec * delta
 		var dir = (goal.global_position - global_position).normalized()

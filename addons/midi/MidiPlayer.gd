@@ -28,9 +28,9 @@ const max_program_number:int = 128
 const drum_track_channel:int = 0x09
 
 ## MIDI Master Bus Name
-const midi_master_bus_name:String = "arlez80_GMP_MASTER_BUS"
+var midi_master_bus_name:String = ""
 ## MIDI Channnel Bus Name
-const midi_channel_bus_name:String = "arlez80_GMP_CHANNEL_BUS%d"
+var midi_channel_bus_name:String = ""
 
 # -----------------------------------------------------------------------------
 # Classes
@@ -173,12 +173,12 @@ class GodotMIDIPlayerChannelStatusRPN:
 	var selected_msb:int
 	## 選択済みLSB
 	var selected_lsb:int
-	
+
 	## ピッチベンド
 	var pitch_bend_sensitivity:float
 	var pitch_bend_sensitivity_msb:float
 	var pitch_bend_sensitivity_lsb:float
-	
+
 	## モジュレーション
 	var modulation_sensitivity:float
 	var modulation_sensitivity_msb:float
@@ -192,11 +192,11 @@ class GodotMIDIPlayerChannelStatusRPN:
 	func initialize( ) -> void:
 		self.selected_msb = 0
 		self.selected_lsb = 0
-		
+
 		self.pitch_bend_sensitivity = 2.0
 		self.pitch_bend_sensitivity_msb = 2.0
 		self.pitch_bend_sensitivity_lsb = 0.0
-		
+
 		self.modulation_sensitivity = 0.25
 		self.modulation_sensitivity_msb = 0.25
 		self.modulation_sensitivity_lsb = 0.0
@@ -227,7 +227,7 @@ class GodotMIDIPlayerChannelStatusRPN:
 ## 合成
 @export var mix_target:AudioStreamPlayer.MixTarget = AudioStreamPlayer.MIX_TARGET_STEREO
 ## 出力先
-@export var bus:StringName = &"Master"
+@export var bus: String = "Master"
 ## 1秒間処理する回数
 @export_range (10, 480) var sequence_per_seconds:int = 120
 
@@ -289,7 +289,7 @@ var chorus_power:float = 0.7
 var prepared_to_play:bool = false
 ## AudioServerを初期化しているか？
 var is_audio_server_inited:bool = false
-# 
+#
 var _previous_time:float
 
 # -----------------------------------------------------------------------------
@@ -326,11 +326,19 @@ signal finished
 
 ## 準備
 func _ready( ):
+	print(self.name)
+
+	self.midi_master_bus_name = "arlez80_GMP_MASTER_BUS_" + self.name
+	self.midi_channel_bus_name = "arlez80_GMP_CHANNEL_BUS_" + self.name + "_%d"
+
+	print( "MIDI Master Bus Name: %s" % self.midi_master_bus_name )
+	print( "MIDI Channel Bus Name: %s" % self.midi_channel_bus_name )
+
 	if AudioServer.get_bus_index( self.midi_master_bus_name ) == -1:
 		AudioServer.add_bus( -1 )
 		var midi_master_bus_idx:int = AudioServer.get_bus_count( ) - 1
 		AudioServer.set_bus_name( midi_master_bus_idx, self.midi_master_bus_name )
-		AudioServer.set_bus_send( midi_master_bus_idx, self.bus )
+		AudioServer.set_bus_send( midi_master_bus_idx, StringName(self.bus) )
 		AudioServer.set_bus_volume_db( AudioServer.get_bus_index( self.midi_master_bus_name ), self.volume_db )
 
 		for i in range( 0, 16 ):
@@ -444,7 +452,7 @@ func _init_track( ) -> void:
 				var p = track.pointer
 				if track.length <= p: continue
 				finished = false
-				
+
 				var e:SMF.MIDIEventChunk = track.events[p]
 				var e_time:int = e.time
 				if e_time == time:
@@ -579,7 +587,7 @@ func set_max_polyphony( mp:int ) -> void:
 	for i in range( max_polyphony ):
 		var audio_stream_player:AudioStreamPlayerADSR = ADSR.instantiate( )
 		audio_stream_player.mix_target = self.mix_target
-		audio_stream_player.bus = self.bus
+		audio_stream_player.bus = StringName(self.bus)
 		self.add_child( audio_stream_player )
 		self.audio_stream_players.append( audio_stream_player )
 

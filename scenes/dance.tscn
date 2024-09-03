@@ -20,13 +20,35 @@ shader_parameter/color4 = Color(0.878431, 0.972549, 0.815686, 1)
 [node name="Dance" type="Node2D"]
 script = ExtResource("1_rqy3q")
 
-[node name="MidiPlayer" parent="." instance=ExtResource("2_wi16h")]
+[node name="MidiPlayerSpawn" parent="." instance=ExtResource("2_wi16h")]
+max_polyphony = null
 file = "res://assets/demo/music/lucca.mid"
-playing = true
-volume_db = 0.0
-loop = true
+playing = null
+play_speed = null
+volume_db = null
+key_shift = null
+loop = null
+loop_start = null
+load_all_voices_from_soundfont = null
 soundfont = "res://assets/demo/music/8bit.sf2"
-bus = &"Music"
+mix_target = null
+bus = "Muted"
+sequence_per_seconds = null
+
+[node name="MidiPlayerAudio" parent="." instance=ExtResource("2_wi16h")]
+max_polyphony = null
+file = "res://assets/demo/music/lucca.mid"
+playing = null
+play_speed = null
+volume_db = 0.0
+key_shift = null
+loop = null
+loop_start = null
+load_all_voices_from_soundfont = null
+soundfont = "res://assets/demo/music/8bit.sf2"
+mix_target = null
+bus = "Music"
+sequence_per_seconds = null
 
 [node name="GoalL" type="Sprite2D" parent="."]
 position = Vector2(40, 116)
