@@ -227,7 +227,7 @@ class GodotMIDIPlayerChannelStatusRPN:
 ## 合成
 @export var mix_target:AudioStreamPlayer.MixTarget = AudioStreamPlayer.MIX_TARGET_STEREO
 ## 出力先
-@export var bus: String = "Master"
+@export var bus:StringName = &"Master"
 ## 1秒間処理する回数
 @export_range (10, 480) var sequence_per_seconds:int = 120
 
@@ -326,8 +326,6 @@ signal finished
 
 ## 準備
 func _ready( ):
-	print(self.name)
-
 	self.midi_master_bus_name = "arlez80_GMP_MASTER_BUS_" + self.name
 	self.midi_channel_bus_name = "arlez80_GMP_CHANNEL_BUS_" + self.name + "_%d"
 
@@ -338,7 +336,7 @@ func _ready( ):
 		AudioServer.add_bus( -1 )
 		var midi_master_bus_idx:int = AudioServer.get_bus_count( ) - 1
 		AudioServer.set_bus_name( midi_master_bus_idx, self.midi_master_bus_name )
-		AudioServer.set_bus_send( midi_master_bus_idx, StringName(self.bus) )
+		AudioServer.set_bus_send( midi_master_bus_idx, self.bus )
 		AudioServer.set_bus_volume_db( AudioServer.get_bus_index( self.midi_master_bus_name ), self.volume_db )
 
 		for i in range( 0, 16 ):
@@ -587,7 +585,7 @@ func set_max_polyphony( mp:int ) -> void:
 	for i in range( max_polyphony ):
 		var audio_stream_player:AudioStreamPlayerADSR = ADSR.instantiate( )
 		audio_stream_player.mix_target = self.mix_target
-		audio_stream_player.bus = StringName(self.bus)
+		audio_stream_player.bus = self.bus
 		self.add_child( audio_stream_player )
 		self.audio_stream_players.append( audio_stream_player )
 

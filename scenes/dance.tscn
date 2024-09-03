@@ -32,7 +32,7 @@ loop_start = null
 load_all_voices_from_soundfont = null
 soundfont = "res://assets/demo/music/8bit.sf2"
 mix_target = null
-bus = "Muted"
+bus = &"Muted"
 sequence_per_seconds = null
 
 [node name="MidiPlayerAudio" parent="." instance=ExtResource("2_wi16h")]
@@ -47,7 +47,7 @@ loop_start = null
 load_all_voices_from_soundfont = null
 soundfont = "res://assets/demo/music/8bit.sf2"
 mix_target = null
-bus = "Music"
+bus = &"Music"
 sequence_per_seconds = null
 
 [node name="GoalL" type="Sprite2D" parent="."]
