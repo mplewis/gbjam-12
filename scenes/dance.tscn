@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cyjr4bggc0tl3"]
+[gd_scene load_steps=8 format=3 uid="uid://cyjr4bggc0tl3"]
 
 [ext_resource type="Script" path="res://scripts/dance.gd" id="1_rqy3q"]
 [ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="2_wi16h"]
 [ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="3_5cy5f"]
 [ext_resource type="Texture2D" uid="uid://cmr66b2xioc8m" path="res://assets/demo/images/ddr/ddr_notes_16x8.png" id="3_gxbdb"]
 [ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/controls.tscn" id="4_6dpa7"]
+[ext_resource type="PackedScene" uid="uid://cmw25ugp67twq" path="res://scenes/arrow.tscn" id="4_swmvo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7fog1"]
 shader = ExtResource("3_5cy5f")
@@ -52,6 +53,20 @@ texture = ExtResource("3_gxbdb")
 hframes = 16
 vframes = 8
 frame = 21
+
+[node name="ArrowL" parent="." node_paths=PackedStringArray("goal") instance=ExtResource("4_swmvo")]
+position = Vector2(40, -21)
+rotation = 1.5708
+goal = NodePath("../GoalL")
+
+[node name="ArrowC" parent="." node_paths=PackedStringArray("goal") instance=ExtResource("4_swmvo")]
+position = Vector2(80, -21)
+goal = NodePath("../GoalC")
+
+[node name="ArrowR" parent="." node_paths=PackedStringArray("goal") instance=ExtResource("4_swmvo")]
+position = Vector2(120, -21)
+rotation = -1.5708
+goal = NodePath("../GoalR")
 
 [node name="RecolorLayer" type="CanvasLayer" parent="."]
 

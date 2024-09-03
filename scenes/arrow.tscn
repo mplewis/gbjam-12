@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmw25ugp67twq"]
+
+[ext_resource type="Script" path="res://scripts/arrow.gd" id="1_rfio4"]
+[ext_resource type="Texture2D" uid="uid://cmr66b2xioc8m" path="res://assets/demo/images/ddr/ddr_notes_16x8.png" id="1_v7ugv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nvwit"]
+size = Vector2(4, 4)
+
+[node name="Arrow" type="RigidBody2D"]
+collision_layer = 0
+gravity_scale = 0.0
+script = ExtResource("1_rfio4")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_v7ugv")
+hframes = 16
+vframes = 8
+frame = 20
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nvwit")
