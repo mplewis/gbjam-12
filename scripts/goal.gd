@@ -4,16 +4,24 @@ extends Node2D
 
 enum SCORE { GREAT, GOOD, OK, MISS }
 
+signal on_miss(body: Node2D)
+
 @export var sprite_rotation_deg: float = 0.0
 
 @onready var sprite: Sprite2D = $Sprite
 @onready var score_great: Area2D = $ScoreGreat
 @onready var score_good: Area2D = $ScoreGood
 @onready var score_ok: Area2D = $ScoreOK
+@onready var catch_miss: Area2D = $CatchMiss
 
 
-func _process(_delta):
+func _ready():
 	sprite.rotation_degrees = sprite_rotation_deg
+	catch_miss.body_entered.connect(_on_miss)
+
+
+func _on_miss(body: Node2D):
+	on_miss.emit(body)
 
 
 func score() -> SCORE:

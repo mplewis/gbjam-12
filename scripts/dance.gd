@@ -1,7 +1,12 @@
 class_name Dance
 extends Node2D
 
-const ARROW_SPAWN_TO_HIT_SEC = 1.0
+const ARROW_SPAWN_TO_HIT_SEC = 0.8
+
+# Determined by experimentation.
+# There is some constant difference between the offset from the calibration scene
+# (which seems to be very close to real life!) and in the actual game, here.
+const MAGIC_NUMBER_MIDI_DELAY = 0.16
 
 @onready var midi_player_spawn: MidiPlayer = $MidiPlayerSpawn
 @onready var midi_player_audio: MidiPlayer = $MidiPlayerAudio
@@ -18,7 +23,7 @@ const ARROW_SPAWN_TO_HIT_SEC = 1.0
 
 var start_playing_at_ms: float
 var score = 0
-var arrows: Array[Arrow] = []
+var combo = 0
 
 
 func _ready():
@@ -27,6 +32,10 @@ func _ready():
 	GBtn.on_left.connect(_on_left)
 	GBtn.on_down.connect(_on_down)
 	GBtn.on_right.connect(_on_right)
+
+	GoalL.on_miss.connect(_on_miss)
+	GoalC.on_miss.connect(_on_miss)
+	GoalR.on_miss.connect(_on_miss)
 
 	ArrowL.duration_to_goal_sec = ARROW_SPAWN_TO_HIT_SEC
 	ArrowC.duration_to_goal_sec = ARROW_SPAWN_TO_HIT_SEC
@@ -39,18 +48,14 @@ func _ready():
 
 	midi_player_spawn.play()
 	start_playing_at_ms = (
-		Time.get_ticks_msec() + (ARROW_SPAWN_TO_HIT_SEC - AudioCal.audio_offset) * 1000.0
+		Time.get_ticks_msec()
+		+ (ARROW_SPAWN_TO_HIT_SEC - (AudioCal.audio_offset + MAGIC_NUMBER_MIDI_DELAY)) * 1000.0
 	)
 
 
 func _process(_delta):
-	Score.text = "Score: %d" % score
+	Score.text = "Score: %d\nCombo: %d" % [score, combo]
 	start_audio()
-
-	# for a in arrows:
-	# 	if a.global_position.y >= GoalC.global_position.y:
-	# 		a.queue_free()
-	# 		arrows.erase(a)
 
 
 func start_audio():
@@ -81,15 +86,21 @@ func tally(s: Goal.SCORE):
 	match s:
 		Goal.SCORE.GREAT:
 			score += 100
-			Judgment.frame = 2
+			combo += 1
+			Judgment.frame = 1
 		Goal.SCORE.GOOD:
 			score += 50
-			Judgment.frame = 3
+			combo += 1
+			Judgment.frame = 2
 		Goal.SCORE.OK:
 			score += 25
-			Judgment.frame = 4
-		Goal.SCORE.MISS:
-			Judgment.frame = 5
+			combo += 1
+			Judgment.frame = 3
+
+
+func _on_miss(_body: Node2D):
+	combo = 0
+	Judgment.frame = 5
 
 
 func _on_midi_event(channel, event):
@@ -102,5 +113,4 @@ func _on_midi_event(channel, event):
 	var tmpl = spawners[event.note % len(spawners)]
 	var arrow = tmpl.duplicate()
 	add_child(arrow)
-	arrows.push_back(arrow)
 	arrow.active = true
