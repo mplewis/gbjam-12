@@ -24,8 +24,7 @@ script = ExtResource("1_rqy3q")
 
 [node name="MidiPlayerSpawn" parent="." instance=ExtResource("2_wi16h")]
 max_polyphony = null
-file = "res://assets/demo/music/lucca.mid"
-playing = null
+file = "res://assets/demo/music/smb_overworld.mid"
 play_speed = null
 volume_db = null
 key_shift = null
@@ -39,7 +38,7 @@ sequence_per_seconds = null
 
 [node name="MidiPlayerAudio" parent="." instance=ExtResource("2_wi16h")]
 max_polyphony = null
-file = "res://assets/demo/music/lucca.mid"
+file = "res://assets/demo/music/smb_overworld.mid"
 playing = null
 play_speed = null
 volume_db = 0.0

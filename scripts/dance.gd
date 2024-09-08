@@ -1,8 +1,7 @@
 class_name Dance
 extends Node2D
 
-const START_FRAME = 2000.0
-const ARROW_SPAWN_TO_HIT_SEC = 0.8
+const ARROW_SPAWN_TO_HIT_SEC = 1.0
 
 @onready var midi_player_spawn: MidiPlayer = $MidiPlayerSpawn
 @onready var midi_player_audio: MidiPlayer = $MidiPlayerAudio
@@ -15,10 +14,11 @@ const ARROW_SPAWN_TO_HIT_SEC = 0.8
 @onready var Score: Label = $UI/Score
 @onready var Judgment: Sprite2D = $Judgment
 
-@onready var arrows = [ArrowL, ArrowC, ArrowR]
+@onready var spawners = [ArrowL, ArrowC, ArrowR]
 
 var start_playing_at_ms: float
 var score = 0
+var arrows: Array[Arrow] = []
 
 
 func _ready():
@@ -32,30 +32,33 @@ func _ready():
 	ArrowC.duration_to_goal_sec = ARROW_SPAWN_TO_HIT_SEC
 	ArrowR.duration_to_goal_sec = ARROW_SPAWN_TO_HIT_SEC
 
-	midi_player_audio.seek(START_FRAME)
-
 	midi_player_spawn.volume_db = 0.0
 	midi_player_audio.volume_db = 0.0
 
 	midi_player_spawn.midi_event.connect(_on_midi_event)
 
 	midi_player_spawn.play()
-	midi_player_spawn.seek(START_FRAME)
 	start_playing_at_ms = (
-		Time.get_ticks_msec() + (ARROW_SPAWN_TO_HIT_SEC - AudioServer.get_output_latency()) * 1000.0
+		Time.get_ticks_msec() + (ARROW_SPAWN_TO_HIT_SEC - AudioCal.audio_offset) * 1000.0
 	)
 
 
 func _process(_delta):
 	Score.text = "Score: %d" % score
+	start_audio()
 
+	# for a in arrows:
+	# 	if a.global_position.y >= GoalC.global_position.y:
+	# 		a.queue_free()
+	# 		arrows.erase(a)
+
+
+func start_audio():
 	if Time.get_ticks_msec() < start_playing_at_ms:
 		return
 	if midi_player_audio.playing:
 		return
-
 	midi_player_audio.play()
-	midi_player_audio.seek(START_FRAME)
 
 
 func _on_start():
@@ -96,7 +99,8 @@ func _on_midi_event(channel, event):
 	if channel.number != 2:
 		return
 
-	var tmpl = arrows[event.note % len(arrows)]
+	var tmpl = spawners[event.note % len(spawners)]
 	var arrow = tmpl.duplicate()
 	add_child(arrow)
+	arrows.push_back(arrow)
 	arrow.active = true
