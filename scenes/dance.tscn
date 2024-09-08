@@ -23,33 +23,16 @@ shader_parameter/color4 = Color(0.878431, 0.972549, 0.815686, 1)
 script = ExtResource("1_rqy3q")
 
 [node name="MidiPlayerSpawn" parent="." instance=ExtResource("2_wi16h")]
-max_polyphony = null
 file = "res://assets/demo/music/smb_overworld.mid"
-play_speed = null
-volume_db = null
-key_shift = null
-loop = null
-loop_start = null
-load_all_voices_from_soundfont = null
 soundfont = "res://assets/demo/music/8bit.sf2"
-mix_target = null
-bus = &"Muted"
-sequence_per_seconds = null
+bus = &"Music"
+muted = true
 
 [node name="MidiPlayerAudio" parent="." instance=ExtResource("2_wi16h")]
-max_polyphony = null
 file = "res://assets/demo/music/smb_overworld.mid"
-playing = null
-play_speed = null
 volume_db = 0.0
-key_shift = null
-loop = null
-loop_start = null
-load_all_voices_from_soundfont = null
 soundfont = "res://assets/demo/music/8bit.sf2"
-mix_target = null
 bus = &"Music"
-sequence_per_seconds = null
 
 [node name="GoalL" parent="." instance=ExtResource("3_lb5dq")]
 position = Vector2(40, 116)

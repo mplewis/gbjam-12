@@ -22,19 +22,11 @@ shader_parameter/color4 = Color(0.878431, 0.972549, 0.815686, 1)
 script = ExtResource("1_ni8xl")
 
 [node name="MidiPlayer" parent="." instance=ExtResource("2_btnnp")]
-max_polyphony = null
 file = "res://assets/ui/calibration.mid"
 playing = true
-play_speed = null
-volume_db = null
-key_shift = null
 loop = true
-loop_start = null
-load_all_voices_from_soundfont = null
 soundfont = "res://assets/demo/music/8bit.sf2"
-mix_target = null
 bus = &"Music"
-sequence_per_seconds = null
 
 [node name="Goal" parent="." instance=ExtResource("3_0plbn")]
 position = Vector2(80, 116)

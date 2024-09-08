@@ -230,6 +230,8 @@ class GodotMIDIPlayerChannelStatusRPN:
 @export var bus:StringName = &"Master"
 ## 1秒間処理する回数
 @export_range (10, 480) var sequence_per_seconds:int = 120
+## If enabled, this player will never trigger an AudioStreamPlayer.
+@export var muted := false
 
 # -----------------------------------------------------------------------------
 # 変数
@@ -795,7 +797,7 @@ func _process_track_event_note_on( channel:GodotMIDIPlayerChannelStatus, note:in
 	for instrument in instruments:
 		if instrument.vel_range_min <= velocity and velocity <= instrument.vel_range_max:
 			var note_player:AudioStreamPlayerADSR = self._get_idle_player( )
-			if note_player != null:
+			if note_player != null and not muted:
 				note_player.channel_number = channel.number
 				note_player.key_number = key_number
 				note_player.bus = self.midi_channel_bus_name % channel.number
