@@ -25,6 +25,7 @@ SceneMgr="*res://scripts/scene_mgr.gd"
 GBtn="*res://scripts/g_btn.gd"
 UiSounds="*res://scripts/ui_sounds.gd"
 Volume="*res://scripts/volume.gd"
+AudioCal="*res://scripts/audio_cal.gd"
 
 [display]
 
