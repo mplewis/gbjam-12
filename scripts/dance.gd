@@ -22,6 +22,7 @@ const MAGIC_NUMBER_MIDI_DELAY = 0.16
 @onready var spawners = [ArrowL, ArrowC, ArrowR]
 
 var start_playing_at_ms: float
+var started = false
 var score = 0
 var combo = 0
 
@@ -61,9 +62,15 @@ func _process(_delta):
 func start_audio():
 	if Time.get_ticks_msec() < start_playing_at_ms:
 		return
+	if started:
+		return
 	if midi_player_audio.playing:
 		return
 	midi_player_audio.play()
+	started = true
+
+
+# TODO: Handle completion of audio
 
 
 func _on_start():

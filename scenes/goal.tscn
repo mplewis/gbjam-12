@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cfqooswnmcad7"]
+[gd_scene load_steps=9 format=3 uid="uid://cfqooswnmcad7"]
 
 [ext_resource type="Texture2D" uid="uid://cmr66b2xioc8m" path="res://assets/demo/images/ddr/ddr_notes_16x8.png" id="1_xo0pe"]
 [ext_resource type="Script" path="res://scripts/goal.gd" id="2_nfhix"]
+[ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="3_xleaa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u764l"]
 size = Vector2(4, 12)
@@ -14,6 +15,16 @@ size = Vector2(4, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2cc66"]
 size = Vector2(4, 20)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jd62w"]
+shader = ExtResource("3_xleaa")
+shader_parameter/threshold1 = 0.0
+shader_parameter/threshold2 = 0.49
+shader_parameter/threshold3 = 0.49
+shader_parameter/color1 = Color(0, 0, 0, 1)
+shader_parameter/color2 = Color(0.333, 0.333, 0.333, 1)
+shader_parameter/color3 = Color(0.667, 0.667, 0.667, 1)
+shader_parameter/color4 = Color(1, 1, 1, 1)
 
 [node name="Goal" type="Node2D"]
 scale = Vector2(0.5, 0.5)
@@ -49,3 +60,11 @@ collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CatchMiss"]
 shape = SubResource("RectangleShape2D_2cc66")
+
+[node name="Blink" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_jd62w")
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0

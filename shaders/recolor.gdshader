@@ -2,9 +2,9 @@ shader_type canvas_item;
 
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 
-uniform float threshold1 : hint_range(0.0, 1.0) = 0.25;
-uniform float threshold2 : hint_range(0.0, 1.0) = 0.5;
-uniform float threshold3 : hint_range(0.0, 1.0) = 0.75;
+uniform float threshold1 : hint_range(0.0, 1.0) = 0.167; // 1/6
+uniform float threshold2 : hint_range(0.0, 1.0) = 0.500; // 3/6
+uniform float threshold3 : hint_range(0.0, 1.0) = 0.833; // 5/6
 
 uniform vec4 color1 : source_color = vec4(0.0, 0.0, 0.0, 1.0);
 uniform vec4 color2 : source_color = vec4(0.333, 0.333, 0.333, 1.0);
