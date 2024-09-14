@@ -16,15 +16,24 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cx8v6")
 
-[node name="BG" type="TextureRect" parent="."]
-layout_mode = 0
+[node name="Canvas" type="CanvasLayer" parent="."]
+
+[node name="Pos" type="Control" parent="Canvas"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BG" type="TextureRect" parent="Canvas/Pos"]
 offset_right = 160.0
 offset_bottom = 47.0
 texture = ExtResource("1_ki67d")
+stretch_mode = 1
 
-[node name="Box" type="NinePatchRect" parent="."]
+[node name="Box" type="NinePatchRect" parent="Canvas/Pos"]
+unique_name_in_owner = true
 clip_contents = true
-layout_mode = 0
 offset_right = 160.0
 offset_bottom = 47.0
 size_flags_horizontal = 3
@@ -38,7 +47,7 @@ patch_margin_bottom = 1
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Box"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Canvas/Pos/Box"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -49,20 +58,20 @@ grow_vertical = 2
 theme = ExtResource("2_8f8e1")
 theme_override_constants/separation = 4
 
-[node name="Control" type="Control" parent="Box/HBoxContainer"]
+[node name="Control" type="Control" parent="Canvas/Pos/Box/HBoxContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Box/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Canvas/Pos/Box/HBoxContainer"]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_8f8e1")
 theme_override_constants/separation = 5
 
-[node name="Control" type="Control" parent="Box/HBoxContainer/VBoxContainer"]
+[node name="Control" type="Control" parent="Canvas/Pos/Box/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Text" type="Label" parent="Box/HBoxContainer/VBoxContainer"]
+[node name="Text" type="Label" parent="Canvas/Pos/Box/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
@@ -73,14 +82,14 @@ theme_override_font_sizes/font_size = 8
 text = "Some text goes in this box to show what text looks like when typed. Type more text until the box is full! The text will keep typing."
 autowrap_mode = 3
 
-[node name="Control2" type="Control" parent="Box/HBoxContainer/VBoxContainer"]
+[node name="Control2" type="Control" parent="Canvas/Pos/Box/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Control2" type="Control" parent="Box/HBoxContainer"]
+[node name="Control2" type="Control" parent="Canvas/Pos/Box/HBoxContainer"]
 layout_mode = 2
 
-[node name="Arrow" type="TextureRect" parent="."]
-layout_mode = 0
+[node name="Arrow" type="TextureRect" parent="Canvas/Pos"]
+unique_name_in_owner = true
 offset_left = 148.0
 offset_top = 32.0
 offset_right = 153.0

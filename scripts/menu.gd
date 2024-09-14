@@ -25,6 +25,7 @@ func _ready():
 	GBtn.on_down.connect(down)
 	GBtn.on_a.connect(select)
 	update_menu()
+	DialogueMgr.show("Welcome to the main menu!")
 
 
 func safe_call(f: String) -> void:
