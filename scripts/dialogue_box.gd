@@ -21,12 +21,14 @@ const SCREEN_BOTTOM = 144  # Y coordinate of bottom of screen, where our dialog 
 var start_idx := 0
 var now := 0.0
 var last_goal_chars := 0
+var complete := false
 
 
 func _ready():
 	_position_bottom()
 	body.text = ""
 	arrow.hide()
+	DialogueMgr.on_advance.connect(_on_advance)
 
 
 func _process(delta):
@@ -44,6 +46,11 @@ func _tick(f_now: float, frames_per_tick: int) -> int:
 
 
 func _show_text():
+	if complete:
+		if body.text.length() < text.length():
+			body.text = text
+		return
+
 	var goal_chars = _tick(now, FRAMES_PER_CHAR)
 	if goal_chars <= last_goal_chars:
 		return
@@ -55,3 +62,13 @@ func _move_arrow():
 		return
 	arrow.show()
 	arrow.position.x = orig_x + _tick(now, FRAMES_PER_ARROW_TICK) % ARROW_TICK_DIST
+
+
+func _on_advance() -> bool:
+	if not complete:
+		complete = true
+		return false
+
+	DialogueMgr.on_close.emit()
+	queue_free()
+	return true
