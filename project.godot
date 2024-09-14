@@ -35,6 +35,10 @@ window/size/viewport_height=256
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/midi/plugin.cfg", "res://addons/radial_progress/plugin.cfg")
+
 [input]
 
 ui_left={
