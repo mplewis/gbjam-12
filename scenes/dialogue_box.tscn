@@ -23,6 +23,7 @@ texture = ExtResource("1_ki67d")
 
 [node name="Box" type="NinePatchRect" parent="."]
 clip_contents = true
+layout_mode = 0
 offset_right = 160.0
 offset_bottom = 47.0
 size_flags_horizontal = 3
@@ -58,10 +59,10 @@ theme = ExtResource("2_8f8e1")
 theme_override_constants/separation = 4
 
 [node name="Text" type="Label" parent="Box/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
 theme = ExtResource("2_8f8e1")
-text = "This is some text for the dialogue box. Let's type together to fill it."
 autowrap_mode = 3
 
 [node name="Control2" type="Control" parent="Box/HBoxContainer"]
