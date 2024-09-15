@@ -5,7 +5,7 @@
 [ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="2_53kln"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o4mrv"]
-radius = 9.0
+radius = 2.0
 
 [node name="CandyArrow" type="RigidBody2D"]
 collision_mask = 0

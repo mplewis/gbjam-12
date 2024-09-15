@@ -50,7 +50,7 @@ func _process(delta: float):
 	move_and_collide(vel)
 
 	if not reached_goal:
-		reached_goal = global_position.distance_to(goal.global_position) < 5.0
+		reached_goal = global_position.distance_to(goal.global_position) < 2.0
 
 
 func punt():
