@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{bfd0a8b3-0325-4e9e-aa76-4a6fe34063db}">
+		<property name="assetPath">
+			<value>Vampire Win.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>6.896326530612245</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{74d48a33-691f-486a-a8ef-26a78cabf072}</destination>
+		</relationship>
+	</object>
+</objects>
