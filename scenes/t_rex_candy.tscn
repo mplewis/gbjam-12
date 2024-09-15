@@ -1,0 +1,112 @@
+[gd_scene load_steps=12 format=3 uid="uid://btt7c40q3an0"]
+
+[ext_resource type="Script" path="res://scripts/t_rex_candy.gd" id="1_dh214"]
+[ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="2_qgi35"]
+[ext_resource type="Texture2D" uid="uid://cuu78vl3qe7oq" path="res://assets/ui/black.png" id="3_ss8et"]
+[ext_resource type="PackedScene" uid="uid://bm52m354r3ids" path="res://scenes/candy_arrow.tscn" id="4_ugqwk"]
+[ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="7_2gg1w"]
+[ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/controls.tscn" id="8_yoofu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3tqsj"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ym01"]
+radius = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8qa6l"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2bmkp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7fog1"]
+shader = ExtResource("7_2gg1w")
+shader_parameter/threshold1 = 0.25
+shader_parameter/threshold2 = 0.5
+shader_parameter/threshold3 = 0.75
+shader_parameter/color1 = Color(0.0313726, 0.0941176, 0.12549, 1)
+shader_parameter/color2 = Color(0.203922, 0.407843, 0.337255, 1)
+shader_parameter/color3 = Color(0.533333, 0.752941, 0.439216, 1)
+shader_parameter/color4 = Color(0.878431, 0.972549, 0.815686, 1)
+
+[node name="TRexCandy" type="Node2D"]
+script = ExtResource("1_dh214")
+
+[node name="MidiPlayerSpawn" parent="." instance=ExtResource("2_qgi35")]
+file = "res://assets/demo/music/smb_overworld.mid"
+soundfont = "res://assets/demo/music/8bit.sf2"
+bus = &"Music"
+muted = true
+
+[node name="MidiPlayerAudio" parent="." instance=ExtResource("2_qgi35")]
+file = "res://assets/demo/music/smb_overworld.mid"
+volume_db = 0.0
+soundfont = "res://assets/demo/music/8bit.sf2"
+bus = &"Music"
+
+[node name="Goals" type="Node2D" parent="."]
+position = Vector2(18, 18)
+
+[node name="Display" type="TextureRect" parent="Goals"]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 32.0
+offset_bottom = 32.0
+scale = Vector2(0.397876, 0.397876)
+texture = ExtResource("3_ss8et")
+
+[node name="Great" type="Area2D" parent="Goals"]
+collision_layer = 0
+
+[node name="Hitbox" type="CollisionShape2D" parent="Goals/Great"]
+shape = SubResource("CircleShape2D_3tqsj")
+
+[node name="Good" type="Area2D" parent="Goals"]
+collision_layer = 0
+
+[node name="Hitbox" type="CollisionShape2D" parent="Goals/Good"]
+shape = SubResource("CircleShape2D_3ym01")
+
+[node name="OK" type="Area2D" parent="Goals"]
+collision_layer = 0
+
+[node name="Hitbox" type="CollisionShape2D" parent="Goals/OK"]
+shape = SubResource("CircleShape2D_8qa6l")
+
+[node name="Miss" type="Area2D" parent="Goals"]
+position = Vector2(-32, 0)
+collision_layer = 0
+
+[node name="Hitbox" type="CollisionShape2D" parent="Goals/Miss"]
+shape = SubResource("CircleShape2D_2bmkp")
+
+[node name="Candy" type="Node2D" parent="."]
+position = Vector2(188, 18)
+
+[node name="L" parent="Candy" node_paths=PackedStringArray("goal") instance=ExtResource("4_ugqwk")]
+label = "L"
+goal = NodePath("../../Goals/Great")
+duration_to_goal_sec = 0.8
+
+[node name="D" parent="Candy" node_paths=PackedStringArray("goal") instance=ExtResource("4_ugqwk")]
+label = "D"
+goal = NodePath("../../Goals/Great")
+duration_to_goal_sec = 0.8
+
+[node name="U" parent="Candy" node_paths=PackedStringArray("goal") instance=ExtResource("4_ugqwk")]
+label = "U"
+goal = NodePath("../../Goals/Great")
+duration_to_goal_sec = 0.8
+
+[node name="R" parent="Candy" node_paths=PackedStringArray("goal") instance=ExtResource("4_ugqwk")]
+label = "R"
+goal = NodePath("../../Goals/Great")
+duration_to_goal_sec = 0.8
+
+[node name="RecolorLayer" type="CanvasLayer" parent="."]
+
+[node name="RecolorShader" type="ColorRect" parent="RecolorLayer"]
+material = SubResource("ShaderMaterial_7fog1")
+offset_right = 160.0
+offset_bottom = 256.0
+
+[node name="Controls" parent="." instance=ExtResource("8_yoofu")]
