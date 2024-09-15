@@ -18,7 +18,7 @@ General/is_memory_tracking_enabled=false
 "Software Format/speaker_mode"=3
 "Software Format/raw_speaker_count"=0
 General/default_listener_count=1
-General/banks_path="res://FMOD/gbJamFMOD/Desktop"
+General/banks_path="res://"
 General/should_load_by_name=false
 DSP/dsp_buffer_size=512
 DSP/dsp_buffer_count=4
@@ -44,11 +44,7 @@ GBtn="*res://scripts/g_btn.gd"
 UiSounds="*res://scripts/ui_sounds.gd"
 Volume="*res://scripts/volume.gd"
 AudioCal="*res://scripts/audio_cal.gd"
-<<<<<<< HEAD
 FmodManager="*res://addons/fmod/FmodManager.gd"
-=======
-DialogueMgr="*res://scripts/dialogue_mgr.gd"
->>>>>>> 5e68edbc8d4aa6fbb851f4bfc43a2a6c188eea00
 
 [display]
 
@@ -59,11 +55,7 @@ window/stretch/scale_mode="integer"
 
 [editor_plugins]
 
-<<<<<<< HEAD
 enabled=PackedStringArray("res://addons/fmod/plugin.cfg")
-=======
-enabled=PackedStringArray("res://addons/midi/plugin.cfg", "res://addons/radial_progress/plugin.cfg")
->>>>>>> 5e68edbc8d4aa6fbb851f4bfc43a2a6c188eea00
 
 [input]
 

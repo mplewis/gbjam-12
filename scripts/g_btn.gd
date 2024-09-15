@@ -53,8 +53,6 @@ signal on_left_release
 @warning_ignore("UNUSED_SIGNAL")
 signal on_right_release
 
-const DIALOGUE_ADVANCE_BTN = "ui_gameboy_a"
-
 var lookup = {
 	"ui_gameboy_a": "a",
 	"ui_gameboy_b": "b",
@@ -79,15 +77,8 @@ var state = {
 
 
 func _process(_delta):
-	if DialogueMgr.current:
-		if Input.is_action_just_pressed(DIALOGUE_ADVANCE_BTN):
-			DialogueMgr.on_advance.emit()
-			state["ui_gameboy_a"] = true
-		return
-
 	for x in state.keys():
 		var short = lookup[x]
-
 		if Input.is_action_pressed(x):
 			emit_signal("on_%s_hold" % short)
 			if !state[x]:
