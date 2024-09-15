@@ -1,9 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://btt7c40q3an0"]
+[gd_scene load_steps=16 format=3 uid="uid://c3xyq5tra3eyx"]
 
 [ext_resource type="Script" path="res://scripts/t_rex_candy.gd" id="1_dh214"]
 [ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="2_qgi35"]
 [ext_resource type="Texture2D" uid="uid://cuu78vl3qe7oq" path="res://assets/ui/black.png" id="3_ss8et"]
-[ext_resource type="PackedScene" uid="uid://bm52m354r3ids" path="res://scenes/candy_arrow.tscn" id="4_ugqwk"]
+[ext_resource type="PackedScene" uid="uid://v4cukti18rrm" path="res://scenes/candy_arrow.tscn" id="4_ugqwk"]
+[ext_resource type="Texture2D" uid="uid://dhh8e0hsf548p" path="res://assets/t_rex_candy/pc_static.png" id="5_6bafl"]
+[ext_resource type="Texture2D" uid="uid://8mwvmamxanup" path="res://assets/t_rex_candy/t_rex_static.png" id="5_y0h6n"]
+[ext_resource type="Texture2D" uid="uid://cj3powqno8687" path="res://assets/t_rex_candy/conveyor_belt_static.png" id="6_5jj4u"]
+[ext_resource type="Texture2D" uid="uid://di1achfy06u80" path="res://assets/t_rex_candy/ring_sprite_sheet.png" id="6_f8hln"]
 [ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="7_2gg1w"]
 [ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/controls.tscn" id="8_yoofu"]
 
@@ -20,13 +24,13 @@ radius = 16.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7fog1"]
 shader = ExtResource("7_2gg1w")
-shader_parameter/threshold1 = 0.25
+shader_parameter/threshold1 = 0.167
 shader_parameter/threshold2 = 0.5
-shader_parameter/threshold3 = 0.75
+shader_parameter/threshold3 = 0.833
 shader_parameter/color1 = Color(0.0313726, 0.0941176, 0.12549, 1)
-shader_parameter/color2 = Color(0.203922, 0.407843, 0.337255, 1)
-shader_parameter/color3 = Color(0.533333, 0.752941, 0.439216, 1)
-shader_parameter/color4 = Color(0.878431, 0.972549, 0.815686, 1)
+shader_parameter/color2 = Color(0.921569, 0.419608, 0.435294, 1)
+shader_parameter/color3 = Color(0.976471, 0.658824, 0.458824, 1)
+shader_parameter/color4 = Color(1, 0.964706, 0.827451, 1)
 
 [node name="TRexCandy" type="Node2D"]
 script = ExtResource("1_dh214")
@@ -43,30 +47,45 @@ volume_db = 0.0
 soundfont = "res://assets/demo/music/8bit.sf2"
 bus = &"Music"
 
-[node name="Goals" type="Node2D" parent="."]
-position = Vector2(18, 18)
-
-[node name="Display" type="TextureRect" parent="Goals"]
-offset_left = -8.0
-offset_top = -8.0
-offset_right = 32.0
-offset_bottom = 32.0
-scale = Vector2(0.397876, 0.397876)
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(79.75, 71.75)
+scale = Vector2(160.5, 144.5)
 texture = ExtResource("3_ss8et")
 
+[node name="PlayerCharacter" type="Sprite2D" parent="."]
+position = Vector2(41, 39)
+texture = ExtResource("5_6bafl")
+offset = Vector2(0.5, 0)
+
+[node name="ConveyorBelt" type="Sprite2D" parent="."]
+position = Vector2(80, 87)
+texture = ExtResource("6_5jj4u")
+
+[node name="SplashRing" type="Sprite2D" parent="."]
+position = Vector2(38, 77)
+texture = ExtResource("6_f8hln")
+hframes = 7
+frame = 3
+
+[node name="Goals" type="Node2D" parent="."]
+position = Vector2(18, 77)
+
 [node name="Great" type="Area2D" parent="Goals"]
+position = Vector2(20, 0)
 collision_layer = 0
 
 [node name="Hitbox" type="CollisionShape2D" parent="Goals/Great"]
 shape = SubResource("CircleShape2D_3tqsj")
 
 [node name="Good" type="Area2D" parent="Goals"]
+position = Vector2(20, 0)
 collision_layer = 0
 
 [node name="Hitbox" type="CollisionShape2D" parent="Goals/Good"]
 shape = SubResource("CircleShape2D_3ym01")
 
 [node name="OK" type="Area2D" parent="Goals"]
+position = Vector2(20, 0)
 collision_layer = 0
 
 [node name="Hitbox" type="CollisionShape2D" parent="Goals/OK"]
@@ -80,7 +99,7 @@ collision_layer = 0
 shape = SubResource("CircleShape2D_2bmkp")
 
 [node name="Candy" type="Node2D" parent="."]
-position = Vector2(188, 18)
+position = Vector2(172, 77)
 
 [node name="L" parent="Candy" node_paths=PackedStringArray("goal") instance=ExtResource("4_ugqwk")]
 label = "L"
@@ -101,6 +120,13 @@ duration_to_goal_sec = 0.8
 label = "R"
 goal = NodePath("../../Goals/Great")
 duration_to_goal_sec = 0.8
+
+[node name="Foreground" type="CanvasLayer" parent="."]
+
+[node name="TRex" type="Sprite2D" parent="Foreground"]
+position = Vector2(95, 100)
+texture = ExtResource("5_y0h6n")
+offset = Vector2(0, 0.5)
 
 [node name="RecolorLayer" type="CanvasLayer" parent="."]
 

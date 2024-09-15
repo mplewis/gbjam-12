@@ -3,12 +3,14 @@ class_name CandyArrow
 extends RigidBody2D
 
 const OLD_AGE = 5.0
+const DIR_SPRITES = ["L", "R", "U", "D"]
 
 @export var label := "?"
 @export var goal: Node2D = null
 @export var duration_to_goal_sec: float = 0.0
 @export var active := false
 
+@onready var sprite: Sprite2D = $Sprite2D
 @onready var label_node: Label = $Label
 
 var punted := false
@@ -18,7 +20,9 @@ var vel: Vector2 = Vector2.ZERO
 
 
 func _ready():
+	assert(label in DIR_SPRITES)
 	assert(duration_to_goal_sec > 0.0)
+	sprite.frame = DIR_SPRITES.find(label)
 	label_node.text = label
 
 
