@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kpruc7nx3fq8"
-path="res://.godot/imported/Food_test.png-e23c0b318909ce7e6f0e7abc7eeef54b.ctex"
+uid="uid://8mwvmamxanup"
+path="res://.godot/imported/t_rex_static.png-fc2eb7b0b6ff1b155ce99c313c68f33d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/jam build/stage assets/tRex skeleton/Food_test.png"
-dest_files=["res://.godot/imported/Food_test.png-e23c0b318909ce7e6f0e7abc7eeef54b.ctex"]
+source_file="res://assets/t_rex_candy/t_rex_static.png"
+dest_files=["res://.godot/imported/t_rex_static.png-fc2eb7b0b6ff1b155ce99c313c68f33d.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8mwvmamxanup"
-path="res://.godot/imported/TRex_static.png-6008aa29b5a1dbdd1547c286c7f5cf5c.ctex"
+uid="uid://cj3powqno8687"
+path="res://.godot/imported/conveyor_belt_static.png-a00f452cf54243a5b038a71b6dcce2aa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/jam build/stage assets/tRex skeleton/TRex_static.png"
-dest_files=["res://.godot/imported/TRex_static.png-6008aa29b5a1dbdd1547c286c7f5cf5c.ctex"]
+source_file="res://assets/t_rex_candy/conveyor_belt_static.png"
+dest_files=["res://.godot/imported/conveyor_belt_static.png-a00f452cf54243a5b038a71b6dcce2aa.ctex"]
 
 [params]
 
