@@ -44,7 +44,6 @@ GBtn="*res://scripts/g_btn.gd"
 UiSounds="*res://scripts/ui_sounds.gd"
 Volume="*res://scripts/volume.gd"
 AudioCal="*res://scripts/audio_cal.gd"
-FmodManager="*res://addons/fmod/FmodManager.gd"
 
 [display]
 
@@ -52,10 +51,6 @@ window/size/viewport_width=160
 window/size/viewport_height=256
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/fmod/plugin.cfg")
 
 [input]
 
