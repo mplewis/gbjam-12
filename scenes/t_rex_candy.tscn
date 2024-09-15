@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c3xyq5tra3eyx"]
+[gd_scene load_steps=24 format=3 uid="uid://c3xyq5tra3eyx"]
 
 [ext_resource type="Script" path="res://scripts/t_rex_candy.gd" id="1_dh214"]
 [ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="2_qgi35"]
@@ -11,14 +11,71 @@
 [ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="7_2gg1w"]
 [ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/controls.tscn" id="8_yoofu"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1j0e"]
+atlas = ExtResource("6_f8hln")
+region = Rect2(0, 0, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbca3"]
+atlas = ExtResource("6_f8hln")
+region = Rect2(34, 0, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76amu"]
+atlas = ExtResource("6_f8hln")
+region = Rect2(68, 0, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_np71s"]
+atlas = ExtResource("6_f8hln")
+region = Rect2(102, 0, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bhje"]
+atlas = ExtResource("6_f8hln")
+region = Rect2(136, 0, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpmhf"]
+atlas = ExtResource("6_f8hln")
+region = Rect2(170, 0, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kt5h"]
+atlas = ExtResource("6_f8hln")
+region = Rect2(204, 0, 34, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bgamp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1j0e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbca3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76amu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_np71s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bhje")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpmhf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kt5h")
+}],
+"loop": false,
+"name": &"burst",
+"speed": 30.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_3tqsj"]
-radius = 8.0
+radius = 7.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3ym01"]
-radius = 12.0
+radius = 11.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8qa6l"]
-radius = 16.0
+radius = 15.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2bmkp"]
 
@@ -61,11 +118,15 @@ offset = Vector2(0.5, 0)
 position = Vector2(80, 87)
 texture = ExtResource("6_5jj4u")
 
-[node name="SplashRing" type="Sprite2D" parent="."]
+[node name="SplashRing" type="AnimatedSprite2D" parent="."]
 position = Vector2(38, 77)
-texture = ExtResource("6_f8hln")
-hframes = 7
-frame = 3
+sprite_frames = SubResource("SpriteFrames_bgamp")
+animation = &"burst"
+frame = 6
+frame_progress = 1.0
+
+[node name="SplashRingHolder" type="Node2D" parent="."]
+position = Vector2(38, 77)
 
 [node name="Goals" type="Node2D" parent="."]
 position = Vector2(18, 77)
