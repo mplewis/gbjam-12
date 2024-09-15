@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bcf64o57xkw8w"
+path="res://.godot/imported/Vampire Win.mp3-129618ccba13d2da1ab573ff7f1f5786.mp3str"
+
+[deps]
+
+source_file="res://FMOD/gbJamFMOD/Assets/Vampire Win.mp3"
+dest_files=["res://.godot/imported/Vampire Win.mp3-129618ccba13d2da1ab573ff7f1f5786.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
