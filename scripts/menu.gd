@@ -12,6 +12,7 @@ var menu_items := {
 	"dance": "Dance Dance",
 	"calibrate": "Audio Calibration",
 	"options": "Options",
+	"dialogue": "Show dialogue box",
 	"credits": "Credits",
 }
 var selected := 0
@@ -70,6 +71,10 @@ func _on_menu_calibrate():
 
 func _on_menu_options():
 	SceneMgr.open("options")
+
+
+func _on_menu_dialogue():
+	DialogueMgr.show("Welcome to the main menu! I'm a dummy dialogue box with some text.")
 
 
 func _on_menu_credits():
