@@ -7,9 +7,9 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7fog1"]
 shader = ExtResource("5_111ew")
-shader_parameter/threshold1 = 0.25
+shader_parameter/threshold1 = 0.167
 shader_parameter/threshold2 = 0.5
-shader_parameter/threshold3 = 0.75
+shader_parameter/threshold3 = 0.833
 shader_parameter/color1 = Color(0.0313726, 0.0941176, 0.12549, 1)
 shader_parameter/color2 = Color(0.203922, 0.407843, 0.337255, 1)
 shader_parameter/color3 = Color(0.533333, 0.752941, 0.439216, 1)
