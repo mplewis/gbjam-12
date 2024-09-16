@@ -3,13 +3,13 @@
 [ext_resource type="Script" path="res://scripts/t_rex_candy.gd" id="1_dh214"]
 [ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="2_qgi35"]
 [ext_resource type="Texture2D" uid="uid://cuu78vl3qe7oq" path="res://assets/ui/black.png" id="3_ss8et"]
-[ext_resource type="PackedScene" uid="uid://v4cukti18rrm" path="res://scenes/candy_arrow.tscn" id="4_ugqwk"]
+[ext_resource type="PackedScene" uid="uid://v4cukti18rrm" path="res://scenes/games/t_rex_candy/candy_arrow.tscn" id="4_ugqwk"]
 [ext_resource type="Texture2D" uid="uid://dhh8e0hsf548p" path="res://assets/t_rex_candy/pc_static.png" id="5_6bafl"]
 [ext_resource type="Texture2D" uid="uid://8mwvmamxanup" path="res://assets/t_rex_candy/t_rex_static.png" id="5_y0h6n"]
 [ext_resource type="Texture2D" uid="uid://cj3powqno8687" path="res://assets/t_rex_candy/conveyor_belt_static.png" id="6_5jj4u"]
 [ext_resource type="Texture2D" uid="uid://di1achfy06u80" path="res://assets/t_rex_candy/ring_sprite_sheet.png" id="6_f8hln"]
 [ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="7_2gg1w"]
-[ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/controls.tscn" id="8_yoofu"]
+[ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="8_yoofu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b1j0e"]
 atlas = ExtResource("6_f8hln")

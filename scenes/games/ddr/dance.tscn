@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://scripts/dance.gd" id="1_rqy3q"]
 [ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="2_wi16h"]
 [ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="3_5cy5f"]
-[ext_resource type="PackedScene" uid="uid://cfqooswnmcad7" path="res://scenes/goal.tscn" id="3_lb5dq"]
-[ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/controls.tscn" id="4_6dpa7"]
-[ext_resource type="PackedScene" uid="uid://cmw25ugp67twq" path="res://scenes/arrow.tscn" id="4_swmvo"]
+[ext_resource type="PackedScene" uid="uid://cfqooswnmcad7" path="res://scenes/games/ddr/goal.tscn" id="3_lb5dq"]
+[ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="4_6dpa7"]
+[ext_resource type="PackedScene" uid="uid://cmw25ugp67twq" path="res://scenes/games/ddr/arrow.tscn" id="4_swmvo"]
 [ext_resource type="Texture2D" uid="uid://6mmsv4jk3gye" path="res://assets/demo/images/ddr/ddr_judgment_1x6.png" id="5_or8r2"]
 [ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="6_u6fk1"]
 

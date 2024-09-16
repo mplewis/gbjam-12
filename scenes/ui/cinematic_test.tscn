@@ -1,9 +1,9 @@
 [gd_scene load_steps=18 format=3 uid="uid://w3iiokgf138c"]
 
-[ext_resource type="PackedScene" uid="uid://crxje5adebltx" path="res://scenes/cinematic.tscn" id="1_ceij0"]
+[ext_resource type="PackedScene" uid="uid://crxje5adebltx" path="res://scenes/components/cinematic.tscn" id="1_ceij0"]
 [ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="1_sbokr"]
 [ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="2_5kwuk"]
-[ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/controls.tscn" id="2_kfs30"]
+[ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="2_kfs30"]
 [ext_resource type="Texture2D" uid="uid://dhh8e0hsf548p" path="res://assets/t_rex_candy/pc_static.png" id="3_m8iqm"]
 [ext_resource type="Texture2D" uid="uid://dokirsbps343t" path="res://assets/t_rex_candy/TrexIntro_animation.png" id="4_pcojx"]
 

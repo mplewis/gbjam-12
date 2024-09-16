@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://v84u643ffv2a" path="res://assets/demo/images/dodge_stuff/goblin.png" id="7_0xdc0"]
 [ext_resource type="Texture2D" uid="uid://dw7fu8sed8yr6" path="res://assets/demo/images/dodge_stuff/lego.png" id="8_yheok"]
 [ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="9_q8teg"]
-[ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/controls.tscn" id="10_x5gxq"]
+[ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="10_x5gxq"]
 [ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="11_aqh5p"]
 [ext_resource type="Texture2D" uid="uid://cub4er7iutyqd" path="res://assets/demo/images/dodge_stuff/vampire.png" id="11_cmk23"]
 
