@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bqkg7u5vvf66y"]
+[gd_scene load_steps=23 format=3 uid="uid://bqkg7u5vvf66y"]
 
 [ext_resource type="Texture2D" uid="uid://cuu78vl3qe7oq" path="res://assets/ui/black.png" id="1_gj1q3"]
 [ext_resource type="Script" path="res://scripts/dodge_stuff.gd" id="1_iluh8"]
@@ -11,7 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://dw7fu8sed8yr6" path="res://assets/demo/images/dodge_stuff/lego.png" id="8_yheok"]
 [ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="9_q8teg"]
 [ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/controls.tscn" id="10_x5gxq"]
+[ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="11_aqh5p"]
 [ext_resource type="Texture2D" uid="uid://cub4er7iutyqd" path="res://assets/demo/images/dodge_stuff/vampire.png" id="11_cmk23"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ibiie"]
+size = Vector2(20, 144)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1l0wo"]
 radius = 126.0
@@ -58,6 +62,13 @@ position = Vector2(79.75, 71.75)
 scale = Vector2(160.5, 144.5)
 texture = ExtResource("1_gj1q3")
 
+[node name="Despawner" type="Area2D" parent="."]
+position = Vector2(-30, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Despawner"]
+position = Vector2(-19, 72)
+shape = SubResource("RectangleShape2D_ibiie")
+
 [node name="Standing" type="Sprite2D" parent="."]
 position = Vector2(24.1073, 71.0561)
 scale = Vector2(0.0815868, 0.0815868)
@@ -93,7 +104,7 @@ texture = ExtResource("4_x2c4u")
 shape = SubResource("CapsuleShape2D_py017")
 
 [node name="Items" type="Node2D" parent="."]
-position = Vector2(177, 0)
+position = Vector2(168, 0)
 
 [node name="Pan" type="RigidBody2D" parent="Items"]
 position = Vector2(18, 34)
@@ -154,6 +165,14 @@ shape = SubResource("CapsuleShape2D_tx1pa")
 position = Vector2(117, 72)
 scale = Vector2(0.0661982, 0.0661982)
 texture = ExtResource("11_cmk23")
+
+[node name="Score" type="Label" parent="."]
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 54.0
+offset_bottom = 25.0
+theme = ExtResource("11_aqh5p")
+text = "Score: 0"
 
 [node name="RecolorLayer" type="CanvasLayer" parent="."]
 
