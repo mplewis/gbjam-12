@@ -93,7 +93,7 @@ func _process(_delta):
 
 		[Action.HOLD]:
 			busy = true
-			get_tree().create_timer(1.0).timeout.connect(_next)
+			get_tree().create_timer(HOLD_DURATION).timeout.connect(_next)
 
 		[Action.FADE_OUT]:
 			busy = true
