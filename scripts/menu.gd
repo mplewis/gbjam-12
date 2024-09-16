@@ -8,7 +8,6 @@ const JUMP_STR = 120
 const GRAVITY_STR = 480
 
 var menu_items := {
-	"roadtrip": "Road Trip",
 	"dance": "Dance Dance",
 	"drum_kit": "Spider",
 	"calibrate": "Audio Calibration",
@@ -64,6 +63,7 @@ func _on_menu_roadtrip():
 
 func _on_menu_drum_kit():
 	SceneMgr.open("drum_kit")
+
 
 func _on_menu_dance():
 	SceneMgr.open("dance")
