@@ -23,13 +23,13 @@ shader_parameter/color4 = Color(0.878431, 0.972549, 0.815686, 1)
 script = ExtResource("1_rqy3q")
 
 [node name="MidiPlayerSpawn" parent="." instance=ExtResource("2_wi16h")]
-file = "res://assets/demo/music/smb_overworld.mid"
+file = "res://assets/demo/music/A-Foggy-Day-(Jazz-Gitaar-Trio).mid"
 soundfont = "res://assets/demo/music/8bit.sf2"
 bus = &"Music"
 muted = true
 
 [node name="MidiPlayerAudio" parent="." instance=ExtResource("2_wi16h")]
-file = "res://assets/demo/music/smb_overworld.mid"
+file = "res://assets/demo/music/A-Foggy-Day-(Jazz-Gitaar-Trio).mid"
 volume_db = 0.0
 soundfont = "res://assets/demo/music/8bit.sf2"
 bus = &"Music"
