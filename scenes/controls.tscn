@@ -30,45 +30,45 @@ texture = ExtResource("1_eva23")
 script = ExtResource("2_weri1")
 
 [node name="A" type="TouchScreenButton" parent="UI/ControlsBG"]
-position = Vector2(139, 36)
+position = Vector2(139, 34)
 scale = Vector2(1.38125, 1.38125)
 shape = SubResource("CircleShape2D_tr0wg")
 
 [node name="B" type="TouchScreenButton" parent="UI/ControlsBG"]
-position = Vector2(110, 65)
+position = Vector2(110, 63)
 scale = Vector2(1.381, 1.381)
 shape = SubResource("CircleShape2D_tr0wg")
 
 [node name="Select" type="TouchScreenButton" parent="UI/ControlsBG"]
-position = Vector2(55, 102)
+position = Vector2(55, 101)
 scale = Vector2(1.2, 0.41)
 shape = SubResource("RectangleShape2D_fipnq")
 
 [node name="Start" type="TouchScreenButton" parent="UI/ControlsBG"]
-position = Vector2(105, 102)
+position = Vector2(105, 101)
 scale = Vector2(1.2, 0.41)
 shape = SubResource("RectangleShape2D_fipnq")
 
 [node name="Up" type="TouchScreenButton" parent="UI/ControlsBG"]
-position = Vector2(44, 18)
+position = Vector2(44, 21)
 scale = Vector2(1.2, 1.2)
 shape = SubResource("CircleShape2D_tr0wg")
 passby_press = true
 
 [node name="Down" type="TouchScreenButton" parent="UI/ControlsBG"]
-position = Vector2(44, 67)
+position = Vector2(44, 63)
 scale = Vector2(1.2, 1.2)
 shape = SubResource("CircleShape2D_tr0wg")
 passby_press = true
 
 [node name="Left" type="TouchScreenButton" parent="UI/ControlsBG"]
-position = Vector2(19, 43)
+position = Vector2(19, 41)
 scale = Vector2(1.2, 1.2)
 shape = SubResource("CircleShape2D_tr0wg")
 passby_press = true
 
 [node name="Right" type="TouchScreenButton" parent="UI/ControlsBG"]
-position = Vector2(68, 43)
+position = Vector2(68, 41)
 scale = Vector2(1.2, 1.2)
 shape = SubResource("CircleShape2D_tr0wg")
 passby_press = true
