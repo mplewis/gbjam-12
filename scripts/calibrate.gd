@@ -7,8 +7,6 @@ const GOAL_BEAT_ON = 1.5
 const OFFSET_AVG_COUNT = 5
 
 @onready var midi_player: MidiPlayer = $MidiPlayer
-@onready var goal: Goal = $Goal
-@onready var arrow: Arrow = $Arrow
 @onready var info: Label = $UI/Info
 
 
@@ -17,7 +15,6 @@ var in_flight: Array[Arrow] = []
 
 var last_hit := 0.0
 var last_loop := 0.0
-var sent_arrow = false
 
 
 var info_tmpl = "
@@ -40,29 +37,12 @@ func _ready():
 	GBtn.on_left.connect(_on_left)
 	GBtn.on_right.connect(_on_right)
 
-	arrow.duration_to_goal_sec = ARROW_SPAWN_TO_HIT_SEC
-
 	midi_player.midi_event.connect(_on_midi_event)
 	midi_player.looped.connect(_on_looped)
 
 	last_loop = Time.get_ticks_msec() / 1000.0
 	update_label()
 
-
-func _process(_delta):
-	var now := Time.get_ticks_msec() / 1000.0
-	var next_arrow_at = GOAL_BEAT_ON - ARROW_SPAWN_TO_HIT_SEC - AudioCal.audio_offset
-	if (now - last_loop) > next_arrow_at and not sent_arrow:
-		var a = arrow.duplicate()
-		add_child(a)
-		in_flight.push_back(a)
-		a.active = true
-		sent_arrow = true
-
-	for a in in_flight:
-		if a.global_position.y >= goal.global_position.y:
-			in_flight.erase(a)
-			a.queue_free()
 
 func _on_start():
 	SceneMgr.close()
@@ -138,5 +118,4 @@ func _on_midi_event(channel, event):
 
 func _on_looped():
 	last_loop = Time.get_ticks_msec() / 1000.0
-	sent_arrow = false
 	print_timing("looped")
