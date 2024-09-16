@@ -1,9 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bbmrdbp237ysa"]
+[gd_scene load_steps=7 format=3 uid="uid://bbmrdbp237ysa"]
 
 [ext_resource type="Script" path="res://scripts/calibrate.gd" id="1_rrki1"]
 [ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="2_wlmrb"]
-[ext_resource type="PackedScene" uid="uid://cfqooswnmcad7" path="res://scenes/games/ddr/goal.tscn" id="3_u0wei"]
-[ext_resource type="PackedScene" uid="uid://cmw25ugp67twq" path="res://scenes/games/ddr/arrow.tscn" id="4_avbq1"]
 [ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="5_elqdq"]
 [ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="6_laknk"]
 [ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="7_lhhl4"]
@@ -27,15 +25,6 @@ playing = true
 loop = true
 soundfont = "res://assets/demo/music/8bit.sf2"
 bus = &"Music"
-
-[node name="Goal" parent="." instance=ExtResource("3_u0wei")]
-visible = false
-position = Vector2(80, 116)
-
-[node name="Arrow" parent="." node_paths=PackedStringArray("goal") instance=ExtResource("4_avbq1")]
-visible = false
-position = Vector2(80, -21)
-goal = NodePath("../Goal")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
