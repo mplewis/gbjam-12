@@ -5,7 +5,7 @@
 [ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="7_6gyib"]
 [ext_resource type="Texture2D" uid="uid://c2xiawoqxu46h" path="res://assets/ui/arrow_left.png" id="7_buckb"]
 [ext_resource type="Texture2D" uid="uid://dkve2mjwjrxaj" path="res://assets/ui/arrow_right.png" id="8_iqbwa"]
-[ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/controls.tscn" id="8_vtt8h"]
+[ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="8_vtt8h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7fog1"]
 shader = ExtResource("7_6gyib")
