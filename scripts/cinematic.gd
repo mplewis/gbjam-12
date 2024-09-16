@@ -37,7 +37,6 @@ func _ready():
 		children.append(child)
 		child.hide()
 	assert(len(children) > 0, "Cinematic must have at least one child.")
-	print(children)
 
 	var lastSlide: CanvasItem = null
 	for child in children:
@@ -76,39 +75,32 @@ func _process(_delta):
 		return
 
 	var step = steps[step_idx]
-	print("Step %d: %s" % [step_idx, step])
 
 	match step:
 		[Action.SHOW, var child]:
-			print("Show")
 			child.show()
 			_next()
 
 		[Action.HIDE, var child]:
-			print("Hide")
 			child.hide()
 			_next()
 
 		[Action.FADE_IN]:
-			print("Fade in")
 			busy = true
 			var tween := get_tree().create_tween()
 			tween.tween_property(fader, "modulate:a", 0.0, FADE_DURATION)
 			tween.finished.connect(_next)
 
 		[Action.HOLD]:
-			print("Hold")
 			busy = true
 			get_tree().create_timer(1.0).timeout.connect(_next)
 
 		[Action.FADE_OUT]:
-			print("Fade out")
 			busy = true
 			var tween := get_tree().create_tween()
 			tween.tween_property(fader, "modulate:a", 1.0, FADE_DURATION)
 			tween.finished.connect(_next)
 
 		[Action.DIALOGUE, var text]:
-			print("Dialogue")
 			busy = true
 			DialogueMgr.show(text)
