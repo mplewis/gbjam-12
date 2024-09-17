@@ -6,9 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://c7co7tayiua7p" path="res://assets/t_rex_candy/candy_left_arrow.png" id="4_hp51p"]
 [ext_resource type="Texture2D" uid="uid://b2a64jyjiqjvp" path="res://assets/t_rex_candy/candy_right_arrow.png" id="5_pnbva"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_nxdml"]
-radius = 4.5737
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_217b5"]
 atlas = ExtResource("2_eeqpa")
 region = Rect2(0, 0, 16, 16)
@@ -160,6 +157,9 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_nxdml"]
+radius = 2.0
+
 [node name="CandyArrowFollower" type="PathFollow2D"]
 h_offset = -0.25
 rotates = false
@@ -167,26 +167,25 @@ cubic_interp = false
 loop = false
 script = ExtResource("1_ev3i7")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-shape = SubResource("CircleShape2D_nxdml")
-
 [node name="Up" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_yimie")
 frame_progress = 0.718789
 
 [node name="Down" type="AnimatedSprite2D" parent="."]
-position = Vector2(0.463043, -1)
 sprite_frames = SubResource("SpriteFrames_msm1p")
 frame_progress = 0.625204
 
 [node name="Left" type="AnimatedSprite2D" parent="."]
-position = Vector2(0.463043, -2)
 sprite_frames = SubResource("SpriteFrames_4chok")
 frame_progress = 0.275585
 
 [node name="Right" type="AnimatedSprite2D" parent="."]
-position = Vector2(-0.536957, -3)
 sprite_frames = SubResource("SpriteFrames_f01ft")
 frame_progress = 0.827041
+
+[node name="Body" type="RigidBody2D" parent="."]
+collision_mask = 0
+gravity_scale = 0.0
+
+[node name="Hitbox" type="CollisionShape2D" parent="Body"]
+shape = SubResource("CircleShape2D_nxdml")
