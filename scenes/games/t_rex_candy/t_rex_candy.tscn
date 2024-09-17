@@ -340,19 +340,19 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nk7yo"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_217b5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dib7e"]
 atlas = ExtResource("14_lk30u")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bfda3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_evkas"]
 atlas = ExtResource("14_lk30u")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ll33p"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3g3a"]
 atlas = ExtResource("14_lk30u")
 region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4ek6j"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lix6"]
 atlas = ExtResource("14_lk30u")
 region = Rect2(48, 0, 16, 16)
 
@@ -360,16 +360,16 @@ region = Rect2(48, 0, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_217b5")
+"texture": SubResource("AtlasTexture_dib7e")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bfda3")
+"texture": SubResource("AtlasTexture_evkas")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ll33p")
+"texture": SubResource("AtlasTexture_k3g3a")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4ek6j")
+"texture": SubResource("AtlasTexture_1lix6")
 }],
 "loop": true,
 "name": &"default",
@@ -460,6 +460,7 @@ shader_parameter/color4 = Color(1, 0.964706, 0.827451, 1)
 
 [node name="TRexCandy" type="Node2D"]
 script = ExtResource("1_dh214")
+spawn_to_hit_sec = 4.0
 
 [node name="MidiPlayerSpawn" parent="." instance=ExtResource("2_qgi35")]
 file = "res://assets/demo/music/smb_overworld.mid"
@@ -493,9 +494,12 @@ position = Vector2(81, 87)
 position = Vector2(193, 2)
 curve = SubResource("Curve2D_cq7oq")
 
-[node name="CandyArrowFollower" parent="Candy/CandyArrowPath" instance=ExtResource("5_ionbc")]
+[node name="CandyArrowSpawner" parent="Candy/CandyArrowPath" node_paths=PackedStringArray("path") instance=ExtResource("5_ionbc")]
+unique_name_in_owner = true
+visible = false
 position = Vector2(-235.599, -2)
 progress = 339.349
+path = NodePath("..")
 
 [node name="PlayerCharacter" type="AnimatedSprite2D" parent="."]
 position = Vector2(40, 38)
@@ -504,6 +508,7 @@ animation = &"punch"
 frame_progress = 0.900777
 
 [node name="SplashRing" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(227, 41)
 sprite_frames = SubResource("SpriteFrames_bgamp")
 animation = &"burst"
@@ -585,6 +590,7 @@ sprite_frames = SubResource("SpriteFrames_rrxh8")
 frame_progress = 0.0654336
 
 [node name="OwAnim" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(97, 29)
 sprite_frames = SubResource("SpriteFrames_o5yya")
 frame_progress = 0.784747

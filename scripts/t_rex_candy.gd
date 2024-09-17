@@ -1,7 +1,7 @@
 class_name TRexCandy
 extends Node2D
 
-const SPAWN_TO_HIT_SEC = 0.8
+@export var spawn_to_hit_sec = 2.0
 
 # Determined by experimentation.
 # There is some constant difference between the offset from the calibration scene
@@ -10,18 +10,11 @@ const MAGIC_NUMBER_MIDI_DELAY = 0.16
 
 @onready var midi_player_spawn: MidiPlayer = $MidiPlayerSpawn
 @onready var midi_player_audio: MidiPlayer = $MidiPlayerAudio
-@onready var splash_ring: AnimatedSprite2D = $SplashRing
-@onready var splash_ring_holder: Node2D = $SplashRingHolder
+@onready var spawner: CandyArrowFollower = %CandyArrowSpawner
 @onready var goal_great: Area2D = $Goals/Great
 @onready var goal_good: Area2D = $Goals/Good
 @onready var goal_ok: Area2D = $Goals/OK
 @onready var goal_miss: Area2D = $Goals/Miss
-@onready var candy_l: Node2D = $Candy/L
-@onready var candy_d: Node2D = $Candy/D
-@onready var candy_u: Node2D = $Candy/U
-@onready var candy_r: Node2D = $Candy/R
-
-@onready var spawners: Array[Node2D] = [candy_l, candy_d, candy_u, candy_r]
 
 var start_playing_at_ms: float
 var started = false
@@ -37,9 +30,6 @@ func _ready():
 	GBtn.on_up.connect(_on_up)
 	GBtn.on_right.connect(_on_right)
 
-	for s in spawners:
-		s.duration_to_goal_sec = SPAWN_TO_HIT_SEC
-
 	midi_player_spawn.volume_db = 0.0
 	midi_player_audio.volume_db = 0.0
 
@@ -48,7 +38,7 @@ func _ready():
 	midi_player_spawn.play()
 	start_playing_at_ms = (
 		Time.get_ticks_msec()
-		+ (SPAWN_TO_HIT_SEC - (AudioCal.audio_offset + MAGIC_NUMBER_MIDI_DELAY)) * 1000.0
+		+ (spawn_to_hit_sec - (AudioCal.audio_offset + MAGIC_NUMBER_MIDI_DELAY)) * 1000.0
 	)
 
 
@@ -94,7 +84,7 @@ func tally(dir: String):
 	for x in range(score_and_remove(goal_great, dir)):
 		score += 100
 		combo += 1
-		_show_splash()
+		# TODO: Re-add "show splash" effect
 	for x in range(score_and_remove(goal_good, dir)):
 		score += 50
 		combo += 1
@@ -133,22 +123,4 @@ func _on_midi_event(channel, event):
 	if channel.number != 2:
 		return
 
-	_spawn(event.note % len(spawners))
-
-
-func _spawn(i: int):
-	var tmpl = spawners[i]
-	var candy = tmpl.duplicate()
-	candy.global_position = tmpl.global_position
-	add_child(candy)
-	candy.duration_to_goal_sec = SPAWN_TO_HIT_SEC
-	candy.active = true
-
-
-func _show_splash():
-	var sr = splash_ring.duplicate()
-	splash_ring_holder.add_child(sr)
-	sr.global_position = splash_ring.global_position
-	sr.show()
-	sr.play()
-	sr.animation_finished.connect(func(): sr.queue_free())
+	spawner.spawn(event.note % 4, spawn_to_hit_sec)
