@@ -10,6 +10,8 @@ const MAGIC_NUMBER_MIDI_DELAY = 0.16
 
 @onready var midi_player_spawn: MidiPlayer = $MidiPlayerSpawn
 @onready var midi_player_audio: MidiPlayer = $MidiPlayerAudio
+@onready var splash_ring: AnimatedSprite2D = $SplashRing
+@onready var splash_ring_holder: Node2D = $SplashRingHolder
 @onready var goal_great: Area2D = $Goals/Great
 @onready var goal_good: Area2D = $Goals/Good
 @onready var goal_ok: Area2D = $Goals/OK
@@ -92,6 +94,7 @@ func tally(dir: String):
 	for x in range(score_and_remove(goal_great, dir)):
 		score += 100
 		combo += 1
+		_show_splash()
 	for x in range(score_and_remove(goal_good, dir)):
 		score += 50
 		combo += 1
@@ -140,3 +143,12 @@ func _spawn(i: int):
 	add_child(candy)
 	candy.duration_to_goal_sec = SPAWN_TO_HIT_SEC
 	candy.active = true
+
+
+func _show_splash():
+	var sr = splash_ring.duplicate()
+	splash_ring_holder.add_child(sr)
+	sr.global_position = splash_ring.global_position
+	sr.show()
+	sr.play()
+	sr.animation_finished.connect(func(): sr.queue_free())
