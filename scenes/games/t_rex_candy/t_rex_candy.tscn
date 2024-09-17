@@ -20,7 +20,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_cq7oq"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -230, -32, 0, 0, 0, 0, -78, -32, 0, 0, 0, 0, -78, -2, 0, 0, 0, 0, -301, -2)
+"points": PackedVector2Array(0, 0, 0, 0, -230, -32, 0, 0, 0, 0, -101, -32, 0, 0, 0, 0, -100, -2, 0, 0, 0, 0, -301, -2)
 }
 point_count = 4
 
@@ -497,7 +497,7 @@ curve = SubResource("Curve2D_cq7oq")
 [node name="CandyArrowSpawner" parent="Candy/CandyArrowPath" node_paths=PackedStringArray("path") instance=ExtResource("5_ionbc")]
 unique_name_in_owner = true
 visible = false
-position = Vector2(-235.599, -2)
+position = Vector2(-280.582, -2)
 progress = 339.349
 path = NodePath("..")
 
