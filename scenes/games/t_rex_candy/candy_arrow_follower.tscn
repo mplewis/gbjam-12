@@ -161,7 +161,6 @@ animations = [{
 }]
 
 [node name="CandyArrowFollower" type="PathFollow2D"]
-progress = 299.213
 h_offset = -0.25
 rotates = false
 cubic_interp = false
@@ -174,9 +173,8 @@ script = ExtResource("1_ev3i7")
 shape = SubResource("CircleShape2D_nxdml")
 
 [node name="Up" type="AnimatedSprite2D" parent="."]
-position = Vector2(-0.156998, -2.66115)
 sprite_frames = SubResource("SpriteFrames_yimie")
-frame_progress = 0.233263
+frame_progress = 0.718789
 
 [node name="Down" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.463043, -1)

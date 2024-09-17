@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://v4cukti18rrm"]
+[gd_scene load_steps=5 format=3 uid="uid://el1x3ef6nvft"]
 
 [ext_resource type="Script" path="res://scripts/candy_arrow.gd" id="1_lwqn3"]
 [ext_resource type="Texture2D" uid="uid://kpruc7nx3fq8" path="res://assets/t_rex_candy/food_test.png" id="2_0lnim"]
