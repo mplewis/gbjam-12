@@ -8,11 +8,9 @@ const JUMP_STR = 120
 const GRAVITY_STR = 480
 
 var menu_items := {
-	"roadtrip": "Road Trip",
-	"dance": "Dance Dance",
+	"drum_kit": "Spider",
 	"calibrate": "Audio Calibration",
 	"options": "Options",
-	"dialogue": "Show dialogue box",
 	"credits": "Credits",
 }
 var selected := 0
@@ -57,25 +55,17 @@ func select():
 	safe_call("_on_menu_%s" % item)
 
 
-func _on_menu_roadtrip():
-	SceneMgr.open("roadtrip")
-
-
-func _on_menu_dance():
-	SceneMgr.open("dance")
+func _on_menu_drum_kit():
+	SceneMgr.open("games/drum_kit/drum_kit")
 
 
 func _on_menu_calibrate():
-	SceneMgr.open("calibrate")
+	SceneMgr.open("ui/calibrate")
 
 
 func _on_menu_options():
-	SceneMgr.open("options")
-
-
-func _on_menu_dialogue():
-	DialogueMgr.show("Welcome to the main menu! I'm a dummy dialogue box with some text.")
+	SceneMgr.open("ui/options")
 
 
 func _on_menu_credits():
-	SceneMgr.open("credits")
+	SceneMgr.open("ui/credits")

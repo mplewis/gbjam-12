@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://bbmrdbp237ysa"]
+
+[ext_resource type="Script" path="res://scripts/calibrate.gd" id="1_rrki1"]
+[ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="2_wlmrb"]
+[ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="5_elqdq"]
+[ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="6_laknk"]
+[ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="7_lhhl4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7fog1"]
+shader = ExtResource("6_laknk")
+shader_parameter/threshold1 = 0.25
+shader_parameter/threshold2 = 0.5
+shader_parameter/threshold3 = 0.75
+shader_parameter/color1 = Color(0.0313726, 0.0941176, 0.12549, 1)
+shader_parameter/color2 = Color(0.203922, 0.407843, 0.337255, 1)
+shader_parameter/color3 = Color(0.533333, 0.752941, 0.439216, 1)
+shader_parameter/color4 = Color(0.878431, 0.972549, 0.815686, 1)
+
+[node name="Calibrate" type="Node2D"]
+script = ExtResource("1_rrki1")
+
+[node name="MidiPlayer" parent="." instance=ExtResource("2_wlmrb")]
+file = "res://assets/ui/calibration.mid"
+playing = true
+loop = true
+soundfont = "res://assets/demo/music/8bit.sf2"
+bus = &"Music"
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Info" type="Label" parent="UI"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("5_elqdq")
+text = "Calibration Info"
+
+[node name="RecolorLayer" type="CanvasLayer" parent="."]
+
+[node name="RecolorShader" type="ColorRect" parent="RecolorLayer"]
+material = SubResource("ShaderMaterial_7fog1")
+offset_right = 160.0
+offset_bottom = 256.0
+
+[node name="Controls" parent="." instance=ExtResource("7_lhhl4")]
