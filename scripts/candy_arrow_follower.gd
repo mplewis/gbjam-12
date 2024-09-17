@@ -1,7 +1,7 @@
 class_name CandyArrowFollower
 extends PathFollow2D
 
-@onready var up_sprite: AnimatedSprite2D = $Up
+@onready var up_sprite = $Up
 @onready var down_sprite: AnimatedSprite2D = $Down
 @onready var left_sprite: AnimatedSprite2D = $Left
 @onready var right_sprite: AnimatedSprite2D = $Right
@@ -20,6 +20,9 @@ func _ready():
 		return
 
 	progress = 0.0
+	for s in sprites:
+		if s.visible:
+			s.play()
 
 
 func spawn(dir: int, to_hit_sec: float) -> CandyArrowFollower:
