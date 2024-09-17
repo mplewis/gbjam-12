@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://c3xyq5tra3eyx"]
+[gd_scene load_steps=68 format=3 uid="uid://c3xyq5tra3eyx"]
 
 [ext_resource type="Script" path="res://scripts/t_rex_candy.gd" id="1_dh214"]
 [ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="2_qgi35"]
@@ -14,9 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dosqyhcig7u3l" path="res://assets/t_rex_candy/candy_down.png" id="11_qk0nf"]
 [ext_resource type="Texture2D" uid="uid://bycbrhs782oaj" path="res://assets/t_rex_candy/candy_left.png" id="12_hkmhd"]
 [ext_resource type="Texture2D" uid="uid://cwxbbe5s2jcl7" path="res://assets/t_rex_candy/candy_right.png" id="13_85hns"]
-[ext_resource type="Texture2D" uid="uid://dp0xw3y5kkqdd" path="res://assets/t_rex_candy/candy_up_arrow.png" id="14_lk30u"]
 [ext_resource type="Texture2D" uid="uid://3ob2pl0l5gyq" path="res://assets/t_rex_candy/Hit_spriteSheet.png" id="14_loms7"]
-[ext_resource type="Texture2D" uid="uid://b7xn3bu3igtrw" path="res://assets/t_rex_candy/Ow_spriteSheet.png" id="15_thqey"]
 
 [sub_resource type="Curve2D" id="Curve2D_cq7oq"]
 _data = {
@@ -340,42 +338,6 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nk7yo"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dib7e"]
-atlas = ExtResource("14_lk30u")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_evkas"]
-atlas = ExtResource("14_lk30u")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k3g3a"]
-atlas = ExtResource("14_lk30u")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1lix6"]
-atlas = ExtResource("14_lk30u")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_yimie"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dib7e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_evkas")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k3g3a")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1lix6")
-}],
-"loop": true,
-"name": &"default",
-"speed": 10.0
-}]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_8trnd"]
 atlas = ExtResource("14_loms7")
 region = Rect2(0, 0, 54, 38)
@@ -406,42 +368,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_utgnx")
-}],
-"loop": true,
-"name": &"default",
-"speed": 8.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t5jng"]
-atlas = ExtResource("15_thqey")
-region = Rect2(0, 0, 59, 41)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ueo57"]
-atlas = ExtResource("15_thqey")
-region = Rect2(59, 0, 59, 41)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2toil"]
-atlas = ExtResource("15_thqey")
-region = Rect2(118, 0, 59, 41)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1hggk"]
-atlas = ExtResource("15_thqey")
-region = Rect2(177, 0, 59, 41)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_o5yya"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t5jng")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ueo57")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2toil")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1hggk")
 }],
 "loop": true,
 "name": &"default",
@@ -496,12 +422,12 @@ curve = SubResource("Curve2D_cq7oq")
 
 [node name="CandyArrowSpawner" parent="Candy/CandyArrowPath" node_paths=PackedStringArray("path") instance=ExtResource("5_ionbc")]
 unique_name_in_owner = true
-visible = false
-position = Vector2(-280.582, -2)
-progress = 339.349
+position = Vector2(-236.807, -2)
+progress = 295.574
 path = NodePath("..")
 
 [node name="PlayerCharacter" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(40, 38)
 sprite_frames = SubResource("SpriteFrames_glqdu")
 animation = &"punch"
@@ -516,8 +442,7 @@ frame = 6
 frame_progress = 1.0
 
 [node name="Goals" type="Node2D" parent="."]
-visible = false
-position = Vector2(18, 77)
+position = Vector2(18, 87)
 
 [node name="Great" type="Area2D" parent="Goals"]
 position = Vector2(20, 0)
@@ -556,7 +481,6 @@ animation = &"idle"
 frame_progress = 0.42553
 
 [node name="ChompTrigger" type="Area2D" parent="Foreground/TRexAnim"]
-visible = false
 position = Vector2(-89, -94)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/TRexAnim/ChompTrigger"]
@@ -579,23 +503,14 @@ texture = ExtResource("12_hkmhd")
 position = Vector2(345, 179)
 texture = ExtResource("13_85hns")
 
-[node name="CandyUpAnim" type="AnimatedSprite2D" parent="."]
-position = Vector2(300, 218)
-sprite_frames = SubResource("SpriteFrames_yimie")
-frame_progress = 0.597725
-
 [node name="HitAnim" type="AnimatedSprite2D" parent="."]
 position = Vector2(39, 118)
 sprite_frames = SubResource("SpriteFrames_rrxh8")
-frame_progress = 0.0654336
-
-[node name="OwAnim" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(97, 29)
-sprite_frames = SubResource("SpriteFrames_o5yya")
-frame_progress = 0.784747
+frame = 1
+frame_progress = 0.551764
 
 [node name="RecolorLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="RecolorShader" type="ColorRect" parent="RecolorLayer"]
 material = SubResource("ShaderMaterial_7fog1")

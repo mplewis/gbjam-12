@@ -3,10 +3,12 @@ extends Node2D
 
 @export var spawn_to_hit_sec = 2.0
 
-# Determined by experimentation.
-# There is some constant difference between the offset from the calibration scene
-# (which seems to be very close to real life!) and in the actual game, here.
-const MAGIC_NUMBER_MIDI_DELAY = 0.16
+## Determined by experimentation.
+## There is some constant difference between the offset from the calibration scene
+## (which seems to be very close to real life!) and in the actual game, here.
+const MAGIC_NUMBER_MIDI_DELAY := 0.16
+## How fast the hit animation fades out
+const HIT_ANIM_FADE_RATE := 1.0
 
 @onready var midi_player_spawn: MidiPlayer = $MidiPlayerSpawn
 @onready var midi_player_audio: MidiPlayer = $MidiPlayerAudio
@@ -15,11 +17,10 @@ const MAGIC_NUMBER_MIDI_DELAY = 0.16
 @onready var goal_good: Area2D = $Goals/Good
 @onready var goal_ok: Area2D = $Goals/OK
 @onready var goal_miss: Area2D = $Goals/Miss
+@onready var hit_anim: AnimatedSprite2D = $HitAnim
 
 var start_playing_at_ms: float
 var started = false
-var score = 0
-var combo = 0
 
 
 func _ready():
@@ -29,6 +30,11 @@ func _ready():
 	GBtn.on_down.connect(_on_down)
 	GBtn.on_up.connect(_on_up)
 	GBtn.on_right.connect(_on_right)
+
+	spawner.hide()
+	hit_anim.play()
+	hit_anim.modulate.a = 0.0
+	goal_miss.body_entered.connect(_on_miss)
 
 	midi_player_spawn.volume_db = 0.0
 	midi_player_audio.volume_db = 0.0
@@ -42,8 +48,9 @@ func _ready():
 	)
 
 
-func _process(_delta):
+func _process(delta: float):
 	start_audio()
+	hit_anim.modulate.a -= delta * HIT_ANIM_FADE_RATE
 
 
 func start_audio():
@@ -81,21 +88,13 @@ func _on_right():
 
 
 func tally(dir: String):
+	# TODO: Re-add "show splash" effect
 	for x in range(score_and_remove(goal_great, dir)):
-		score += 100
-		combo += 1
-		# TODO: Re-add "show splash" effect
+		pass
 	for x in range(score_and_remove(goal_good, dir)):
-		score += 50
-		combo += 1
+		pass
 	for x in range(score_and_remove(goal_ok, dir)):
-		score += 25
-		combo += 1
-
-	for x in range(score_and_remove(goal_miss, dir)):
-		combo = 0
-
-	print(score)
+		pass
 
 
 func score_and_remove(goal: Area2D, dir: String) -> int:
@@ -103,8 +102,13 @@ func score_and_remove(goal: Area2D, dir: String) -> int:
 
 	var count := 0
 	var candies = goal.get_overlapping_bodies()
-	for candy in candies:
-		if candy.label != dir:
+	print(dir, candies)
+	for body: PhysicsBody2D in candies:
+		var candy: CandyArrowFollower = body.get_parent()
+		print(candy)
+		if candy.template:
+			continue
+		if candy.dir_str != dir:
 			continue
 		count += 1
 		candy.punt()
@@ -112,8 +116,8 @@ func score_and_remove(goal: Area2D, dir: String) -> int:
 	return count
 
 
-func _on_miss(_body: Node2D):
-	combo = 0
+func _on_miss(body: Node2D):
+	print("miss: %s" % body)
 
 
 func _on_midi_event(channel, event):
