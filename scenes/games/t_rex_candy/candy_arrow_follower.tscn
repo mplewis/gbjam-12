@@ -1,10 +1,14 @@
-[gd_scene load_steps=28 format=3 uid="uid://b0e6t0ypkw46h"]
+[gd_scene load_steps=32 format=3 uid="uid://b0e6t0ypkw46h"]
 
 [ext_resource type="Script" path="res://scripts/candy_arrow_follower.gd" id="1_ev3i7"]
 [ext_resource type="Texture2D" uid="uid://dp0xw3y5kkqdd" path="res://assets/t_rex_candy/candy_up_arrow.png" id="2_eeqpa"]
 [ext_resource type="Texture2D" uid="uid://dvknnrrs4xo1i" path="res://assets/t_rex_candy/candy_down_arrow.png" id="3_2juet"]
+[ext_resource type="Texture2D" uid="uid://cfxg4fvcd18t3" path="res://assets/t_rex_candy/candy_up.png" id="3_t4fxp"]
 [ext_resource type="Texture2D" uid="uid://c7co7tayiua7p" path="res://assets/t_rex_candy/candy_left_arrow.png" id="4_hp51p"]
+[ext_resource type="Texture2D" uid="uid://dosqyhcig7u3l" path="res://assets/t_rex_candy/candy_down.png" id="5_irkjx"]
 [ext_resource type="Texture2D" uid="uid://b2a64jyjiqjvp" path="res://assets/t_rex_candy/candy_right_arrow.png" id="5_pnbva"]
+[ext_resource type="Texture2D" uid="uid://bycbrhs782oaj" path="res://assets/t_rex_candy/candy_left.png" id="7_t2tvr"]
+[ext_resource type="Texture2D" uid="uid://cwxbbe5s2jcl7" path="res://assets/t_rex_candy/candy_right.png" id="9_apk1u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_217b5"]
 atlas = ExtResource("2_eeqpa")
@@ -41,6 +45,9 @@ animations = [{
 "name": &"default",
 "speed": 10.0
 }]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nxdml"]
+radius = 2.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nflht"]
 atlas = ExtResource("3_2juet")
@@ -157,9 +164,6 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_nxdml"]
-radius = 2.0
-
 [node name="CandyArrowFollower" type="PathFollow2D"]
 h_offset = -0.25
 rotates = false
@@ -171,17 +175,66 @@ script = ExtResource("1_ev3i7")
 sprite_frames = SubResource("SpriteFrames_yimie")
 frame_progress = 0.718789
 
+[node name="Body" type="RigidBody2D" parent="Up"]
+visible = false
+collision_layer = 2
+collision_mask = 0
+gravity_scale = 0.0
+
+[node name="Static" type="Sprite2D" parent="Up/Body"]
+position = Vector2(0, 2)
+texture = ExtResource("3_t4fxp")
+
+[node name="Hitbox" type="CollisionShape2D" parent="Up/Body"]
+shape = SubResource("CircleShape2D_nxdml")
+
 [node name="Down" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_msm1p")
 frame_progress = 0.625204
+
+[node name="Body" type="RigidBody2D" parent="Down"]
+visible = false
+collision_layer = 2
+collision_mask = 0
+gravity_scale = 0.0
+
+[node name="Static" type="Sprite2D" parent="Down/Body"]
+texture = ExtResource("5_irkjx")
+
+[node name="Hitbox" type="CollisionShape2D" parent="Down/Body"]
+shape = SubResource("CircleShape2D_nxdml")
 
 [node name="Left" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4chok")
 frame_progress = 0.275585
 
+[node name="Body" type="RigidBody2D" parent="Left"]
+visible = false
+collision_layer = 2
+collision_mask = 0
+gravity_scale = 0.0
+
+[node name="Static" type="Sprite2D" parent="Left/Body"]
+texture = ExtResource("7_t2tvr")
+
+[node name="Hitbox" type="CollisionShape2D" parent="Left/Body"]
+shape = SubResource("CircleShape2D_nxdml")
+
 [node name="Right" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_f01ft")
 frame_progress = 0.827041
+
+[node name="Body" type="RigidBody2D" parent="Right"]
+visible = false
+collision_layer = 2
+collision_mask = 0
+gravity_scale = 0.0
+
+[node name="Static" type="Sprite2D" parent="Right/Body"]
+texture = ExtResource("9_apk1u")
+
+[node name="Hitbox" type="CollisionShape2D" parent="Right/Body"]
+shape = SubResource("CircleShape2D_nxdml")
 
 [node name="Body" type="RigidBody2D" parent="."]
 collision_mask = 0
