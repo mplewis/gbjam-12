@@ -24,6 +24,9 @@ point_count = 4
 
 [sub_resource type="Animation" id="Animation_qk18l"]
 resource_name = "idle"
+length = 0.4
+loop_mode = 1
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -31,10 +34,10 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [7]
+"values": [8, 9, 10, 11]
 }
 
 [sub_resource type="Animation" id="Animation_1v4gf"]
@@ -184,7 +187,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_ev383"]
 resource_name = "chomp"
 length = 0.64
-loop_mode = 2
 step = 0.08
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -196,7 +198,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [4, 5, 6, 7, 0, 1, 2, 3]
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
 [sub_resource type="Animation" id="Animation_a22us"]
@@ -343,7 +345,7 @@ path = NodePath("..")
 position = Vector2(40, 38)
 texture = ExtResource("5_iq6in")
 hframes = 4
-vframes = 2
+vframes = 3
 frame = 1
 
 [node name="PCAnimPlayer" type="AnimationPlayer" parent="PlayerCharacter"]
