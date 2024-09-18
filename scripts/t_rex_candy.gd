@@ -8,7 +8,7 @@ extends Node2D
 ## (which seems to be very close to real life!) and in the actual game, here.
 const MAGIC_NUMBER_MIDI_DELAY := 0.16
 ## How fast the hit animation fades out
-const HIT_ANIM_FADE_RATE := 1.0
+const HIT_ANIM_FADE_RATE := 2.0
 
 @onready var midi_player_spawn: MidiPlayer = $MidiPlayerSpawn
 @onready var midi_player_audio: MidiPlayer = $MidiPlayerAudio
@@ -18,6 +18,9 @@ const HIT_ANIM_FADE_RATE := 1.0
 @onready var goal_ok: Area2D = $Goals/OK
 @onready var goal_miss: Area2D = $Goals/Miss
 @onready var hit_anim: AnimatedSprite2D = $HitAnim
+@onready var trex_anim_tree: AnimationTree = %TRexAnimTree
+@onready
+var trex_anim_sm: AnimationNodeStateMachinePlayback = trex_anim_tree.get("parameters/playback")
 
 var start_playing_at_ms: float
 var started = false
@@ -105,13 +108,12 @@ func score_and_remove(goal: Area2D, dir: String) -> int:
 	print(dir, candies)
 	for body: PhysicsBody2D in candies:
 		var candy: CandyArrowFollower = body.get_parent()
-		print(candy)
-		if candy.template:
-			continue
 		if candy.dir_str != dir:
 			continue
 		count += 1
+		hit_anim.modulate.a = 1.0
 		candy.punt()
+		trex_anim_sm.travel("chomp")
 
 	return count
 
