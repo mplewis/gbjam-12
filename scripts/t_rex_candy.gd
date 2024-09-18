@@ -120,6 +120,7 @@ func score_and_remove(goal: Area2D, dir: String) -> int:
 		trex_anim_sm.travel("chomp")
 		_show_hit()
 		_punt(candy)
+		candy.queue_free()
 
 	return count
 

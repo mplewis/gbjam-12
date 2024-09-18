@@ -18,7 +18,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_cq7oq"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -230, -32, 0, 0, 0, 0, -101, -32, 0, 0, 0, 0, -100, -2, 0, 0, 0, 0, -301, -2)
+"points": PackedVector2Array(0, 0, 0, 0, -230, -32, 0, 0, 0, 0, -101, -32, 0, 0, 0, 0, -100, -6, 0, 0, 0, 0, -301, -6)
 }
 point_count = 4
 
@@ -302,6 +302,7 @@ shader_parameter/color4 = Color(1, 0.964706, 0.827451, 1)
 
 [node name="TRexCandy" type="Node2D"]
 script = ExtResource("1_dh214")
+spawn_to_hit_sec = 3.0
 
 [node name="MidiPlayerSpawn" parent="." instance=ExtResource("2_qgi35")]
 file = "res://assets/demo/music/smb_overworld.mid"
@@ -337,8 +338,8 @@ curve = SubResource("Curve2D_cq7oq")
 
 [node name="CandyArrowSpawner" parent="Candy/CandyArrowPath" node_paths=PackedStringArray("path") instance=ExtResource("5_ionbc")]
 unique_name_in_owner = true
-position = Vector2(-236.807, -2)
-progress = 295.574
+position = Vector2(-236.101, -6)
+progress = 290.87
 path = NodePath("..")
 
 [node name="PlayerCharacter" type="Sprite2D" parent="."]
