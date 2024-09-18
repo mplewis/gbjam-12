@@ -17,6 +17,7 @@ const HIT_ANIM_FADE_RATE := 2.0
 @onready var goal_good: Area2D = $Goals/Good
 @onready var goal_ok: Area2D = $Goals/OK
 @onready var goal_miss: Area2D = $Goals/Miss
+@onready var chomp_trigger: Area2D = %ChompTrigger
 
 @onready var hit_anim: AnimatedSprite2D = $HitAnim
 @onready var trex_anim_tree: AnimationTree = %TRexAnimTree
@@ -40,14 +41,14 @@ func _ready():
 	spawner.hide()
 	hit_anim.play()
 	hit_anim.modulate.a = 0.0
-	goal_miss.body_entered.connect(_on_miss)
+
+	chomp_trigger.body_entered.connect(_on_candy_chompable)
 
 	midi_player_spawn.volume_db = 0.0
 	midi_player_audio.volume_db = 0.0
-
 	midi_player_spawn.midi_event.connect(_on_midi_event)
-
 	midi_player_spawn.play()
+
 	start_playing_at_ms = (
 		Time.get_ticks_msec()
 		+ (spawn_to_hit_sec - (AudioCal.audio_offset + MAGIC_NUMBER_MIDI_DELAY)) * 1000.0
@@ -110,23 +111,17 @@ func score_and_remove(goal: Area2D, dir: String) -> int:
 
 	var count := 0
 	var candies = goal.get_overlapping_bodies()
-	print(dir, candies)
 	for body: PhysicsBody2D in candies:
 		var candy: CandyArrowFollower = body.get_parent()
 		if candy.dir_str != dir:
 			continue
 		count += 1
 
-		trex_anim_sm.travel("chomp")
 		_show_hit()
 		_punt(candy)
 		candy.queue_free()
 
 	return count
-
-
-func _on_miss(body: Node2D):
-	print("miss: %s" % body)
 
 
 func _on_midi_event(channel, event):
@@ -146,3 +141,8 @@ func _show_hit():
 func _punt(candy: CandyArrowFollower):
 	var puntable := candy.spawn_puntable()
 	add_child(puntable)
+
+
+func _on_candy_chompable(candy: CandyArrowPuntable):
+	trex_anim_sm.travel("chomp")
+	candy.queue_free()

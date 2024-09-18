@@ -178,6 +178,7 @@ frame_progress = 0.718789
 
 [node name="CandyArrowPuntable" parent="Up" instance=ExtResource("3_d3wqa")]
 visible = false
+linear_velocity = Vector2(108.363, -300)
 texture = ExtResource("3_t4fxp")
 
 [node name="Down" type="AnimatedSprite2D" parent="."]
@@ -186,6 +187,7 @@ frame_progress = 0.625204
 
 [node name="CandyArrowPuntable" parent="Down" instance=ExtResource("3_d3wqa")]
 visible = false
+linear_velocity = Vector2(123.101, -300)
 texture = ExtResource("5_irkjx")
 
 [node name="Left" type="AnimatedSprite2D" parent="."]
@@ -194,6 +196,7 @@ frame_progress = 0.275585
 
 [node name="CandyArrowPuntable" parent="Left" instance=ExtResource("3_d3wqa")]
 visible = false
+linear_velocity = Vector2(131.866, -300)
 texture = ExtResource("7_t2tvr")
 
 [node name="Right" type="AnimatedSprite2D" parent="."]
@@ -202,6 +205,7 @@ frame_progress = 0.827041
 
 [node name="CandyArrowPuntable" parent="Right" instance=ExtResource("3_d3wqa")]
 visible = false
+linear_velocity = Vector2(110.034, -300)
 texture = ExtResource("9_apk1u")
 
 [node name="Body" type="RigidBody2D" parent="."]
