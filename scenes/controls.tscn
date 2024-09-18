@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0njtks5rulkw"]
+
+[ext_resource type="Texture2D" uid="uid://bfcc2px0xstlg" path="res://assets/ui/controls.png" id="1_eva23"]
+[ext_resource type="Script" path="res://scripts/controls.gd" id="2_weri1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tr0wg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fipnq"]
+
+[node name="Controls" type="CanvasLayer"]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 144.0
+offset_right = 40.0
+offset_bottom = 184.0
+
+[node name="BG" type="ColorRect" parent="UI"]
+custom_minimum_size = Vector2(160, 112)
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 112.0
+
+[node name="ControlsBG" type="TextureRect" parent="UI"]
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 112.0
+texture = ExtResource("1_eva23")
+script = ExtResource("2_weri1")
+
+[node name="A" type="TouchScreenButton" parent="UI/ControlsBG"]
+position = Vector2(139, 36)
+scale = Vector2(1.38125, 1.38125)
+shape = SubResource("CircleShape2D_tr0wg")
+
+[node name="B" type="TouchScreenButton" parent="UI/ControlsBG"]
+position = Vector2(110, 65)
+scale = Vector2(1.381, 1.381)
+shape = SubResource("CircleShape2D_tr0wg")
+
+[node name="Select" type="TouchScreenButton" parent="UI/ControlsBG"]
+position = Vector2(55, 102)
+scale = Vector2(1.2, 0.41)
+shape = SubResource("RectangleShape2D_fipnq")
+
+[node name="Start" type="TouchScreenButton" parent="UI/ControlsBG"]
+position = Vector2(105, 102)
+scale = Vector2(1.2, 0.41)
+shape = SubResource("RectangleShape2D_fipnq")
+
+[node name="Up" type="TouchScreenButton" parent="UI/ControlsBG"]
+position = Vector2(44, 18)
+scale = Vector2(1.2, 1.2)
+shape = SubResource("CircleShape2D_tr0wg")
+passby_press = true
+
+[node name="Down" type="TouchScreenButton" parent="UI/ControlsBG"]
+position = Vector2(44, 67)
+scale = Vector2(1.2, 1.2)
+shape = SubResource("CircleShape2D_tr0wg")
+passby_press = true
+
+[node name="Left" type="TouchScreenButton" parent="UI/ControlsBG"]
+position = Vector2(19, 43)
+scale = Vector2(1.2, 1.2)
+shape = SubResource("CircleShape2D_tr0wg")
+passby_press = true
+
+[node name="Right" type="TouchScreenButton" parent="UI/ControlsBG"]
+position = Vector2(68, 43)
+scale = Vector2(1.2, 1.2)
+shape = SubResource("CircleShape2D_tr0wg")
+passby_press = true
