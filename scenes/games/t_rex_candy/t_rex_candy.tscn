@@ -381,6 +381,7 @@ collision_layer = 0
 shape = SubResource("CircleShape2D_3tqsj")
 
 [node name="Good" type="Area2D" parent="Goals"]
+visible = false
 position = Vector2(20, 0)
 collision_layer = 0
 
@@ -388,6 +389,7 @@ collision_layer = 0
 shape = SubResource("CircleShape2D_3ym01")
 
 [node name="OK" type="Area2D" parent="Goals"]
+visible = false
 position = Vector2(20, 0)
 collision_layer = 0
 
@@ -430,7 +432,7 @@ anim_player = NodePath("../TRexAnimPlayer")
 
 [node name="ChompTrigger" type="Area2D" parent="Foreground/TRex"]
 unique_name_in_owner = true
-position = Vector2(-89, -86)
+position = Vector2(-89, -91)
 collision_layer = 0
 collision_mask = 2
 

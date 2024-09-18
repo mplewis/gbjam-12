@@ -97,14 +97,7 @@ func _on_right():
 
 func tally(dir: String):
 	pc_anim_sm.travel("punch")
-
-	# TODO: Re-add "show splash" effect
-	for x in range(score_and_remove(goal_great, dir)):
-		pass
-	for x in range(score_and_remove(goal_good, dir)):
-		pass
-	for x in range(score_and_remove(goal_ok, dir)):
-		pass
+	score_and_remove(goal_great, dir)
 
 
 func score_and_remove(goal: Area2D, dir: String) -> int:
@@ -127,7 +120,6 @@ func score_and_remove(goal: Area2D, dir: String) -> int:
 func _on_midi_event(channel, event):
 	if event.type != SMF.MIDIEventType.note_on:
 		return
-
 	if channel.number != 2:
 		return
 
@@ -143,7 +135,7 @@ func _on_candy_chompable(candy: CandyArrowPuntable):
 	trex_anim_sm.travel("chomp")
 	hit_anim.modulate.a = 1.0
 
-	var sr: AnimatedSprite2D= splash_ring.duplicate()
+	var sr: AnimatedSprite2D = splash_ring.duplicate()
 	sr.global_position = candy.global_position
 	sr.play()
 	sr.animation_finished.connect(func(): sr.queue_free())
