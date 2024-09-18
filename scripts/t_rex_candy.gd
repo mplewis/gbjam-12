@@ -25,6 +25,7 @@ const HIT_ANIM_FADE_RATE := 2.0
 var trex_anim_sm: AnimationNodeStateMachinePlayback = trex_anim_tree.get("parameters/playback")
 @onready var pc_anim_tree: AnimationTree = %PCAnimTree
 @onready var pc_anim_sm: AnimationNodeStateMachinePlayback = pc_anim_tree.get("parameters/playback")
+@onready var splash_ring: AnimatedSprite2D = $SplashRing
 
 var start_playing_at_ms: float
 var started = false
@@ -117,7 +118,6 @@ func score_and_remove(goal: Area2D, dir: String) -> int:
 			continue
 		count += 1
 
-		_show_hit()
 		_punt(candy)
 		candy.queue_free()
 
@@ -134,10 +134,6 @@ func _on_midi_event(channel, event):
 	spawner.spawn(event.note % 4, spawn_to_hit_sec)
 
 
-func _show_hit():
-	hit_anim.modulate.a = 1.0
-
-
 func _punt(candy: CandyArrowFollower):
 	var puntable := candy.spawn_puntable()
 	add_child(puntable)
@@ -145,4 +141,12 @@ func _punt(candy: CandyArrowFollower):
 
 func _on_candy_chompable(candy: CandyArrowPuntable):
 	trex_anim_sm.travel("chomp")
+	hit_anim.modulate.a = 1.0
+
+	var sr: AnimatedSprite2D= splash_ring.duplicate()
+	sr.global_position = candy.global_position
+	sr.play()
+	sr.animation_finished.connect(func(): sr.queue_free())
+	add_child(sr)
+
 	candy.queue_free()

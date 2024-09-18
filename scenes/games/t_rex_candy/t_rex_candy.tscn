@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://c3xyq5tra3eyx"]
+[gd_scene load_steps=53 format=3 uid="uid://c3xyq5tra3eyx"]
 
 [ext_resource type="Script" path="res://scripts/t_rex_candy.gd" id="1_dh214"]
 [ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="2_qgi35"]
@@ -9,11 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://di1achfy06u80" path="res://assets/t_rex_candy/ring_sprite_sheet.png" id="6_f8hln"]
 [ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="7_2gg1w"]
 [ext_resource type="Texture2D" uid="uid://blwsnjkb1rcb3" path="res://assets/t_rex_candy/TRex_animation-Sheet.png" id="7_5nfyv"]
+[ext_resource type="Texture2D" uid="uid://c1dqf3khga4ke" path="res://assets/ui/transparent.png" id="8_wd5yu"]
 [ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="8_yoofu"]
-[ext_resource type="Texture2D" uid="uid://cfxg4fvcd18t3" path="res://assets/t_rex_candy/candy_up.png" id="10_504qe"]
-[ext_resource type="Texture2D" uid="uid://dosqyhcig7u3l" path="res://assets/t_rex_candy/candy_down.png" id="11_qk0nf"]
-[ext_resource type="Texture2D" uid="uid://bycbrhs782oaj" path="res://assets/t_rex_candy/candy_left.png" id="12_hkmhd"]
-[ext_resource type="Texture2D" uid="uid://cwxbbe5s2jcl7" path="res://assets/t_rex_candy/candy_right.png" id="13_85hns"]
 [ext_resource type="Texture2D" uid="uid://3ob2pl0l5gyq" path="res://assets/t_rex_candy/Hit_spriteSheet.png" id="14_loms7"]
 
 [sub_resource type="Curve2D" id="Curve2D_cq7oq"]
@@ -101,6 +98,17 @@ states/punch/node = SubResource("AnimationNodeAnimation_qw1o3")
 states/punch/position = Vector2(680.5, 99.25)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_3wa54"), "idle", "punch", SubResource("AnimationNodeStateMachineTransition_4biwq"), "punch", "idle", SubResource("AnimationNodeStateMachineTransition_543hr")]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_3tqsj"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ym01"]
+radius = 11.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8qa6l"]
+radius = 15.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2bmkp"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_b1j0e"]
 atlas = ExtResource("6_f8hln")
 region = Rect2(0, 0, 34, 34)
@@ -133,6 +141,15 @@ region = Rect2(204, 0, 34, 34)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("8_wd5yu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_wd5yu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_wd5yu")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_b1j0e")
 }, {
 "duration": 1.0,
@@ -152,22 +169,14 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0kt5h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_wd5yu")
 }],
 "loop": false,
 "name": &"burst",
-"speed": 20.0
+"speed": 30.0
 }]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_3tqsj"]
-radius = 7.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_3ym01"]
-radius = 11.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_8qa6l"]
-radius = 15.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_2bmkp"]
 
 [sub_resource type="Animation" id="Animation_m06n2"]
 length = 0.001
@@ -361,14 +370,6 @@ root_node = NodePath("%PCAnimTree/..")
 tree_root = SubResource("AnimationNodeStateMachine_ia5bb")
 anim_player = NodePath("../PCAnimPlayer")
 
-[node name="SplashRing" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(227, 41)
-sprite_frames = SubResource("SpriteFrames_bgamp")
-animation = &"burst"
-frame = 6
-frame_progress = 1.0
-
 [node name="Goals" type="Node2D" parent="."]
 position = Vector2(18, 87)
 
@@ -400,6 +401,13 @@ collision_layer = 0
 [node name="Hitbox" type="CollisionShape2D" parent="Goals/Miss"]
 shape = SubResource("CircleShape2D_2bmkp")
 
+[node name="SplashRing" type="AnimatedSprite2D" parent="."]
+position = Vector2(193, 115)
+sprite_frames = SubResource("SpriteFrames_bgamp")
+animation = &"burst"
+frame = 10
+frame_progress = 1.0
+
 [node name="Foreground" type="CanvasLayer" parent="."]
 
 [node name="TRex" type="Sprite2D" parent="Foreground"]
@@ -422,7 +430,7 @@ anim_player = NodePath("../TRexAnimPlayer")
 
 [node name="ChompTrigger" type="Area2D" parent="Foreground/TRex"]
 unique_name_in_owner = true
-position = Vector2(-89, -94)
+position = Vector2(-89, -86)
 collision_layer = 0
 collision_mask = 2
 
@@ -430,22 +438,6 @@ collision_mask = 2
 position = Vector2(112, 92)
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_gtjr3")
-
-[node name="CandyUp" type="Sprite2D" parent="."]
-position = Vector2(350, 220)
-texture = ExtResource("10_504qe")
-
-[node name="CandyDown" type="Sprite2D" parent="."]
-position = Vector2(334, 106)
-texture = ExtResource("11_qk0nf")
-
-[node name="CandyLeft" type="Sprite2D" parent="."]
-position = Vector2(349, 143)
-texture = ExtResource("12_hkmhd")
-
-[node name="CandyRight" type="Sprite2D" parent="."]
-position = Vector2(345, 179)
-texture = ExtResource("13_85hns")
 
 [node name="HitAnim" type="AnimatedSprite2D" parent="."]
 position = Vector2(39, 118)
