@@ -67,5 +67,17 @@ func spawn(dir: int, to_hit_sec: float) -> CandyArrowFollower:
 	return x
 
 
-func punt():
-	print("Punt not yet implemented")
+func spawn_puntable() -> RigidBody2D:
+	var active_sprite: AnimatedSprite2D
+	for s in sprites:
+		if s.visible:
+			active_sprite = s
+			break
+	assert(active_sprite, "No active sprite found to spawn puntable candy")
+
+	var tmpl: RigidBody2D = active_sprite.get_child(0)
+	var body: RigidBody2D = tmpl.duplicate()
+	body.gravity_scale = 1.0
+	body.global_position = global_position
+	body.show()
+	return body

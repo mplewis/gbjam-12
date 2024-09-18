@@ -116,9 +116,10 @@ func score_and_remove(goal: Area2D, dir: String) -> int:
 		if candy.dir_str != dir:
 			continue
 		count += 1
-		hit_anim.modulate.a = 1.0
-		candy.punt()
+
 		trex_anim_sm.travel("chomp")
+		_show_hit()
+		_punt(candy)
 
 	return count
 
@@ -135,3 +136,12 @@ func _on_midi_event(channel, event):
 		return
 
 	spawner.spawn(event.note % 4, spawn_to_hit_sec)
+
+
+func _show_hit():
+	hit_anim.modulate.a = 1.0
+
+
+func _punt(candy: CandyArrowFollower):
+	var puntable := candy.spawn_puntable()
+	add_child(puntable)
