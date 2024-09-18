@@ -17,10 +17,13 @@ const HIT_ANIM_FADE_RATE := 2.0
 @onready var goal_good: Area2D = $Goals/Good
 @onready var goal_ok: Area2D = $Goals/OK
 @onready var goal_miss: Area2D = $Goals/Miss
+
 @onready var hit_anim: AnimatedSprite2D = $HitAnim
 @onready var trex_anim_tree: AnimationTree = %TRexAnimTree
 @onready
 var trex_anim_sm: AnimationNodeStateMachinePlayback = trex_anim_tree.get("parameters/playback")
+@onready var pc_anim_tree: AnimationTree = %PCAnimTree
+@onready var pc_anim_sm: AnimationNodeStateMachinePlayback = pc_anim_tree.get("parameters/playback")
 
 var start_playing_at_ms: float
 var started = false
@@ -91,6 +94,8 @@ func _on_right():
 
 
 func tally(dir: String):
+	pc_anim_sm.travel("punch")
+
 	# TODO: Re-add "show splash" effect
 	for x in range(score_and_remove(goal_great, dir)):
 		pass
