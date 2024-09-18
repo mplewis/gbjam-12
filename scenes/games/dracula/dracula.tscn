@@ -1,21 +1,236 @@
-[gd_scene load_steps=23 format=3 uid="uid://bqkg7u5vvf66y"]
+[gd_scene load_steps=39 format=3 uid="uid://bqkg7u5vvf66y"]
 
-[ext_resource type="Texture2D" uid="uid://cuu78vl3qe7oq" path="res://assets/ui/black.png" id="1_gj1q3"]
-[ext_resource type="Script" path="res://scripts/dodge_stuff.gd" id="1_iluh8"]
-[ext_resource type="Texture2D" uid="uid://dh2mc3qf8vkye" path="res://assets/demo/images/dodge_stuff/standing.png" id="2_akb58"]
-[ext_resource type="Texture2D" uid="uid://bags0x61evitw" path="res://assets/demo/images/dodge_stuff/jumping.png" id="3_rj3wo"]
-[ext_resource type="Texture2D" uid="uid://u2u0wouw7qjw" path="res://assets/demo/images/dodge_stuff/crouching.png" id="4_x2c4u"]
-[ext_resource type="Texture2D" uid="uid://bkwp725sl646u" path="res://assets/demo/images/dodge_stuff/banana_peel.png" id="5_nkoau"]
-[ext_resource type="Texture2D" uid="uid://rch8qo0qegux" path="res://assets/demo/images/dodge_stuff/frying_pan.png" id="6_gde3x"]
-[ext_resource type="Texture2D" uid="uid://v84u643ffv2a" path="res://assets/demo/images/dodge_stuff/goblin.png" id="7_0xdc0"]
-[ext_resource type="Texture2D" uid="uid://dw7fu8sed8yr6" path="res://assets/demo/images/dodge_stuff/lego.png" id="8_yheok"]
-[ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="9_q8teg"]
-[ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="10_x5gxq"]
-[ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="11_aqh5p"]
-[ext_resource type="Texture2D" uid="uid://cub4er7iutyqd" path="res://assets/demo/images/dodge_stuff/vampire.png" id="11_cmk23"]
+[ext_resource type="Script" path="res://scripts/dodge_stuff.gd" id="1_0arq5"]
+[ext_resource type="Texture2D" uid="uid://bokk1qiyhpuqr" path="res://assets/dracula/Dracula_background.png" id="2_fkgq3"]
+[ext_resource type="Texture2D" uid="uid://blgpqqhfwgucj" path="res://assets/dracula/PC-animation-Sheet.png" id="3_f8lcq"]
+[ext_resource type="Texture2D" uid="uid://cuammduv5djc3" path="res://assets/dracula/Dracula-animation-Sheet.png" id="4_leiji"]
+[ext_resource type="Texture2D" uid="uid://dh2mc3qf8vkye" path="res://assets/demo/images/dodge_stuff/standing.png" id="5_527s6"]
+[ext_resource type="Texture2D" uid="uid://bags0x61evitw" path="res://assets/demo/images/dodge_stuff/jumping.png" id="6_xrghb"]
+[ext_resource type="Texture2D" uid="uid://u2u0wouw7qjw" path="res://assets/demo/images/dodge_stuff/crouching.png" id="7_3oqfj"]
+[ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="8_4kqmv"]
+[ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="9_lxosv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ibiie"]
 size = Vector2(20, 144)
+
+[sub_resource type="Animation" id="Animation_6pk6r"]
+resource_name = "idle"
+length = 0.72
+loop_mode = 1
+step = 0.12
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.24, 0.36, 0.48, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_08usb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_oowma"]
+resource_name = "crouch"
+length = 0.48
+step = 0.12
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.24, 0.36),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_4x7vw"]
+resource_name = "crouching"
+length = 0.72
+loop_mode = 1
+step = 0.12
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_ht6yr"]
+resource_name = "uncrouch"
+length = 0.24
+step = 0.12
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [13, 12]
+}
+
+[sub_resource type="Animation" id="Animation_al32f"]
+resource_name = "jump"
+length = 0.72
+step = 0.12
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.24, 0.36, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4jtho"]
+_data = {
+"RESET": SubResource("Animation_08usb"),
+"crouch": SubResource("Animation_oowma"),
+"crouching": SubResource("Animation_4x7vw"),
+"idle": SubResource("Animation_6pk6r"),
+"jump": SubResource("Animation_al32f"),
+"uncrouch": SubResource("Animation_ht6yr")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2xnsw"]
+animation = &"crouch"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xy1kj"]
+animation = &"crouching"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y7cjj"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ceoll"]
+animation = &"jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_av0no"]
+animation = &"uncrouch"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wy102"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_enk1d"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6qr62"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t4o7b"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mji2r"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lbghu"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_txtx8"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ydk8k"]
+states/crouch/node = SubResource("AnimationNodeAnimation_2xnsw")
+states/crouch/position = Vector2(278.2, 208.435)
+states/crouching/node = SubResource("AnimationNodeAnimation_xy1kj")
+states/crouching/position = Vector2(421.36, 344.59)
+states/idle/node = SubResource("AnimationNodeAnimation_y7cjj")
+states/idle/position = Vector2(392, 96.5)
+states/jump/node = SubResource("AnimationNodeAnimation_ceoll")
+states/jump/position = Vector2(583.5, 93)
+states/uncrouch/node = SubResource("AnimationNodeAnimation_av0no")
+states/uncrouch/position = Vector2(539.7, 218.435)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_wy102"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_enk1d"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_6qr62"), "idle", "crouch", SubResource("AnimationNodeStateMachineTransition_t4o7b"), "uncrouch", "idle", SubResource("AnimationNodeStateMachineTransition_mji2r"), "crouch", "crouching", SubResource("AnimationNodeStateMachineTransition_lbghu"), "crouching", "uncrouch", SubResource("AnimationNodeStateMachineTransition_txtx8")]
+graph_offset = Vector2(-147.76, -237.66)
+
+[sub_resource type="Animation" id="Animation_hyyuh"]
+resource_name = "float"
+length = 0.72
+loop_mode = 1
+step = 0.12
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.24, 0.36, 0.48, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_teggh"]
+resource_name = "toss"
+length = 0.72
+step = 0.12
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.24, 0.36, 0.48, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_s7d8v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4f4e8"]
+_data = {
+"RESET": SubResource("Animation_s7d8v"),
+"float": SubResource("Animation_hyyuh"),
+"toss": SubResource("Animation_teggh")
+}
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1l0wo"]
 radius = 126.0
@@ -29,23 +244,8 @@ height = 515.462
 radius = 257.394
 height = 956.036
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mw4gi"]
-radius = 12.7787
-height = 45.209
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o53io"]
-radius = 12.0
-height = 32.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_x7l3i"]
-radius = 13.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tx1pa"]
-radius = 7.60213
-height = 31.305
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0vlu2"]
-shader = ExtResource("9_q8teg")
+shader = ExtResource("8_4kqmv")
 shader_parameter/threshold1 = 0.119
 shader_parameter/threshold2 = 0.5
 shader_parameter/threshold3 = 0.833
@@ -55,12 +255,11 @@ shader_parameter/color3 = Color(0.211765, 0.52549, 0.560784, 1)
 shader_parameter/color4 = Color(0.372549, 0.780392, 0.364706, 1)
 
 [node name="DodgeStuff" type="Node2D"]
-script = ExtResource("1_iluh8")
+script = ExtResource("1_0arq5")
 
 [node name="BG" type="Sprite2D" parent="."]
-position = Vector2(79.75, 71.75)
-scale = Vector2(160.5, 144.5)
-texture = ExtResource("1_gj1q3")
+position = Vector2(80, 72)
+texture = ExtResource("2_fkgq3")
 
 [node name="Despawner" type="Area2D" parent="."]
 position = Vector2(-30, 0)
@@ -69,10 +268,42 @@ position = Vector2(-30, 0)
 position = Vector2(-19, 72)
 shape = SubResource("RectangleShape2D_ibiie")
 
+[node name="PC" type="Sprite2D" parent="."]
+position = Vector2(32, 83)
+texture = ExtResource("3_f8lcq")
+hframes = 6
+vframes = 3
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PC"]
+libraries = {
+"": SubResource("AnimationLibrary_4jtho")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="PC"]
+tree_root = SubResource("AnimationNodeStateMachine_ydk8k")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="Dracula" type="Sprite2D" parent="."]
+position = Vector2(128, 83)
+texture = ExtResource("4_leiji")
+hframes = 6
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Dracula"]
+libraries = {
+"": SubResource("AnimationLibrary_4f4e8")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="Dracula"]
+tree_root = SubResource("AnimationNodeStateMachine_ydk8k")
+anim_player = NodePath("../AnimationPlayer")
+
 [node name="Standing" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(24.1073, 71.0561)
 scale = Vector2(0.0815868, 0.0815868)
-texture = ExtResource("2_akb58")
+texture = ExtResource("5_527s6")
 
 [node name="Area2D" type="Area2D" parent="Standing"]
 
@@ -84,7 +315,7 @@ shape = SubResource("CapsuleShape2D_1l0wo")
 visible = false
 position = Vector2(28.1073, 47.0561)
 scale = Vector2(0.121585, 0.121585)
-texture = ExtResource("3_rj3wo")
+texture = ExtResource("6_xrghb")
 
 [node name="Area2D" type="Area2D" parent="Jumping"]
 
@@ -96,7 +327,7 @@ shape = SubResource("CapsuleShape2D_k1cjc")
 visible = false
 position = Vector2(25.1073, 87.0561)
 scale = Vector2(0.0643819, 0.0643819)
-texture = ExtResource("4_x2c4u")
+texture = ExtResource("7_3oqfj")
 
 [node name="Area2D" type="Area2D" parent="Crouching"]
 
@@ -106,73 +337,7 @@ shape = SubResource("CapsuleShape2D_py017")
 [node name="Items" type="Node2D" parent="."]
 position = Vector2(168, 0)
 
-[node name="Pan" type="RigidBody2D" parent="Items"]
-position = Vector2(18, 34)
-collision_mask = 0
-gravity_scale = 0.0
-
-[node name="Sprite2D" type="Sprite2D" parent="Items/Pan"]
-scale = Vector2(0.0354627, 0.0354627)
-texture = ExtResource("6_gde3x")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Pan"]
-position = Vector2(2, -2)
-rotation = 0.740388
-shape = SubResource("CapsuleShape2D_mw4gi")
-
-[node name="Goblin" type="RigidBody2D" parent="Items"]
-position = Vector2(12, 39)
-collision_mask = 0
-gravity_scale = 0.0
-
-[node name="Sprite2D" type="Sprite2D" parent="Items/Goblin"]
-scale = Vector2(0.0817158, 0.0817158)
-texture = ExtResource("7_0xdc0")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Goblin"]
-position = Vector2(0, -2)
-shape = SubResource("CapsuleShape2D_o53io")
-
-[node name="Peel" type="RigidBody2D" parent="Items"]
-position = Vector2(13, 109)
-collision_mask = 0
-gravity_scale = 0.0
-
-[node name="Sprite2D" type="Sprite2D" parent="Items/Peel"]
-scale = Vector2(0.0815262, 0.0815262)
-texture = ExtResource("5_nkoau")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Peel"]
-shape = SubResource("CircleShape2D_x7l3i")
-
-[node name="Brick" type="RigidBody2D" parent="Items"]
-position = Vector2(15, 110)
-collision_mask = 0
-gravity_scale = 0.0
-
-[node name="Sprite2D" type="Sprite2D" parent="Items/Brick"]
-scale = Vector2(0.0234041, 0.0234041)
-texture = ExtResource("8_yheok")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Brick"]
-position = Vector2(0, -1)
-rotation = -1.10603
-shape = SubResource("CapsuleShape2D_tx1pa")
-
 [node name="SpawnedItems" type="Node2D" parent="."]
-
-[node name="Vampire" type="Sprite2D" parent="."]
-position = Vector2(117, 72)
-scale = Vector2(0.0661982, 0.0661982)
-texture = ExtResource("11_cmk23")
-
-[node name="Score" type="Label" parent="."]
-offset_left = 3.0
-offset_top = 2.0
-offset_right = 54.0
-offset_bottom = 25.0
-theme = ExtResource("11_aqh5p")
-text = "Score: 0"
 
 [node name="RecolorLayer" type="CanvasLayer" parent="."]
 
@@ -182,4 +347,4 @@ offset_right = 160.0
 offset_bottom = 256.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Controls" parent="." instance=ExtResource("10_x5gxq")]
+[node name="Controls" parent="." instance=ExtResource("9_lxosv")]
