@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://c3xyq5tra3eyx"]
+[gd_scene load_steps=55 format=3 uid="uid://c3xyq5tra3eyx"]
 
 [ext_resource type="Script" path="res://scripts/t_rex_candy.gd" id="1_dh214"]
 [ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="2_qgi35"]
@@ -65,7 +65,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_smr3u")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -171,170 +171,86 @@ radius = 15.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2bmkp"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j6t70"]
-atlas = ExtResource("7_5nfyv")
-region = Rect2(0, 200, 142, 100)
+[sub_resource type="Animation" id="Animation_a22us"]
+resource_name = "idle"
+length = 1.06
+loop_mode = 1
+step = 0.1333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TRex:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1333, 0.2666, 0.3999, 0.5332, 0.6665, 0.7998, 0.9331),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13, 14, 15]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v0rmt"]
-atlas = ExtResource("7_5nfyv")
-region = Rect2(142, 200, 142, 100)
+[sub_resource type="Animation" id="Animation_m06n2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TRex:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b18ji"]
-atlas = ExtResource("7_5nfyv")
-region = Rect2(284, 200, 142, 100)
+[sub_resource type="Animation" id="Animation_ev383"]
+resource_name = "chomp"
+length = 0.64
+loop_mode = 2
+step = 0.08
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TRex:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7, 0, 1, 2, 3]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_knkm8"]
-atlas = ExtResource("7_5nfyv")
-region = Rect2(426, 200, 142, 100)
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mix54"]
+_data = {
+"RESET": SubResource("Animation_m06n2"),
+"chomp": SubResource("Animation_ev383"),
+"idle": SubResource("Animation_a22us")
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dvtsb"]
-atlas = ExtResource("7_5nfyv")
-region = Rect2(568, 200, 142, 100)
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ah4q8"]
+animation = &"chomp"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y5vgv"]
-atlas = ExtResource("7_5nfyv")
-region = Rect2(710, 200, 142, 100)
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_apew2"]
+animation = &"idle"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vg1gv"]
-atlas = ExtResource("7_5nfyv")
-region = Rect2(852, 200, 142, 100)
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d4gjx"]
+break_loop_at_end = true
+reset = false
+switch_mode = 2
+advance_mode = 2
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_psrya"]
-atlas = ExtResource("7_5nfyv")
-region = Rect2(994, 200, 142, 100)
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o5u2n"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2cqx8"]
-atlas = ExtResource("7_5nfyv")
-region = Rect2(0, 0, 142, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3scy4"]
-atlas = ExtResource("7_5nfyv")
-region = Rect2(284, 0, 142, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yw8a7"]
-atlas = ExtResource("7_5nfyv")
-region = Rect2(426, 0, 142, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yjplr"]
-atlas = ExtResource("7_5nfyv")
-region = Rect2(710, 0, 142, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vc1j7"]
-atlas = ExtResource("7_5nfyv")
-region = Rect2(852, 0, 142, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_stvff"]
-atlas = ExtResource("7_5nfyv")
-region = Rect2(994, 0, 142, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cih1i"]
-atlas = ExtResource("7_5nfyv")
-region = Rect2(0, 100, 142, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2iora"]
-atlas = ExtResource("7_5nfyv")
-region = Rect2(142, 100, 142, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5res1"]
-atlas = ExtResource("7_5nfyv")
-region = Rect2(284, 100, 142, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0k8ta"]
-atlas = ExtResource("7_5nfyv")
-region = Rect2(568, 100, 142, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l7u3l"]
-atlas = ExtResource("7_5nfyv")
-region = Rect2(710, 100, 142, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g3r14"]
-atlas = ExtResource("7_5nfyv")
-region = Rect2(852, 100, 142, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vfb8t"]
-atlas = ExtResource("7_5nfyv")
-region = Rect2(994, 100, 142, 100)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_4yg7c"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j6t70")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v0rmt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b18ji")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_knkm8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dvtsb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y5vgv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vg1gv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_psrya")
-}],
-"loop": true,
-"name": &"bob",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2cqx8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3scy4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yw8a7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yjplr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vc1j7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_stvff")
-}],
-"loop": true,
-"name": &"chomp",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cih1i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2iora")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5res1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0k8ta")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l7u3l")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g3r14")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vfb8t")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 8.0
-}]
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_1a7vl"]
+states/Start/position = Vector2(200, 100.25)
+states/chomp/node = SubResource("AnimationNodeAnimation_ah4q8")
+states/chomp/position = Vector2(602.727, 99.9231)
+states/idle/node = SubResource("AnimationNodeAnimation_apew2")
+states/idle/position = Vector2(417.008, 99.8463)
+transitions = ["chomp", "idle", SubResource("AnimationNodeStateMachineTransition_d4gjx"), "idle", "chomp", SubResource("AnimationNodeStateMachineTransition_o5u2n")]
+graph_offset = Vector2(-326.679, 39.495)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nk7yo"]
 
@@ -371,7 +287,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 8.0
+"speed": 12.0
 }]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7fog1"]
@@ -386,7 +302,6 @@ shader_parameter/color4 = Color(1, 0.964706, 0.827451, 1)
 
 [node name="TRexCandy" type="Node2D"]
 script = ExtResource("1_dh214")
-spawn_to_hit_sec = 4.0
 
 [node name="MidiPlayerSpawn" parent="." instance=ExtResource("2_qgi35")]
 file = "res://assets/demo/music/smb_overworld.mid"
@@ -427,11 +342,9 @@ progress = 295.574
 path = NodePath("..")
 
 [node name="PlayerCharacter" type="AnimatedSprite2D" parent="."]
-visible = false
 position = Vector2(40, 38)
 sprite_frames = SubResource("SpriteFrames_glqdu")
-animation = &"punch"
-frame_progress = 0.900777
+animation = &"idle"
 
 [node name="SplashRing" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -474,16 +387,28 @@ shape = SubResource("CircleShape2D_2bmkp")
 
 [node name="Foreground" type="CanvasLayer" parent="."]
 
-[node name="TRexAnim" type="AnimatedSprite2D" parent="Foreground"]
+[node name="TRex" type="Sprite2D" parent="Foreground"]
 position = Vector2(89, 114)
-sprite_frames = SubResource("SpriteFrames_4yg7c")
-animation = &"idle"
-frame_progress = 0.42553
+texture = ExtResource("7_5nfyv")
+hframes = 8
+vframes = 3
 
-[node name="ChompTrigger" type="Area2D" parent="Foreground/TRexAnim"]
+[node name="TRexAnimPlayer" type="AnimationPlayer" parent="Foreground/TRex"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_mix54")
+}
+
+[node name="TRexAnimTree" type="AnimationTree" parent="Foreground/TRex"]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+tree_root = SubResource("AnimationNodeStateMachine_1a7vl")
+anim_player = NodePath("../TRexAnimPlayer")
+
+[node name="ChompTrigger" type="Area2D" parent="Foreground/TRex"]
 position = Vector2(-89, -94)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/TRexAnim/ChompTrigger"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/TRex/ChompTrigger"]
 position = Vector2(81, 79)
 shape = SubResource("CircleShape2D_nk7yo")
 
@@ -506,11 +431,9 @@ texture = ExtResource("13_85hns")
 [node name="HitAnim" type="AnimatedSprite2D" parent="."]
 position = Vector2(39, 118)
 sprite_frames = SubResource("SpriteFrames_rrxh8")
-frame = 1
-frame_progress = 0.551764
+frame_progress = 0.710955
 
 [node name="RecolorLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="RecolorShader" type="ColorRect" parent="RecolorLayer"]
 material = SubResource("ShaderMaterial_7fog1")
