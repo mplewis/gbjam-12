@@ -16,7 +16,7 @@ func _on_close():
 
 
 func show(msg: String) -> DialogueBox:
-	var dialogue_box: DialogueBox = load("res://scenes/dialogue_box.tscn").instantiate()
+	var dialogue_box: DialogueBox = load("res://scenes/components/dialogue_box.tscn").instantiate()
 	dialogue_box.text = msg
 	current = dialogue_box
 	get_tree().current_scene.add_child(dialogue_box)

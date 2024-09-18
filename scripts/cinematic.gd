@@ -8,6 +8,7 @@ enum Action {
 	HOLD,
 	FADE_OUT,
 	DIALOGUE,
+	CALL_METHOD_ON_SLIDE,
 }
 
 signal on_finish
@@ -50,6 +51,7 @@ func _ready():
 
 		if child is not Label:
 			steps.push_back([Action.SHOW, child])
+			steps.push_back([Action.CALL_METHOD_ON_SLIDE, child, "on_fade_in"])
 			steps.push_back([Action.FADE_IN])
 			steps.push_back([Action.HOLD])
 			lastSlide = child
@@ -104,3 +106,8 @@ func _process(_delta):
 		[Action.DIALOGUE, var text]:
 			busy = true
 			DialogueMgr.show(text)
+
+		[Action.CALL_METHOD_ON_SLIDE, var slide, var method]:
+			if slide.has_method(method):
+				slide.call_deferred(method)
+			_next()
