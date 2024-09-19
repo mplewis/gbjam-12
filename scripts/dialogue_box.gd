@@ -1,3 +1,4 @@
+@tool
 class_name DialogueBox
 extends Control
 
@@ -8,9 +9,12 @@ const ARROW_TICK_DIST = 4  # 1 px/frame
 const FRAMES_PER_CHAR = 2  # higher = slower typing
 const SCREEN_BOTTOM = 144  # Y coordinate of bottom of screen, where our dialog aligns
 
+@export var height := 64  # height in px of dialogue box
+
 ## The text to display in the dialogue box.
 @export var text: String = ""
 
+@onready var bg: TextureRect = %BG
 @onready var pos: Control = %Pos
 @onready var box: NinePatchRect = %Box
 @onready var arrow: TextureRect = %Arrow
@@ -25,7 +29,6 @@ var complete := false
 
 
 func _ready():
-	_position_bottom()
 	body.text = ""
 	arrow.hide()
 	DialogueMgr.on_advance.connect(_on_advance)
@@ -33,6 +36,11 @@ func _ready():
 
 func _process(delta):
 	now += delta
+
+	_position_bottom()
+	bg.size.y = height
+	box.size.y = height
+
 	_show_text()
 	_move_arrow()
 
@@ -61,7 +69,9 @@ func _move_arrow():
 	if body.text.length() < text.length():
 		return
 	arrow.show()
-	arrow.position.x = orig_x + _tick(now, FRAMES_PER_ARROW_TICK) % ARROW_TICK_DIST
+	arrow.position.x = (
+		orig_x + _tick(now, FRAMES_PER_ARROW_TICK) % ARROW_TICK_DIST - ARROW_TICK_DIST
+	)
 
 
 func _on_advance() -> bool:

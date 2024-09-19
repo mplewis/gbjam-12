@@ -527,6 +527,7 @@ text = "I’ve got a nice web set up for you across the drum kit. Why don’t yo
 
 [node name="PC2" type="TextureRect" parent="Cinematic"]
 visible = false
+layout_mode = 0
 offset_left = 42.0
 offset_top = 19.0
 offset_right = 117.0
@@ -535,6 +536,7 @@ texture = ExtResource("3_86xgl")
 
 [node name="PCText2" type="Label" parent="Cinematic"]
 visible = false
+layout_mode = 0
 offset_right = 180.0
 offset_bottom = 16.0
 theme = ExtResource("2_xwga0")
