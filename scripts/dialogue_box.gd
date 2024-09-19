@@ -57,6 +57,7 @@ func _tick(f_now: float, frames_per_tick: int) -> int:
 
 func _show_text():
 	if complete:
+		print("done")
 		if body.text.length() < text.length():
 			body.text = text
 		return

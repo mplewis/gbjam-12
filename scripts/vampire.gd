@@ -15,6 +15,14 @@ const ANIM_FADE_DURATION = 1.5  # sec
 @onready var you_suck_anim: AnimatedSprite2D = $YouSuck
 @onready var hearts_row: HeartsRow = $HeartsRow
 
+# audio: intro, music, win, lose, duck, jump
+@onready var audio_intro: AudioStreamPlayer = $Audio/Intro
+@onready var audio_music: AudioStreamPlayer = $Audio/Music
+@onready var audio_win: AudioStreamPlayer = $Audio/Win
+@onready var audio_lose: AudioStreamPlayer = $Audio/Lose
+@onready var audio_duck: AudioStreamPlayer = $Audio/Duck
+@onready var audio_jump: AudioStreamPlayer = $Audio/Jump
+
 @onready var pc_anim_tree: AnimationTree = $PC/AnimationTree
 @onready var pc_anim_sm: AnimationNodeStateMachinePlayback = pc_anim_tree.get("parameters/playback")
 @onready var dr_anim_tree: AnimationTree = $Dracula/AnimationTree
@@ -77,10 +85,14 @@ func _on_timeout():
 
 func _on_up():
 	pc_anim_sm.travel("jump")
+	if not audio_jump.playing:
+		audio_jump.play()
 
 
 func _on_down():
 	pc_anim_sm.travel("crouch")
+	if not audio_duck.playing:
+		audio_duck.play()
 
 
 func _on_down_release():

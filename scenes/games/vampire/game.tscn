@@ -1,14 +1,21 @@
-[gd_scene load_steps=105 format=3 uid="uid://bqkg7u5vvf66y"]
+[gd_scene load_steps=112 format=3 uid="uid://bqkg7u5vvf66y"]
 
-[ext_resource type="Script" path="res://scripts/dodge_stuff.gd" id="1_0arq5"]
+[ext_resource type="Script" path="res://scripts/vampire.gd" id="1_0arq5"]
 [ext_resource type="Texture2D" uid="uid://bokk1qiyhpuqr" path="res://assets/images/vampire/Dracula_background.png" id="2_fkgq3"]
+[ext_resource type="Script" path="res://addons/midi/MidiPlayer.gd" id="2_p6qpp"]
+[ext_resource type="AudioStream" uid="uid://b5eiu48w5n53h" path="res://assets/music/vampire/VampireIntro_PreMidi.mp3" id="3_dub7d"]
 [ext_resource type="Texture2D" uid="uid://blgpqqhfwgucj" path="res://assets/images/vampire/PC-animation-Sheet.png" id="3_f8lcq"]
+[ext_resource type="AudioStream" uid="uid://c8dfpffdh5iny" path="res://assets/music/vampire/VampireMainMusic.mp3" id="4_5wpb3"]
 [ext_resource type="Texture2D" uid="uid://cuammduv5djc3" path="res://assets/images/vampire/Dracula-animation-Sheet.png" id="4_leiji"]
+[ext_resource type="AudioStream" uid="uid://weo8g8tp75kf" path="res://assets/music/vampire/VampireWin.mp3" id="5_7x2ym"]
 [ext_resource type="Texture2D" uid="uid://bhvulj8lpoein" path="res://assets/images/vampire/flying_bat1.png" id="5_c1hun"]
 [ext_resource type="Texture2D" uid="uid://s3t5o4loqaxw" path="res://assets/images/vampire/flying_bat2.png" id="6_th2s3"]
+[ext_resource type="AudioStream" uid="uid://baimtvta0dnun" path="res://assets/music/vampire/VampireLose.mp3" id="6_vqk6w"]
 [ext_resource type="Texture2D" uid="uid://cjkjqj03t5p22" path="res://assets/images/vampire/flying_glider.png" id="7_0yslv"]
+[ext_resource type="AudioStream" uid="uid://mkbo6ui1kcld" path="res://assets/music/vampire/VampireDuck.mp3" id="7_p2dwi"]
 [ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="8_4kqmv"]
 [ext_resource type="Texture2D" uid="uid://ds8yniw2nu8s1" path="res://assets/images/vampire/flying_pan.png" id="8_bgqxj"]
+[ext_resource type="AudioStream" uid="uid://sn6ud3bckriy" path="res://assets/music/vampire/VampireJump.mp3" id="8_pcj5t"]
 [ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="9_lxosv"]
 [ext_resource type="Texture2D" uid="uid://btmlgof1iqfjl" path="res://assets/images/vampire/ground_barrel.png" id="9_to4n2"]
 [ext_resource type="Texture2D" uid="uid://b6mh4j0gxextp" path="res://assets/images/vampire/ground_chomper.png" id="10_c22vo"]
@@ -734,8 +741,37 @@ shader_parameter/color2 = Color(0.12549, 0.211765, 0.443137, 1)
 shader_parameter/color3 = Color(0.211765, 0.52549, 0.560784, 1)
 shader_parameter/color4 = Color(0.372549, 0.780392, 0.364706, 1)
 
-[node name="DodgeStuff" type="Node2D"]
+[node name="Vampire" type="Node2D"]
 script = ExtResource("1_0arq5")
+
+[node name="Notes" type="Node" parent="."]
+script = ExtResource("2_p6qpp")
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Intro" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("3_dub7d")
+bus = &"Music"
+
+[node name="Music" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("4_5wpb3")
+bus = &"Music"
+
+[node name="Win" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("5_7x2ym")
+bus = &"Music"
+
+[node name="Lose" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("6_vqk6w")
+bus = &"Music"
+
+[node name="Duck" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("7_p2dwi")
+bus = &"SFX"
+
+[node name="Jump" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("8_pcj5t")
+bus = &"SFX"
 
 [node name="BG" type="Sprite2D" parent="."]
 position = Vector2(80, 72)
@@ -769,7 +805,6 @@ position = Vector2(0.5, 0)
 texture = ExtResource("3_f8lcq")
 hframes = 6
 vframes = 3
-frame = 4
 
 [node name="Hitbox" type="CollisionShape2D" parent="PC"]
 position = Vector2(2, 15)
