@@ -743,13 +743,14 @@ shape = SubResource("RectangleShape2D_ibiie")
 
 [node name="PC" type="Area2D" parent="."]
 position = Vector2(32, 83)
+monitoring = false
 
 [node name="Sprite" type="Sprite2D" parent="PC"]
 position = Vector2(0.5, 0)
 texture = ExtResource("3_f8lcq")
 hframes = 6
 vframes = 3
-frame = 4
+frame = 1
 
 [node name="Hitbox" type="CollisionShape2D" parent="PC"]
 position = Vector2(2, 15)
@@ -791,7 +792,7 @@ gravity_scale = 0.0
 
 [node name="Bat1" type="AnimatedSprite2D" parent="Items/Bat1"]
 sprite_frames = SubResource("SpriteFrames_ueedb")
-frame_progress = 0.430371
+frame_progress = 0.366649
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Bat1"]
 shape = SubResource("CircleShape2D_4cgqx")
@@ -803,7 +804,7 @@ gravity_scale = 0.0
 
 [node name="Bat2" type="AnimatedSprite2D" parent="Items/Bat2"]
 sprite_frames = SubResource("SpriteFrames_6x7q5")
-frame_progress = 0.350624
+frame_progress = 0.286901
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Bat2"]
 shape = SubResource("CircleShape2D_8en5q")
@@ -815,7 +816,7 @@ gravity_scale = 0.0
 
 [node name="Glider" type="AnimatedSprite2D" parent="Items/Glider"]
 sprite_frames = SubResource("SpriteFrames_ishvy")
-frame_progress = 0.15029
+frame_progress = 0.774495
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Glider"]
 position = Vector2(0, 2)
@@ -828,7 +829,7 @@ gravity_scale = 0.0
 
 [node name="Pan" type="AnimatedSprite2D" parent="Items/Pan"]
 sprite_frames = SubResource("SpriteFrames_hr0or")
-frame_progress = 0.219879
+frame_progress = 0.468195
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Pan"]
 shape = SubResource("CircleShape2D_ce0vg")
@@ -840,7 +841,7 @@ gravity_scale = 0.0
 
 [node name="Barrel" type="AnimatedSprite2D" parent="Items/Barrel"]
 sprite_frames = SubResource("SpriteFrames_6d3qd")
-frame_progress = 0.69413
+frame_progress = 0.31834
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Barrel"]
 shape = SubResource("CircleShape2D_a5e0n")
@@ -852,7 +853,7 @@ gravity_scale = 0.0
 
 [node name="Chomper" type="AnimatedSprite2D" parent="Items/Chomper"]
 sprite_frames = SubResource("SpriteFrames_fh276")
-frame_progress = 0.0612176
+frame_progress = 0.685425
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Chomper"]
 shape = SubResource("CircleShape2D_xckna")
@@ -885,12 +886,12 @@ shape = SubResource("CircleShape2D_l2j1u")
 [node name="Nice" type="AnimatedSprite2D" parent="."]
 position = Vector2(37.5, 20)
 sprite_frames = SubResource("SpriteFrames_ylkyn")
-frame_progress = 0.993745
+frame_progress = 0.273922
 
 [node name="YouSuck" type="AnimatedSprite2D" parent="."]
 position = Vector2(129, 20)
 sprite_frames = SubResource("SpriteFrames_2ip5h")
-frame_progress = 0.0461016
+frame_progress = 0.670303
 offset = Vector2(0, 0.5)
 
 [node name="RecolorLayer" type="CanvasLayer" parent="."]

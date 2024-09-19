@@ -1,6 +1,9 @@
 class_name DodgeStuff
 extends Node2D
 
+const DAMAGED_FLASH_RATE = 0.12  # sec period
+const DAMAGED_DURATION = 1.5  # sec
+
 @onready var spawners: Array[Node] = $Items.get_children()
 @onready var despawner: Area2D = $Despawner
 @onready var spawned_items: Node2D = $SpawnedItems
@@ -16,6 +19,9 @@ extends Node2D
 
 @onready var positions: Array[Sprite2D] = [standing, jumping, crouching]
 
+var last_spawned_item: Node = null
+var damage_remain_s := 0.0
+
 
 func _ready():
 	GBtn.on_up.connect(_on_up)
@@ -27,6 +33,25 @@ func _ready():
 	pc.body_entered.connect(_on_hit)
 
 	_new_timer()
+
+
+func _process(delta: float):
+	if damage_remain_s <= 0:
+		pc.modulate.a = 1
+		pc.monitoring = true
+		return
+
+	pc.monitoring = false
+	damage_remain_s -= delta
+	var dim: bool = fmod(damage_remain_s / DAMAGED_FLASH_RATE, 2) < 1
+	if dim:
+		pc.modulate.a = 0.75
+	else:
+		pc.modulate.a = 0.3
+
+
+func fmod(a: float, b: float) -> float:
+	return a - b * floor(a / b)
 
 
 func _new_timer():
@@ -42,10 +67,15 @@ func _on_timeout():
 func _spawn_item():
 	dr_anim_sm.travel("toss")
 	var spawner = spawners[randi() % len(spawners)]
+	while last_spawned_item == spawner:
+		spawner = spawners[randi() % len(spawners)]
+	last_spawned_item = spawner
+
 	var item: RigidBody2D = spawner.duplicate()
 	_start_anim(item)
 	item.global_position = spawner.global_position
-	item.linear_velocity = Vector2(-150, 0)
+	item.linear_velocity = Vector2(-175, 0)
+
 	spawned_items.add_child(item)
 
 
@@ -68,7 +98,8 @@ func _on_down_release():
 
 
 func _on_hit(body: Node):
-	body.modulate.a = 0.5
+	body.gravity_scale = 1.0
+	damage_remain_s = DAMAGED_DURATION
 
 
 func _despawn(body: Node):
