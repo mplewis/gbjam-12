@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cining1sqwr8d"
+path="res://.godot/imported/Door_Open _ 4 Steps _ Door_Close.mp3-6c4a6ab538d1b11cf0e51658a3dd03b6.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/Door_Open _ 4 Steps _ Door_Close.mp3"
+dest_files=["res://.godot/imported/Door_Open _ 4 Steps _ Door_Close.mp3-6c4a6ab538d1b11cf0e51658a3dd03b6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

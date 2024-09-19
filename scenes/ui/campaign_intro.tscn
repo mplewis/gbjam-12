@@ -3,12 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://crxje5adebltx" path="res://scenes/components/cinematic.tscn" id="1_gcgyv"]
 [ext_resource type="Texture2D" uid="uid://sp0xomyksm6g" path="res://assets/demo/images/appalachia-stock-photo.jpg" id="2_pjmd4"]
 [ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="2_xwga0"]
-[ext_resource type="Texture2D" uid="uid://dhh8e0hsf548p" path="res://assets/t_rex_candy/pc_static.png" id="3_86xgl"]
-[ext_resource type="Texture2D" uid="uid://dokirsbps343t" path="res://assets/t_rex_candy/TrexIntro_animation.png" id="4_kfcht"]
+[ext_resource type="Texture2D" uid="uid://dhh8e0hsf548p" path="res://assets/images/t_rex/pc_static.png" id="3_86xgl"]
+[ext_resource type="Texture2D" uid="uid://dokirsbps343t" path="res://assets/images/t_rex/TrexIntro_animation.png" id="4_kfcht"]
 [ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="5_3omne"]
-[ext_resource type="Texture2D" uid="uid://dtkgqvjp7y3p" path="res://assets/drums/cuteTrantula_grayscale.png" id="5_gqvm8"]
+[ext_resource type="Texture2D" uid="uid://dtkgqvjp7y3p" path="res://assets/images/spider/cuteTrantula_grayscale.png" id="5_gqvm8"]
 [ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="6_7654p"]
-[ext_resource type="Texture2D" uid="uid://cg7rxsryoswi6" path="res://assets/dracula/Dracula_intro-Sheet.png" id="6_u0x4y"]
+[ext_resource type="Texture2D" uid="uid://cg7rxsryoswi6" path="res://assets/images/vampire/Dracula_intro-Sheet.png" id="6_u0x4y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rjfg1"]
 atlas = ExtResource("4_kfcht")
