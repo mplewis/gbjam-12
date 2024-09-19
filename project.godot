@@ -56,7 +56,7 @@ window/stretch/scale_mode="integer"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/midi/plugin.cfg", "res://addons/radial_progress/plugin.cfg")
+enabled=PackedStringArray("res://addons/midi/plugin.cfg")
 
 [input]
 
