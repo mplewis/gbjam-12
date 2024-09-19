@@ -112,13 +112,13 @@ func _on_hit(body: Node):
 	damage_remain_s = DAMAGED_DURATION
 
 
-func _on_dodged():
-	print("Nice")
+func _on_dodged(_body: Node):
+	if nice_anim.modulate.a > 0:
+		return
 	nice_anim.modulate.a = 1.0
 
 
 func _despawn(body: Node):
-	print("Despawn")
 	body.queue_free()
 
 
