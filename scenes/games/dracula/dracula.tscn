@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://bqkg7u5vvf66y"]
+[gd_scene load_steps=105 format=3 uid="uid://bqkg7u5vvf66y"]
 
 [ext_resource type="Script" path="res://scripts/dodge_stuff.gd" id="1_0arq5"]
 [ext_resource type="Texture2D" uid="uid://bokk1qiyhpuqr" path="res://assets/dracula/Dracula_background.png" id="2_fkgq3"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://3ehjs7cqfh7j" path="res://assets/dracula/ground_banana.png" id="12_lsp2s"]
 [ext_resource type="Texture2D" uid="uid://dylj04p86fla0" path="res://assets/dracula/Dracula-nice-Sheet.png" id="13_y87fo"]
 [ext_resource type="Texture2D" uid="uid://c3l12o2q24sna" path="res://assets/dracula/Dracula-youSuck-Sheet.png" id="14_3r8tf"]
+[ext_resource type="PackedScene" uid="uid://btjmu4m2e3tvk" path="res://scenes/games/dracula/hearts_row.tscn" id="17_85f4h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ibiie"]
 size = Vector2(20, 200)
@@ -768,7 +769,7 @@ position = Vector2(0.5, 0)
 texture = ExtResource("3_f8lcq")
 hframes = 6
 vframes = 3
-frame = 3
+frame = 4
 
 [node name="Hitbox" type="CollisionShape2D" parent="PC"]
 position = Vector2(2, 15)
@@ -921,6 +922,13 @@ position = Vector2(129, 20)
 sprite_frames = SubResource("SpriteFrames_2ip5h")
 frame_progress = 0.391379
 offset = Vector2(0, 0.5)
+
+[node name="HeartsRow" parent="." instance=ExtResource("17_85f4h")]
+offset_left = 36.0
+offset_top = 134.0
+offset_right = 76.0
+offset_bottom = 174.0
+health = 10
 
 [node name="RecolorLayer" type="CanvasLayer" parent="."]
 

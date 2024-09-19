@@ -13,6 +13,7 @@ const ANIM_FADE_DURATION = 1.5  # sec
 @onready var pc: Area2D = $PC
 @onready var nice_anim: AnimatedSprite2D = $Nice
 @onready var you_suck_anim: AnimatedSprite2D = $YouSuck
+@onready var hearts_row: HeartsRow = $HeartsRow
 
 @onready var pc_anim_tree: AnimationTree = $PC/AnimationTree
 @onready var pc_anim_sm: AnimationNodeStateMachinePlayback = pc_anim_tree.get("parameters/playback")
@@ -20,6 +21,9 @@ const ANIM_FADE_DURATION = 1.5  # sec
 @onready var dr_anim_sm: AnimationNodeStateMachinePlayback = dr_anim_tree.get("parameters/playback")
 
 @onready var floor_items = [$Items/Barrel, $Items/Chomper, $Items/Brick, $Items/Banana]
+
+const MAX_HEALTH := 10
+var health := 10
 
 var last_spawned_item: Node = null
 var damage_remain_s := 0.0
@@ -34,6 +38,7 @@ func _ready():
 	nice_trigger.body_entered.connect(_on_dodged)
 	pc.body_entered.connect(_on_hit)
 
+	hearts_row.total = MAX_HEALTH
 	nice_anim.modulate.a = 0.0
 	you_suck_anim.modulate.a = 0.0
 
@@ -44,6 +49,7 @@ func _process(delta: float):
 	var fade_amt := delta / ANIM_FADE_DURATION
 	nice_anim.modulate.a -= fade_amt
 	you_suck_anim.modulate.a -= fade_amt
+	hearts_row.health = health
 
 	if damage_remain_s <= 0:
 		pc.modulate.a = 1
@@ -116,6 +122,7 @@ func _trash_throwable(item: CollisionObject2D):
 func _on_hit(body: Node):
 	_trash_throwable(body)
 	you_suck_anim.modulate.a = 1.0
+	health = max(0, health - 1)
 	damage_remain_s = DAMAGED_DURATION
 
 
