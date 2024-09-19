@@ -40,12 +40,19 @@ func _on_timeout():
 
 
 func _spawn_item():
-	pass
-	# var spawner = spawners[randi() % len(spawners)]
-	# var item: RigidBody2D = spawner.duplicate()
-	# item.global_position = spawner.global_position
-	# item.linear_velocity = Vector2(-150, 0)
-	# spawned_items.add_child(item)
+	dr_anim_sm.travel("toss")
+	var spawner = spawners[randi() % len(spawners)]
+	var item: RigidBody2D = spawner.duplicate()
+	_start_anim(item)
+	item.global_position = spawner.global_position
+	item.linear_velocity = Vector2(-150, 0)
+	spawned_items.add_child(item)
+
+
+func _start_anim(item: Node):
+	for child in item.get_children():
+		if child.has_method("play"):
+			child.play()
 
 
 func _on_up():
