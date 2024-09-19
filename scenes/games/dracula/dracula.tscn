@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://bqkg7u5vvf66y"]
+[gd_scene load_steps=104 format=3 uid="uid://bqkg7u5vvf66y"]
 
 [ext_resource type="Script" path="res://scripts/dodge_stuff.gd" id="1_0arq5"]
 [ext_resource type="Texture2D" uid="uid://bokk1qiyhpuqr" path="res://assets/dracula/Dracula_background.png" id="2_fkgq3"]
@@ -18,6 +18,12 @@
 [ext_resource type="Texture2D" uid="uid://c3l12o2q24sna" path="res://assets/dracula/Dracula-youSuck-Sheet.png" id="14_3r8tf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ibiie"]
+size = Vector2(20, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7bpd8"]
+size = Vector2(189, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4thop"]
 size = Vector2(20, 144)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lx3wf"]
@@ -735,18 +741,23 @@ position = Vector2(80, 72)
 texture = ExtResource("2_fkgq3")
 
 [node name="Despawner" type="Area2D" parent="."]
-position = Vector2(-30, 0)
+position = Vector2(-39, 0)
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Despawner"]
-position = Vector2(-19, 72)
+position = Vector2(0, 100)
 shape = SubResource("RectangleShape2D_ibiie")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Despawner"]
+position = Vector2(104.5, 190)
+shape = SubResource("RectangleShape2D_7bpd8")
 
 [node name="NiceTrigger" type="Area2D" parent="."]
-position = Vector2(19, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NiceTrigger"]
-position = Vector2(-19, 72)
-shape = SubResource("RectangleShape2D_ibiie")
+position = Vector2(0, 72)
+shape = SubResource("RectangleShape2D_4thop")
 
 [node name="PC" type="Area2D" parent="."]
 position = Vector2(32, 83)
@@ -757,7 +768,7 @@ position = Vector2(0.5, 0)
 texture = ExtResource("3_f8lcq")
 hframes = 6
 vframes = 3
-frame = 1
+frame = 3
 
 [node name="Hitbox" type="CollisionShape2D" parent="PC"]
 position = Vector2(2, 15)
@@ -794,36 +805,39 @@ position = Vector2(168, 0)
 
 [node name="Bat1" type="RigidBody2D" parent="Items"]
 position = Vector2(4, 70)
+collision_layer = 5
 collision_mask = 0
 gravity_scale = 0.0
 
 [node name="Bat1" type="AnimatedSprite2D" parent="Items/Bat1"]
 sprite_frames = SubResource("SpriteFrames_ueedb")
-frame_progress = 0.184477
+frame_progress = 0.948667
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Bat1"]
 shape = SubResource("CircleShape2D_4cgqx")
 
 [node name="Bat2" type="RigidBody2D" parent="Items"]
 position = Vector2(4, 70)
+collision_layer = 5
 collision_mask = 0
 gravity_scale = 0.0
 
 [node name="Bat2" type="AnimatedSprite2D" parent="Items/Bat2"]
 sprite_frames = SubResource("SpriteFrames_6x7q5")
-frame_progress = 0.104727
+frame_progress = 0.868916
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Bat2"]
 shape = SubResource("CircleShape2D_8en5q")
 
 [node name="Glider" type="RigidBody2D" parent="Items"]
 position = Vector2(4, 70)
+collision_layer = 5
 collision_mask = 0
 gravity_scale = 0.0
 
 [node name="Glider" type="AnimatedSprite2D" parent="Items/Glider"]
 sprite_frames = SubResource("SpriteFrames_ishvy")
-frame_progress = 0.319684
+frame_progress = 0.495582
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Glider"]
 position = Vector2(0, 2)
@@ -831,42 +845,46 @@ shape = SubResource("CircleShape2D_5jrug")
 
 [node name="Pan" type="RigidBody2D" parent="Items"]
 position = Vector2(4, 70)
+collision_layer = 5
 collision_mask = 0
 gravity_scale = 0.0
 
 [node name="Pan" type="AnimatedSprite2D" parent="Items/Pan"]
 sprite_frames = SubResource("SpriteFrames_hr0or")
-frame_progress = 0.558502
+frame_progress = 0.910222
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Pan"]
 shape = SubResource("CircleShape2D_ce0vg")
 
 [node name="Barrel" type="RigidBody2D" parent="Items"]
 position = Vector2(4, 120)
+collision_layer = 5
 collision_mask = 0
 gravity_scale = 0.0
 
 [node name="Barrel" type="AnimatedSprite2D" parent="Items/Barrel"]
 sprite_frames = SubResource("SpriteFrames_6d3qd")
-frame_progress = 0.863531
+frame_progress = 0.0394324
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Barrel"]
 shape = SubResource("CircleShape2D_a5e0n")
 
 [node name="Chomper" type="RigidBody2D" parent="Items"]
 position = Vector2(4, 120)
+collision_layer = 5
 collision_mask = 0
 gravity_scale = 0.0
 
 [node name="Chomper" type="AnimatedSprite2D" parent="Items/Chomper"]
 sprite_frames = SubResource("SpriteFrames_fh276")
-frame_progress = 0.230613
+frame_progress = 0.406505
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Chomper"]
 shape = SubResource("CircleShape2D_xckna")
 
 [node name="Brick" type="RigidBody2D" parent="Items"]
 position = Vector2(4, 122)
+collision_layer = 5
 collision_mask = 0
 gravity_scale = 0.0
 
@@ -878,6 +896,7 @@ shape = SubResource("CircleShape2D_r62eb")
 
 [node name="Banana" type="RigidBody2D" parent="Items"]
 position = Vector2(4, 120)
+collision_layer = 5
 collision_mask = 0
 gravity_scale = 0.0
 
@@ -893,12 +912,12 @@ shape = SubResource("CircleShape2D_l2j1u")
 [node name="Nice" type="AnimatedSprite2D" parent="."]
 position = Vector2(37.5, 20)
 sprite_frames = SubResource("SpriteFrames_ylkyn")
-frame_progress = 0.955315
+frame_progress = 0.424953
 
 [node name="YouSuck" type="AnimatedSprite2D" parent="."]
 position = Vector2(129, 20)
 sprite_frames = SubResource("SpriteFrames_2ip5h")
-frame_progress = 0.215492
+frame_progress = 0.391379
 offset = Vector2(0, 0.5)
 
 [node name="RecolorLayer" type="CanvasLayer" parent="."]
