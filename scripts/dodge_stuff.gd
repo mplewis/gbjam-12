@@ -103,7 +103,7 @@ func _trash_throwable(item: CollisionObject2D):
 	item.gravity_scale = 1.0
 	for child in item.get_children():
 		if child is CollisionObject2D:
-			child.disabled = true
+			child.collision_layer -= 1
 
 
 func _on_hit(body: Node):
