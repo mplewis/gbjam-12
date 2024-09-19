@@ -31,7 +31,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cx8v6")
 height = 58
-text = "Lots of text goes in here and that's because we can type into the box. Tons of typing is possible in here!"
 
 [node name="Beeble" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_j4alc")
