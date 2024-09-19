@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://el1x3ef6nvft"]
 
-[ext_resource type="Script" path="res://scripts/candy_arrow.gd" id="1_lwqn3"]
-[ext_resource type="Texture2D" uid="uid://kpruc7nx3fq8" path="res://assets/images/t_rex/food_test.png" id="2_0lnim"]
-[ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="2_53kln"]
+[ext_resource type="Script" path="res://scripts/candy_arrow.gd" id="1_1kxm8"]
+[ext_resource type="Texture2D" uid="uid://kpruc7nx3fq8" path="res://assets/images/t_rex/food_test.png" id="2_u32ed"]
+[ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="3_qpogp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o4mrv"]
 radius = 2.0
@@ -10,10 +10,10 @@ radius = 2.0
 [node name="CandyArrow" type="RigidBody2D"]
 collision_mask = 0
 gravity_scale = 0.0
-script = ExtResource("1_lwqn3")
+script = ExtResource("1_1kxm8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_0lnim")
+texture = ExtResource("2_u32ed")
 offset = Vector2(0, 0.5)
 hframes = 4
 
@@ -26,6 +26,6 @@ offset_left = -3.0
 offset_top = -9.0
 offset_right = 37.0
 offset_bottom = 14.0
-theme = ExtResource("2_53kln")
+theme = ExtResource("3_qpogp")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "L"

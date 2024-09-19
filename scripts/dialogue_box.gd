@@ -14,6 +14,7 @@ const SCREEN_BOTTOM = 144  # Y coordinate of bottom of screen, where our dialog 
 ## The text to display in the dialogue box.
 @export var text: String = ""
 
+@onready var beeble: AudioStreamPlayer = $Beeble
 @onready var bg: TextureRect = %BG
 @onready var pos: Control = %Pos
 @onready var box: NinePatchRect = %Box
@@ -43,6 +44,7 @@ func _process(delta):
 
 	_show_text()
 	_move_arrow()
+	_play_beeble()
 
 
 func _position_bottom():
@@ -72,6 +74,15 @@ func _move_arrow():
 	arrow.position.x = (
 		orig_x + _tick(now, FRAMES_PER_ARROW_TICK) % ARROW_TICK_DIST - ARROW_TICK_DIST
 	)
+
+
+func _play_beeble():
+	if body.text.length() >= text.length():
+		beeble.stop()
+		return
+
+	if not beeble.playing:
+		beeble.play()
 
 
 func _on_advance() -> bool:
