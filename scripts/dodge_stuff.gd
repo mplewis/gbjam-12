@@ -129,6 +129,8 @@ func _on_hit(body: Node):
 func _on_dodged(_body: Node):
 	if nice_anim.modulate.a > 0:
 		return
+	if damage_remain_s > 0:
+		return
 	nice_anim.modulate.a = 1.0
 
 
