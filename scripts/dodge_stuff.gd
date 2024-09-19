@@ -8,7 +8,8 @@ const ANIM_FADE_DURATION = 1.5  # sec
 @onready var spawners: Array[Node] = $Items.get_children()
 @onready var despawner: Area2D = $Despawner
 @onready var nice_trigger: Area2D = $NiceTrigger
-@onready var spawned_items: Node2D = $SpawnedItems
+@onready var spawned_items_bg: Node2D = $SpawnedItemsBG
+@onready var spawned_items_fg: Node2D = $SpawnedItemsFG
 @onready var pc: Area2D = $PC
 @onready var nice_anim: AnimatedSprite2D = $Nice
 @onready var you_suck_anim: AnimatedSprite2D = $YouSuck
@@ -17,6 +18,8 @@ const ANIM_FADE_DURATION = 1.5  # sec
 @onready var pc_anim_sm: AnimationNodeStateMachinePlayback = pc_anim_tree.get("parameters/playback")
 @onready var dr_anim_tree: AnimationTree = $Dracula/AnimationTree
 @onready var dr_anim_sm: AnimationNodeStateMachinePlayback = dr_anim_tree.get("parameters/playback")
+
+@onready var floor_items = [$Items/Barrel, $Items/Chomper, $Items/Brick, $Items/Banana]
 
 var last_spawned_item: Node = null
 var damage_remain_s := 0.0
@@ -89,8 +92,12 @@ func _spawn_item():
 	_start_anim(item)
 	item.global_position = spawner.global_position
 	item.linear_velocity = Vector2(-175, 0)
+	item.position.y += randi_range(-3, 3)
 
-	spawned_items.add_child(item)
+	if spawner in floor_items:
+		spawned_items_bg.add_child(item)
+	else:
+		spawned_items_fg.add_child(item)
 
 
 func _start_anim(item: Node):
