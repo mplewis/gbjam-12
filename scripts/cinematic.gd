@@ -1,7 +1,7 @@
 class_name Cinematic
 extends Control
 
-enum Action {
+enum CinematicAction {
 	SHOW,
 	HIDE,
 	FADE_IN,
@@ -45,26 +45,26 @@ func _ready():
 	var lastSlide: CanvasItem = null
 	for child in children:
 		if child is AudioStreamPlayer:
-			steps.push_back([Action.PLAY_AUDIO, child])
+			steps.push_back([CinematicAction.PLAY_AUDIO, child])
 			continue
 
 		if child is Label:
-			steps.push_back([Action.DIALOGUE, child.text])
+			steps.push_back([CinematicAction.DIALOGUE, child.text])
 
 		if lastSlide:
-			steps.push_back([Action.FADE_OUT])
-			steps.push_back([Action.HIDE, lastSlide])
+			steps.push_back([CinematicAction.FADE_OUT])
+			steps.push_back([CinematicAction.HIDE, lastSlide])
 			lastSlide = null
 
 		if child is not Label:
-			steps.push_back([Action.SHOW, child])
-			steps.push_back([Action.CALL_METHOD_ON_SLIDE, child, "on_fade_in"])
-			steps.push_back([Action.FADE_IN])
-			steps.push_back([Action.HOLD])
+			steps.push_back([CinematicAction.SHOW, child])
+			steps.push_back([CinematicAction.CALL_METHOD_ON_SLIDE, child, "on_fade_in"])
+			steps.push_back([CinematicAction.FADE_IN])
+			steps.push_back([CinematicAction.HOLD])
 			lastSlide = child
 
 	if lastSlide:
-		steps.push_back([Action.FADE_OUT])
+		steps.push_back([CinematicAction.FADE_OUT])
 
 	DialogueMgr.on_close.connect(_next)
 
@@ -91,41 +91,41 @@ func _process(_delta):
 	var step = steps[step_idx]
 
 	match step:
-		[Action.SHOW, var child]:
+		[CinematicAction.SHOW, var child]:
 			if child.has_method("show"):
 				child.show()
 			_next()
 
-		[Action.HIDE, var child]:
+		[CinematicAction.HIDE, var child]:
 			if child.has_method("hide"):
 				child.hide()
 			_next()
 
-		[Action.FADE_IN]:
+		[CinematicAction.FADE_IN]:
 			busy = true
 			var tween := get_tree().create_tween()
 			tween.tween_property(fader, "modulate:a", 0.0, FADE_DURATION)
 			tween.finished.connect(_next)
 
-		[Action.HOLD]:
+		[CinematicAction.HOLD]:
 			busy = true
 			get_tree().create_timer(HOLD_DURATION).timeout.connect(_next)
 
-		[Action.FADE_OUT]:
+		[CinematicAction.FADE_OUT]:
 			busy = true
 			var tween := get_tree().create_tween()
 			tween.tween_property(fader, "modulate:a", 1.0, FADE_DURATION)
 			tween.finished.connect(_next)
 
-		[Action.DIALOGUE, var text]:
+		[CinematicAction.DIALOGUE, var text]:
 			busy = true
 			DialogueMgr.show(text)
 
-		[Action.CALL_METHOD_ON_SLIDE, var slide, var method]:
+		[CinematicAction.CALL_METHOD_ON_SLIDE, var slide, var method]:
 			if slide.has_method(method):
 				slide.call_deferred(method)
 			_next()
 
-		[Action.PLAY_AUDIO, var audio]:
+		[CinematicAction.PLAY_AUDIO, var audio]:
 			audio.play()
 			_next()
