@@ -90,6 +90,11 @@ func _process(delta: float):
 	you_suck_anim.modulate.a -= fade_amt
 	hearts_row.health = health
 
+	_ensure_start_music()
+	_handle_damage(delta)
+
+
+func _ensure_start_music():
 	if (
 		start_playing_music_at_ms
 		and Time.get_ticks_msec() >= start_playing_music_at_ms
@@ -102,6 +107,8 @@ func _process(delta: float):
 
 		start_playing_music_at_ms = null
 
+
+func _handle_damage(delta: float):
 	if damage_remain_s <= 0:
 		pc.modulate.a = 1
 		pc.monitoring = true
@@ -143,19 +150,7 @@ func _on_midi_event(_channel, event):
 
 
 func _spawn_item(fg: bool):
-	if swap_high_and_low_spawns:
-		fg = not fg
-
-	dr_anim_sm.travel("toss")
-
-	var spawners = spawners_bg
-	if fg:
-		spawners = spawners_fg
-	var spawner = spawners[randi() % len(spawners)]
-	while last_spawned_item == spawner:
-		spawner = spawners[randi() % len(spawners)]
-	last_spawned_item = spawner
-
+	var spawner := _pick_spawner(fg)
 	var item: RigidBody2D = spawner.duplicate()
 	_start_anim(item)
 
@@ -170,6 +165,23 @@ func _spawn_item(fg: bool):
 	if fg:
 		target = spawned_items_fg
 	target.add_child(item)
+
+
+func _pick_spawner(fg: bool) -> RigidBody2D:
+	if swap_high_and_low_spawns:
+		fg = not fg
+
+	dr_anim_sm.travel("toss")
+
+	var spawners = spawners_bg
+	if fg:
+		spawners = spawners_fg
+	var spawner = spawners[randi() % len(spawners)]
+	while last_spawned_item == spawner:
+		spawner = spawners[randi() % len(spawners)]
+	last_spawned_item = spawner
+
+	return spawner
 
 
 func _start_anim(item: Node):
@@ -212,6 +224,7 @@ func _on_music_end():
 
 func _play_finale(win: bool):
 	notes.stop()
+
 	if win:
 		DialogueMgr.show(win_text)
 		audio_win.play()
@@ -220,8 +233,10 @@ func _play_finale(win: bool):
 		DialogueMgr.show(lose_text)
 		audio_lose.play()
 		await audio_lose.finished
+
 	if DialogueMgr.current:
 		await DialogueMgr.on_close
+
 	fader.fade_out()
 	await fader.fade_complete
 	CampaignMgr.game_complete.emit()

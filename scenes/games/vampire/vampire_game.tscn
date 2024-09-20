@@ -827,6 +827,8 @@ script = ExtResource("1_66y2c")
 intro_text = "Who said you could enter my backyard--I mean, courtyard? I will make you rue the day you disturbed my stuff!"
 win_text = "How did you dodge all that junk--I mean, precision weaponry? You hide your talent well. Ngh-- Leave me!"
 lose_text = "I knew you would never withstand my precision junk throwing. Run away, wounded one! Muahaha!"
+spawn_to_hit_sec = null
+swap_high_and_low_spawns = null
 
 [node name="Notes" type="Node" parent="."]
 script = ExtResource("2_fom2f")
@@ -897,7 +899,7 @@ position = Vector2(0.5, 0)
 texture = ExtResource("11_d6cuy")
 hframes = 6
 vframes = 3
-frame = 2
+frame = 1
 
 [node name="Hitbox" type="CollisionShape2D" parent="PC"]
 position = Vector2(2, 2)
