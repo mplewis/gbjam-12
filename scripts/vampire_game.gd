@@ -36,6 +36,7 @@ const ANIM_FADE_DURATION = 1.5  # sec
 @export var lose_text: String
 @export var spawn_to_hit_sec: float = 0.8
 @export var swap_high_and_low_spawns: bool = false
+@export var skip_to_song_end: bool = false
 
 const max_health := 10
 @onready var health := max_health
@@ -51,6 +52,8 @@ func _ready():
 	GBtn.on_up_release.connect(_on_up_release)
 	GBtn.on_down.connect(_on_down)
 	GBtn.on_down_release.connect(_on_down_release)
+
+	audio_music.finished.connect(_on_music_end)
 
 	fader.fade_in()
 	hearts_row.total = max_health
@@ -87,14 +90,25 @@ func _process(delta: float):
 	you_suck_anim.modulate.a -= fade_amt
 	hearts_row.health = health
 
+	_ensure_start_music()
+	_handle_damage(delta)
+
+
+func _ensure_start_music():
 	if (
 		start_playing_music_at_ms
 		and Time.get_ticks_msec() >= start_playing_music_at_ms
 		and not audio_music.playing
 	):
 		audio_music.play()
+
+		if skip_to_song_end:
+			audio_music.seek(audio_music.stream.get_length() - 10.0)
+
 		start_playing_music_at_ms = null
 
+
+func _handle_damage(delta: float):
 	if damage_remain_s <= 0:
 		pc.modulate.a = 1
 		pc.monitoring = true
@@ -136,19 +150,7 @@ func _on_midi_event(_channel, event):
 
 
 func _spawn_item(fg: bool):
-	if swap_high_and_low_spawns:
-		fg = not fg
-
-	dr_anim_sm.travel("toss")
-
-	var spawners = spawners_bg
-	if fg:
-		spawners = spawners_fg
-	var spawner = spawners[randi() % len(spawners)]
-	while last_spawned_item == spawner:
-		spawner = spawners[randi() % len(spawners)]
-	last_spawned_item = spawner
-
+	var spawner := _pick_spawner(fg)
 	var item: RigidBody2D = spawner.duplicate()
 	_start_anim(item)
 
@@ -163,6 +165,23 @@ func _spawn_item(fg: bool):
 	if fg:
 		target = spawned_items_fg
 	target.add_child(item)
+
+
+func _pick_spawner(fg: bool) -> RigidBody2D:
+	if swap_high_and_low_spawns:
+		fg = not fg
+
+	dr_anim_sm.travel("toss")
+
+	var spawners = spawners_bg
+	if fg:
+		spawners = spawners_fg
+	var spawner = spawners[randi() % len(spawners)]
+	while last_spawned_item == spawner:
+		spawner = spawners[randi() % len(spawners)]
+	last_spawned_item = spawner
+
+	return spawner
 
 
 func _start_anim(item: Node):
@@ -197,6 +216,30 @@ func _on_dodged(_body: Node):
 
 func _despawn(body: Node):
 	body.queue_free()
+
+
+func _on_music_end():
+	_play_finale(health > 0)
+
+
+func _play_finale(win: bool):
+	notes.stop()
+
+	if win:
+		DialogueMgr.show(win_text)
+		audio_win.play()
+		await audio_win.finished
+	else:
+		DialogueMgr.show(lose_text)
+		audio_lose.play()
+		await audio_lose.finished
+
+	if DialogueMgr.current:
+		await DialogueMgr.on_close
+
+	fader.fade_out()
+	await fader.fade_complete
+	CampaignMgr.game_complete.emit()
 
 
 func fmod(a: float, b: float) -> float:

@@ -45,6 +45,7 @@ UiSounds="*res://scripts/ui_sounds.gd"
 Volume="*res://scripts/volume.gd"
 AudioCal="*res://scripts/audio_cal.gd"
 DialogueMgr="*res://scripts/dialogue_mgr.gd"
+CampaignMgr="*res://scripts/campaign_mgr.gd"
 
 [display]
 

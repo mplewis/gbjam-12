@@ -112,10 +112,11 @@ layout_mode = 2
 
 [node name="Arrow" type="TextureRect" parent="Canvas/Pos"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
-offset_left = 142.0
+offset_left = 145.0
 offset_top = 38.0
-offset_right = 147.0
+offset_right = 150.0
 offset_bottom = 47.0
 texture = ExtResource("4_jt8p3")
 stretch_mode = 2
