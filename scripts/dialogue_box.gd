@@ -43,8 +43,9 @@ func _process(delta):
 	box.size.y = height
 
 	_show_text()
-	_move_arrow()
 	_play_beeble()
+	if not Engine.is_editor_hint():
+		_move_arrow()
 
 
 func _position_bottom():
