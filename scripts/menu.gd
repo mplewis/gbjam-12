@@ -54,7 +54,7 @@ func select():
 	safe_call("_on_menu_%s" % item)
 
 
-func _on_campaign():
+func _on_menu_campaign():
 	CampaignMgr.start_campaign()
 
 
