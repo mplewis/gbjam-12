@@ -354,7 +354,7 @@ states/uncrouch/position = Vector2(507.7, 257.435)
 states/unjump/node = SubResource("AnimationNodeAnimation_cp4eh")
 states/unjump/position = Vector2(599.85, 143.85)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_wy102"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_enk1d"), "idle", "crouch", SubResource("AnimationNodeStateMachineTransition_t4o7b"), "uncrouch", "idle", SubResource("AnimationNodeStateMachineTransition_mji2r"), "crouch", "crouching", SubResource("AnimationNodeStateMachineTransition_lbghu"), "crouching", "uncrouch", SubResource("AnimationNodeStateMachineTransition_txtx8"), "jump", "unjump", SubResource("AnimationNodeStateMachineTransition_8bxqe"), "unjump", "idle", SubResource("AnimationNodeStateMachineTransition_s80ph")]
-graph_offset = Vector2(-278.32, -37.225)
+graph_offset = Vector2(-34.06, -31.225)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_65hwl"]
 atlas = ExtResource("12_sbgle")
@@ -869,7 +869,7 @@ position = Vector2(0.5, 0)
 texture = ExtResource("11_d6cuy")
 hframes = 6
 vframes = 3
-frame = 4
+frame = 3
 
 [node name="Hitbox" type="CollisionShape2D" parent="PC"]
 position = Vector2(2, 15)
