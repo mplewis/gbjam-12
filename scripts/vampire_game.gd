@@ -146,9 +146,16 @@ func _on_down_release():
 func _on_midi_event(_channel, event):
 	if event.type != SMF.MIDIEventType.note_on:
 		return
-	_spawn_item(event.note == 36)
+	if event.note == 36:
+		_spawn_item(true)
+	elif event.note == 40:
+		_spawn_item(false)
+	else:
+		return
+	dr_anim_sm.travel("toss")
 
 
+## Spawn an item. true = fg = foreground (top), false = bg = background (bottom)
 func _spawn_item(fg: bool):
 	var spawner := _pick_spawner(fg)
 	var item: RigidBody2D = spawner.duplicate()
