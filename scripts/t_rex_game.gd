@@ -1,4 +1,4 @@
-class_name TRexCandy
+class_name TRexGame
 extends Node2D
 
 @export var spawn_to_hit_sec = 2.0
