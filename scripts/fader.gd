@@ -7,7 +7,8 @@ extends Sprite2D
 
 
 func _ready():
-	show()
+	if not Engine.is_editor_hint():
+		show()
 	if start_dark:
 		modulate.a = 1.0
 	else:
