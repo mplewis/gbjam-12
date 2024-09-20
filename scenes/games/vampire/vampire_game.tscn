@@ -1,4 +1,4 @@
-[gd_scene load_steps=117 format=3 uid="uid://dkyjqlqibueg0"]
+[gd_scene load_steps=117 format=3 uid="uid://bqkg7u5vvf66y"]
 
 [ext_resource type="Script" path="res://scripts/vampire_game.gd" id="1_66y2c"]
 [ext_resource type="Script" path="res://addons/midi/MidiPlayer.gd" id="2_fom2f"]
@@ -802,7 +802,7 @@ lose_text = "Muahaha. I’ve trained in throwing lawn junk for millenia. You may
 
 [node name="Notes" type="Node" parent="."]
 script = ExtResource("2_fom2f")
-file = "res://assets/music/vampire/VampireMidi.midi"
+file = "res://assets/music/vampire/VampireMidi.mid"
 soundfont = "res://assets/demo/music/8bit.sf2"
 muted = true
 
@@ -869,7 +869,7 @@ position = Vector2(0.5, 0)
 texture = ExtResource("11_d6cuy")
 hframes = 6
 vframes = 3
-frame = 3
+frame = 1
 
 [node name="Hitbox" type="CollisionShape2D" parent="PC"]
 position = Vector2(2, 15)
