@@ -1,8 +1,11 @@
-[gd_scene load_steps=53 format=3 uid="uid://c3xyq5tra3eyx"]
+[gd_scene load_steps=54 format=3 uid="uid://c3xyq5tra3eyx"]
 
 [ext_resource type="Script" path="res://scripts/t_rex_game.gd" id="1_dh214"]
 [ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="2_qgi35"]
+[ext_resource type="AudioStream" uid="uid://cc5a7rwpm32qj" path="res://assets/music/t_rex/TREXLose.mp3" id="3_2kau2"]
 [ext_resource type="Texture2D" uid="uid://bh8r8xldtv7l4" path="res://assets/images/t_rex/Background.png" id="3_eg7k7"]
+[ext_resource type="AudioStream" uid="uid://bamus7srvf2ku" path="res://assets/music/t_rex/TREXMainMusic.mp3" id="4_vuuns"]
+[ext_resource type="AudioStream" uid="uid://7sno3hoclkwr" path="res://assets/music/t_rex/TREXWin.mp3" id="5_8iljc"]
 [ext_resource type="PackedScene" uid="uid://b0e6t0ypkw46h" path="res://scenes/games/t_rex/candy_arrow_follower.tscn" id="5_ionbc"]
 [ext_resource type="Texture2D" uid="uid://cev7tenguvdj1" path="res://assets/images/t_rex/PC_animation-Sheet.png" id="5_iq6in"]
 [ext_resource type="Texture2D" uid="uid://cj3powqno8687" path="res://assets/images/t_rex/conveyor_belt_static.png" id="6_5jj4u"]
@@ -12,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://c1dqf3khga4ke" path="res://assets/ui/transparent.png" id="8_wd5yu"]
 [ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="8_yoofu"]
 [ext_resource type="Texture2D" uid="uid://3ob2pl0l5gyq" path="res://assets/images/t_rex/Hit_spriteSheet.png" id="14_loms7"]
+[ext_resource type="PackedScene" uid="uid://dk28jnwyfy0aj" path="res://scenes/components/fader.tscn" id="14_w8p5c"]
 
 [sub_resource type="Curve2D" id="Curve2D_cq7oq"]
 _data = {
@@ -99,15 +103,7 @@ states/punch/position = Vector2(680.5, 99.25)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_3wa54"), "idle", "punch", SubResource("AnimationNodeStateMachineTransition_4biwq"), "punch", "idle", SubResource("AnimationNodeStateMachineTransition_543hr")]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3tqsj"]
-radius = 7.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_3ym01"]
-radius = 11.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_8qa6l"]
-radius = 15.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_2bmkp"]
+radius = 12.0416
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b1j0e"]
 atlas = ExtResource("6_f8hln")
@@ -178,12 +174,48 @@ animations = [{
 "speed": 30.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8trnd"]
+atlas = ExtResource("14_loms7")
+region = Rect2(0, 0, 54, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fif6"]
+atlas = ExtResource("14_loms7")
+region = Rect2(54, 0, 54, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ckci"]
+atlas = ExtResource("14_loms7")
+region = Rect2(108, 0, 54, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utgnx"]
+atlas = ExtResource("14_loms7")
+region = Rect2(162, 0, 54, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rrxh8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8trnd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fif6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ckci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utgnx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
 [sub_resource type="Animation" id="Animation_m06n2"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TRex:frame")
+tracks/0/path = NodePath("../TRex:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -200,7 +232,7 @@ step = 0.08
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TRex:frame")
+tracks/0/path = NodePath("../TRex:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -218,7 +250,7 @@ step = 0.1333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TRex:frame")
+tracks/0/path = NodePath("../TRex:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -265,42 +297,6 @@ graph_offset = Vector2(-326.679, 39.495)
 radius = 8.0
 height = 80.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8trnd"]
-atlas = ExtResource("14_loms7")
-region = Rect2(0, 0, 54, 38)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2fif6"]
-atlas = ExtResource("14_loms7")
-region = Rect2(54, 0, 54, 38)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2ckci"]
-atlas = ExtResource("14_loms7")
-region = Rect2(108, 0, 54, 38)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_utgnx"]
-atlas = ExtResource("14_loms7")
-region = Rect2(162, 0, 54, 38)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_rrxh8"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8trnd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2fif6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2ckci")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_utgnx")
-}],
-"loop": true,
-"name": &"default",
-"speed": 12.0
-}]
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7fog1"]
 shader = ExtResource("7_2gg1w")
 shader_parameter/threshold1 = 0.167
@@ -313,18 +309,27 @@ shader_parameter/color4 = Color(1, 0.964706, 0.827451, 1)
 
 [node name="TRexGame" type="Node2D"]
 script = ExtResource("1_dh214")
+intro_text = "ROAR!! I’ve got a hunger, and the only prescription… is more candy! Stand by that belt and throw it at my chompers!!"
+win_text = "Oh my god. Why did you feed me so much candy? I can’t believe you threw that all in my mouth. I need to go sit down..."
+lose_text = "I’m not finished, my stomach is still grumbling! I need you to stay right there and--hey, don't run away from ME!!"
+fullness_threshold = -1
 
-[node name="MidiPlayerSpawn" parent="." instance=ExtResource("2_qgi35")]
-file = "res://assets/demo/music/smb_overworld.mid"
+[node name="Notes" parent="." instance=ExtResource("2_qgi35")]
+file = "res://assets/music/t_rex/TREXMidi.mid"
 soundfont = "res://assets/demo/music/8bit.sf2"
 bus = &"Music"
 muted = true
 
-[node name="MidiPlayerAudio" parent="." instance=ExtResource("2_qgi35")]
-file = "res://assets/demo/music/smb_overworld.mid"
-volume_db = 0.0
-soundfont = "res://assets/demo/music/8bit.sf2"
-bus = &"Music"
+[node name="Audio" type="Node" parent="."]
+
+[node name="Music" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("4_vuuns")
+
+[node name="Win" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("5_8iljc")
+
+[node name="Lose" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("3_2kau2")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(80, 72)
@@ -370,38 +375,12 @@ root_node = NodePath("%PCAnimTree/..")
 tree_root = SubResource("AnimationNodeStateMachine_ia5bb")
 anim_player = NodePath("../PCAnimPlayer")
 
-[node name="Goals" type="Node2D" parent="."]
-position = Vector2(18, 87)
-
-[node name="Great" type="Area2D" parent="Goals"]
-position = Vector2(20, 0)
+[node name="Goal" type="Area2D" parent="."]
+position = Vector2(38, 87)
 collision_layer = 0
 
-[node name="Hitbox" type="CollisionShape2D" parent="Goals/Great"]
+[node name="Hitbox" type="CollisionShape2D" parent="Goal"]
 shape = SubResource("CircleShape2D_3tqsj")
-
-[node name="Good" type="Area2D" parent="Goals"]
-visible = false
-position = Vector2(20, 0)
-collision_layer = 0
-
-[node name="Hitbox" type="CollisionShape2D" parent="Goals/Good"]
-shape = SubResource("CircleShape2D_3ym01")
-
-[node name="OK" type="Area2D" parent="Goals"]
-visible = false
-position = Vector2(20, 0)
-collision_layer = 0
-
-[node name="Hitbox" type="CollisionShape2D" parent="Goals/OK"]
-shape = SubResource("CircleShape2D_8qa6l")
-
-[node name="Miss" type="Area2D" parent="Goals"]
-position = Vector2(-32, 0)
-collision_layer = 0
-
-[node name="Hitbox" type="CollisionShape2D" parent="Goals/Miss"]
-shape = SubResource("CircleShape2D_2bmkp")
 
 [node name="SplashRing" type="AnimatedSprite2D" parent="."]
 position = Vector2(193, 115)
@@ -410,42 +389,44 @@ animation = &"burst"
 frame = 10
 frame_progress = 1.0
 
-[node name="Foreground" type="CanvasLayer" parent="."]
-
-[node name="TRex" type="Sprite2D" parent="Foreground"]
-position = Vector2(89, 114)
-texture = ExtResource("7_5nfyv")
-hframes = 8
-vframes = 3
-
-[node name="TRexAnimPlayer" type="AnimationPlayer" parent="Foreground/TRex"]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_mix54")
-}
-
-[node name="TRexAnimTree" type="AnimationTree" parent="Foreground/TRex"]
-unique_name_in_owner = true
-root_node = NodePath("%TRexAnimTree/../..")
-tree_root = SubResource("AnimationNodeStateMachine_1a7vl")
-anim_player = NodePath("../TRexAnimPlayer")
-
-[node name="ChompTrigger" type="Area2D" parent="Foreground/TRex"]
-unique_name_in_owner = true
-position = Vector2(-89, -91)
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/TRex/ChompTrigger"]
-position = Vector2(112, 92)
-rotation = -1.5708
-shape = SubResource("CapsuleShape2D_gtjr3")
-
 [node name="HitAnim" type="AnimatedSprite2D" parent="."]
 position = Vector2(39, 118)
 sprite_frames = SubResource("SpriteFrames_rrxh8")
 frame = 2
 frame_progress = 0.127029
+
+[node name="TRex" type="Sprite2D" parent="."]
+position = Vector2(89, 114)
+texture = ExtResource("7_5nfyv")
+hframes = 8
+vframes = 3
+frame = 12
+
+[node name="TRexAnimPlayer" type="AnimationPlayer" parent="TRex"]
+root_node = NodePath("")
+libraries = {
+"": SubResource("AnimationLibrary_mix54")
+}
+
+[node name="TRexAnimTree" type="AnimationTree" parent="TRex"]
+unique_name_in_owner = true
+root_node = NodePath("")
+tree_root = SubResource("AnimationNodeStateMachine_1a7vl")
+anim_player = NodePath("../TRexAnimPlayer")
+
+[node name="ChompTrigger" type="Area2D" parent="TRex"]
+unique_name_in_owner = true
+position = Vector2(-89, -91)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TRex/ChompTrigger"]
+position = Vector2(112, 92)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_gtjr3")
+
+[node name="Fader" parent="." instance=ExtResource("14_w8p5c")]
+visible = false
 
 [node name="RecolorLayer" type="CanvasLayer" parent="."]
 

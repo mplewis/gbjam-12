@@ -1,8 +1,6 @@
 class_name TRexGame
 extends Node2D
 
-@export var spawn_to_hit_sec = 2.0
-
 ## Determined by experimentation.
 ## There is some constant difference between the offset from the calibration scene
 ## (which seems to be very close to real life!) and in the actual game, here.
@@ -10,13 +8,13 @@ const MAGIC_NUMBER_MIDI_DELAY := 0.16
 ## How fast the hit animation fades out
 const HIT_ANIM_FADE_RATE := 2.0
 
-@onready var midi_player_spawn: MidiPlayer = $MidiPlayerSpawn
-@onready var midi_player_audio: MidiPlayer = $MidiPlayerAudio
+@onready var notes: MidiPlayer = $Notes
+@onready var audio_music: AudioStreamPlayer = $Audio/Music
+@onready var audio_win: AudioStreamPlayer = $Audio/Win
+@onready var audio_lose: AudioStreamPlayer = $Audio/Lose
+
 @onready var spawner: CandyArrowFollower = %CandyArrowSpawner
-@onready var goal_great: Area2D = $Goals/Great
-@onready var goal_good: Area2D = $Goals/Good
-@onready var goal_ok: Area2D = $Goals/OK
-@onready var goal_miss: Area2D = $Goals/Miss
+@onready var goal: Area2D = $Goal
 @onready var chomp_trigger: Area2D = %ChompTrigger
 
 @onready var hit_anim: AnimatedSprite2D = $HitAnim
@@ -27,55 +25,81 @@ var trex_anim_sm: AnimationNodeStateMachinePlayback = trex_anim_tree.get("parame
 @onready var pc_anim_sm: AnimationNodeStateMachinePlayback = pc_anim_tree.get("parameters/playback")
 @onready var splash_ring: AnimatedSprite2D = $SplashRing
 
-var start_playing_music_at_ms: int
-var started = false
+@onready var fader: Fader = $Fader
+
+@export var intro_text: String
+@export var win_text: String
+@export var lose_text: String
+@export var spawn_to_hit_sec: float = 3.0
+@export var fullness_threshold: int = 20
+@export var skip_to_song_end: bool = false
+
+var start_playing_music_at_ms = null
+var fullness := 0
 
 
 func _ready():
-	SceneMgr.set_appropriate_window_size()
-	GBtn.on_start.connect(_on_start)
+	# TODO: Add button masher cooldown
 	GBtn.on_left.connect(_on_left)
 	GBtn.on_down.connect(_on_down)
 	GBtn.on_up.connect(_on_up)
 	GBtn.on_right.connect(_on_right)
 
-	spawner.hide()
-	hit_anim.play()
-	hit_anim.modulate.a = 0.0
+	audio_music.finished.connect(_on_music_end)
+	notes.midi_event.connect(_on_midi_event)
 
 	chomp_trigger.body_entered.connect(_on_candy_chompable)
 
-	midi_player_spawn.volume_db = 0.0
-	midi_player_audio.volume_db = 0.0
-	midi_player_spawn.midi_event.connect(_on_midi_event)
-	midi_player_spawn.play()
+	spawner.hide()
+	hit_anim.modulate.a = 0.0
+	hit_anim.play()
 
+	_start_intro()
+
+
+func _start_intro():
+	fader.fade_in()
+	await get_tree().create_timer(1.0).timeout
+
+	DialogueMgr.show(intro_text)
+	await DialogueMgr.on_close
+
+	# TODO: Install audio intro when we get the assets
+	# HACK: Gappy transition into game music
+	# audio_intro["parameters/looping"] = false
+	# while audio_intro.playing:
+	# 	await get_tree().create_timer(0.1).timeout
+
+	_start_game()
+
+
+func _start_game():
+	notes.play()
 	start_playing_music_at_ms = (
 		Time.get_ticks_msec() + int((spawn_to_hit_sec - AudioCal.total_audio_offset()) * 1000)
 	)
 
 
 func _process(delta: float):
-	start_audio()
 	hit_anim.modulate.a -= delta * HIT_ANIM_FADE_RATE
+	_ensure_start_music()
 
 
-func start_audio():
-	if Time.get_ticks_msec() < start_playing_music_at_ms:
-		return
-	if started:
-		return
-	if midi_player_audio.playing:
-		return
-	midi_player_audio.play()
-	started = true
+func _ensure_start_music():
+	if (
+		start_playing_music_at_ms
+		and Time.get_ticks_msec() >= start_playing_music_at_ms
+		and not audio_music.playing
+	):
+		audio_music.play()
+
+		if skip_to_song_end:
+			audio_music.seek(audio_music.stream.get_length() - 10.0)
+
+		start_playing_music_at_ms = null
 
 
 # TODO: Handle completion of audio
-
-
-func _on_start():
-	SceneMgr.close()
 
 
 func _on_left():
@@ -96,14 +120,14 @@ func _on_right():
 
 func tally(dir: String):
 	pc_anim_sm.travel("punch")
-	score_and_remove(goal_great, dir)
+	score_and_remove(goal, dir)
 
 
-func score_and_remove(goal: Area2D, dir: String) -> int:
+func score_and_remove(area: Area2D, dir: String) -> int:
 	assert(dir in ["L", "D", "U", "R"], "Invalid direction: %s" % dir)
 
 	var count := 0
-	var candies = goal.get_overlapping_bodies()
+	var candies = area.get_overlapping_bodies()
 	for body: PhysicsBody2D in candies:
 		var candy: CandyArrowFollower = body.get_parent()
 		if candy.dir_str != dir:
@@ -116,13 +140,24 @@ func score_and_remove(goal: Area2D, dir: String) -> int:
 	return count
 
 
-func _on_midi_event(channel, event):
+func _on_midi_event(_channel, event):
 	if event.type != SMF.MIDIEventType.note_on:
 		return
-	if channel.number != 2:
-		return
 
-	spawner.spawn(event.note % 4, spawn_to_hit_sec)
+	var dir_i = -1
+	match event.note:
+		49:
+			dir_i = 0
+		56:
+			dir_i = 1
+		61:
+			dir_i = 2
+		68:
+			dir_i = 3
+		_:
+			return
+
+	spawner.spawn(dir_i, spawn_to_hit_sec)
 
 
 func _punt(candy: CandyArrowFollower):
@@ -131,6 +166,9 @@ func _punt(candy: CandyArrowFollower):
 
 
 func _on_candy_chompable(candy: CandyArrowPuntable):
+	fullness += 1
+	# print(fullness)
+
 	trex_anim_sm.travel("chomp")
 	hit_anim.modulate.a = 1.0
 
@@ -141,3 +179,23 @@ func _on_candy_chompable(candy: CandyArrowPuntable):
 	add_child(sr)
 
 	candy.queue_free()
+
+
+func _on_music_end():
+	notes.stop()
+
+	if fullness > fullness_threshold:
+		DialogueMgr.show(win_text)
+		audio_win.play()
+		await audio_win.finished
+	else:
+		DialogueMgr.show(lose_text)
+		audio_lose.play()
+		await audio_lose.finished
+
+	if DialogueMgr.current:
+		await DialogueMgr.on_close
+
+	fader.fade_out()
+	await fader.fade_complete
+	CampaignMgr.game_complete.emit()

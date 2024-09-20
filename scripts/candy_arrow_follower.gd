@@ -7,8 +7,8 @@ extends PathFollow2D
 @onready var left_sprite: AnimatedSprite2D = $Left
 @onready var right_sprite: AnimatedSprite2D = $Right
 
-var dirs = ["U", "D", "L", "R"]
-@onready var sprites = [up_sprite, down_sprite, left_sprite, right_sprite]
+var dirs = ["D", "L", "R", "U"]
+@onready var sprites = [down_sprite, left_sprite, right_sprite, up_sprite]
 
 ## Goal position is based on the spawner's `progress` position
 @onready var goal_progress_ratio := progress_ratio
