@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=3 uid="uid://bqkg7u5vvf66y"]
+[gd_scene load_steps=114 format=3 uid="uid://bqkg7u5vvf66y"]
 
 [ext_resource type="Script" path="res://scripts/vampire.gd" id="1_0arq5"]
 [ext_resource type="Texture2D" uid="uid://bokk1qiyhpuqr" path="res://assets/images/vampire/Dracula_background.png" id="2_fkgq3"]
@@ -16,6 +16,7 @@
 [ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="8_4kqmv"]
 [ext_resource type="Texture2D" uid="uid://ds8yniw2nu8s1" path="res://assets/images/vampire/flying_pan.png" id="8_bgqxj"]
 [ext_resource type="AudioStream" uid="uid://sn6ud3bckriy" path="res://assets/music/vampire/VampireJump.mp3" id="8_pcj5t"]
+[ext_resource type="AudioStream" uid="uid://dw6dhebhyndfi" path="res://assets/sfx/Miss.wav" id="9_dwh64"]
 [ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="9_lxosv"]
 [ext_resource type="Texture2D" uid="uid://btmlgof1iqfjl" path="res://assets/images/vampire/ground_barrel.png" id="9_to4n2"]
 [ext_resource type="Texture2D" uid="uid://b6mh4j0gxextp" path="res://assets/images/vampire/ground_chomper.png" id="10_c22vo"]
@@ -24,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://dylj04p86fla0" path="res://assets/images/vampire/Dracula-nice-Sheet.png" id="13_y87fo"]
 [ext_resource type="Texture2D" uid="uid://c3l12o2q24sna" path="res://assets/images/vampire/Dracula-youSuck-Sheet.png" id="14_3r8tf"]
 [ext_resource type="PackedScene" uid="uid://btjmu4m2e3tvk" path="res://scenes/games/vampire/hearts_row.tscn" id="17_85f4h"]
+[ext_resource type="PackedScene" uid="uid://dk28jnwyfy0aj" path="res://scenes/components/fader.tscn" id="24_kolfl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ibiie"]
 size = Vector2(20, 200)
@@ -741,8 +743,11 @@ shader_parameter/color2 = Color(0.12549, 0.211765, 0.443137, 1)
 shader_parameter/color3 = Color(0.211765, 0.52549, 0.560784, 1)
 shader_parameter/color4 = Color(0.372549, 0.780392, 0.364706, 1)
 
-[node name="Vampire" type="Node2D"]
+[node name="VampireGame" type="Node2D"]
 script = ExtResource("1_0arq5")
+intro_text = "Who said you could enter my backyard--I mean, courtyard? I will make you rue the day you entered without permission!"
+win_text = "How could you have dipped, ducked, and dodged all that junk--I mean, my precision weaponry? You are more skilled than I believed. Ngh-- Go!"
+lose_text = "Muahaha. I’ve trained in throwing lawn junk for millenia. You may leave this yard, but you’ll never leave this house alive!"
 
 [node name="Notes" type="Node" parent="."]
 script = ExtResource("2_p6qpp")
@@ -751,7 +756,9 @@ script = ExtResource("2_p6qpp")
 
 [node name="Intro" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("3_dub7d")
+autoplay = true
 bus = &"Music"
+parameters/looping = true
 
 [node name="Music" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("4_5wpb3")
@@ -772,6 +779,9 @@ bus = &"SFX"
 [node name="Jump" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("8_pcj5t")
 bus = &"SFX"
+
+[node name="Miss" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("9_dwh64")
 
 [node name="BG" type="Sprite2D" parent="."]
 position = Vector2(80, 72)
@@ -964,6 +974,9 @@ offset_top = 134.0
 offset_right = 76.0
 offset_bottom = 174.0
 health = 10
+
+[node name="Fader" parent="." instance=ExtResource("24_kolfl")]
+visible = false
 
 [node name="RecolorLayer" type="CanvasLayer" parent="."]
 

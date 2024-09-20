@@ -1,4 +1,4 @@
-class_name DodgeStuff
+class_name VampireGame
 extends Node2D
 
 const DAMAGED_FLASH_RATE = 0.12  # sec period
@@ -14,14 +14,15 @@ const ANIM_FADE_DURATION = 1.5  # sec
 @onready var nice_anim: AnimatedSprite2D = $Nice
 @onready var you_suck_anim: AnimatedSprite2D = $YouSuck
 @onready var hearts_row: HeartsRow = $HeartsRow
+@onready var fader: Fader = $Fader
 
-# audio: intro, music, win, lose, duck, jump
 @onready var audio_intro: AudioStreamPlayer = $Audio/Intro
 @onready var audio_music: AudioStreamPlayer = $Audio/Music
 @onready var audio_win: AudioStreamPlayer = $Audio/Win
 @onready var audio_lose: AudioStreamPlayer = $Audio/Lose
 @onready var audio_duck: AudioStreamPlayer = $Audio/Duck
 @onready var audio_jump: AudioStreamPlayer = $Audio/Jump
+@onready var audio_miss: AudioStreamPlayer = $Audio/Miss
 
 @onready var pc_anim_tree: AnimationTree = $PC/AnimationTree
 @onready var pc_anim_sm: AnimationNodeStateMachinePlayback = pc_anim_tree.get("parameters/playback")
@@ -30,8 +31,12 @@ const ANIM_FADE_DURATION = 1.5  # sec
 
 @onready var floor_items = [$Items/Barrel, $Items/Chomper, $Items/Brick, $Items/Banana]
 
-const MAX_HEALTH := 10
-var health := 10
+@export var intro_text: String
+@export var win_text: String
+@export var lose_text: String
+
+const max_health := 10
+@onready var health := max_health
 
 var last_spawned_item: Node = null
 var damage_remain_s := 0.0
@@ -42,14 +47,21 @@ func _ready():
 	GBtn.on_down.connect(_on_down)
 	GBtn.on_down_release.connect(_on_down_release)
 
-	despawner.body_entered.connect(_despawn)
-	nice_trigger.body_entered.connect(_on_dodged)
-	pc.body_entered.connect(_on_hit)
-
-	hearts_row.total = MAX_HEALTH
+	fader.fade_in()
+	hearts_row.total = max_health
 	nice_anim.modulate.a = 0.0
 	you_suck_anim.modulate.a = 0.0
 
+	await get_tree().create_timer(1.0).timeout
+	DialogueMgr.show(intro_text)
+	await DialogueMgr.on_close
+	_start_game()
+
+
+func _start_game():
+	despawner.body_entered.connect(_despawn)
+	nice_trigger.body_entered.connect(_on_dodged)
+	pc.body_entered.connect(_on_hit)
 	_new_timer()
 
 
@@ -136,6 +148,8 @@ func _on_hit(body: Node):
 	you_suck_anim.modulate.a = 1.0
 	health = max(0, health - 1)
 	damage_remain_s = DAMAGED_DURATION
+	if not audio_miss.playing:
+		audio_miss.play()
 
 
 func _on_dodged(_body: Node):
