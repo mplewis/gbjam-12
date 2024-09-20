@@ -115,7 +115,6 @@ func _on_up():
 
 
 func _on_up_release():
-	print("up release")
 	pc_anim_sm.start("unjump")
 
 
@@ -148,9 +147,13 @@ func _spawn_item(fg: bool):
 
 	var item: RigidBody2D = spawner.duplicate()
 	_start_anim(item)
-	item.global_position = spawner.global_position
-	item.linear_velocity = Vector2(-175, 0)
+
 	item.position.y += randi_range(-3, 3)
+	item.global_position = spawner.global_position
+
+	var dist_to_travel = pc.global_position.x - item.global_position.x
+	var left_velocity = abs(dist_to_travel / spawn_to_hit_sec)
+	item.linear_velocity = Vector2(-left_velocity, 0)
 
 	var target = spawned_items_bg
 	if fg:
