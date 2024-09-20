@@ -1,4 +1,4 @@
-[gd_scene load_steps=117 format=3 uid="uid://bqkg7u5vvf66y"]
+[gd_scene load_steps=118 format=3 uid="uid://bqkg7u5vvf66y"]
 
 [ext_resource type="Script" path="res://scripts/vampire_game.gd" id="1_66y2c"]
 [ext_resource type="Script" path="res://addons/midi/MidiPlayer.gd" id="2_fom2f"]
@@ -37,7 +37,34 @@ size = Vector2(189, 20)
 size = Vector2(20, 144)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lx3wf"]
-size = Vector2(32, 58)
+size = Vector2(32, 48)
+
+[sub_resource type="Animation" id="Animation_10x6s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Hitbox:shape:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(32, 48)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hitbox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, -2)]
+}
 
 [sub_resource type="Animation" id="Animation_oowma"]
 resource_name = "crouch"
@@ -82,9 +109,8 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_4x7vw"]
 resource_name = "crouching"
-length = 0.72
-loop_mode = 1
-step = 0.12
+length = 0.25
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -92,7 +118,7 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [14, 15]
@@ -166,7 +192,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_al32f"]
 resource_name = "jump"
-length = 0.72
+length = 0.3
 step = 0.12
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -190,7 +216,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.08),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Vector2(2, 2), Vector2(2.5, -16.5)]
+"values": [Vector2(2, -2), Vector2(2.5, -16.5)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -202,12 +228,12 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.08),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Vector2(32, 56), Vector2(65, 41)]
+"values": [Vector2(32, 48), Vector2(65, 41)]
 }
 
 [sub_resource type="Animation" id="Animation_ht6yr"]
 resource_name = "uncrouch"
-length = 0.12
+length = 0.05
 step = 0.12
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -248,7 +274,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_mrg45"]
 resource_name = "unjump"
-length = 0.08
+length = 0.05
 step = 0.12
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -272,7 +298,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2(2, 2)]
+"values": [Vector2(2, -2)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -284,11 +310,12 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2(32, 56)]
+"values": [Vector2(32, 48)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4jtho"]
 _data = {
+"RESET": SubResource("Animation_10x6s"),
 "crouch": SubResource("Animation_oowma"),
 "crouching": SubResource("Animation_4x7vw"),
 "idle": SubResource("Animation_6pk6r"),
@@ -331,6 +358,8 @@ switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_txtx8"]
+switch_mode = 2
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8bxqe"]
 switch_mode = 2
@@ -342,19 +371,19 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ydk8k"]
 states/crouch/node = SubResource("AnimationNodeAnimation_2xnsw")
-states/crouch/position = Vector2(246.2, 247.435)
+states/crouch/position = Vector2(246.2, 246.935)
 states/crouching/node = SubResource("AnimationNodeAnimation_xy1kj")
 states/crouching/position = Vector2(389.36, 383.59)
 states/idle/node = SubResource("AnimationNodeAnimation_y7cjj")
-states/idle/position = Vector2(392, 96.5)
+states/idle/position = Vector2(390.68, 98.25)
 states/jump/node = SubResource("AnimationNodeAnimation_ceoll")
 states/jump/position = Vector2(599.925, 33)
 states/uncrouch/node = SubResource("AnimationNodeAnimation_av0no")
 states/uncrouch/position = Vector2(507.7, 257.435)
 states/unjump/node = SubResource("AnimationNodeAnimation_cp4eh")
-states/unjump/position = Vector2(599.85, 143.85)
+states/unjump/position = Vector2(598.887, 144.85)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_wy102"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_enk1d"), "idle", "crouch", SubResource("AnimationNodeStateMachineTransition_t4o7b"), "uncrouch", "idle", SubResource("AnimationNodeStateMachineTransition_mji2r"), "crouch", "crouching", SubResource("AnimationNodeStateMachineTransition_lbghu"), "crouching", "uncrouch", SubResource("AnimationNodeStateMachineTransition_txtx8"), "jump", "unjump", SubResource("AnimationNodeStateMachineTransition_8bxqe"), "unjump", "idle", SubResource("AnimationNodeStateMachineTransition_s80ph")]
-graph_offset = Vector2(-278.32, -37.225)
+graph_offset = Vector2(-356.5, -16.3151)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_65hwl"]
 atlas = ExtResource("12_sbgle")
@@ -799,6 +828,7 @@ script = ExtResource("1_66y2c")
 intro_text = "Who said you could enter my backyard--I mean, courtyard? I will make you rue the day you entered without permission!"
 win_text = "How could you have dodged all that junk--I mean, my precision weaponry? You hid your skills well. Ngh-- Go!"
 lose_text = "Muahaha. I’ve trained in throwing lawn junk for millenia. You'll never leave this house alive!"
+player_note_arrival_offset_sec = 0.15
 
 [node name="Notes" type="Node" parent="."]
 script = ExtResource("2_fom2f")
@@ -872,7 +902,7 @@ vframes = 3
 frame = 3
 
 [node name="Hitbox" type="CollisionShape2D" parent="PC"]
-position = Vector2(2, 15)
+position = Vector2(2, -2)
 shape = SubResource("RectangleShape2D_lx3wf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PC"]
