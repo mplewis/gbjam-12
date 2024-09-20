@@ -5,6 +5,19 @@ const DAMAGED_FLASH_RATE = 0.12  # sec period
 const DAMAGED_DURATION = 1.5  # sec
 const ANIM_FADE_DURATION = 1.5  # sec
 
+@export var intro_text: String
+@export var win_text: String
+@export var lose_text: String
+@export var spawn_to_hit_sec: float = 0.8
+@export var max_health: int = 10
+@export var swap_high_and_low_spawns: bool = false
+@export var skip_to_song_end: bool = false
+
+var start_playing_music_at_ms = null
+
+var last_spawned_item: Node = null
+var damage_remain_s := 0.0
+
 @onready var spawners_bg: Array[Node] = $ItemsBG.get_children()
 @onready var spawners_fg: Array[Node] = $ItemsFG.get_children()
 @onready var despawner: Area2D = $Despawner
@@ -31,20 +44,7 @@ const ANIM_FADE_DURATION = 1.5  # sec
 @onready var dr_anim_tree: AnimationTree = $Dracula/AnimationTree
 @onready var dr_anim_sm: AnimationNodeStateMachinePlayback = dr_anim_tree.get("parameters/playback")
 
-@export var intro_text: String
-@export var win_text: String
-@export var lose_text: String
-@export var spawn_to_hit_sec: float = 0.8
-@export var max_health: int = 10
-@export var swap_high_and_low_spawns: bool = false
-@export var skip_to_song_end: bool = false
-
 @onready var health := max_health
-
-var start_playing_music_at_ms = null
-
-var last_spawned_item: Node = null
-var damage_remain_s := 0.0
 
 
 func _ready():

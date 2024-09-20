@@ -8,6 +8,16 @@ const MAGIC_NUMBER_MIDI_DELAY := 0.16
 ## How fast the hit animation fades out
 const HIT_ANIM_FADE_RATE := 2.0
 
+@export var intro_text: String
+@export var win_text: String
+@export var lose_text: String
+@export var spawn_to_hit_sec: float = 3.0
+@export var fullness_threshold: int = 20
+@export var skip_to_song_end: bool = false
+
+var start_playing_music_at_ms = null
+var fullness := 0
+
 @onready var notes: MidiPlayer = $Notes
 @onready var audio_music: AudioStreamPlayer = $Audio/Music
 @onready var audio_win: AudioStreamPlayer = $Audio/Win
@@ -26,16 +36,6 @@ var trex_anim_sm: AnimationNodeStateMachinePlayback = trex_anim_tree.get("parame
 @onready var splash_ring: AnimatedSprite2D = $SplashRing
 
 @onready var fader: Fader = $Fader
-
-@export var intro_text: String
-@export var win_text: String
-@export var lose_text: String
-@export var spawn_to_hit_sec: float = 3.0
-@export var fullness_threshold: int = 20
-@export var skip_to_song_end: bool = false
-
-var start_playing_music_at_ms = null
-var fullness := 0
 
 
 func _ready():
