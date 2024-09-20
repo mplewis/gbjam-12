@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=3 uid="uid://bqkg7u5vvf66y"]
+[gd_scene load_steps=114 format=3 uid="uid://bqkg7u5vvf66y"]
 
 [ext_resource type="Script" path="res://scripts/vampire.gd" id="1_0arq5"]
 [ext_resource type="Texture2D" uid="uid://bokk1qiyhpuqr" path="res://assets/images/vampire/Dracula_background.png" id="2_fkgq3"]
@@ -16,6 +16,7 @@
 [ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="8_4kqmv"]
 [ext_resource type="Texture2D" uid="uid://ds8yniw2nu8s1" path="res://assets/images/vampire/flying_pan.png" id="8_bgqxj"]
 [ext_resource type="AudioStream" uid="uid://sn6ud3bckriy" path="res://assets/music/vampire/VampireJump.mp3" id="8_pcj5t"]
+[ext_resource type="AudioStream" uid="uid://dw6dhebhyndfi" path="res://assets/sfx/Miss.wav" id="9_dwh64"]
 [ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="9_lxosv"]
 [ext_resource type="Texture2D" uid="uid://btmlgof1iqfjl" path="res://assets/images/vampire/ground_barrel.png" id="9_to4n2"]
 [ext_resource type="Texture2D" uid="uid://b6mh4j0gxextp" path="res://assets/images/vampire/ground_chomper.png" id="10_c22vo"]
@@ -24,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://dylj04p86fla0" path="res://assets/images/vampire/Dracula-nice-Sheet.png" id="13_y87fo"]
 [ext_resource type="Texture2D" uid="uid://c3l12o2q24sna" path="res://assets/images/vampire/Dracula-youSuck-Sheet.png" id="14_3r8tf"]
 [ext_resource type="PackedScene" uid="uid://btjmu4m2e3tvk" path="res://scenes/games/vampire/hearts_row.tscn" id="17_85f4h"]
+[ext_resource type="PackedScene" uid="uid://dk28jnwyfy0aj" path="res://scenes/components/fader.tscn" id="24_kolfl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ibiie"]
 size = Vector2(20, 200)
@@ -303,6 +305,83 @@ states/uncrouch/position = Vector2(539.7, 218.435)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_wy102"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_enk1d"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_6qr62"), "idle", "crouch", SubResource("AnimationNodeStateMachineTransition_t4o7b"), "uncrouch", "idle", SubResource("AnimationNodeStateMachineTransition_mji2r"), "crouch", "crouching", SubResource("AnimationNodeStateMachineTransition_lbghu"), "crouching", "uncrouch", SubResource("AnimationNodeStateMachineTransition_txtx8")]
 graph_offset = Vector2(-58.3, 0.350073)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_65hwl"]
+atlas = ExtResource("9_to4n2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3k0n"]
+atlas = ExtResource("9_to4n2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f40o3"]
+atlas = ExtResource("9_to4n2")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6d3qd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65hwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3k0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f40o3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a5e0n"]
+radius = 9.05539
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02xxo"]
+atlas = ExtResource("10_c22vo")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opnea"]
+atlas = ExtResource("10_c22vo")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75rii"]
+atlas = ExtResource("10_c22vo")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3efor"]
+atlas = ExtResource("10_c22vo")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fh276"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02xxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opnea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75rii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3efor")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xckna"]
+radius = 8.06226
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r62eb"]
+radius = 8.06226
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l2j1u"]
+radius = 8.06226
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_j5bbr"]
 atlas = ExtResource("5_c1hun")
 region = Rect2(0, 0, 16, 16)
@@ -501,83 +580,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_ce0vg"]
 radius = 7.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_65hwl"]
-atlas = ExtResource("9_to4n2")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b3k0n"]
-atlas = ExtResource("9_to4n2")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f40o3"]
-atlas = ExtResource("9_to4n2")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_6d3qd"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_65hwl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b3k0n")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f40o3")
-}],
-"loop": true,
-"name": &"default",
-"speed": 8.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_a5e0n"]
-radius = 9.05539
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_02xxo"]
-atlas = ExtResource("10_c22vo")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_opnea"]
-atlas = ExtResource("10_c22vo")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_75rii"]
-atlas = ExtResource("10_c22vo")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3efor"]
-atlas = ExtResource("10_c22vo")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_fh276"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_02xxo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_opnea")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_75rii")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3efor")
-}],
-"loop": true,
-"name": &"default",
-"speed": 8.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_xckna"]
-radius = 8.06226
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_r62eb"]
-radius = 8.06226
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_l2j1u"]
-radius = 8.06226
-
 [sub_resource type="Animation" id="Animation_s7d8v"]
 length = 0.001
 tracks/0/type = "value"
@@ -741,17 +743,24 @@ shader_parameter/color2 = Color(0.12549, 0.211765, 0.443137, 1)
 shader_parameter/color3 = Color(0.211765, 0.52549, 0.560784, 1)
 shader_parameter/color4 = Color(0.372549, 0.780392, 0.364706, 1)
 
-[node name="Vampire" type="Node2D"]
+[node name="VampireGame" type="Node2D"]
 script = ExtResource("1_0arq5")
+intro_text = "Who said you could enter my backyard--I mean, courtyard? I will make you rue the day you entered without permission!"
+win_text = "How could you have dipped, ducked, and dodged all that junk--I mean, my precision weaponry? You are more skilled than I believed. Ngh-- Go!"
+lose_text = "Muahaha. I’ve trained in throwing lawn junk for millenia. You may leave this yard, but you’ll never leave this house alive!"
 
 [node name="Notes" type="Node" parent="."]
 script = ExtResource("2_p6qpp")
+file = "res://assets/music/vampire/VampireMidi.midi"
+soundfont = "res://assets/demo/music/8bit.sf2"
 
 [node name="Audio" type="Node" parent="."]
 
 [node name="Intro" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("3_dub7d")
+autoplay = true
 bus = &"Music"
+parameters/looping = true
 
 [node name="Music" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("4_5wpb3")
@@ -772,6 +781,9 @@ bus = &"SFX"
 [node name="Jump" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("8_pcj5t")
 bus = &"SFX"
+
+[node name="Miss" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("9_dwh64")
 
 [node name="BG" type="Sprite2D" parent="."]
 position = Vector2(80, 72)
@@ -805,6 +817,7 @@ position = Vector2(0.5, 0)
 texture = ExtResource("3_f8lcq")
 hframes = 6
 vframes = 3
+frame = 3
 
 [node name="Hitbox" type="CollisionShape2D" parent="PC"]
 position = Vector2(2, 15)
@@ -821,110 +834,164 @@ root_node = NodePath("../Sprite")
 tree_root = SubResource("AnimationNodeStateMachine_ydk8k")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="Items" type="Node2D" parent="."]
+[node name="ItemsBG" type="Node2D" parent="."]
 position = Vector2(168, 0)
 
-[node name="Bat1" type="RigidBody2D" parent="Items"]
-position = Vector2(4, 70)
-collision_layer = 5
-collision_mask = 0
-gravity_scale = 0.0
-
-[node name="Bat1" type="AnimatedSprite2D" parent="Items/Bat1"]
-sprite_frames = SubResource("SpriteFrames_ueedb")
-frame_progress = 0.948667
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Bat1"]
-shape = SubResource("CircleShape2D_4cgqx")
-
-[node name="Bat2" type="RigidBody2D" parent="Items"]
-position = Vector2(4, 70)
-collision_layer = 5
-collision_mask = 0
-gravity_scale = 0.0
-
-[node name="Bat2" type="AnimatedSprite2D" parent="Items/Bat2"]
-sprite_frames = SubResource("SpriteFrames_6x7q5")
-frame_progress = 0.868916
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Bat2"]
-shape = SubResource("CircleShape2D_8en5q")
-
-[node name="Glider" type="RigidBody2D" parent="Items"]
-position = Vector2(4, 70)
-collision_layer = 5
-collision_mask = 0
-gravity_scale = 0.0
-
-[node name="Glider" type="AnimatedSprite2D" parent="Items/Glider"]
-sprite_frames = SubResource("SpriteFrames_ishvy")
-frame_progress = 0.495582
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Glider"]
-position = Vector2(0, 2)
-shape = SubResource("CircleShape2D_5jrug")
-
-[node name="Pan" type="RigidBody2D" parent="Items"]
-position = Vector2(4, 70)
-collision_layer = 5
-collision_mask = 0
-gravity_scale = 0.0
-
-[node name="Pan" type="AnimatedSprite2D" parent="Items/Pan"]
-sprite_frames = SubResource("SpriteFrames_hr0or")
-frame_progress = 0.910222
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Pan"]
-shape = SubResource("CircleShape2D_ce0vg")
-
-[node name="Barrel" type="RigidBody2D" parent="Items"]
+[node name="Barrel" type="RigidBody2D" parent="ItemsBG"]
 position = Vector2(4, 120)
 collision_layer = 5
 collision_mask = 0
 gravity_scale = 0.0
 
-[node name="Barrel" type="AnimatedSprite2D" parent="Items/Barrel"]
+[node name="Barrel" type="AnimatedSprite2D" parent="ItemsBG/Barrel"]
 sprite_frames = SubResource("SpriteFrames_6d3qd")
 frame_progress = 0.0394324
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Barrel"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsBG/Barrel"]
 shape = SubResource("CircleShape2D_a5e0n")
 
-[node name="Chomper" type="RigidBody2D" parent="Items"]
+[node name="Chomper" type="RigidBody2D" parent="ItemsBG"]
 position = Vector2(4, 120)
 collision_layer = 5
 collision_mask = 0
 gravity_scale = 0.0
 
-[node name="Chomper" type="AnimatedSprite2D" parent="Items/Chomper"]
+[node name="Chomper" type="AnimatedSprite2D" parent="ItemsBG/Chomper"]
 sprite_frames = SubResource("SpriteFrames_fh276")
 frame_progress = 0.406505
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Chomper"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsBG/Chomper"]
 shape = SubResource("CircleShape2D_xckna")
 
-[node name="Brick" type="RigidBody2D" parent="Items"]
+[node name="Brick" type="RigidBody2D" parent="ItemsBG"]
 position = Vector2(4, 122)
 collision_layer = 5
 collision_mask = 0
 gravity_scale = 0.0
 
-[node name="Brick" type="Sprite2D" parent="Items/Brick"]
+[node name="Brick" type="Sprite2D" parent="ItemsBG/Brick"]
 texture = ExtResource("11_7m11t")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Brick"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsBG/Brick"]
 shape = SubResource("CircleShape2D_r62eb")
 
-[node name="Banana" type="RigidBody2D" parent="Items"]
+[node name="Banana" type="RigidBody2D" parent="ItemsBG"]
 position = Vector2(4, 120)
 collision_layer = 5
 collision_mask = 0
 gravity_scale = 0.0
 
-[node name="Banana" type="Sprite2D" parent="Items/Banana"]
+[node name="Banana" type="Sprite2D" parent="ItemsBG/Banana"]
 texture = ExtResource("12_lsp2s")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Banana"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsBG/Banana"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_l2j1u")
+
+[node name="ItemsFG" type="Node2D" parent="."]
+position = Vector2(168, 0)
+
+[node name="Bat1" type="RigidBody2D" parent="ItemsFG"]
+position = Vector2(4, 70)
+collision_layer = 5
+collision_mask = 0
+gravity_scale = 0.0
+
+[node name="Bat1" type="AnimatedSprite2D" parent="ItemsFG/Bat1"]
+sprite_frames = SubResource("SpriteFrames_ueedb")
+frame_progress = 0.948667
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsFG/Bat1"]
+shape = SubResource("CircleShape2D_4cgqx")
+
+[node name="Bat2" type="RigidBody2D" parent="ItemsFG"]
+position = Vector2(4, 70)
+collision_layer = 5
+collision_mask = 0
+gravity_scale = 0.0
+
+[node name="Bat2" type="AnimatedSprite2D" parent="ItemsFG/Bat2"]
+sprite_frames = SubResource("SpriteFrames_6x7q5")
+frame_progress = 0.868916
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsFG/Bat2"]
+shape = SubResource("CircleShape2D_8en5q")
+
+[node name="Glider" type="RigidBody2D" parent="ItemsFG"]
+position = Vector2(4, 70)
+collision_layer = 5
+collision_mask = 0
+gravity_scale = 0.0
+
+[node name="Glider" type="AnimatedSprite2D" parent="ItemsFG/Glider"]
+sprite_frames = SubResource("SpriteFrames_ishvy")
+frame_progress = 0.495582
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsFG/Glider"]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_5jrug")
+
+[node name="Pan" type="RigidBody2D" parent="ItemsFG"]
+position = Vector2(4, 70)
+collision_layer = 5
+collision_mask = 0
+gravity_scale = 0.0
+
+[node name="Pan" type="AnimatedSprite2D" parent="ItemsFG/Pan"]
+sprite_frames = SubResource("SpriteFrames_hr0or")
+frame_progress = 0.910222
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsFG/Pan"]
+shape = SubResource("CircleShape2D_ce0vg")
+
+[node name="Barrel" type="RigidBody2D" parent="ItemsFG"]
+position = Vector2(4, 120)
+collision_layer = 5
+collision_mask = 0
+gravity_scale = 0.0
+
+[node name="Barrel" type="AnimatedSprite2D" parent="ItemsFG/Barrel"]
+sprite_frames = SubResource("SpriteFrames_6d3qd")
+frame_progress = 0.0394324
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsFG/Barrel"]
+shape = SubResource("CircleShape2D_a5e0n")
+
+[node name="Chomper" type="RigidBody2D" parent="ItemsFG"]
+position = Vector2(4, 120)
+collision_layer = 5
+collision_mask = 0
+gravity_scale = 0.0
+
+[node name="Chomper" type="AnimatedSprite2D" parent="ItemsFG/Chomper"]
+sprite_frames = SubResource("SpriteFrames_fh276")
+frame_progress = 0.406505
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsFG/Chomper"]
+shape = SubResource("CircleShape2D_xckna")
+
+[node name="Brick" type="RigidBody2D" parent="ItemsFG"]
+position = Vector2(4, 122)
+collision_layer = 5
+collision_mask = 0
+gravity_scale = 0.0
+
+[node name="Brick" type="Sprite2D" parent="ItemsFG/Brick"]
+texture = ExtResource("11_7m11t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsFG/Brick"]
+shape = SubResource("CircleShape2D_r62eb")
+
+[node name="Banana" type="RigidBody2D" parent="ItemsFG"]
+position = Vector2(4, 120)
+collision_layer = 5
+collision_mask = 0
+gravity_scale = 0.0
+
+[node name="Banana" type="Sprite2D" parent="ItemsFG/Banana"]
+texture = ExtResource("12_lsp2s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsFG/Banana"]
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_l2j1u")
 
@@ -964,6 +1031,9 @@ offset_top = 134.0
 offset_right = 76.0
 offset_bottom = 174.0
 health = 10
+
+[node name="Fader" parent="." instance=ExtResource("24_kolfl")]
+visible = false
 
 [node name="RecolorLayer" type="CanvasLayer" parent="."]
 
