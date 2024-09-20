@@ -1,45 +1,45 @@
 [gd_scene load_steps=67 format=3 uid="uid://hnka8ov1yi72"]
 
-[ext_resource type="PackedScene" uid="uid://crxje5adebltx" path="res://scenes/components/cinematic.tscn" id="1_gcgyv"]
-[ext_resource type="Texture2D" uid="uid://sp0xomyksm6g" path="res://assets/demo/images/appalachia-stock-photo.jpg" id="2_pjmd4"]
-[ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="2_xwga0"]
-[ext_resource type="Texture2D" uid="uid://dhh8e0hsf548p" path="res://assets/images/t_rex/pc_static.png" id="3_86xgl"]
-[ext_resource type="Texture2D" uid="uid://dokirsbps343t" path="res://assets/images/t_rex/TrexIntro_animation.png" id="4_kfcht"]
-[ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="5_3omne"]
-[ext_resource type="Texture2D" uid="uid://dtkgqvjp7y3p" path="res://assets/images/spider/cuteTrantula_grayscale.png" id="5_gqvm8"]
-[ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="6_7654p"]
-[ext_resource type="Texture2D" uid="uid://cg7rxsryoswi6" path="res://assets/images/vampire/Dracula_intro-Sheet.png" id="6_u0x4y"]
+[ext_resource type="PackedScene" uid="uid://crxje5adebltx" path="res://scenes/components/cinematic.tscn" id="1_2j34y"]
+[ext_resource type="Texture2D" uid="uid://sp0xomyksm6g" path="res://assets/demo/images/appalachia-stock-photo.jpg" id="2_ydpao"]
+[ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="3_04prh"]
+[ext_resource type="Texture2D" uid="uid://dhh8e0hsf548p" path="res://assets/images/t_rex/pc_static.png" id="4_muj2j"]
+[ext_resource type="Texture2D" uid="uid://dokirsbps343t" path="res://assets/images/t_rex/TrexIntro_animation.png" id="5_toeqr"]
+[ext_resource type="Texture2D" uid="uid://cg7rxsryoswi6" path="res://assets/images/vampire/Dracula_intro-Sheet.png" id="6_achwh"]
+[ext_resource type="Texture2D" uid="uid://dtkgqvjp7y3p" path="res://assets/images/spider/cuteTrantula_grayscale.png" id="7_og408"]
+[ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="8_kspfe"]
+[ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="9_d54k6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rjfg1"]
-atlas = ExtResource("4_kfcht")
+atlas = ExtResource("5_toeqr")
 region = Rect2(0, 0, 140, 127)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aht8r"]
-atlas = ExtResource("4_kfcht")
+atlas = ExtResource("5_toeqr")
 region = Rect2(140, 0, 140, 127)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wim00"]
-atlas = ExtResource("4_kfcht")
+atlas = ExtResource("5_toeqr")
 region = Rect2(280, 0, 140, 127)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bx0b5"]
-atlas = ExtResource("4_kfcht")
+atlas = ExtResource("5_toeqr")
 region = Rect2(420, 0, 140, 127)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ni3cr"]
-atlas = ExtResource("4_kfcht")
+atlas = ExtResource("5_toeqr")
 region = Rect2(560, 0, 140, 127)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b7yxp"]
-atlas = ExtResource("4_kfcht")
+atlas = ExtResource("5_toeqr")
 region = Rect2(700, 0, 140, 127)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4ly4k"]
-atlas = ExtResource("4_kfcht")
+atlas = ExtResource("5_toeqr")
 region = Rect2(840, 0, 140, 127)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_we3q1"]
-atlas = ExtResource("4_kfcht")
+atlas = ExtResource("5_toeqr")
 region = Rect2(980, 0, 140, 127)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rpkek"]
@@ -90,179 +90,179 @@ func on_fade_in():
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_my80v"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(0, 0, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lbqup"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(160, 0, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mk2hq"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(320, 0, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hyn6j"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(480, 0, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sqlq6"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(640, 0, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_327by"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(800, 0, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m0mgy"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(960, 0, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jh3bs"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(1120, 0, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p85q8"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(1280, 0, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qas8q"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(1440, 0, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_djicj"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(1600, 0, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3p1ud"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(1760, 0, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e6b1v"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(1920, 0, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_63imy"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(2080, 0, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yj2mj"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(2240, 0, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3u7x4"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(2560, 0, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_emr7d"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(2720, 0, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mkd40"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(2880, 0, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3p5v1"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(3040, 0, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_djd5h"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(3200, 0, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_40fmo"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(3360, 0, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uth0j"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(0, 144, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1sflo"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(160, 144, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t7uwi"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(320, 144, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yvvvk"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(480, 144, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jyhs4"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(640, 144, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5q6nb"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(800, 144, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4lsjb"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(960, 144, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1pkgl"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(1120, 144, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qyvy6"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(1280, 144, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ryon1"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(1440, 144, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0wrj2"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(1600, 144, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gwyy0"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(1760, 144, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_scbgu"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(1920, 144, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bssdc"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(2080, 144, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h2wed"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(2240, 144, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jmosc"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(2400, 144, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ubf6o"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(2560, 144, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gcpkq"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(2720, 144, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_duoah"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(2880, 144, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7is0u"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(3040, 144, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_asjmf"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(3200, 144, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ud1aj"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(3360, 144, 160, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_84bvt"]
-atlas = ExtResource("6_u0x4y")
+atlas = ExtResource("6_achwh")
 region = Rect2(0, 288, 160, 144)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qpnxk"]
@@ -406,7 +406,7 @@ animations = [{
 }]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5qkxi"]
-shader = ExtResource("5_3omne")
+shader = ExtResource("8_kspfe")
 shader_parameter/threshold1 = 0.167
 shader_parameter/threshold2 = 0.5
 shader_parameter/threshold3 = 0.833
@@ -423,7 +423,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Cinematic" parent="." instance=ExtResource("1_gcgyv")]
+[node name="Cinematic" parent="." instance=ExtResource("1_2j34y")]
 layout_mode = 1
 
 [node name="Setting" type="TextureRect" parent="Cinematic"]
@@ -433,14 +433,14 @@ offset_left = -16.0
 offset_right = 1226.0
 offset_bottom = 810.0
 scale = Vector2(0.178719, 0.178719)
-texture = ExtResource("2_pjmd4")
+texture = ExtResource("2_ydpao")
 
 [node name="SettingText" type="Label" parent="Cinematic"]
 visible = false
 layout_mode = 0
 offset_right = 180.0
 offset_bottom = 16.0
-theme = ExtResource("2_xwga0")
+theme = ExtResource("3_04prh")
 text = "On a dark and stormy night in rural Appalachia..."
 
 [node name="PC" type="TextureRect" parent="Cinematic"]
@@ -450,14 +450,14 @@ offset_left = 42.0
 offset_top = 19.0
 offset_right = 117.0
 offset_bottom = 95.0
-texture = ExtResource("3_86xgl")
+texture = ExtResource("4_muj2j")
 
 [node name="PCText" type="Label" parent="Cinematic"]
 visible = false
 layout_mode = 0
 offset_right = 180.0
 offset_bottom = 16.0
-theme = ExtResource("2_xwga0")
+theme = ExtResource("3_04prh")
 text = "I don’t remember how I got here, but I have to escape from these monsters!"
 
 [node name="Dino" type="Control" parent="Cinematic"]
@@ -480,7 +480,7 @@ visible = false
 layout_mode = 0
 offset_right = 308.0
 offset_bottom = 16.0
-theme = ExtResource("2_xwga0")
+theme = ExtResource("3_04prh")
 text = "It's been so long since I've had a snack... I'm so hungry I could eat a mammoth! Or YOU! ROAR!!"
 
 [node name="Dracula" type="Control" parent="Cinematic"]
@@ -501,7 +501,7 @@ visible = false
 layout_mode = 0
 offset_right = 508.0
 offset_bottom = 16.0
-theme = ExtResource("2_xwga0")
+theme = ExtResource("3_04prh")
 text = "Mwahaha! You think you can leave my mansion so soon? You must stay... FOR DINNER!"
 
 [node name="Spider" type="Control" parent="Cinematic"]
@@ -514,14 +514,14 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("5_gqvm8")
+texture = ExtResource("7_og408")
 
 [node name="SpiderText" type="Label" parent="Cinematic"]
 visible = false
 layout_mode = 0
 offset_right = 308.0
 offset_bottom = 16.0
-theme = ExtResource("2_xwga0")
+theme = ExtResource("3_04prh")
 text = "I’ve got a nice web set up for you across the drum kit. Why don’t you stay with me here… forever?
 "
 
@@ -532,14 +532,14 @@ offset_left = 42.0
 offset_top = 19.0
 offset_right = 117.0
 offset_bottom = 95.0
-texture = ExtResource("3_86xgl")
+texture = ExtResource("4_muj2j")
 
 [node name="PCText2" type="Label" parent="Cinematic"]
 visible = false
 layout_mode = 0
 offset_right = 180.0
 offset_bottom = 16.0
-theme = ExtResource("2_xwga0")
+theme = ExtResource("3_04prh")
 text = "Oh man, everyone keeps trying to eat me! I gotta get out of this monster house!"
 
 [node name="RecolorLayer" type="CanvasLayer" parent="."]
@@ -549,4 +549,4 @@ material = SubResource("ShaderMaterial_5qkxi")
 offset_right = 160.0
 offset_bottom = 256.0
 
-[node name="Controls" parent="." instance=ExtResource("6_7654p")]
+[node name="Controls" parent="." instance=ExtResource("9_d54k6")]

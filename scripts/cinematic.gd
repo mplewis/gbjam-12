@@ -27,6 +27,8 @@ var done := false
 
 
 func _ready():
+	GBtn.on_start.connect(_skip_to_end)
+
 	# Put fader in front of other slides
 	remove_child(fader)
 	add_child(fader)
@@ -65,6 +67,10 @@ func _ready():
 func _next():
 	busy = false
 	step_idx += 1
+
+
+func _skip_to_end():
+	pass
 
 
 func _process(_delta):
