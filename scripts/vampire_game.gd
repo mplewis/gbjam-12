@@ -54,13 +54,23 @@ func _ready():
 	GBtn.on_down_release.connect(_on_down_release)
 
 	audio_music.finished.connect(_on_music_end)
+	notes.midi_event.connect(_on_midi_event)
 
-	fader.fade_in()
+	despawner.body_entered.connect(_despawn)
+	nice_trigger.body_entered.connect(_on_dodged)
+	pc.body_entered.connect(_on_hit)
+
 	hearts_row.total = max_health
 	nice_anim.modulate.a = 0.0
 	you_suck_anim.modulate.a = 0.0
 
+	_start_intro()
+
+
+func _start_intro():
+	fader.fade_in()
 	await get_tree().create_timer(1.0).timeout
+
 	DialogueMgr.show(intro_text)
 	await DialogueMgr.on_close
 
@@ -73,11 +83,6 @@ func _ready():
 
 
 func _start_game():
-	despawner.body_entered.connect(_despawn)
-	nice_trigger.body_entered.connect(_on_dodged)
-	pc.body_entered.connect(_on_hit)
-
-	notes.midi_event.connect(_on_midi_event)
 	notes.play()
 	start_playing_music_at_ms = (
 		Time.get_ticks_msec() + int((spawn_to_hit_sec - AudioCal.total_audio_offset()) * 1000)
@@ -226,13 +231,9 @@ func _despawn(body: Node):
 
 
 func _on_music_end():
-	_play_finale(health > 0)
-
-
-func _play_finale(win: bool):
 	notes.stop()
 
-	if win:
+	if health > 0:
 		DialogueMgr.show(win_text)
 		audio_win.play()
 		await audio_win.finished
