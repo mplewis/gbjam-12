@@ -12,8 +12,6 @@ enum CinematicAction {
 	PLAY_AUDIO,
 }
 
-signal on_finish
-
 @export var FADE_DURATION = 0.5
 @export var HOLD_DURATION = 2.0
 
@@ -75,7 +73,9 @@ func _next():
 
 
 func _skip_to_end():
-	pass
+	fader.modulate.a = 1.0
+	busy = false
+	step_idx = len(steps)
 
 
 func _process(_delta):
@@ -84,7 +84,6 @@ func _process(_delta):
 
 	if step_idx >= len(steps):
 		done = true
-		on_finish.emit()
 		CampaignMgr.scene_complete.emit()
 		return
 

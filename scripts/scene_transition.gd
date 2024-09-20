@@ -15,6 +15,8 @@ extends Control
 
 
 func _ready():
+	GBtn.on_start.connect(_skip_to_end)
+
 	if door_open and footsteps and door_close:
 		audio_open_steps_close.play()
 		await audio_open_steps_close.finished
@@ -32,4 +34,12 @@ func _ready():
 			audio_door_close.play()
 			await audio_door_close.finished
 
+	CampaignMgr.scene_complete.emit()
+
+
+func _skip_to_end():
+	audio_door_open.stop()
+	audio_four_steps.stop()
+	audio_door_close.stop()
+	audio_open_steps_close.stop()
 	CampaignMgr.scene_complete.emit()
