@@ -35,6 +35,7 @@ const ANIM_FADE_DURATION = 1.5  # sec
 @export var win_text: String
 @export var lose_text: String
 @export var spawn_to_hit_sec: float = 0.8
+@export var swap_high_and_low_spawns: bool = false
 
 const max_health := 10
 @onready var health := max_health
@@ -135,6 +136,9 @@ func _on_midi_event(_channel, event):
 
 
 func _spawn_item(fg: bool):
+	if swap_high_and_low_spawns:
+		fg = not fg
+
 	dr_anim_sm.travel("toss")
 
 	var spawners = spawners_bg
