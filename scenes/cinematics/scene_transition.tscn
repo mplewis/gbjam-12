@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://4amvym6imhv6"]
+
+[ext_resource type="Script" path="res://scripts/scene_transition.gd" id="1_afx0u"]
+[ext_resource type="AudioStream" uid="uid://cining1sqwr8d" path="res://assets/sfx/Door_Open_Four_Steps_Door_Close.mp3" id="2_7o43x"]
+[ext_resource type="AudioStream" uid="uid://8wf1dte2j4dx" path="res://assets/sfx/DoorOpen.mp3" id="3_w7obq"]
+[ext_resource type="AudioStream" uid="uid://c8v8ln5n6kr5x" path="res://assets/sfx/Door_Close.mp3" id="4_masfh"]
+[ext_resource type="AudioStream" uid="uid://b01l6jmjb7flb" path="res://assets/sfx/Four_Steps.mp3" id="5_hafsm"]
+[ext_resource type="Texture2D" uid="uid://cuu78vl3qe7oq" path="res://assets/ui/black.png" id="6_oueqt"]
+
+[node name="SceneTransition" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_afx0u")
+door_open = true
+footsteps = true
+door_close = true
+
+[node name="DoorOpenFourStepsDoorClose" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_7o43x")
+
+[node name="DoorOpen" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_w7obq")
+
+[node name="FourSteps" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_hafsm")
+
+[node name="DoorClose" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_masfh")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 256.0
+texture = ExtResource("6_oueqt")
