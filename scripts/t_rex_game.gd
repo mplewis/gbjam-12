@@ -198,4 +198,4 @@ func _on_music_end():
 
 	fader.fade_out()
 	await fader.fade_complete
-	CampaignMgr.game_complete.emit()
+	CampaignMgr.scene_complete.emit()

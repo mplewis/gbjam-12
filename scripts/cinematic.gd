@@ -9,6 +9,7 @@ enum Action {
 	FADE_OUT,
 	DIALOGUE,
 	CALL_METHOD_ON_SLIDE,
+	PLAY_AUDIO,
 }
 
 signal on_finish
@@ -18,7 +19,7 @@ signal on_finish
 
 @onready var bg: TextureRect = %BG
 @onready var fader: TextureRect = %Fader
-var children: Array[Control] = []
+var children: Array[Node] = []
 
 var step_idx := 0
 var steps := []
@@ -34,15 +35,19 @@ func _ready():
 	add_child(fader)
 
 	for child in get_children():
-		assert(child is Control, "All children of Cinematic must be Control nodes.")
 		if child in [bg, fader]:
 			continue
 		children.append(child)
-		child.hide()
+		if child.has_method("hide"):
+			child.hide()
 	assert(len(children) > 0, "Cinematic must have at least one child.")
 
 	var lastSlide: CanvasItem = null
 	for child in children:
+		if child is AudioStreamPlayer:
+			steps.push_back([Action.PLAY_AUDIO, child])
+			continue
+
 		if child is Label:
 			steps.push_back([Action.DIALOGUE, child.text])
 
@@ -80,17 +85,20 @@ func _process(_delta):
 	if step_idx >= len(steps):
 		done = true
 		on_finish.emit()
+		CampaignMgr.scene_complete.emit()
 		return
 
 	var step = steps[step_idx]
 
 	match step:
 		[Action.SHOW, var child]:
-			child.show()
+			if child.has_method("show"):
+				child.show()
 			_next()
 
 		[Action.HIDE, var child]:
-			child.hide()
+			if child.has_method("hide"):
+				child.hide()
 			_next()
 
 		[Action.FADE_IN]:
@@ -116,4 +124,8 @@ func _process(_delta):
 		[Action.CALL_METHOD_ON_SLIDE, var slide, var method]:
 			if slide.has_method(method):
 				slide.call_deferred(method)
+			_next()
+
+		[Action.PLAY_AUDIO, var audio]:
+			audio.play()
 			_next()
