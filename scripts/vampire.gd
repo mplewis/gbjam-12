@@ -47,6 +47,7 @@ var damage_remain_s := 0.0
 
 func _ready():
 	GBtn.on_up.connect(_on_up)
+	GBtn.on_up_release.connect(_on_up_release)
 	GBtn.on_down.connect(_on_down)
 	GBtn.on_down_release.connect(_on_down_release)
 
@@ -111,6 +112,11 @@ func _on_up():
 	pc_anim_sm.travel("jump")
 	if not audio_jump.playing:
 		audio_jump.play()
+
+
+func _on_up_release():
+	print("up release")
+	pc_anim_sm.start("unjump")
 
 
 func _on_down():

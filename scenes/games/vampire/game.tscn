@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=3 uid="uid://bqkg7u5vvf66y"]
+[gd_scene load_steps=117 format=3 uid="uid://bqkg7u5vvf66y"]
 
 [ext_resource type="Script" path="res://scripts/vampire.gd" id="1_0arq5"]
 [ext_resource type="Texture2D" uid="uid://bokk1qiyhpuqr" path="res://assets/images/vampire/Dracula_background.png" id="2_fkgq3"]
@@ -41,7 +41,7 @@ size = Vector2(32, 58)
 
 [sub_resource type="Animation" id="Animation_oowma"]
 resource_name = "crouch"
-length = 0.24
+length = 0.16
 step = 0.12
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -50,7 +50,7 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.12),
+"times": PackedFloat32Array(0, 0.08),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [13, 14]
@@ -62,7 +62,7 @@ tracks/1/path = NodePath("../Hitbox:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.12),
+"times": PackedFloat32Array(0, 0.08),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [Vector2(6.5, 21.5), Vector2(-1, 30)]
@@ -74,7 +74,7 @@ tracks/2/path = NodePath("../Hitbox:shape:size")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.12),
+"times": PackedFloat32Array(0, 0.08),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [Vector2(33, 45), Vector2(90, 28)]
@@ -166,7 +166,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_al32f"]
 resource_name = "jump"
-length = 0.6
+length = 0.72
 step = 0.12
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -175,10 +175,10 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.12, 0.48),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.08),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [7, 8, 7]
+"values": [7, 8]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -187,10 +187,10 @@ tracks/1/path = NodePath("../Hitbox:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.12, 0.48),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.08),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Vector2(2, 2), Vector2(2.5, -16.5), Vector2(2, 2)]
+"values": [Vector2(2, 2), Vector2(2.5, -16.5)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -199,10 +199,10 @@ tracks/2/path = NodePath("../Hitbox:shape:size")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.12, 0.48),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.08),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Vector2(32, 56), Vector2(65, 41), Vector2(32, 56)]
+"values": [Vector2(32, 56), Vector2(65, 41)]
 }
 
 [sub_resource type="Animation" id="Animation_ht6yr"]
@@ -246,13 +246,55 @@ tracks/2/keys = {
 "values": [Vector2(6.5, 21.5)]
 }
 
+[sub_resource type="Animation" id="Animation_mrg45"]
+resource_name = "unjump"
+length = 0.08
+step = 0.12
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hitbox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(2, 2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Hitbox:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(32, 56)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4jtho"]
 _data = {
 "crouch": SubResource("Animation_oowma"),
 "crouching": SubResource("Animation_4x7vw"),
 "idle": SubResource("Animation_6pk6r"),
 "jump": SubResource("Animation_al32f"),
-"uncrouch": SubResource("Animation_ht6yr")
+"uncrouch": SubResource("Animation_ht6yr"),
+"unjump": SubResource("Animation_mrg45")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2xnsw"]
@@ -270,14 +312,13 @@ animation = &"jump"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_av0no"]
 animation = &"uncrouch"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cp4eh"]
+animation = &"unjump"
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wy102"]
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_enk1d"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6qr62"]
-switch_mode = 2
-advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t4o7b"]
 
@@ -291,19 +332,29 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_txtx8"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8bxqe"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s80ph"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ydk8k"]
 states/crouch/node = SubResource("AnimationNodeAnimation_2xnsw")
-states/crouch/position = Vector2(278.2, 208.435)
+states/crouch/position = Vector2(246.2, 247.435)
 states/crouching/node = SubResource("AnimationNodeAnimation_xy1kj")
-states/crouching/position = Vector2(421.36, 344.59)
+states/crouching/position = Vector2(389.36, 383.59)
 states/idle/node = SubResource("AnimationNodeAnimation_y7cjj")
 states/idle/position = Vector2(392, 96.5)
 states/jump/node = SubResource("AnimationNodeAnimation_ceoll")
-states/jump/position = Vector2(583.5, 93)
+states/jump/position = Vector2(599.925, 33)
 states/uncrouch/node = SubResource("AnimationNodeAnimation_av0no")
-states/uncrouch/position = Vector2(539.7, 218.435)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_wy102"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_enk1d"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_6qr62"), "idle", "crouch", SubResource("AnimationNodeStateMachineTransition_t4o7b"), "uncrouch", "idle", SubResource("AnimationNodeStateMachineTransition_mji2r"), "crouch", "crouching", SubResource("AnimationNodeStateMachineTransition_lbghu"), "crouching", "uncrouch", SubResource("AnimationNodeStateMachineTransition_txtx8")]
-graph_offset = Vector2(-58.3, 0.350073)
+states/uncrouch/position = Vector2(507.7, 257.435)
+states/unjump/node = SubResource("AnimationNodeAnimation_cp4eh")
+states/unjump/position = Vector2(599.85, 143.85)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_wy102"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_enk1d"), "idle", "crouch", SubResource("AnimationNodeStateMachineTransition_t4o7b"), "uncrouch", "idle", SubResource("AnimationNodeStateMachineTransition_mji2r"), "crouch", "crouching", SubResource("AnimationNodeStateMachineTransition_lbghu"), "crouching", "uncrouch", SubResource("AnimationNodeStateMachineTransition_txtx8"), "jump", "unjump", SubResource("AnimationNodeStateMachineTransition_8bxqe"), "unjump", "idle", SubResource("AnimationNodeStateMachineTransition_s80ph")]
+graph_offset = Vector2(-278.32, -37.225)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_65hwl"]
 atlas = ExtResource("9_to4n2")
@@ -615,7 +666,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_teggh"]
 resource_name = "toss"
-length = 0.72
+length = 0.08
 step = 0.12
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -624,10 +675,10 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.12, 0.24, 0.36, 0.48, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [6, 7, 8, 9, 10, 11]
+"values": [8]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4f4e8"]
@@ -753,6 +804,7 @@ lose_text = "Muahaha. I’ve trained in throwing lawn junk for millenia. You may
 script = ExtResource("2_p6qpp")
 file = "res://assets/music/vampire/VampireMidi.midi"
 soundfont = "res://assets/demo/music/8bit.sf2"
+muted = true
 
 [node name="Audio" type="Node" parent="."]
 
