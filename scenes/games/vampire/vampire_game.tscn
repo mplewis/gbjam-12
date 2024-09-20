@@ -1,4 +1,4 @@
-[gd_scene load_steps=117 format=3 uid="uid://dkyjqlqibueg0"]
+[gd_scene load_steps=117 format=3 uid="uid://bqkg7u5vvf66y"]
 
 [ext_resource type="Script" path="res://scripts/vampire_game.gd" id="1_66y2c"]
 [ext_resource type="Script" path="res://addons/midi/MidiPlayer.gd" id="2_fom2f"]
@@ -799,7 +799,6 @@ script = ExtResource("1_66y2c")
 intro_text = "Who said you could enter my backyard--I mean, courtyard? I will make you rue the day you entered without permission!"
 win_text = "How could you have dodged all that junk--I mean, my precision weaponry? You hid your skills well. Ngh-- Go!"
 lose_text = "Muahaha. I’ve trained in throwing lawn junk for millenia. You'll never leave this house alive!"
-swap_high_and_low_spawns = null
 
 [node name="Notes" type="Node" parent="."]
 script = ExtResource("2_fom2f")
@@ -870,7 +869,7 @@ position = Vector2(0.5, 0)
 texture = ExtResource("11_d6cuy")
 hframes = 6
 vframes = 3
-frame = 5
+frame = 3
 
 [node name="Hitbox" type="CollisionShape2D" parent="PC"]
 position = Vector2(2, 15)
@@ -996,57 +995,6 @@ frame_progress = 0.910222
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsFG/Pan"]
 shape = SubResource("CircleShape2D_ce0vg")
-
-[node name="Barrel" type="RigidBody2D" parent="ItemsFG"]
-position = Vector2(4, 120)
-collision_layer = 5
-collision_mask = 0
-gravity_scale = 0.0
-
-[node name="Barrel" type="AnimatedSprite2D" parent="ItemsFG/Barrel"]
-sprite_frames = SubResource("SpriteFrames_6d3qd")
-frame_progress = 0.0394324
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsFG/Barrel"]
-shape = SubResource("CircleShape2D_a5e0n")
-
-[node name="Chomper" type="RigidBody2D" parent="ItemsFG"]
-position = Vector2(4, 120)
-collision_layer = 5
-collision_mask = 0
-gravity_scale = 0.0
-
-[node name="Chomper" type="AnimatedSprite2D" parent="ItemsFG/Chomper"]
-sprite_frames = SubResource("SpriteFrames_fh276")
-frame_progress = 0.406505
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsFG/Chomper"]
-shape = SubResource("CircleShape2D_xckna")
-
-[node name="Brick" type="RigidBody2D" parent="ItemsFG"]
-position = Vector2(4, 122)
-collision_layer = 5
-collision_mask = 0
-gravity_scale = 0.0
-
-[node name="Brick" type="Sprite2D" parent="ItemsFG/Brick"]
-texture = ExtResource("14_4ia6u")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsFG/Brick"]
-shape = SubResource("CircleShape2D_r62eb")
-
-[node name="Banana" type="RigidBody2D" parent="ItemsFG"]
-position = Vector2(4, 120)
-collision_layer = 5
-collision_mask = 0
-gravity_scale = 0.0
-
-[node name="Banana" type="Sprite2D" parent="ItemsFG/Banana"]
-texture = ExtResource("15_1bc10")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsFG/Banana"]
-position = Vector2(0, 1)
-shape = SubResource("CircleShape2D_l2j1u")
 
 [node name="SpawnedItemsBG" type="Node2D" parent="."]
 
