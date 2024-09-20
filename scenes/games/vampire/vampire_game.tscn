@@ -796,9 +796,9 @@ shader_parameter/color4 = Color(0.372549, 0.780392, 0.364706, 1)
 
 [node name="VampireGame" type="Node2D"]
 script = ExtResource("1_66y2c")
-intro_text = "Who said you could enter my backyard--I mean, courtyard? I will make you rue the day you entered without permission!"
-win_text = "How could you have dipped, ducked, and dodged all that junk--I mean, my precision weaponry? You are more skilled than I believed. Ngh-- Go!"
-lose_text = "Muahaha. I’ve trained in throwing lawn junk for millenia. You may leave this yard, but you’ll never leave this house alive!"
+intro_text = "Who said you could enter my backyard--I mean, courtyard? I will make you rue the day you disturbed my stuff!"
+win_text = "How did you dodge all that junk--I mean, precision weaponry? You hide your talent well. Ngh-- Leave me!"
+lose_text = "I knew you would never withstand my precision junk throwing. Run away, wounded one! Muahaha!"
 
 [node name="Notes" type="Node" parent="."]
 script = ExtResource("2_fom2f")
