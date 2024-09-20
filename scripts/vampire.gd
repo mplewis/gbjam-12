@@ -34,9 +34,12 @@ const ANIM_FADE_DURATION = 1.5  # sec
 @export var intro_text: String
 @export var win_text: String
 @export var lose_text: String
+@export var spawn_to_hit_sec: float = 0.8
 
 const max_health := 10
 @onready var health := max_health
+
+var start_playing_music_at_ms = null
 
 var last_spawned_item: Node = null
 var damage_remain_s := 0.0
@@ -69,9 +72,11 @@ func _start_game():
 	nice_trigger.body_entered.connect(_on_dodged)
 	pc.body_entered.connect(_on_hit)
 
-	audio_music.play()
-	notes.play()
 	notes.midi_event.connect(_on_midi_event)
+	notes.play()
+	start_playing_music_at_ms = (
+		Time.get_ticks_msec() + int((spawn_to_hit_sec - AudioCal.total_audio_offset()) * 1000)
+	)
 
 
 func _process(delta: float):
@@ -79,6 +84,14 @@ func _process(delta: float):
 	nice_anim.modulate.a -= fade_amt
 	you_suck_anim.modulate.a -= fade_amt
 	hearts_row.health = health
+
+	if (
+		start_playing_music_at_ms
+		and Time.get_ticks_msec() >= start_playing_music_at_ms
+		and not audio_music.playing
+	):
+		audio_music.play()
+		start_playing_music_at_ms = null
 
 	if damage_remain_s <= 0:
 		pc.modulate.a = 1

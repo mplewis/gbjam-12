@@ -27,7 +27,7 @@ var trex_anim_sm: AnimationNodeStateMachinePlayback = trex_anim_tree.get("parame
 @onready var pc_anim_sm: AnimationNodeStateMachinePlayback = pc_anim_tree.get("parameters/playback")
 @onready var splash_ring: AnimatedSprite2D = $SplashRing
 
-var start_playing_at_ms: float
+var start_playing_music_at_ms: int
 var started = false
 
 
@@ -50,9 +50,8 @@ func _ready():
 	midi_player_spawn.midi_event.connect(_on_midi_event)
 	midi_player_spawn.play()
 
-	start_playing_at_ms = (
-		Time.get_ticks_msec()
-		+ (spawn_to_hit_sec - (AudioCal.audio_offset + MAGIC_NUMBER_MIDI_DELAY)) * 1000.0
+	start_playing_music_at_ms = (
+		Time.get_ticks_msec() + int((spawn_to_hit_sec - AudioCal.total_audio_offset()) * 1000)
 	)
 
 
@@ -62,7 +61,7 @@ func _process(delta: float):
 
 
 func start_audio():
-	if Time.get_ticks_msec() < start_playing_at_ms:
+	if Time.get_ticks_msec() < start_playing_music_at_ms:
 		return
 	if started:
 		return
