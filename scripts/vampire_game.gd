@@ -223,6 +223,8 @@ func _play_finale(win: bool):
 	if DialogueMgr.current:
 		await DialogueMgr.on_close
 	fader.fade_out()
+	await fader.fade_complete
+	CampaignMgr.game_complete.emit()
 
 
 func fmod(a: float, b: float) -> float:
