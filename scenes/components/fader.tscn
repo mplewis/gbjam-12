@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dk28jnwyfy0aj"]
+
+[ext_resource type="Texture2D" uid="uid://cuu78vl3qe7oq" path="res://assets/ui/black.png" id="1_6pty8"]
+[ext_resource type="Script" path="res://scripts/fader.gd" id="2_sn3pl"]
+
+[node name="Fader" type="Sprite2D"]
+position = Vector2(79.75, 127.75)
+scale = Vector2(160.5, 256.5)
+texture = ExtResource("1_6pty8")
+script = ExtResource("2_sn3pl")

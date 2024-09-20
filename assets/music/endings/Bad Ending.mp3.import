@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://m2g6isolncy1"
+path="res://.godot/imported/Bad Ending.mp3-35f0449e3f2bd6a6f1b8bbe22a52a1c5.mp3str"
+
+[deps]
+
+source_file="res://assets/music/endings/Bad Ending.mp3"
+dest_files=["res://.godot/imported/Bad Ending.mp3-35f0449e3f2bd6a6f1b8bbe22a52a1c5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

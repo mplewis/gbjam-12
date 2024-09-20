@@ -305,6 +305,83 @@ states/uncrouch/position = Vector2(539.7, 218.435)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_wy102"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_enk1d"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_6qr62"), "idle", "crouch", SubResource("AnimationNodeStateMachineTransition_t4o7b"), "uncrouch", "idle", SubResource("AnimationNodeStateMachineTransition_mji2r"), "crouch", "crouching", SubResource("AnimationNodeStateMachineTransition_lbghu"), "crouching", "uncrouch", SubResource("AnimationNodeStateMachineTransition_txtx8")]
 graph_offset = Vector2(-58.3, 0.350073)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_65hwl"]
+atlas = ExtResource("9_to4n2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3k0n"]
+atlas = ExtResource("9_to4n2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f40o3"]
+atlas = ExtResource("9_to4n2")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6d3qd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65hwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3k0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f40o3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a5e0n"]
+radius = 9.05539
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02xxo"]
+atlas = ExtResource("10_c22vo")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opnea"]
+atlas = ExtResource("10_c22vo")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75rii"]
+atlas = ExtResource("10_c22vo")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3efor"]
+atlas = ExtResource("10_c22vo")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fh276"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02xxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opnea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75rii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3efor")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xckna"]
+radius = 8.06226
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r62eb"]
+radius = 8.06226
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l2j1u"]
+radius = 8.06226
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_j5bbr"]
 atlas = ExtResource("5_c1hun")
 region = Rect2(0, 0, 16, 16)
@@ -503,83 +580,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_ce0vg"]
 radius = 7.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_65hwl"]
-atlas = ExtResource("9_to4n2")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b3k0n"]
-atlas = ExtResource("9_to4n2")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f40o3"]
-atlas = ExtResource("9_to4n2")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_6d3qd"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_65hwl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b3k0n")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f40o3")
-}],
-"loop": true,
-"name": &"default",
-"speed": 8.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_a5e0n"]
-radius = 9.05539
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_02xxo"]
-atlas = ExtResource("10_c22vo")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_opnea"]
-atlas = ExtResource("10_c22vo")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_75rii"]
-atlas = ExtResource("10_c22vo")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3efor"]
-atlas = ExtResource("10_c22vo")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_fh276"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_02xxo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_opnea")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_75rii")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3efor")
-}],
-"loop": true,
-"name": &"default",
-"speed": 8.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_xckna"]
-radius = 8.06226
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_r62eb"]
-radius = 8.06226
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_l2j1u"]
-radius = 8.06226
-
 [sub_resource type="Animation" id="Animation_s7d8v"]
 length = 0.001
 tracks/0/type = "value"
@@ -751,6 +751,8 @@ lose_text = "Muahaha. I’ve trained in throwing lawn junk for millenia. You may
 
 [node name="Notes" type="Node" parent="."]
 script = ExtResource("2_p6qpp")
+file = "res://assets/music/vampire/VampireMidi.midi"
+soundfont = "res://assets/demo/music/8bit.sf2"
 
 [node name="Audio" type="Node" parent="."]
 
@@ -815,6 +817,7 @@ position = Vector2(0.5, 0)
 texture = ExtResource("3_f8lcq")
 hframes = 6
 vframes = 3
+frame = 3
 
 [node name="Hitbox" type="CollisionShape2D" parent="PC"]
 position = Vector2(2, 15)
@@ -831,110 +834,164 @@ root_node = NodePath("../Sprite")
 tree_root = SubResource("AnimationNodeStateMachine_ydk8k")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="Items" type="Node2D" parent="."]
+[node name="ItemsBG" type="Node2D" parent="."]
 position = Vector2(168, 0)
 
-[node name="Bat1" type="RigidBody2D" parent="Items"]
-position = Vector2(4, 70)
-collision_layer = 5
-collision_mask = 0
-gravity_scale = 0.0
-
-[node name="Bat1" type="AnimatedSprite2D" parent="Items/Bat1"]
-sprite_frames = SubResource("SpriteFrames_ueedb")
-frame_progress = 0.948667
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Bat1"]
-shape = SubResource("CircleShape2D_4cgqx")
-
-[node name="Bat2" type="RigidBody2D" parent="Items"]
-position = Vector2(4, 70)
-collision_layer = 5
-collision_mask = 0
-gravity_scale = 0.0
-
-[node name="Bat2" type="AnimatedSprite2D" parent="Items/Bat2"]
-sprite_frames = SubResource("SpriteFrames_6x7q5")
-frame_progress = 0.868916
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Bat2"]
-shape = SubResource("CircleShape2D_8en5q")
-
-[node name="Glider" type="RigidBody2D" parent="Items"]
-position = Vector2(4, 70)
-collision_layer = 5
-collision_mask = 0
-gravity_scale = 0.0
-
-[node name="Glider" type="AnimatedSprite2D" parent="Items/Glider"]
-sprite_frames = SubResource("SpriteFrames_ishvy")
-frame_progress = 0.495582
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Glider"]
-position = Vector2(0, 2)
-shape = SubResource("CircleShape2D_5jrug")
-
-[node name="Pan" type="RigidBody2D" parent="Items"]
-position = Vector2(4, 70)
-collision_layer = 5
-collision_mask = 0
-gravity_scale = 0.0
-
-[node name="Pan" type="AnimatedSprite2D" parent="Items/Pan"]
-sprite_frames = SubResource("SpriteFrames_hr0or")
-frame_progress = 0.910222
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Pan"]
-shape = SubResource("CircleShape2D_ce0vg")
-
-[node name="Barrel" type="RigidBody2D" parent="Items"]
+[node name="Barrel" type="RigidBody2D" parent="ItemsBG"]
 position = Vector2(4, 120)
 collision_layer = 5
 collision_mask = 0
 gravity_scale = 0.0
 
-[node name="Barrel" type="AnimatedSprite2D" parent="Items/Barrel"]
+[node name="Barrel" type="AnimatedSprite2D" parent="ItemsBG/Barrel"]
 sprite_frames = SubResource("SpriteFrames_6d3qd")
 frame_progress = 0.0394324
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Barrel"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsBG/Barrel"]
 shape = SubResource("CircleShape2D_a5e0n")
 
-[node name="Chomper" type="RigidBody2D" parent="Items"]
+[node name="Chomper" type="RigidBody2D" parent="ItemsBG"]
 position = Vector2(4, 120)
 collision_layer = 5
 collision_mask = 0
 gravity_scale = 0.0
 
-[node name="Chomper" type="AnimatedSprite2D" parent="Items/Chomper"]
+[node name="Chomper" type="AnimatedSprite2D" parent="ItemsBG/Chomper"]
 sprite_frames = SubResource("SpriteFrames_fh276")
 frame_progress = 0.406505
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Chomper"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsBG/Chomper"]
 shape = SubResource("CircleShape2D_xckna")
 
-[node name="Brick" type="RigidBody2D" parent="Items"]
+[node name="Brick" type="RigidBody2D" parent="ItemsBG"]
 position = Vector2(4, 122)
 collision_layer = 5
 collision_mask = 0
 gravity_scale = 0.0
 
-[node name="Brick" type="Sprite2D" parent="Items/Brick"]
+[node name="Brick" type="Sprite2D" parent="ItemsBG/Brick"]
 texture = ExtResource("11_7m11t")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Brick"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsBG/Brick"]
 shape = SubResource("CircleShape2D_r62eb")
 
-[node name="Banana" type="RigidBody2D" parent="Items"]
+[node name="Banana" type="RigidBody2D" parent="ItemsBG"]
 position = Vector2(4, 120)
 collision_layer = 5
 collision_mask = 0
 gravity_scale = 0.0
 
-[node name="Banana" type="Sprite2D" parent="Items/Banana"]
+[node name="Banana" type="Sprite2D" parent="ItemsBG/Banana"]
 texture = ExtResource("12_lsp2s")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Banana"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsBG/Banana"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_l2j1u")
+
+[node name="ItemsFG" type="Node2D" parent="."]
+position = Vector2(168, 0)
+
+[node name="Bat1" type="RigidBody2D" parent="ItemsFG"]
+position = Vector2(4, 70)
+collision_layer = 5
+collision_mask = 0
+gravity_scale = 0.0
+
+[node name="Bat1" type="AnimatedSprite2D" parent="ItemsFG/Bat1"]
+sprite_frames = SubResource("SpriteFrames_ueedb")
+frame_progress = 0.948667
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsFG/Bat1"]
+shape = SubResource("CircleShape2D_4cgqx")
+
+[node name="Bat2" type="RigidBody2D" parent="ItemsFG"]
+position = Vector2(4, 70)
+collision_layer = 5
+collision_mask = 0
+gravity_scale = 0.0
+
+[node name="Bat2" type="AnimatedSprite2D" parent="ItemsFG/Bat2"]
+sprite_frames = SubResource("SpriteFrames_6x7q5")
+frame_progress = 0.868916
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsFG/Bat2"]
+shape = SubResource("CircleShape2D_8en5q")
+
+[node name="Glider" type="RigidBody2D" parent="ItemsFG"]
+position = Vector2(4, 70)
+collision_layer = 5
+collision_mask = 0
+gravity_scale = 0.0
+
+[node name="Glider" type="AnimatedSprite2D" parent="ItemsFG/Glider"]
+sprite_frames = SubResource("SpriteFrames_ishvy")
+frame_progress = 0.495582
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsFG/Glider"]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_5jrug")
+
+[node name="Pan" type="RigidBody2D" parent="ItemsFG"]
+position = Vector2(4, 70)
+collision_layer = 5
+collision_mask = 0
+gravity_scale = 0.0
+
+[node name="Pan" type="AnimatedSprite2D" parent="ItemsFG/Pan"]
+sprite_frames = SubResource("SpriteFrames_hr0or")
+frame_progress = 0.910222
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsFG/Pan"]
+shape = SubResource("CircleShape2D_ce0vg")
+
+[node name="Barrel" type="RigidBody2D" parent="ItemsFG"]
+position = Vector2(4, 120)
+collision_layer = 5
+collision_mask = 0
+gravity_scale = 0.0
+
+[node name="Barrel" type="AnimatedSprite2D" parent="ItemsFG/Barrel"]
+sprite_frames = SubResource("SpriteFrames_6d3qd")
+frame_progress = 0.0394324
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsFG/Barrel"]
+shape = SubResource("CircleShape2D_a5e0n")
+
+[node name="Chomper" type="RigidBody2D" parent="ItemsFG"]
+position = Vector2(4, 120)
+collision_layer = 5
+collision_mask = 0
+gravity_scale = 0.0
+
+[node name="Chomper" type="AnimatedSprite2D" parent="ItemsFG/Chomper"]
+sprite_frames = SubResource("SpriteFrames_fh276")
+frame_progress = 0.406505
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsFG/Chomper"]
+shape = SubResource("CircleShape2D_xckna")
+
+[node name="Brick" type="RigidBody2D" parent="ItemsFG"]
+position = Vector2(4, 122)
+collision_layer = 5
+collision_mask = 0
+gravity_scale = 0.0
+
+[node name="Brick" type="Sprite2D" parent="ItemsFG/Brick"]
+texture = ExtResource("11_7m11t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsFG/Brick"]
+shape = SubResource("CircleShape2D_r62eb")
+
+[node name="Banana" type="RigidBody2D" parent="ItemsFG"]
+position = Vector2(4, 120)
+collision_layer = 5
+collision_mask = 0
+gravity_scale = 0.0
+
+[node name="Banana" type="Sprite2D" parent="ItemsFG/Banana"]
+texture = ExtResource("12_lsp2s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsFG/Banana"]
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_l2j1u")
 
