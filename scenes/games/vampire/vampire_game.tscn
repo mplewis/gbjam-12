@@ -1,31 +1,31 @@
 [gd_scene load_steps=117 format=3 uid="uid://bqkg7u5vvf66y"]
 
-[ext_resource type="Script" path="res://scripts/vampire.gd" id="1_0arq5"]
-[ext_resource type="Texture2D" uid="uid://bokk1qiyhpuqr" path="res://assets/images/vampire/Dracula_background.png" id="2_fkgq3"]
-[ext_resource type="Script" path="res://addons/midi/MidiPlayer.gd" id="2_p6qpp"]
-[ext_resource type="AudioStream" uid="uid://b5eiu48w5n53h" path="res://assets/music/vampire/VampireIntro_PreMidi.mp3" id="3_dub7d"]
-[ext_resource type="Texture2D" uid="uid://blgpqqhfwgucj" path="res://assets/images/vampire/PC-animation-Sheet.png" id="3_f8lcq"]
-[ext_resource type="AudioStream" uid="uid://c8dfpffdh5iny" path="res://assets/music/vampire/VampireMainMusic.mp3" id="4_5wpb3"]
-[ext_resource type="Texture2D" uid="uid://cuammduv5djc3" path="res://assets/images/vampire/Dracula-animation-Sheet.png" id="4_leiji"]
-[ext_resource type="AudioStream" uid="uid://weo8g8tp75kf" path="res://assets/music/vampire/VampireWin.mp3" id="5_7x2ym"]
-[ext_resource type="Texture2D" uid="uid://bhvulj8lpoein" path="res://assets/images/vampire/flying_bat1.png" id="5_c1hun"]
-[ext_resource type="Texture2D" uid="uid://s3t5o4loqaxw" path="res://assets/images/vampire/flying_bat2.png" id="6_th2s3"]
-[ext_resource type="AudioStream" uid="uid://baimtvta0dnun" path="res://assets/music/vampire/VampireLose.mp3" id="6_vqk6w"]
-[ext_resource type="Texture2D" uid="uid://cjkjqj03t5p22" path="res://assets/images/vampire/flying_glider.png" id="7_0yslv"]
-[ext_resource type="AudioStream" uid="uid://mkbo6ui1kcld" path="res://assets/music/vampire/VampireDuck.mp3" id="7_p2dwi"]
-[ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="8_4kqmv"]
-[ext_resource type="Texture2D" uid="uid://ds8yniw2nu8s1" path="res://assets/images/vampire/flying_pan.png" id="8_bgqxj"]
-[ext_resource type="AudioStream" uid="uid://sn6ud3bckriy" path="res://assets/music/vampire/VampireJump.mp3" id="8_pcj5t"]
-[ext_resource type="AudioStream" uid="uid://dw6dhebhyndfi" path="res://assets/sfx/Miss.wav" id="9_dwh64"]
-[ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="9_lxosv"]
-[ext_resource type="Texture2D" uid="uid://btmlgof1iqfjl" path="res://assets/images/vampire/ground_barrel.png" id="9_to4n2"]
-[ext_resource type="Texture2D" uid="uid://b6mh4j0gxextp" path="res://assets/images/vampire/ground_chomper.png" id="10_c22vo"]
-[ext_resource type="Texture2D" uid="uid://cwpcni4n03tiq" path="res://assets/images/vampire/ground_brick.png" id="11_7m11t"]
-[ext_resource type="Texture2D" uid="uid://3ehjs7cqfh7j" path="res://assets/images/vampire/ground_banana.png" id="12_lsp2s"]
-[ext_resource type="Texture2D" uid="uid://dylj04p86fla0" path="res://assets/images/vampire/Dracula-nice-Sheet.png" id="13_y87fo"]
-[ext_resource type="Texture2D" uid="uid://c3l12o2q24sna" path="res://assets/images/vampire/Dracula-youSuck-Sheet.png" id="14_3r8tf"]
-[ext_resource type="PackedScene" uid="uid://btjmu4m2e3tvk" path="res://scenes/games/vampire/hearts_row.tscn" id="17_85f4h"]
-[ext_resource type="PackedScene" uid="uid://dk28jnwyfy0aj" path="res://scenes/components/fader.tscn" id="24_kolfl"]
+[ext_resource type="Script" path="res://scripts/vampire_game.gd" id="1_66y2c"]
+[ext_resource type="Script" path="res://addons/midi/MidiPlayer.gd" id="2_fom2f"]
+[ext_resource type="AudioStream" uid="uid://b5eiu48w5n53h" path="res://assets/music/vampire/VampireIntro_PreMidi.mp3" id="3_l7kdy"]
+[ext_resource type="AudioStream" uid="uid://c8dfpffdh5iny" path="res://assets/music/vampire/VampireMainMusic.mp3" id="4_wai2i"]
+[ext_resource type="AudioStream" uid="uid://weo8g8tp75kf" path="res://assets/music/vampire/VampireWin.mp3" id="5_q0okc"]
+[ext_resource type="AudioStream" uid="uid://baimtvta0dnun" path="res://assets/music/vampire/VampireLose.mp3" id="6_b6yk8"]
+[ext_resource type="AudioStream" uid="uid://mkbo6ui1kcld" path="res://assets/music/vampire/VampireDuck.mp3" id="7_suotu"]
+[ext_resource type="AudioStream" uid="uid://sn6ud3bckriy" path="res://assets/music/vampire/VampireJump.mp3" id="8_4ug0y"]
+[ext_resource type="AudioStream" uid="uid://dw6dhebhyndfi" path="res://assets/sfx/Miss.wav" id="9_0f3ov"]
+[ext_resource type="Texture2D" uid="uid://bokk1qiyhpuqr" path="res://assets/images/vampire/Dracula_background.png" id="10_qb0qd"]
+[ext_resource type="Texture2D" uid="uid://blgpqqhfwgucj" path="res://assets/images/vampire/PC-animation-Sheet.png" id="11_d6cuy"]
+[ext_resource type="Texture2D" uid="uid://btmlgof1iqfjl" path="res://assets/images/vampire/ground_barrel.png" id="12_sbgle"]
+[ext_resource type="Texture2D" uid="uid://b6mh4j0gxextp" path="res://assets/images/vampire/ground_chomper.png" id="13_ar7ni"]
+[ext_resource type="Texture2D" uid="uid://cwpcni4n03tiq" path="res://assets/images/vampire/ground_brick.png" id="14_4ia6u"]
+[ext_resource type="Texture2D" uid="uid://3ehjs7cqfh7j" path="res://assets/images/vampire/ground_banana.png" id="15_1bc10"]
+[ext_resource type="Texture2D" uid="uid://bhvulj8lpoein" path="res://assets/images/vampire/flying_bat1.png" id="16_wj1cg"]
+[ext_resource type="Texture2D" uid="uid://s3t5o4loqaxw" path="res://assets/images/vampire/flying_bat2.png" id="17_y180i"]
+[ext_resource type="Texture2D" uid="uid://cjkjqj03t5p22" path="res://assets/images/vampire/flying_glider.png" id="18_e5qbg"]
+[ext_resource type="Texture2D" uid="uid://ds8yniw2nu8s1" path="res://assets/images/vampire/flying_pan.png" id="19_ng437"]
+[ext_resource type="Texture2D" uid="uid://cuammduv5djc3" path="res://assets/images/vampire/Dracula-animation-Sheet.png" id="20_4jncq"]
+[ext_resource type="Texture2D" uid="uid://dylj04p86fla0" path="res://assets/images/vampire/Dracula-nice-Sheet.png" id="21_2mx1d"]
+[ext_resource type="Texture2D" uid="uid://c3l12o2q24sna" path="res://assets/images/vampire/Dracula-youSuck-Sheet.png" id="22_i43yt"]
+[ext_resource type="PackedScene" uid="uid://btjmu4m2e3tvk" path="res://scenes/games/vampire/hearts_row.tscn" id="23_0cqva"]
+[ext_resource type="PackedScene" uid="uid://dk28jnwyfy0aj" path="res://scenes/components/fader.tscn" id="24_i31kr"]
+[ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="25_bakm6"]
+[ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="26_fqufp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ibiie"]
 size = Vector2(20, 200)
@@ -357,15 +357,15 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-278.32, -37.225)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_65hwl"]
-atlas = ExtResource("9_to4n2")
+atlas = ExtResource("12_sbgle")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b3k0n"]
-atlas = ExtResource("9_to4n2")
+atlas = ExtResource("12_sbgle")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f40o3"]
-atlas = ExtResource("9_to4n2")
+atlas = ExtResource("12_sbgle")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6d3qd"]
@@ -389,19 +389,19 @@ animations = [{
 radius = 9.05539
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_02xxo"]
-atlas = ExtResource("10_c22vo")
+atlas = ExtResource("13_ar7ni")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_opnea"]
-atlas = ExtResource("10_c22vo")
+atlas = ExtResource("13_ar7ni")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_75rii"]
-atlas = ExtResource("10_c22vo")
+atlas = ExtResource("13_ar7ni")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3efor"]
-atlas = ExtResource("10_c22vo")
+atlas = ExtResource("13_ar7ni")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fh276"]
@@ -434,19 +434,19 @@ radius = 8.06226
 radius = 8.06226
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j5bbr"]
-atlas = ExtResource("5_c1hun")
+atlas = ExtResource("16_wj1cg")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x0pt4"]
-atlas = ExtResource("5_c1hun")
+atlas = ExtResource("16_wj1cg")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d5eye"]
-atlas = ExtResource("5_c1hun")
+atlas = ExtResource("16_wj1cg")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_45gec"]
-atlas = ExtResource("5_c1hun")
+atlas = ExtResource("16_wj1cg")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ueedb"]
@@ -473,27 +473,27 @@ animations = [{
 radius = 7.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pgfxl"]
-atlas = ExtResource("6_th2s3")
+atlas = ExtResource("17_y180i")
 region = Rect2(0, 0, 24, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i6r7d"]
-atlas = ExtResource("6_th2s3")
+atlas = ExtResource("17_y180i")
 region = Rect2(24, 0, 24, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_55b6j"]
-atlas = ExtResource("6_th2s3")
+atlas = ExtResource("17_y180i")
 region = Rect2(48, 0, 24, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e1ead"]
-atlas = ExtResource("6_th2s3")
+atlas = ExtResource("17_y180i")
 region = Rect2(72, 0, 24, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d87tl"]
-atlas = ExtResource("6_th2s3")
+atlas = ExtResource("17_y180i")
 region = Rect2(96, 0, 24, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wwkwm"]
-atlas = ExtResource("6_th2s3")
+atlas = ExtResource("17_y180i")
 region = Rect2(120, 0, 24, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6x7q5"]
@@ -526,19 +526,19 @@ animations = [{
 radius = 9.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lrtg5"]
-atlas = ExtResource("7_0yslv")
+atlas = ExtResource("18_e5qbg")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_17nqc"]
-atlas = ExtResource("7_0yslv")
+atlas = ExtResource("18_e5qbg")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6l6y3"]
-atlas = ExtResource("7_0yslv")
+atlas = ExtResource("18_e5qbg")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uae13"]
-atlas = ExtResource("7_0yslv")
+atlas = ExtResource("18_e5qbg")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ishvy"]
@@ -565,35 +565,35 @@ animations = [{
 radius = 8.06226
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q31cx"]
-atlas = ExtResource("8_bgqxj")
+atlas = ExtResource("19_ng437")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_licf4"]
-atlas = ExtResource("8_bgqxj")
+atlas = ExtResource("19_ng437")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8nxka"]
-atlas = ExtResource("8_bgqxj")
+atlas = ExtResource("19_ng437")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ob0bc"]
-atlas = ExtResource("8_bgqxj")
+atlas = ExtResource("19_ng437")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uv8w6"]
-atlas = ExtResource("8_bgqxj")
+atlas = ExtResource("19_ng437")
 region = Rect2(64, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_33074"]
-atlas = ExtResource("8_bgqxj")
+atlas = ExtResource("19_ng437")
 region = Rect2(80, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yjb8h"]
-atlas = ExtResource("8_bgqxj")
+atlas = ExtResource("19_ng437")
 region = Rect2(96, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m03t5"]
-atlas = ExtResource("8_bgqxj")
+atlas = ExtResource("19_ng437")
 region = Rect2(112, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hr0or"]
@@ -713,19 +713,19 @@ transitions = ["Start", "float", SubResource("AnimationNodeStateMachineTransitio
 graph_offset = Vector2(127.7, -44.31)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_na608"]
-atlas = ExtResource("13_y87fo")
+atlas = ExtResource("21_2mx1d")
 region = Rect2(0, 0, 57, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qyccj"]
-atlas = ExtResource("13_y87fo")
+atlas = ExtResource("21_2mx1d")
 region = Rect2(57, 0, 57, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jjxqj"]
-atlas = ExtResource("13_y87fo")
+atlas = ExtResource("21_2mx1d")
 region = Rect2(114, 0, 57, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_egcv0"]
-atlas = ExtResource("13_y87fo")
+atlas = ExtResource("21_2mx1d")
 region = Rect2(171, 0, 57, 30)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ylkyn"]
@@ -749,19 +749,19 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8sw7j"]
-atlas = ExtResource("14_3r8tf")
+atlas = ExtResource("22_i43yt")
 region = Rect2(0, 0, 50, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kha38"]
-atlas = ExtResource("14_3r8tf")
+atlas = ExtResource("22_i43yt")
 region = Rect2(50, 0, 50, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wq3i2"]
-atlas = ExtResource("14_3r8tf")
+atlas = ExtResource("22_i43yt")
 region = Rect2(100, 0, 50, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y132n"]
-atlas = ExtResource("14_3r8tf")
+atlas = ExtResource("22_i43yt")
 region = Rect2(150, 0, 50, 37)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2ip5h"]
@@ -785,7 +785,7 @@ animations = [{
 }]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0vlu2"]
-shader = ExtResource("8_4kqmv")
+shader = ExtResource("25_bakm6")
 shader_parameter/threshold1 = 0.119
 shader_parameter/threshold2 = 0.5
 shader_parameter/threshold3 = 0.833
@@ -795,13 +795,13 @@ shader_parameter/color3 = Color(0.211765, 0.52549, 0.560784, 1)
 shader_parameter/color4 = Color(0.372549, 0.780392, 0.364706, 1)
 
 [node name="VampireGame" type="Node2D"]
-script = ExtResource("1_0arq5")
+script = ExtResource("1_66y2c")
 intro_text = "Who said you could enter my backyard--I mean, courtyard? I will make you rue the day you entered without permission!"
 win_text = "How could you have dipped, ducked, and dodged all that junk--I mean, my precision weaponry? You are more skilled than I believed. Ngh-- Go!"
 lose_text = "Muahaha. I’ve trained in throwing lawn junk for millenia. You may leave this yard, but you’ll never leave this house alive!"
 
 [node name="Notes" type="Node" parent="."]
-script = ExtResource("2_p6qpp")
+script = ExtResource("2_fom2f")
 file = "res://assets/music/vampire/VampireMidi.midi"
 soundfont = "res://assets/demo/music/8bit.sf2"
 muted = true
@@ -809,37 +809,37 @@ muted = true
 [node name="Audio" type="Node" parent="."]
 
 [node name="Intro" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource("3_dub7d")
+stream = ExtResource("3_l7kdy")
 autoplay = true
 bus = &"Music"
 parameters/looping = true
 
 [node name="Music" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource("4_5wpb3")
+stream = ExtResource("4_wai2i")
 bus = &"Music"
 
 [node name="Win" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource("5_7x2ym")
+stream = ExtResource("5_q0okc")
 bus = &"Music"
 
 [node name="Lose" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource("6_vqk6w")
+stream = ExtResource("6_b6yk8")
 bus = &"Music"
 
 [node name="Duck" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource("7_p2dwi")
+stream = ExtResource("7_suotu")
 bus = &"SFX"
 
 [node name="Jump" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource("8_pcj5t")
+stream = ExtResource("8_4ug0y")
 bus = &"SFX"
 
 [node name="Miss" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource("9_dwh64")
+stream = ExtResource("9_0f3ov")
 
 [node name="BG" type="Sprite2D" parent="."]
 position = Vector2(80, 72)
-texture = ExtResource("2_fkgq3")
+texture = ExtResource("10_qb0qd")
 
 [node name="Despawner" type="Area2D" parent="."]
 position = Vector2(-39, 0)
@@ -866,10 +866,10 @@ monitoring = false
 
 [node name="Sprite" type="Sprite2D" parent="PC"]
 position = Vector2(0.5, 0)
-texture = ExtResource("3_f8lcq")
+texture = ExtResource("11_d6cuy")
 hframes = 6
 vframes = 3
-frame = 3
+frame = 4
 
 [node name="Hitbox" type="CollisionShape2D" parent="PC"]
 position = Vector2(2, 15)
@@ -922,7 +922,7 @@ collision_mask = 0
 gravity_scale = 0.0
 
 [node name="Brick" type="Sprite2D" parent="ItemsBG/Brick"]
-texture = ExtResource("11_7m11t")
+texture = ExtResource("14_4ia6u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsBG/Brick"]
 shape = SubResource("CircleShape2D_r62eb")
@@ -934,7 +934,7 @@ collision_mask = 0
 gravity_scale = 0.0
 
 [node name="Banana" type="Sprite2D" parent="ItemsBG/Banana"]
-texture = ExtResource("12_lsp2s")
+texture = ExtResource("15_1bc10")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsBG/Banana"]
 position = Vector2(0, 1)
@@ -1029,7 +1029,7 @@ collision_mask = 0
 gravity_scale = 0.0
 
 [node name="Brick" type="Sprite2D" parent="ItemsFG/Brick"]
-texture = ExtResource("11_7m11t")
+texture = ExtResource("14_4ia6u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsFG/Brick"]
 shape = SubResource("CircleShape2D_r62eb")
@@ -1041,7 +1041,7 @@ collision_mask = 0
 gravity_scale = 0.0
 
 [node name="Banana" type="Sprite2D" parent="ItemsFG/Banana"]
-texture = ExtResource("12_lsp2s")
+texture = ExtResource("15_1bc10")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsFG/Banana"]
 position = Vector2(0, 1)
@@ -1051,7 +1051,7 @@ shape = SubResource("CircleShape2D_l2j1u")
 
 [node name="Dracula" type="Sprite2D" parent="."]
 position = Vector2(128, 85)
-texture = ExtResource("4_leiji")
+texture = ExtResource("20_4jncq")
 hframes = 6
 vframes = 2
 
@@ -1077,15 +1077,14 @@ sprite_frames = SubResource("SpriteFrames_2ip5h")
 frame_progress = 0.391379
 offset = Vector2(0, 0.5)
 
-[node name="HeartsRow" parent="." instance=ExtResource("17_85f4h")]
+[node name="HeartsRow" parent="." instance=ExtResource("23_0cqva")]
 offset_left = 36.0
 offset_top = 134.0
 offset_right = 76.0
 offset_bottom = 174.0
 health = 10
 
-[node name="Fader" parent="." instance=ExtResource("24_kolfl")]
-visible = false
+[node name="Fader" parent="." instance=ExtResource("24_i31kr")]
 
 [node name="RecolorLayer" type="CanvasLayer" parent="."]
 
@@ -1095,4 +1094,4 @@ offset_right = 160.0
 offset_bottom = 256.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Controls" parent="." instance=ExtResource("9_lxosv")]
+[node name="Controls" parent="." instance=ExtResource("26_fqufp")]
