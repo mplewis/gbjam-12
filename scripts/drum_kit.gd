@@ -64,7 +64,6 @@ var animation := {
 
 
 func _ready():
-	SceneMgr.set_appropriate_window_size()
 	GBtn.on_start.connect(_on_start)
 	
 	GBtn.on_left.connect(_on_left)

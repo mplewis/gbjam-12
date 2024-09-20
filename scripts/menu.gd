@@ -8,7 +8,7 @@ const JUMP_STR = 120
 const GRAVITY_STR = 480
 
 var menu_items := {
-	"drum_kit": "Spider",
+	"campaign": "Start New Campaign",
 	"calibrate": "Audio Calibration",
 	"options": "Options",
 	"credits": "Credits",
@@ -19,7 +19,6 @@ var selected := 0
 
 
 func _ready():
-	SceneMgr.set_appropriate_window_size()
 	GBtn.on_up.connect(up)
 	GBtn.on_down.connect(down)
 	GBtn.on_a.connect(select)
@@ -55,8 +54,8 @@ func select():
 	safe_call("_on_menu_%s" % item)
 
 
-func _on_menu_drum_kit():
-	SceneMgr.open("games/drum_kit/drum_kit")
+func _on_campaign():
+	CampaignMgr.start_campaign()
 
 
 func _on_menu_calibrate():

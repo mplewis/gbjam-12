@@ -1,8 +1,11 @@
 class_name SceneTransition
 extends Control
 
+## Play the "door open" sound effect.
 @export var door_open := false
+## Play the "footsteps" sound effect.
 @export var footsteps := false
+## Play the "door close" sound effect.
 @export var door_close := false
 
 @onready var audio_door_open: AudioStreamPlayer = $DoorOpen

@@ -17,10 +17,6 @@ var player_up_vel := 0.0
 @onready var floor_y := player.position.y
 
 
-func _ready():
-	SceneMgr.set_appropriate_window_size()
-
-
 func _process(delta):
 	GBtn.on_a.connect(jump)
 	GBtn.on_b.connect(turbo)

@@ -28,7 +28,6 @@ var combo = 0
 
 
 func _ready():
-	SceneMgr.set_appropriate_window_size()
 	GBtn.on_start.connect(_on_start)
 	GBtn.on_left.connect(_on_left)
 	GBtn.on_down.connect(_on_down)
