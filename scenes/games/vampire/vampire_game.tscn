@@ -1,4 +1,4 @@
-[gd_scene load_steps=117 format=3 uid="uid://bqkg7u5vvf66y"]
+[gd_scene load_steps=117 format=3 uid="uid://dkyjqlqibueg0"]
 
 [ext_resource type="Script" path="res://scripts/vampire_game.gd" id="1_66y2c"]
 [ext_resource type="Script" path="res://addons/midi/MidiPlayer.gd" id="2_fom2f"]
@@ -23,7 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://dylj04p86fla0" path="res://assets/images/vampire/Dracula-nice-Sheet.png" id="21_2mx1d"]
 [ext_resource type="Texture2D" uid="uid://c3l12o2q24sna" path="res://assets/images/vampire/Dracula-youSuck-Sheet.png" id="22_i43yt"]
 [ext_resource type="PackedScene" uid="uid://btjmu4m2e3tvk" path="res://scenes/games/vampire/hearts_row.tscn" id="23_0cqva"]
-[ext_resource type="PackedScene" uid="uid://dk28jnwyfy0aj" path="res://scenes/components/fader.tscn" id="24_i31kr"]
+[ext_resource type="PackedScene" path="res://scenes/components/fader.tscn" id="24_i31kr"]
 [ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="25_bakm6"]
 [ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="26_fqufp"]
 
