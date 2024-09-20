@@ -112,6 +112,7 @@ layout_mode = 2
 
 [node name="Arrow" type="TextureRect" parent="Canvas/Pos"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 145.0
 offset_top = 38.0
