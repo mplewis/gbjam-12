@@ -35,10 +35,10 @@ const ANIM_FADE_DURATION = 1.5  # sec
 @export var win_text: String
 @export var lose_text: String
 @export var spawn_to_hit_sec: float = 0.8
+@export var max_health: int = 10
 @export var swap_high_and_low_spawns: bool = false
 @export var skip_to_song_end: bool = false
 
-const max_health := 10
 @onready var health := max_health
 
 var start_playing_music_at_ms = null
