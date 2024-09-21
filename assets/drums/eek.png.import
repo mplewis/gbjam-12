@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d4gn2cc4ewova"
-path="res://.godot/imported/eek.png-ee855a5ddf623466b0ba0463e5f683e1.ctex"
+path="res://.godot/imported/eek.png-fb6ff8bd905418943ce113aae8ecbc97.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/spider/eek.png"
-dest_files=["res://.godot/imported/eek.png-ee855a5ddf623466b0ba0463e5f683e1.ctex"]
+source_file="res://assets/drums/eek.png"
+dest_files=["res://.godot/imported/eek.png-fb6ff8bd905418943ce113aae8ecbc97.ctex"]
 
 [params]
 

@@ -6,14 +6,14 @@ const ARROW_SPAWN_TO_HIT_SEC = 0.8
 const KICK_NOTE_LOW = 33
 const KICK_NOTE_HIGH = 37
 const SNARE_NOTE_LOW = 30
-const SNARE_NOTE_HIGH = 49#41
-const TOM_NOTE_LOW = 50#41
-const TOM_NOTE_HIGH = 60#50#46
+const SNARE_NOTE_HIGH = 49  #41
+const TOM_NOTE_LOW = 50  #41
+const TOM_NOTE_HIGH = 60  #50#46
 
-const LOW_TOM_NOTE_LOW = 55#41
-const LOW_TOM_NOTE_HIGH = 60#50#46
-const HAT_NOTE_LOW = 70#40#42
-const HAT_NOTE_HIGH = 80#50#52
+const LOW_TOM_NOTE_LOW = 55  #41
+const LOW_TOM_NOTE_HIGH = 60  #50#46
+const HAT_NOTE_LOW = 70  #40#42
+const HAT_NOTE_HIGH = 80  #50#52
 const CRASH_NOTE_LOW = 49
 const CRASH_NOTE_HIGH = 55
 const SPLASH_NOTE_LOW = 52
@@ -25,11 +25,7 @@ const ANIM_FADE_DURATION = 1.5  # sec
 # (which seems to be very close to real life!) and in the actual game, here.
 const MAGIC_NUMBER_MIDI_DELAY = 0.16
 @onready var Score: Label = $UI/Score
-<<<<<<< Updated upstream
 @onready var Health: Label = $UI/Health
-=======
-#@onready var Health: Label = $UI/Health
->>>>>>> Stashed changes
 @onready var circles_parent: Control = $Circles
 @onready var midi_player_spawn: MidiPlayer = $Notes
 @onready var midi_player_audio: MidiPlayer = $Music
@@ -39,22 +35,20 @@ const MAGIC_NUMBER_MIDI_DELAY = 0.16
 @onready var audio_lose: AudioStreamPlayer2D = $Audio/Lose
 @onready var Music: AudioStreamPlayer2D = $Audio/Music
 
-@onready var Nice:Array[Sprite2D] = [$Nice, $Nice2]
-@onready var Eek:Array[Sprite2D] = [$Eek, $Eek2]
-
-
+@onready var Nice: Array[Sprite2D] = [$Nice, $Nice2]
+@onready var Eek: Array[Sprite2D] = [$Eek, $Eek2]
 
 @export var intro_text: String
 @export var win_text: String
 @export var lose_text: String
 @export var spider = AnimatedSprite2D.new()
-@export var health_bar = AnimatedSprite2D.new() 
+@export var health_bar = AnimatedSprite2D.new()
 @onready var note2frame = {
-	 
-	[SNARE_NOTE_LOW, SNARE_NOTE_HIGH]:0,  
-	[HAT_NOTE_LOW, HAT_NOTE_HIGH]:1,
-	[LOW_TOM_NOTE_LOW, LOW_TOM_NOTE_HIGH]:2,
-	[TOM_NOTE_LOW, TOM_NOTE_HIGH]:3}
+	[SNARE_NOTE_LOW, SNARE_NOTE_HIGH]: 0,
+	[HAT_NOTE_LOW, HAT_NOTE_HIGH]: 1,
+	[LOW_TOM_NOTE_LOW, LOW_TOM_NOTE_HIGH]: 2,
+	[TOM_NOTE_LOW, TOM_NOTE_HIGH]: 3
+}
 
 var start_playing_at_ms: float
 var started = false
@@ -64,120 +58,101 @@ var is_spider_waiting = false
 
 var score = 0
 var combo = 0
-<<<<<<< Updated upstream
-
 
 @export var spider = AnimatedSprite2D.new()
 @onready var note2frame = {
-	 
-	[SNARE_NOTE_LOW, SNARE_NOTE_HIGH]:1,  
-	[HAT_NOTE_LOW, HAT_NOTE_HIGH]:2,
-	[KICK_NOTE_LOW, KICK_NOTE_HIGH]:3,
-	[TOM_NOTE_LOW, TOM_NOTE_HIGH]:4}
+	[SNARE_NOTE_LOW, SNARE_NOTE_HIGH]: 1,
+	[HAT_NOTE_LOW, HAT_NOTE_HIGH]: 2,
+	[KICK_NOTE_LOW, KICK_NOTE_HIGH]: 3,
+	[TOM_NOTE_LOW, TOM_NOTE_HIGH]: 4
+}
 @onready var midi_player_spawn: MidiPlayer = $MidiPlayerSpawn
 @onready var midi_player_audio: MidiPlayer = $MidiPlayerAudio
 var start_playing_at_ms: float
 var started = false
 
-var spider_animations = ["","snare", "hi_tom","tom", "low_tom"]
-=======
-var spider_animations = ["snare", "hi_tom","tom", "low_tom"]
->>>>>>> Stashed changes
+var spider_animations = ["", "snare", "hi_tom", "tom", "low_tom"]
 
 var animation := {
-	[KICK_NOTE_LOW, KICK_NOTE_HIGH]: {
+	[KICK_NOTE_LOW, KICK_NOTE_HIGH]:
+	{
 		"call": "kick",
-	},[CRASH_NOTE_LOW, CRASH_NOTE_HIGH]: {
+	},
+	[CRASH_NOTE_LOW, CRASH_NOTE_HIGH]:
+	{
 		"call": "crash",
 	},
-	
-	[SPLASH_NOTE_LOW, SPLASH_NOTE_HIGH]: {
+	[SPLASH_NOTE_LOW, SPLASH_NOTE_HIGH]:
+	{
 		"call": "splash",
 	}
 }
 var animation_player := {
-	[SNARE_NOTE_LOW, SNARE_NOTE_HIGH]: {
+	[SNARE_NOTE_LOW, SNARE_NOTE_HIGH]:
+	{
 		"call": "snare",
-	},[HAT_NOTE_LOW, HAT_NOTE_HIGH]: {
+	},
+	[HAT_NOTE_LOW, HAT_NOTE_HIGH]:
+	{
 		"call": "high_tom",
 	},
-	
-<<<<<<< Updated upstream
-	[KICK_NOTE_LOW, KICK_NOTE_HIGH]: {
-=======
-	[LOW_TOM_NOTE_LOW, LOW_TOM_NOTE_HIGH]: {
->>>>>>> Stashed changes
+	[KICK_NOTE_LOW, KICK_NOTE_HIGH]:
+	{
 		"call": "tom",
 	},
-	
-	[TOM_NOTE_LOW, TOM_NOTE_HIGH]: {
+	[TOM_NOTE_LOW, TOM_NOTE_HIGH]:
+	{
 		"call": "low_tom",
 	}
 }
 var wait_timer = 2.0
 var start_timer = 0
-<<<<<<< Updated upstream
+
+
 func _ready():
 	spider.play(spider_animations[1])
 	SceneMgr.set_appropriate_window_size()
-=======
-
-var difficulty = 150
-var miss_buffer = 5.0/60.0
-
-
-
-func _ready():
-	_start_intro()
-	spider.play(spider_animations[0])
-	SceneMgr._set_appropriate_window_size()
->>>>>>> Stashed changes
 	GBtn.on_start.connect(_on_start)
-	
+
 	GBtn.on_left.connect(_on_left)
 	GBtn.on_down.connect(_on_down)
 	GBtn.on_right.connect(_on_right)
-	
+
 	GBtn.on_up.connect(_on_up)
 	GBtn.on_a.connect(_on_a)
 	GBtn.on_b.connect(_on_b)
-	
+
 	HealthMgr.on_health_reset.connect(_on_health_reset)
 	HealthMgr.on_health_drain.connect(_on_health_drain)
-	
+
 	midi_player_spawn.midi_event.connect(_on_midi_event)
-	
-<<<<<<< Updated upstream
-=======
+
 	Music.finished.connect(music_end)
-	
 
 
 func _start_intro():
-	HealthMgr.health= HealthMgr.health_max
+	HealthMgr.health = HealthMgr.health_max
 	fader.fade_in()
 	await get_tree().create_timer(1.0).timeout
 	Music.stream = load("res://assets/music/spider/SpiderIntro_PreMidiTrack.wav")
 	Music.volume_db = -10
-	
+
 	Music.play()
 
 	DialogueMgr.show(intro_text)
 	await DialogueMgr.on_close
 
-	
-	
 	Music.stream = load("res://assets/music/spider/The Jazzy Arachnid FINAL.wav.WAV")
 	Music.volume_db = 5
 	#midi_player_audio.file = "res://assets/music/spider/The+Jazzy+Arachnid+FINAL.wav.mid"
 	Music.play()
-	
+
 	#await get_tree().create_timer(0.1).timeout
 
 	_start_game()
+
+
 func _start_game():
-	
->>>>>>> Stashed changes
 	midi_player_spawn.volume_db = 0.0
 	midi_player_audio.volume_db = 0.0
 
@@ -189,61 +164,45 @@ func _start_game():
 	for circle in circles_parent.get_children():
 		circles.append(circle)
 	start_timer = Time.get_ticks_msec()
-<<<<<<< Updated upstream
+
 
 func _process(delta: float) -> void:
-	Score.text = "Score: %d\nCombo: %d" % [score, combo]
-	Health.text = "Health: %d" % HealthMgr.health
-	if is_spider_waiting || !spider.is_playing():
-		
-		spider.play(spider_animations[circle_index+1])
-=======
-func _process(delta: float) -> void:
-	
-	
 	var fade_amt := delta / ANIM_FADE_DURATION
 	Nice[0].modulate.a -= fade_amt
 	Nice[1].modulate.a -= fade_amt
 	Eek[0].modulate.a -= fade_amt
 	Eek[1].modulate.a -= fade_amt
 	Score.text = "SCoR: %d\nCombo: %d" % [score, combo]
-	
-	
-	
-	health_bar.frame = 10-int(float(HealthMgr.health/ HealthMgr.health_max)*10 )
+
+	health_bar.frame = 10 - int(float(HealthMgr.health / HealthMgr.health_max) * 10)
 	#health_bar.frame=  0 if HealthMgr.health == HealthMgr.health_max  && HealthMgr.health >0 else 10  if HealthMgr.health <= 0 else health_bar.frame
-	
+
 	if is_spider_waiting || !spider.is_playing():
-		
 		spider.play(spider_animations[circle_index])
->>>>>>> Stashed changes
-	
-	if HealthMgr.health <=0:
+
+	if HealthMgr.health <= 0:
 		HealthMgr.on_health_reset.emit()
 	if is_spider_waiting:
-		var new_progress = circles[circle_index].progress + delta * 150	# 200 maestro 175 jazzer 125 mid 50 Noob difficulty
+		var new_progress = circles[circle_index].progress + delta * 150  # 200 maestro 175 jazzer 125 mid 50 Noob difficulty
 		#print(new_progress)
-	
+
 		while new_progress > 100:
-			new_progress =0.0
+			new_progress = 0.0
 			is_spider_waiting = false
 			_on_miss()
-			
-			
+
 		circles[circle_index].progress = new_progress
 		circle_index = 0 if !is_spider_waiting else circle_index
-<<<<<<< Updated upstream
-	if player_miss:
-=======
 	if player_miss || !is_spider_waiting:
->>>>>>> Stashed changes
 		$drum.call("shake_object", miss_index)
+
+
 func _on_start():
 	SceneMgr.scene_paths.pop_back()
 	SceneMgr.close()
-	
+
+
 func _on_left():
-	
 	get_tally(0)
 	miss_index = 1
 
@@ -258,6 +217,7 @@ func _on_right():
 	get_tally(1)
 	miss_index = 2
 
+
 func _on_up():
 	miss_index = 0
 	pass
@@ -271,27 +231,26 @@ func _on_a():
 
 func _on_b():
 	get_tally(2)
-	miss_index = 3 
+	miss_index = 3
+
+
 func get_tally(index = 0):
 	if index == circle_index && is_spider_waiting:
 		tally(circles[circle_index].progress)
-	elif index != circle_index  && is_spider_waiting:
+	elif index != circle_index && is_spider_waiting:
 		_on_miss()
+
+
 func tally(progress):
-<<<<<<< Updated upstream
-	if progress >65:
-=======
-	if progress >65 if difficulty > 150 else 75:
->>>>>>> Stashed changes
-		
+	if progress > 65 if difficulty > 150 else 75:
 		_on_hit(progress)
 	else:
 		_on_miss()
-		
-var player_miss = false		
+
+
+var player_miss = false
 var miss_index = 0
-<<<<<<< Updated upstream
-=======
+
 
 func music_end():
 	midi_player_spawn.stop()
@@ -300,83 +259,66 @@ func music_end():
 	else:
 		HealthMgr.on_health_reset.emit()
 
+
 func on_win():
-	
 	DialogueMgr.show(win_text)
 	audio_win.play()
 	await audio_win.finished
-	
+
 	fader.fade_out()
 	await fader.fade_complete
 	CampaignMgr.scene_complete.emit()
->>>>>>> Stashed changes
+
+
 func _on_miss():
 	$Audio/Miss.play()
-	combo = 0	
+	combo = 0
 	is_spider_waiting = false
-	spider.play("%s_idle" % spider_animations[circle_index] )
+	spider.play("%s_idle" % spider_animations[circle_index])
 	#spider.frame = 0
 	Eek[0 if circle_index < 2 else 1].modulate.a = 1.0
 	circles[circle_index].progress = 0.0
-	
+
 	circle_index = 0
 	HealthMgr.on_health_drain.emit()
 	player_miss = true
-	
-<<<<<<< Updated upstream
+
+
 func _on_hit(progress):
-		$drum.call(animation_player[note2frame.keys()[circle_index]].call)
-=======
-	
-	
-func _on_hit(progress):
-		instruments[circle_index].play()
-		Nice[0 if circle_index < 2 else 1].modulate.a = 1.0
-		$drum.call(animation_player[note2frame.keys()[circle_index]].call)
-		
->>>>>>> Stashed changes
-		score += 100 if progress > 97 else 75 if progress > 95 else 50 if progress > 85 else 25 #perfect / great / good/ ok 
-		combo += 1
-		is_spider_waiting = false
-		spider.frame = 0
-		circles[circle_index].progress = 0.0
-		
-		circle_index = 0
-	
+	instruments[circle_index].play()
+	Nice[0 if circle_index < 2 else 1].modulate.a = 1.0
+	$drum.call(animation_player[note2frame.keys()[circle_index]].call)
+
+	score += 100 if progress > 97 else 75 if progress > 95 else 50 if progress > 85 else 25  #perfect / great / good/ ok
+	combo += 1
+	is_spider_waiting = false
+	spider.frame = 0
+	circles[circle_index].progress = 0.0
+
+	circle_index = 0
+
+
 func _on_health_drain():
-	HealthMgr.health-= HealthMgr.health_drain
+	HealthMgr.health -= HealthMgr.health_drain
+
 
 func _on_health_reset():
-<<<<<<< Updated upstream
-	HealthMgr.health= HealthMgr.health_max
-=======
 	Music.stop()
-	HealthMgr.health= HealthMgr.health_max
+	HealthMgr.health = HealthMgr.health_max
 	health_bar.visible = false
 	DialogueMgr.show(lose_text)
 	audio_lose.play()
 	await audio_lose.finished
-	
+
 	#await DialogueMgr.on_close
-	
-	
->>>>>>> Stashed changes
+
 	get_tree().reload_current_scene()
 
+
 func _on_midi_event(channel, event):
-	
 	if event.type != SMF.MIDIEventType.note_on:
 		return
 	else:
-<<<<<<< Updated upstream
-		
-		
-		
-		for i in note2frame.keys():
-			
-			#SETS SPIDER TO NOTE GIVEN MIDI NOTE NUMBER
-			if _find_note_range(i, event.note) && start_timer+wait_timer*1000<Time.get_ticks_msec() :
-=======
 		if player_miss:
 			#$Notes.stop()
 			await get_tree().create_timer(miss_buffer).timeout
@@ -384,28 +326,28 @@ func _on_midi_event(channel, event):
 			player_miss = false
 		print(event.note)
 		for i in note2frame.keys():
-			
 			#SETS SPIDER TO NOTE GIVEN MIDI NOTE NUMBER
-			if _find_note_range(i, event.note) && start_timer+wait_timer*1000<Time.get_ticks_msec() && !player_miss:
->>>>>>> Stashed changes
-				if !is_spider_waiting :
+			if (
+				_find_note_range(i, event.note)
+				&& start_timer + wait_timer * 1000 < Time.get_ticks_msec()
+				&& !player_miss
+			):
+				if !is_spider_waiting:
 					spider.play(spider_animations[note2frame[i]])
-					circle_index = note2frame.keys().find(i,0)
-					is_spider_waiting =true
-					player_miss  = false
+					circle_index = note2frame.keys().find(i, 0)
+					is_spider_waiting = true
+					player_miss = false
 					miss_index = 0
 		#SETS ANIMATION FOR NON PLAYABLE INSTRUMENTS
 		for i in animation.keys():
-			
-			
-			if _find_note_range(i, event.note) :
-				
+			if _find_note_range(i, event.note):
 				$drum.call(animation[i].call)
 		#RESETS CIRCLE PROGRESS00
-		circle_index = 0 if !is_spider_waiting else circle_index	
+		circle_index = 0 if !is_spider_waiting else circle_index
 
 	if channel.number != 2:
 		return
+
+
 func _find_note_range(note_range, note_value):
-	
-	return note_range[0]<=note_value && note_range[1] > note_value
+	return note_range[0] <= note_value && note_range[1] > note_value

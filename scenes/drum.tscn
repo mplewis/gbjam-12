@@ -1,26 +1,15 @@
-<<<<<<< Updated upstream:scenes/drum.tscn
 [gd_scene load_steps=10 format=3 uid="uid://v75v3i0i55fn"]
 
 [ext_resource type="Script" path="res://scripts/drum.gd" id="1_4rn87"]
 [ext_resource type="Texture2D" uid="uid://bkqc25knl0jot" path="res://assets/drums/rest.png" id="3_qgw71"]
-=======
-[gd_scene load_steps=10 format=3 uid="uid://ckle1vf4x84ci"]
-
-[ext_resource type="Script" path="res://scripts/drum.gd" id="1_4rn87"]
->>>>>>> Stashed changes:scenes/games/spider/drum.tscn
 [ext_resource type="Texture2D" uid="uid://eujdo38tiyfn" path="res://assets/drums/hat.png" id="4_ed3ho"]
 [ext_resource type="Texture2D" uid="uid://dr7pg6sicf0do" path="res://assets/drums/Tom.png" id="5_ancs1"]
 [ext_resource type="Texture2D" uid="uid://v3iqjmwuqmom" path="res://assets/drums/bass.png" id="5_jwcku"]
 [ext_resource type="Texture2D" uid="uid://4aof272evja7" path="res://assets/drums/splash.png" id="6_3cdsd"]
 [ext_resource type="Texture2D" uid="uid://isbwvxnv4ak6" path="res://assets/drums/snare.png" id="6_7auup"]
-<<<<<<< Updated upstream:scenes/drum.tscn
-[ext_resource type="Texture2D" uid="uid://g5kk0u1sk6dq" path="res://assets/drums/lowtom.png" id="6_yqt04"]
-[ext_resource type="Texture2D" uid="uid://dne3uf3uyahp7" path="res://assets/drums/crash.png" id="7_lutmj"]
-=======
 [ext_resource type="Texture2D" uid="uid://dne3uf3uyahp7" path="res://assets/drums/crash.png" id="7_lutmj"]
 [ext_resource type="Texture2D" uid="uid://clm5dw3ujoa43" path="res://assets/drums/lowtom.png" id="8_dn5oy"]
 [ext_resource type="Texture2D" uid="uid://6ai7vaqwa27n" path="res://assets/drums/drums (1).png" id="9_kfdw4"]
->>>>>>> Stashed changes:scenes/games/spider/drum.tscn
 
 [node name="Drum" type="Node2D"]
 script = ExtResource("1_4rn87")
