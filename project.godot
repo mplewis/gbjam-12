@@ -16,7 +16,6 @@ General/is_live_update_enabled=true
 General/is_memory_tracking_enabled=false
 "Software Format/sample_rate"=48000
 "Software Format/speaker_mode"=3
-
 "Software Format/raw_speaker_count"=0
 General/default_listener_count=1
 General/banks_path="res://FMOD/gbJamFMOD/Desktop"
