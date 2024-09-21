@@ -8,7 +8,11 @@ const JUMP_STR = 120
 const GRAVITY_STR = 480
 
 var menu_items := {
+<<<<<<< HEAD
 	"campaign": "Start New Campaign",
+=======
+	"drum_kit": "Spider",
+>>>>>>> spider_room
 	"calibrate": "Audio Calibration",
 	"options": "Options",
 	"credits": "Credits",
@@ -19,6 +23,10 @@ var selected := 0
 
 
 func _ready():
+<<<<<<< HEAD
+=======
+	SceneMgr._set_appropriate_window_size()
+>>>>>>> spider_room
 	GBtn.on_up.connect(up)
 	GBtn.on_down.connect(down)
 	GBtn.on_a.connect(select)
@@ -54,8 +62,13 @@ func select():
 	safe_call("_on_menu_%s" % item)
 
 
+<<<<<<< HEAD
 func _on_menu_campaign():
 	CampaignMgr.start_campaign()
+=======
+func _on_menu_drum_kit():
+	SceneMgr.open("games/spider/spider_intro")
+>>>>>>> spider_room
 
 
 func _on_menu_calibrate():

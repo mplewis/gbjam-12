@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 class_name CandyArrowFollower
 extends PathFollow2D
 
@@ -80,3 +81,6 @@ func spawn_puntable() -> CandyArrowPuntable:
 	puntable.global_position = global_position
 	puntable.show()
 	return puntable
+=======
+extends PathFollow2D
+>>>>>>> spider_room

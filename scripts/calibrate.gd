@@ -28,6 +28,10 @@ Press START to exit
 
 
 func _ready():
+<<<<<<< HEAD
+=======
+	SceneMgr._set_appropriate_window_size()
+>>>>>>> spider_room
 	GBtn.on_start.connect(_on_start)
 	GBtn.on_a.connect(_on_a)
 	GBtn.on_b.connect(_on_b)

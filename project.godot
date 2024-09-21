@@ -45,7 +45,16 @@ UiSounds="*res://scripts/ui_sounds.gd"
 Volume="*res://scripts/volume.gd"
 AudioCal="*res://scripts/audio_cal.gd"
 DialogueMgr="*res://scripts/dialogue_mgr.gd"
+<<<<<<< HEAD
 CampaignMgr="*res://scripts/campaign_mgr.gd"
+=======
+<<<<<<< Updated upstream
+HealthMgr="*res://health_mgr.gd"
+=======
+CampaignMgr="*res://scripts/campaign_mgr.gd"
+HealthMgr="*res://scripts/health_mgr.gd"
+>>>>>>> Stashed changes
+>>>>>>> spider_room
 
 [display]
 

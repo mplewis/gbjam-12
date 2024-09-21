@@ -1,0 +1,156 @@
+[gd_scene load_steps=18 format=3 uid="uid://w3iiokgf138c"]
+
+[ext_resource type="PackedScene" uid="uid://crxje5adebltx" path="res://scenes/components/cinematic.tscn" id="1_ceij0"]
+[ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="1_sbokr"]
+[ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="2_5kwuk"]
+[ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="2_kfs30"]
+[ext_resource type="Texture2D" uid="uid://dhh8e0hsf548p" path="res://assets/t_rex_candy/pc_static.png" id="3_m8iqm"]
+[ext_resource type="Texture2D" uid="uid://dokirsbps343t" path="res://assets/t_rex_candy/TrexIntro_animation.png" id="4_pcojx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjfg1"]
+atlas = ExtResource("4_pcojx")
+region = Rect2(0, 0, 140, 127)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aht8r"]
+atlas = ExtResource("4_pcojx")
+region = Rect2(140, 0, 140, 127)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wim00"]
+atlas = ExtResource("4_pcojx")
+region = Rect2(280, 0, 140, 127)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bx0b5"]
+atlas = ExtResource("4_pcojx")
+region = Rect2(420, 0, 140, 127)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ni3cr"]
+atlas = ExtResource("4_pcojx")
+region = Rect2(560, 0, 140, 127)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7yxp"]
+atlas = ExtResource("4_pcojx")
+region = Rect2(700, 0, 140, 127)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ly4k"]
+atlas = ExtResource("4_pcojx")
+region = Rect2(840, 0, 140, 127)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_we3q1"]
+atlas = ExtResource("4_pcojx")
+region = Rect2(980, 0, 140, 127)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rpkek"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjfg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aht8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wim00")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bx0b5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ni3cr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7yxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ly4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_we3q1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_qwq18"]
+script/source = "extends AnimatedSprite2D
+
+func _ready():
+	play()
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5qkxi"]
+shader = ExtResource("1_sbokr")
+shader_parameter/threshold1 = 0.167
+shader_parameter/threshold2 = 0.5
+shader_parameter/threshold3 = 0.833
+shader_parameter/color1 = Color(0.0313726, 0.0941176, 0.12549, 1)
+shader_parameter/color2 = Color(0.203922, 0.407843, 0.337255, 1)
+shader_parameter/color3 = Color(0.533333, 0.752941, 0.439216, 1)
+shader_parameter/color4 = Color(0.878431, 0.972549, 0.815686, 1)
+
+[node name="CinematicTest" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Cinematic" parent="." instance=ExtResource("1_ceij0")]
+layout_mode = 1
+
+[node name="IntroText" type="Label" parent="Cinematic"]
+visible = false
+layout_mode = 0
+offset_right = 180.0
+offset_bottom = 16.0
+theme = ExtResource("2_5kwuk")
+text = "On a dark and stormy night...
+"
+
+[node name="PC" type="TextureRect" parent="Cinematic"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_m8iqm")
+
+[node name="PCText" type="Label" parent="Cinematic"]
+visible = false
+layout_mode = 0
+offset_right = 180.0
+offset_bottom = 16.0
+theme = ExtResource("2_5kwuk")
+text = "This is too spooky for me!"
+
+[node name="Dino" type="Control" parent="Cinematic"]
+visible = false
+anchors_preset = 0
+offset_left = 78.0
+offset_top = 65.0
+offset_right = 118.0
+offset_bottom = 105.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Cinematic/Dino"]
+sprite_frames = SubResource("SpriteFrames_rpkek")
+frame = 4
+frame_progress = 0.046785
+offset = Vector2(0, 0.5)
+script = SubResource("GDScript_qwq18")
+
+[node name="DinoText" type="Label" parent="Cinematic"]
+visible = false
+layout_mode = 0
+offset_right = 308.0
+offset_bottom = 16.0
+theme = ExtResource("2_5kwuk")
+text = "RAWR! I am a big dinosaur! I am so hungry yum yum"
+
+[node name="RecolorLayer" type="CanvasLayer" parent="."]
+
+[node name="RecolorShader" type="ColorRect" parent="RecolorLayer"]
+material = SubResource("ShaderMaterial_5qkxi")
+offset_right = 160.0
+offset_bottom = 256.0
+
+[node name="Controls" parent="." instance=ExtResource("2_kfs30")]
