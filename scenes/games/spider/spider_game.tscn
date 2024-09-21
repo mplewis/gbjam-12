@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://cu2pitugnilee"]
+[gd_scene load_steps=97 format=3 uid="uid://cu2pitugnilee"]
 
 [ext_resource type="Script" path="res://scripts/drum_kit.gd" id="1_1ue35"]
 [ext_resource type="Script" path="res://addons/radial_progress/RadialProgress.gd" id="2_cy6ae"]
@@ -20,7 +20,6 @@
 [ext_resource type="Texture2D" uid="uid://bf3rn2bec6je2" path="res://assets/images/spider/spider_idle.png" id="18_a14k7"]
 [ext_resource type="Texture2D" uid="uid://bi8n8hmll4xls" path="res://assets/images/spider/spider_tom.png" id="19_ffs3p"]
 [ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="20_m85lg"]
-[ext_resource type="Texture2D" uid="uid://bhducwt6w8dak" path="res://assets/images/spider/greyscale.png" id="21_vgyxi"]
 [ext_resource type="Texture2D" uid="uid://du1ic5aqu2ky1" path="res://assets/images/spider/HEALTHBAR.png" id="22_m6x2h"]
 [ext_resource type="Texture2D" uid="uid://dxraxy8llrd8g" path="res://assets/images/spider/health_white.png" id="23_d8laj"]
 [ext_resource type="Texture2D" uid="uid://tfm7gqhbgnrq" path="res://assets/images/spider/nice.png" id="24_cjrjm"]
@@ -573,6 +572,7 @@ offset_right = 72.8
 offset_bottom = 123.2
 script = ExtResource("2_cy6ae")
 radius = 10.0
+progress = 100.0
 thickness = 3.0
 bg_color = Color(0, 0, 0, 1)
 bar_color = Color(1, 1, 1, 1)
@@ -587,6 +587,7 @@ offset_right = 95.2
 offset_bottom = 103.2
 script = ExtResource("2_cy6ae")
 radius = 10.0
+progress = 100.0
 thickness = 3.0
 bg_color = Color(0, 0, 0, 1)
 bar_color = Color(1, 1, 1, 1)
@@ -601,6 +602,7 @@ offset_right = 137.6
 offset_bottom = 101.6
 script = ExtResource("2_cy6ae")
 radius = 10.0
+progress = 100.0
 thickness = 3.0
 bg_color = Color(0, 0, 0, 1)
 bar_color = Color(1, 1, 1, 1)
@@ -615,12 +617,13 @@ offset_right = 159.2
 offset_bottom = 120.8
 script = ExtResource("2_cy6ae")
 radius = 10.0
+progress = 100.0
 thickness = 3.0
 bg_color = Color(0, 0, 0, 1)
 bar_color = Color(1, 1, 1, 1)
 
 [node name="drum" parent="." instance=ExtResource("3_lnd3m")]
-position = Vector2(80, 65)
+position = Vector2(80, 72)
 
 [node name="Audio" type="Node" parent="."]
 
@@ -639,7 +642,7 @@ stream = ExtResource("7_5b8pd")
 
 [node name="LowTom" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("8_7wnco")
-volume_db = 5.0
+volume_db = 7.943
 
 [node name="Miss" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("9_c25iq")
@@ -651,6 +654,25 @@ stream = ExtResource("10_0x1bk")
 stream = ExtResource("11_dhtlq")
 
 [node name="RecolorLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="CanvasLayer" parent="RecolorLayer"]
+
+[node name="Score" type="Label" parent="RecolorLayer/UI"]
+offset_top = -2.0
+offset_right = 51.0
+offset_bottom = 21.0
+scale = Vector2(0.8, 0.8)
+theme = ExtResource("20_m85lg")
+text = "Score: 0"
+
+[node name="Health" type="Label" parent="RecolorLayer/UI"]
+visible = false
+offset_left = 111.0
+offset_top = 110.0
+offset_right = 180.0
+offset_bottom = 133.0
+theme = ExtResource("20_m85lg")
+text = "Hth: 100"
 
 [node name="RecolorShader" type="ColorRect" parent="RecolorLayer"]
 material = SubResource("ShaderMaterial_7ep26")
@@ -678,30 +700,6 @@ sprite_frames = SubResource("SpriteFrames_kk3i1")
 animation = &"tom"
 frame = 7
 frame_progress = 1.0
-
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="Score" type="Label" parent="UI"]
-offset_top = -0.999992
-offset_right = 51.0
-offset_bottom = 22.0
-scale = Vector2(0.8, 0.8)
-theme = ExtResource("20_m85lg")
-text = "Score: 0"
-
-[node name="Health" type="Label" parent="UI"]
-visible = false
-offset_left = 111.0
-offset_top = 110.0
-offset_right = 180.0
-offset_bottom = 133.0
-theme = ExtResource("20_m85lg")
-text = "Hth: 100"
-
-[node name="BG" type="Sprite2D" parent="."]
-z_index = -2
-position = Vector2(80, 72)
-texture = ExtResource("21_vgyxi")
 
 [node name="Health" type="AnimatedSprite2D" parent="."]
 z_index = 7

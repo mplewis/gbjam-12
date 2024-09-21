@@ -45,6 +45,7 @@ var shake_time_start = 0
 var shake_time_wait = 5.0/60.0
 var is_shake_wait = false
 var shake_vector = Vector2.LEFT
+var shake_length = 1.0
 func shake_object(index)->void:
 	var shooken = player_objects[index]
 	print(shooken)
@@ -55,7 +56,7 @@ func shake_object(index)->void:
 	if is_shake_wait && shake_time_start+shake_time_wait < Time.get_ticks_msec():
 		shake_vector *= -1
 		is_shake_wait = false
-	shooken.position += shake_vector
+	shooken.position += shake_vector*shake_length
 func _process(delta) -> void:
 	$kick.scale = lerp($kick.scale, Vector2(1, 1), delta * 10.0)
 	$crash.position.y = lerp($crash.position.y, 0.0, delta * 10.0)

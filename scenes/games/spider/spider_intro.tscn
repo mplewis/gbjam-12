@@ -1,4 +1,4 @@
-[gd_scene load_steps=139 format=3 uid="uid://b4xtwfdsqxj8v"]
+[gd_scene load_steps=143 format=3 uid="uid://b4xtwfdsqxj8v"]
 
 [ext_resource type="Texture2D" uid="uid://dh83ialg1j3v0" path="res://assets/images/spider/cuteTrantulaintro_scene.png" id="1_qf138"]
 [ext_resource type="Script" path="res://scripts/intro_mgr.gd" id="1_vxuvb"]
@@ -10,12 +10,16 @@
 [ext_resource type="Texture2D" uid="uid://cc8be2pd767ca" path="res://assets/images/spider/arrow_button_up2 (1).png" id="5_56t3c"]
 [ext_resource type="Texture2D" uid="uid://bpqxfc0je01t0" path="res://assets/images/spider/arrow_button_left1.png" id="8_24f6w"]
 [ext_resource type="AudioStream" uid="uid://b01l6jmjb7flb" path="res://assets/sfx/Four_Steps.mp3" id="10_v78yh"]
+[ext_resource type="AudioStream" uid="uid://debufkc7olecs" path="res://assets/music/spider/SpiderRoomScareNotification.wav" id="11_ox7hr"]
 [ext_resource type="AudioStream" uid="uid://8wf1dte2j4dx" path="res://assets/sfx/DoorOpen.mp3" id="11_prxpr"]
+[ext_resource type="AudioStream" uid="uid://c215dhnpbej7s" path="res://assets/music/spider/SpiderRoomImpact.wav" id="12_16vp0"]
 [ext_resource type="AudioStream" uid="uid://bsbu3u2f2snrh" path="res://assets/sfx/Lightning.mp3" id="12_b4i4m"]
-[ext_resource type="AudioStream" uid="uid://mkbo6ui1kcld" path="res://assets/music/vampire/VampireDuck.mp3" id="13_ec1xo"]
+[ext_resource type="AudioStream" uid="uid://chbtx0pt2i35i" path="res://assets/music/spider/SpiderRoomHiss.wav" id="13_n4upn"]
 [ext_resource type="AudioStream" uid="uid://sn6ud3bckriy" path="res://assets/music/vampire/VampireJump.mp3" id="13_swt6s"]
 [ext_resource type="AudioStream" uid="uid://uoqvw4ien4ns" path="res://assets/sfx/Spider Drum SFX (SNARE).wav" id="14_5eo4h"]
-[ext_resource type="AudioStream" uid="uid://cu12gesnl4wek" path="res://assets/music/spider/SpiderIntro_PreMidiTrack.wav" id="16_ahs7p"]
+[ext_resource type="AudioStream" uid="uid://v2eqtp83vmwk" path="res://assets/music/spider/SpiderRoomSmoke.wav" id="14_w7cju"]
+[ext_resource type="AudioStream" uid="uid://f77u6mfrf2yb" path="res://assets/music/spider/SpiderRoomWoosh.wav" id="15_jpd3w"]
+[ext_resource type="AudioStream" uid="uid://dxexo6tqug6ga" path="res://assets/music/spider/Spider Intro Groove Concept (FM).wav" id="16_mesek"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cwq72"]
 atlas = ExtResource("1_qf138")
@@ -958,6 +962,91 @@ tracks/6/keys = {
 "method": &"play"
 }]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Audio/Scare")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.01, 5.06667),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Audio/impact")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(5.06667, 6.86667),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Audio/hiss")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(2.13333, 6.86667),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Audio/woosh")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(5.06667, 6.8667),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Audio/smoke")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(2.5, 6.85),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_1kb66"]
 resource_name = "walking"
@@ -999,6 +1088,7 @@ script = ExtResource("1_vxuvb")
 scene_path = "games/spider/spider_game"
 
 [node name="Fader" parent="." instance=ExtResource("4_ciaur")]
+visible = false
 z_index = 1
 position = Vector2(2, 56)
 
@@ -1056,6 +1146,8 @@ texture = ExtResource("5_56t3c")
 position = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_rv1sn")
 animation = &"spider"
+frame = 10
+frame_progress = 0.894674
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeBlendTree_6g0ih")
@@ -1081,6 +1173,21 @@ offset_bottom = 256.0
 stream = ExtResource("10_v78yh")
 autoplay = true
 
+[node name="Scare" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("11_ox7hr")
+
+[node name="impact" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("12_16vp0")
+
+[node name="hiss" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("13_n4upn")
+
+[node name="smoke" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("14_w7cju")
+
+[node name="woosh" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("15_jpd3w")
+
 [node name="DoorOpen" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("11_prxpr")
 
@@ -1088,7 +1195,7 @@ stream = ExtResource("11_prxpr")
 stream = ExtResource("12_b4i4m")
 
 [node name="DashDown" type="AudioStreamPlayer2D" parent="Audio"]
-stream = ExtResource("13_ec1xo")
+stream = ExtResource("15_jpd3w")
 
 [node name="SnareLand" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("14_5eo4h")
@@ -1097,6 +1204,5 @@ stream = ExtResource("14_5eo4h")
 stream = ExtResource("13_swt6s")
 
 [node name="Menu_music" type="AudioStreamPlayer2D" parent="Audio"]
-stream = ExtResource("16_ahs7p")
-volume_db = -5.0
+stream = ExtResource("16_mesek")
 autoplay = true

@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://isbwvxnv4ak6" path="res://assets/images/spider/snare.png" id="6_7auup"]
 [ext_resource type="Texture2D" uid="uid://5rfe4ech6g4a" path="res://assets/images/spider/lowtom.png" id="6_ediv8"]
 [ext_resource type="Texture2D" uid="uid://dne3uf3uyahp7" path="res://assets/images/spider/crash.png" id="7_lutmj"]
-[ext_resource type="Texture2D" uid="uid://dv46p23j70y5" path="res://assets/images/spider/drums (1).png" id="9_6vr5d"]
+[ext_resource type="Texture2D" uid="uid://bnf7dspfrxe0d" path="res://assets/images/spider/drums.png" id="9_s78dd"]
 
 [node name="drum" type="Node2D"]
 script = ExtResource("1_4rn87")
@@ -61,4 +61,4 @@ z_index = -1
 texture_filter = 2
 texture_repeat = 1
 scale = Vector2(1.001, 1.001)
-texture = ExtResource("9_6vr5d")
+texture = ExtResource("9_s78dd")

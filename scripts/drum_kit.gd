@@ -3,6 +3,8 @@ extends Node2D
 
 const ARROW_SPAWN_TO_HIT_SEC = 0.8
 
+
+#CONST INSTRUMENT = MIDI NOTE NUMBER
 const KICK_NOTE_LOW = 33
 const KICK_NOTE_HIGH = 37
 const SNARE_NOTE_LOW = 30
@@ -24,7 +26,7 @@ const ANIM_FADE_DURATION = 1.5  # sec
 # There is some constant difference between the offset from the calibration scene
 # (which seems to be very close to real life!) and in the actual game, here.
 const MAGIC_NUMBER_MIDI_DELAY = 0.16
-@onready var Score: Label = $UI/Score
+@onready var Score: Label = $RecolorLayer/UI/Score
 #@onready var Health: Label = $UI/Health
 @onready var circles_parent: Control = $Circles
 @onready var midi_player_spawn: MidiPlayer = $Notes
@@ -88,11 +90,11 @@ var animation_player := {
 		"call": "low_tom",
 	}
 }
-var wait_timer = 2.0
+var wait_timer = 2.0#TIMER TO DELAY GAMEPLAY NOT TO BE CONFUSED W/ NOTE SPAWN DELAY
 var start_timer = 0
 
-var difficulty = 150
-var miss_buffer = 20.0/60.0
+var difficulty = 100#150 is maestro 100 jazzer 50 noob
+var miss_buffer = 30.0/60.0
 
 
 
@@ -123,43 +125,28 @@ func _start_intro():
 	HealthMgr.health= HealthMgr.health_max
 	fader.fade_in()
 	await get_tree().create_timer(1.0).timeout
-	Music.stream = load("res://assets/music/spider/SpiderIntro_PreMidiTrack.wav")
-	midi_player_audio.file ="res://assets/music/spider/SpiderIntro_PreMidiTrack.wav"
-	midi_player_audio.play()
-	Music.volume_db = -10
 	
-	#Music.play()
 
 	DialogueMgr.show(intro_text)
 	await DialogueMgr.on_close
 
 	
 	
-	Music.stream = load("res://assets/music/spider/The Jazzy Arachnid FINAL.wav.WAV")
-	Music.volume_db = 5
-	#midi_player_audio.file = "res://assets/music/spider/The+Jazzy+Arachnid+FINAL.wav.mid"
-#Music.play()
-	
-	#await get_tree().create_timer(0.1).timeout
-
 	_start_game()
 func _start_game():
 	
 	midi_player_spawn.volume_db = 0.0
 	midi_player_audio.volume_db = 0.0
 	
-	midi_player_audio.file ="res://assets/music/spider/The Jazzy Arachnid FINAL.wav.WAV"
+	
 	midi_player_audio.play()
-	start_playing_at_ms = (
-		Time.get_ticks_msec()
-		+ (ARROW_SPAWN_TO_HIT_SEC - (AudioCal.audio_offset + MAGIC_NUMBER_MIDI_DELAY)) * 1000.0
-	)
+	
 	
 	
 	for circle in circles_parent.get_children():
 		circles.append(circle)
 	start_timer = Time.get_ticks_msec()
-	await get_tree().create_timer(2.0/60.0).timeout
+	await get_tree().create_timer(2.0/60.0).timeout#NOTE SPAWN DELAY
 	midi_player_spawn.play()
 func _process(delta: float) -> void:
 	
@@ -169,12 +156,12 @@ func _process(delta: float) -> void:
 	Nice[1].modulate.a -= fade_amt
 	Eek[0].modulate.a -= fade_amt
 	Eek[1].modulate.a -= fade_amt
-	Score.text = "SCoR: %d\nCombo: %d" % [score, combo]
+	Score.text = "SCoR: %d\nCoMb: %d" % [score, combo]
 	
 	
 	
 	health_bar.frame = 10-int(float(HealthMgr.health/ HealthMgr.health_max)*10 )
-	#health_bar.frame=  0 if HealthMgr.health == HealthMgr.health_max  && HealthMgr.health >0 else 10  if HealthMgr.health <= 0 else health_bar.frame
+	
 	
 	if is_spider_waiting || !spider.is_playing():
 		
@@ -182,12 +169,16 @@ func _process(delta: float) -> void:
 	
 	if HealthMgr.health <=0:
 		HealthMgr.on_health_reset.emit()
+	await get_tree().create_timer(miss_buffer).timeout && floor(circles[circle_index].progress )== 100 && (start_timer+wait_timer*1000<Time.get_ticks_msec() ) && midi_player_spawn.playing
 	if is_spider_waiting:
-		var new_progress = circles[circle_index].progress + delta * difficulty	# 200 maestro 175 jazzer 125 mid 50 Noob difficulty
+		
+		
+	
+		var new_progress = circles[circle_index].progress - delta * difficulty	
 		#print(new_progress)
 	
-		while new_progress > 100:
-			new_progress =0.0
+		while new_progress < 0:
+			new_progress =100.0
 			is_spider_waiting = false
 			_on_miss()
 			
@@ -236,7 +227,8 @@ func get_tally(index = 0):
 	elif index != circle_index  && is_spider_waiting:
 		_on_miss()
 func tally(progress):
-	if progress >65 if difficulty > 150 else 80:
+	
+	if progress >15 : 
 		
 		_on_hit(progress)
 	else:
@@ -268,11 +260,12 @@ func _on_miss():
 	spider.play("%s_idle" % spider_animations[circle_index] )
 	#spider.frame = 0
 	Eek[0 if circle_index < 2 else 1].modulate.a = 1.0
-	circles[circle_index].progress = 0.0
+	circles[circle_index].progress = 100.0
 	
 	circle_index = 0
 	HealthMgr.on_health_drain.emit()
 	player_miss = true
+	$drum.shake_length = 1.7
 	
 	
 	
@@ -281,16 +274,17 @@ func _on_hit(progress):
 		
 		$drum.call(animation_player[note2frame.keys()[circle_index]].call)
 		
-		score += 100 if progress > 95 else 75 if progress > 90 else 50 if progress > 85 else 25 #perfect / great / good/ ok 
+		score += 100 if progress >85 else 75 if progress > 70 else 50 if progress > 55 else 25 #perfect / great / good/ ok 
 		
-		if progress > 90:
+		if progress > 55:
 		
 			Nice[0 if circle_index < 2 else 1].modulate.a = 1.0
+			
 		
 		combo += 1
 		is_spider_waiting = false
 		spider.frame = 0
-		circles[circle_index].progress = 0.0
+		circles[circle_index].progress = 100.0
 		
 		circle_index = 0
 	
@@ -322,7 +316,8 @@ func _on_midi_event(channel, event):
 			await get_tree().create_timer(miss_buffer).timeout
 			#$Notes.play()
 			player_miss = false
-		print(event.note)
+			
+	
 		for i in note2frame.keys():
 			
 			#SETS SPIDER TO NOTE GIVEN MIDI NOTE NUMBER
@@ -331,6 +326,7 @@ func _on_midi_event(channel, event):
 					spider.play(spider_animations[note2frame[i]])
 					circle_index = note2frame.keys().find(i,0)
 					is_spider_waiting =true
+					$drum.shake_length = 1.0
 					player_miss  = false
 					miss_index = 0
 		#SETS ANIMATION FOR NON PLAYABLE INSTRUMENTS
