@@ -1,0 +1,227 @@
+<<<<<<< Updated upstream:scenes/drum_kit.tscn
+[gd_scene load_steps=22 format=3 uid="uid://dhq78wpv6tbxg"]
+=======
+[gd_scene load_steps=24 format=3 uid="uid://l387o4ltq2ns"]
+>>>>>>> Stashed changes:scenes/games/spider/game.tscn
+
+[ext_resource type="Script" path="res://scripts/drum_kit.gd" id="1_lr0ke"]
+[ext_resource type="Script" path="res://addons/radial_progress/RadialProgress.gd" id="2_w4bkx"]
+[ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="3_hyg1d"]
+[ext_resource type="Texture2D" uid="uid://cc8be2pd767ca" path="res://assets/drums/arrow_button_up2 (1).png" id="4_arinc"]
+[ext_resource type="Texture2D" uid="uid://bpqxfc0je01t0" path="res://assets/drums/arrow_button_left1.png" id="4_hwvan"]
+[ext_resource type="PackedScene" uid="uid://b0njtks5rulkw" path="res://scenes/controls.tscn" id="4_p0jag"]
+[ext_resource type="Texture2D" uid="uid://cplajcmqflkyk" path="res://assets/drums/arrow_button_right1.png" id="5_p564x"]
+[ext_resource type="PackedScene" uid="uid://v75v3i0i55fn" path="res://scenes/drum.tscn" id="5_tjp5h"]
+[ext_resource type="Texture2D" uid="uid://b7wkqfqkcft77" path="res://assets/drums/arrow_button_left3.png" id="6_e3qc3"]
+[ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="6_utpvi"]
+[ext_resource type="Texture2D" uid="uid://dck5dl640evl5" path="res://assets/drums/spider.png" id="7_t3yau"]
+[ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="10_c5u3y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7ep26"]
+shader = ExtResource("3_hyg1d")
+shader_parameter/threshold1 = 0.25
+shader_parameter/threshold2 = 0.5
+shader_parameter/threshold3 = 0.75
+shader_parameter/color1 = Color(0.0313726, 0.0941176, 0.12549, 1)
+shader_parameter/color2 = Color(0.203922, 0.407843, 0.337255, 1)
+shader_parameter/color3 = Color(0.533333, 0.752941, 0.439216, 1)
+shader_parameter/color4 = Color(0.878431, 0.972549, 0.815686, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gon7l"]
+atlas = ExtResource("7_t3yau")
+region = Rect2(0, 0, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osm4o"]
+atlas = ExtResource("7_t3yau")
+region = Rect2(160, 0, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vd2e6"]
+atlas = ExtResource("7_t3yau")
+region = Rect2(320, 0, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_son6f"]
+atlas = ExtResource("7_t3yau")
+region = Rect2(0, 144, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbu7h"]
+atlas = ExtResource("7_t3yau")
+region = Rect2(160, 144, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r12sy"]
+atlas = ExtResource("7_t3yau")
+region = Rect2(320, 144, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q44do"]
+atlas = ExtResource("7_t3yau")
+region = Rect2(0, 288, 160, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kk3i1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gon7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osm4o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vd2e6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_son6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lbu7h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r12sy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q44do")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="DrumKit" type="Node2D" node_paths=PackedStringArray("spider")]
+script = ExtResource("1_lr0ke")
+spider = NodePath("spider")
+
+[node name="Circles" type="Control" parent="."]
+visible = false
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_top = 13.0
+offset_right = 39.0
+offset_bottom = 53.0
+
+[node name="Progress1" type="Control" parent="Circles"]
+z_index = 2
+layout_mode = 3
+anchors_preset = 0
+offset_left = 28.0
+offset_top = 88.0
+offset_right = 68.0
+offset_bottom = 128.0
+script = ExtResource("2_w4bkx")
+radius = 10.0
+thickness = 3.0
+bg_color = Color(0, 0, 0, 1)
+bar_color = Color(1, 1, 1, 1)
+
+[node name="Progress2" type="Control" parent="Circles"]
+z_index = 2
+layout_mode = 3
+anchors_preset = 0
+offset_left = 55.0
+offset_top = 61.0
+offset_right = 95.0
+offset_bottom = 101.0
+script = ExtResource("2_w4bkx")
+radius = 10.0
+thickness = 3.0
+bg_color = Color(0, 0, 0, 1)
+bar_color = Color(1, 1, 1, 1)
+
+[node name="Progress3" type="Control" parent="Circles"]
+z_index = 2
+layout_mode = 3
+anchors_preset = 0
+offset_left = 107.0
+offset_top = 61.0
+offset_right = 147.0
+offset_bottom = 101.0
+script = ExtResource("2_w4bkx")
+radius = 10.0
+thickness = 3.0
+bg_color = Color(0, 0, 0, 1)
+bar_color = Color(1, 1, 1, 1)
+
+[node name="Progress4" type="Control" parent="Circles"]
+z_index = 2
+layout_mode = 3
+anchors_preset = 0
+offset_left = 135.0
+offset_top = 85.0
+offset_right = 175.0
+offset_bottom = 125.0
+script = ExtResource("2_w4bkx")
+radius = 10.0
+thickness = 3.0
+bg_color = Color(0, 0, 0, 1)
+bar_color = Color(1, 1, 1, 1)
+
+[node name="drum" parent="." instance=ExtResource("5_tjp5h")]
+z_index = -1
+position = Vector2(80, 71)
+
+[node name="Left" type="Sprite2D" parent="."]
+z_index = 4
+position = Vector2(27, 101)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("6_e3qc3")
+
+[node name="splash" type="Sprite2D" parent="."]
+z_index = 4
+position = Vector2(106, 74)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_arinc")
+
+[node name="Right" type="Sprite2D" parent="."]
+z_index = 4
+position = Vector2(54, 74)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_p564x")
+
+[node name="hat" type="Sprite2D" parent="."]
+z_index = 4
+position = Vector2(134, 98)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_hwvan")
+
+[node name="RecolorLayer" type="CanvasLayer" parent="."]
+
+[node name="RecolorShader" type="ColorRect" parent="RecolorLayer"]
+material = SubResource("ShaderMaterial_7ep26")
+offset_right = 160.0
+offset_bottom = 256.0
+
+[node name="MidiPlayerSpawn" parent="." instance=ExtResource("6_utpvi")]
+file = "res://assets/demo/music/A-Foggy-Day-(Jazz-Gitaar-Trio).mid"
+soundfont = "res://assets/demo/music/8bit.sf2"
+bus = &"Music"
+muted = true
+
+[node name="MidiPlayerAudio" parent="." instance=ExtResource("6_utpvi")]
+file = "res://assets/demo/music/A-Foggy-Day-(Jazz-Gitaar-Trio).mid"
+playing = true
+volume_db = 0.0
+soundfont = "res://assets/demo/music/8bit.sf2"
+bus = &"Music"
+
+[node name="Controls" parent="." instance=ExtResource("4_p0jag")]
+
+[node name="spider" type="AnimatedSprite2D" parent="."]
+visible = false
+z_index = 3
+position = Vector2(81, 71)
+sprite_frames = SubResource("SpriteFrames_kk3i1")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Score" type="Label" parent="UI"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("10_c5u3y")
+text = "Score: 0"
+
+[node name="Health" type="Label" parent="UI"]
+offset_left = 90.0
+offset_top = 1.0
+offset_right = 159.0
+offset_bottom = 24.0
+theme = ExtResource("10_c5u3y")
+text = "Health: 100"

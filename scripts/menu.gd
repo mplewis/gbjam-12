@@ -19,7 +19,7 @@ var selected := 0
 
 
 func _ready():
-	SceneMgr.set_appropriate_window_size()
+	SceneMgr._set_appropriate_window_size()
 	GBtn.on_up.connect(up)
 	GBtn.on_down.connect(down)
 	GBtn.on_a.connect(select)
@@ -56,7 +56,7 @@ func select():
 
 
 func _on_menu_drum_kit():
-	SceneMgr.open("games/drum_kit/drum_kit")
+	SceneMgr.open("games/spider/spider_intro")
 
 
 func _on_menu_calibrate():

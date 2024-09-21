@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://hfmjogirgcod"
+path="res://.godot/imported/Spider Drum SFX (TOM 1).wav-1985745890ba7a0e1bf88060ab2ab0ea.sample"
+
+[deps]
+
+source_file="res://assets/music/spider/Spider Drum SFX (TOM 1).wav"
+dest_files=["res://.godot/imported/Spider Drum SFX (TOM 1).wav-1985745890ba7a0e1bf88060ab2ab0ea.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

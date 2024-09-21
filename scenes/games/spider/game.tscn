@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cqgm5u4h6dib"]
+[gd_scene load_steps=24 format=3 uid="uid://l387o4ltq2ns"]
 
 [ext_resource type="Script" path="res://scripts/drum_kit.gd" id="1_kc4al"]
 [ext_resource type="Script" path="res://addons/radial_progress/RadialProgress.gd" id="2_6xelb"]
