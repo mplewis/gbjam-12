@@ -3,3 +3,6 @@
 /android/
 
 tmp/
+FMOD/gbJamFMOD/.cache
+addons/fmod/libs/android
+addons/fmod/libs/iOS

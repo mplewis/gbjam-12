@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://ckle1vf4x84ci"]
+
+[ext_resource type="Script" path="res://scripts/drum.gd" id="1_4rn87"]
+[ext_resource type="Texture2D" uid="uid://bkqc25knl0jot" path="res://assets/images/spider/rest.png" id="3_qgw71"]
+[ext_resource type="Texture2D" uid="uid://eujdo38tiyfn" path="res://assets/images/spider/hat.png" id="4_ed3ho"]
+[ext_resource type="Texture2D" uid="uid://dr7pg6sicf0do" path="res://assets/images/spider/Tom.png" id="5_ancs1"]
+[ext_resource type="Texture2D" uid="uid://v3iqjmwuqmom" path="res://assets/images/spider/bass.png" id="5_jwcku"]
+[ext_resource type="Texture2D" uid="uid://4aof272evja7" path="res://assets/images/spider/splash.png" id="6_3cdsd"]
+[ext_resource type="Texture2D" uid="uid://isbwvxnv4ak6" path="res://assets/images/spider/snare.png" id="6_7auup"]
+[ext_resource type="Texture2D" uid="uid://dne3uf3uyahp7" path="res://assets/images/spider/crash.png" id="7_lutmj"]
+
+[node name="Drum" type="Node2D"]
+script = ExtResource("1_4rn87")
+
+[node name="kick" type="Sprite2D" parent="."]
+z_index = 1
+texture_filter = 2
+texture_repeat = 1
+texture = ExtResource("5_jwcku")
+
+[node name="snare" type="Sprite2D" parent="."]
+z_index = 1
+texture_filter = 2
+texture_repeat = 1
+texture = ExtResource("6_7auup")
+
+[node name="hat" type="Sprite2D" parent="."]
+z_index = 1
+texture_filter = 2
+texture_repeat = 1
+texture = ExtResource("4_ed3ho")
+
+[node name="tom" type="Sprite2D" parent="."]
+z_index = 1
+texture_filter = 2
+texture_repeat = 1
+texture = ExtResource("5_ancs1")
+
+[node name="splash" type="Sprite2D" parent="."]
+z_index = 1
+texture_filter = 2
+texture_repeat = 1
+texture = ExtResource("6_3cdsd")
+
+[node name="crash" type="Sprite2D" parent="."]
+z_index = 1
+texture_filter = 2
+texture_repeat = 1
+texture = ExtResource("7_lutmj")
+
+[node name="Rest" type="Sprite2D" parent="."]
+z_index = -1
+texture_filter = 2
+texture_repeat = 1
+texture = ExtResource("3_qgw71")

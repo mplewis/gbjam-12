@@ -1,11 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://7yxdgkpcyk3k"]
+[gd_scene load_steps=14 format=3 uid="uid://7yxdgkpcyk3k"]
 
 [ext_resource type="Script" path="res://scripts/dialogue_box.gd" id="1_cx8v6"]
 [ext_resource type="Texture2D" uid="uid://cuu78vl3qe7oq" path="res://assets/ui/black.png" id="1_ki67d"]
-[ext_resource type="Texture2D" uid="uid://dyt4v7k5quvva" path="res://assets/ui/9patch-white.png" id="1_rpd28"]
 [ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="2_8f8e1"]
+[ext_resource type="AudioStream" uid="uid://codirljnart1k" path="res://assets/sfx/dialogue/blurb1.wav" id="2_npu25"]
+[ext_resource type="AudioStream" uid="uid://db2fo1oqypa2l" path="res://assets/sfx/dialogue/blurb2.wav" id="3_fbjpv"]
+[ext_resource type="Texture2D" uid="uid://kic7myde80j" path="res://assets/ui/dialogue_box.png" id="3_nl231"]
+[ext_resource type="AudioStream" uid="uid://dvt8ja72pnc26" path="res://assets/sfx/dialogue/blurb3.wav" id="4_bqcpl"]
 [ext_resource type="Texture2D" uid="uid://c1u55oqpnr4jy" path="res://assets/ui/arrow-right-9x5-white.png" id="4_jt8p3"]
+[ext_resource type="AudioStream" uid="uid://clfs4kh5qv1s6" path="res://assets/sfx/dialogue/blurb4.wav" id="5_huypj"]
 [ext_resource type="FontFile" uid="uid://b1v1qxg7bsv4u" path="res://assets/ui/quaver.ttf" id="5_ovwnm"]
+[ext_resource type="AudioStream" uid="uid://t54psrpc410v" path="res://assets/sfx/dialogue/blurb5.wav" id="6_16cy5"]
+[ext_resource type="AudioStream" uid="uid://xglyp14l0rgx" path="res://assets/sfx/dialogue/blurb6.wav" id="7_gf35x"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_j4alc"]
+streams_count = 6
+stream_0/stream = ExtResource("2_npu25")
+stream_1/stream = ExtResource("3_fbjpv")
+stream_2/stream = ExtResource("4_bqcpl")
+stream_3/stream = ExtResource("5_huypj")
+stream_4/stream = ExtResource("6_16cy5")
+stream_5/stream = ExtResource("7_gf35x")
 
 [node name="DialogueBox" type="Control"]
 layout_mode = 3
@@ -15,6 +30,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cx8v6")
+height = 58
+
+[node name="Beeble" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_j4alc")
+bus = &"SFX"
 
 [node name="Canvas" type="CanvasLayer" parent="."]
 
@@ -22,13 +42,15 @@ script = ExtResource("1_cx8v6")
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
+offset_top = 86.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 126.0
 
 [node name="BG" type="TextureRect" parent="Canvas/Pos"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_right = 160.0
-offset_bottom = 47.0
+offset_bottom = 58.0
 texture = ExtResource("1_ki67d")
 stretch_mode = 1
 
@@ -37,15 +59,14 @@ unique_name_in_owner = true
 clip_contents = true
 layout_mode = 0
 offset_right = 160.0
-offset_bottom = 47.0
+offset_bottom = 58.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource("1_rpd28")
-region_rect = Rect2(0, 0, 3, 3)
-patch_margin_left = 1
-patch_margin_top = 1
-patch_margin_right = 1
-patch_margin_bottom = 1
+texture = ExtResource("3_nl231")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 22
+patch_margin_bottom = 22
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
@@ -58,7 +79,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_8f8e1")
-theme_override_constants/separation = 4
+theme_override_constants/separation = 10
 
 [node name="Control" type="Control" parent="Canvas/Pos/Box/HBoxContainer"]
 layout_mode = 2
@@ -68,7 +89,7 @@ clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_8f8e1")
-theme_override_constants/separation = 5
+theme_override_constants/separation = 10
 
 [node name="Control" type="Control" parent="Canvas/Pos/Box/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -81,7 +102,6 @@ theme = ExtResource("2_8f8e1")
 theme_override_constants/line_spacing = 2
 theme_override_fonts/font = ExtResource("5_ovwnm")
 theme_override_font_sizes/font_size = 8
-text = "Some text goes in this box to show what text looks like when typed. Type more text until the box is full! The text will keep typing."
 autowrap_mode = 3
 
 [node name="Control2" type="Control" parent="Canvas/Pos/Box/HBoxContainer/VBoxContainer"]
@@ -92,10 +112,11 @@ layout_mode = 2
 
 [node name="Arrow" type="TextureRect" parent="Canvas/Pos"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
-offset_left = 148.0
-offset_top = 32.0
-offset_right = 153.0
-offset_bottom = 41.0
+offset_left = 145.0
+offset_top = 38.0
+offset_right = 150.0
+offset_bottom = 47.0
 texture = ExtResource("4_jt8p3")
 stretch_mode = 2

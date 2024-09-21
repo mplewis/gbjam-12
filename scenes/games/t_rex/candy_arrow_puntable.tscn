@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ej8yg1oqw8db"]
+
+[ext_resource type="Script" path="res://scripts/candy_arrow_puntable.gd" id="1_ha2jb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nxdml"]
+radius = 2.0
+
+[node name="CandyArrowPuntable" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_ha2jb")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nxdml")

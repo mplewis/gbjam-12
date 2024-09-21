@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://baimtvta0dnun" path="res://assets/music/vampire/VampireLose.mp3" id="6_b6yk8"]
 [ext_resource type="AudioStream" uid="uid://mkbo6ui1kcld" path="res://assets/music/vampire/VampireDuck.mp3" id="7_suotu"]
 [ext_resource type="AudioStream" uid="uid://sn6ud3bckriy" path="res://assets/music/vampire/VampireJump.mp3" id="8_4ug0y"]
-[ext_resource type="AudioStream" uid="uid://dw6dhebhyndfi" path="res://assets/music/spider/Miss.wav" id="9_0f3ov"]
+[ext_resource type="AudioStream" uid="uid://dw6dhebhyndfi" path="res://assets/sfx/Miss.wav" id="9_0f3ov"]
 [ext_resource type="Texture2D" uid="uid://bokk1qiyhpuqr" path="res://assets/images/vampire/Dracula_background.png" id="10_qb0qd"]
 [ext_resource type="Texture2D" uid="uid://blgpqqhfwgucj" path="res://assets/images/vampire/PC-animation-Sheet.png" id="11_d6cuy"]
 [ext_resource type="Texture2D" uid="uid://btmlgof1iqfjl" path="res://assets/images/vampire/ground_barrel.png" id="12_sbgle"]
@@ -871,7 +871,7 @@ position = Vector2(0.5, 0)
 texture = ExtResource("11_d6cuy")
 hframes = 6
 vframes = 3
-frame = 2
+frame = 3
 
 [node name="Hitbox" type="CollisionShape2D" parent="PC"]
 position = Vector2(2, 15)
@@ -997,57 +997,6 @@ frame_progress = 0.910222
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsFG/Pan"]
 shape = SubResource("CircleShape2D_ce0vg")
-
-[node name="Barrel" type="RigidBody2D" parent="ItemsFG"]
-position = Vector2(4, 120)
-collision_layer = 5
-collision_mask = 0
-gravity_scale = 0.0
-
-[node name="Barrel" type="AnimatedSprite2D" parent="ItemsFG/Barrel"]
-sprite_frames = SubResource("SpriteFrames_6d3qd")
-frame_progress = 0.0394324
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsFG/Barrel"]
-shape = SubResource("CircleShape2D_a5e0n")
-
-[node name="Chomper" type="RigidBody2D" parent="ItemsFG"]
-position = Vector2(4, 120)
-collision_layer = 5
-collision_mask = 0
-gravity_scale = 0.0
-
-[node name="Chomper" type="AnimatedSprite2D" parent="ItemsFG/Chomper"]
-sprite_frames = SubResource("SpriteFrames_fh276")
-frame_progress = 0.406505
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsFG/Chomper"]
-shape = SubResource("CircleShape2D_xckna")
-
-[node name="Brick" type="RigidBody2D" parent="ItemsFG"]
-position = Vector2(4, 122)
-collision_layer = 5
-collision_mask = 0
-gravity_scale = 0.0
-
-[node name="Brick" type="Sprite2D" parent="ItemsFG/Brick"]
-texture = ExtResource("14_4ia6u")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsFG/Brick"]
-shape = SubResource("CircleShape2D_r62eb")
-
-[node name="Banana" type="RigidBody2D" parent="ItemsFG"]
-position = Vector2(4, 120)
-collision_layer = 5
-collision_mask = 0
-gravity_scale = 0.0
-
-[node name="Banana" type="Sprite2D" parent="ItemsFG/Banana"]
-texture = ExtResource("15_1bc10")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemsFG/Banana"]
-position = Vector2(0, 1)
-shape = SubResource("CircleShape2D_l2j1u")
 
 [node name="SpawnedItemsBG" type="Node2D" parent="."]
 
