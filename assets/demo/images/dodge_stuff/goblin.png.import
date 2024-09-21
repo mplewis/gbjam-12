@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6owhimlkbywh"
-path="res://.godot/imported/crash.png-a6783300c34f4d2448f86d595aca5a86.ctex"
+uid="uid://v84u643ffv2a"
+path="res://.godot/imported/goblin.png-f81429b00fac9de507b5e0bb5e1cfa95.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/spider/crash.png"
-dest_files=["res://.godot/imported/crash.png-a6783300c34f4d2448f86d595aca5a86.ctex"]
+source_file="res://assets/demo/images/dodge_stuff/goblin.png"
+dest_files=["res://.godot/imported/goblin.png-f81429b00fac9de507b5e0bb5e1cfa95.ctex"]
 
 [params]
 

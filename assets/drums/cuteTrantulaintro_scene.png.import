@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6owhimlkbywh"
-path="res://.godot/imported/crash.png-a6783300c34f4d2448f86d595aca5a86.ctex"
+uid="uid://dh83ialg1j3v0"
+path="res://.godot/imported/cuteTrantulaintro_scene.png-a426b14a799e5409dccba13993fc107f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/spider/crash.png"
-dest_files=["res://.godot/imported/crash.png-a6783300c34f4d2448f86d595aca5a86.ctex"]
+source_file="res://assets/drums/cuteTrantulaintro_scene.png"
+dest_files=["res://.godot/imported/cuteTrantulaintro_scene.png-a426b14a799e5409dccba13993fc107f.ctex"]
 
 [params]
 

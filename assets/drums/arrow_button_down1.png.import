@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6owhimlkbywh"
-path="res://.godot/imported/crash.png-a6783300c34f4d2448f86d595aca5a86.ctex"
+uid="uid://bftshukdr7kvc"
+path="res://.godot/imported/arrow_button_down1.png-0b9219be471d27df0fed59da871fd60c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/spider/crash.png"
-dest_files=["res://.godot/imported/crash.png-a6783300c34f4d2448f86d595aca5a86.ctex"]
+source_file="res://assets/drums/arrow_button_down1.png"
+dest_files=["res://.godot/imported/arrow_button_down1.png-0b9219be471d27df0fed59da871fd60c.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6owhimlkbywh"
-path="res://.godot/imported/crash.png-a6783300c34f4d2448f86d595aca5a86.ctex"
+uid="uid://dw7fu8sed8yr6"
+path="res://.godot/imported/lego.png-355ce8cf1a2139bef5f61a1dc5cd9e5e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/spider/crash.png"
-dest_files=["res://.godot/imported/crash.png-a6783300c34f4d2448f86d595aca5a86.ctex"]
+source_file="res://assets/demo/images/dodge_stuff/lego.png"
+dest_files=["res://.godot/imported/lego.png-355ce8cf1a2139bef5f61a1dc5cd9e5e.ctex"]
 
 [params]
 

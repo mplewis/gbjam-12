@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6owhimlkbywh"
-path="res://.godot/imported/crash.png-a6783300c34f4d2448f86d595aca5a86.ctex"
+uid="uid://u2u0wouw7qjw"
+path="res://.godot/imported/crouching.png-42f0ad9283d497c8b95d22780678fc0e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/spider/crash.png"
-dest_files=["res://.godot/imported/crash.png-a6783300c34f4d2448f86d595aca5a86.ctex"]
+source_file="res://assets/demo/images/dodge_stuff/crouching.png"
+dest_files=["res://.godot/imported/crouching.png-42f0ad9283d497c8b95d22780678fc0e.ctex"]
 
 [params]
 

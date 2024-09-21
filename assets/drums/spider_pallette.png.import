@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6owhimlkbywh"
-path="res://.godot/imported/crash.png-a6783300c34f4d2448f86d595aca5a86.ctex"
+uid="uid://dtcstw6jivub1"
+path="res://.godot/imported/spider_pallette.png-6946831d62d1f6803590bc86bb4422b7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/spider/crash.png"
-dest_files=["res://.godot/imported/crash.png-a6783300c34f4d2448f86d595aca5a86.ctex"]
+source_file="res://assets/drums/spider_pallette.png"
+dest_files=["res://.godot/imported/spider_pallette.png-6946831d62d1f6803590bc86bb4422b7.ctex"]
 
 [params]
 
