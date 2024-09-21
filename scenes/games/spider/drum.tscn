@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://v3iqjmwuqmom" path="res://assets/images/spider/bass.png" id="5_jwcku"]
 [ext_resource type="Texture2D" uid="uid://4aof272evja7" path="res://assets/images/spider/splash.png" id="6_3cdsd"]
 [ext_resource type="Texture2D" uid="uid://isbwvxnv4ak6" path="res://assets/images/spider/snare.png" id="6_7auup"]
-[ext_resource type="Texture2D" uid="uid://bilvabkmg8p27" path="res://assets/drums/lowtom.png" id="6_w8t82"]
+[ext_resource type="Texture2D" uid="uid://5rfe4ech6g4a" path="res://assets/images/spider/lowtom.png" id="6_ediv8"]
 [ext_resource type="Texture2D" uid="uid://dne3uf3uyahp7" path="res://assets/images/spider/crash.png" id="7_lutmj"]
 [ext_resource type="Texture2D" uid="uid://dv46p23j70y5" path="res://assets/images/spider/drums (1).png" id="9_6vr5d"]
 
@@ -42,7 +42,7 @@ texture = ExtResource("5_ancs1")
 z_index = 2
 texture_filter = 2
 texture_repeat = 1
-texture = ExtResource("6_w8t82")
+texture = ExtResource("6_ediv8")
 
 [node name="splash" type="Sprite2D" parent="."]
 z_index = 2
@@ -57,7 +57,8 @@ texture_repeat = 1
 texture = ExtResource("7_lutmj")
 
 [node name="Rest" type="Sprite2D" parent="."]
-z_index = -5
+z_index = -1
 texture_filter = 2
 texture_repeat = 1
+scale = Vector2(1.001, 1.001)
 texture = ExtResource("9_6vr5d")

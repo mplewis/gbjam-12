@@ -888,9 +888,12 @@ tracks/3/path = NodePath("Audio/Lightning")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(5.11667),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(5.11667, 6.875),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [0.0],
+"method": &"play"
+}, {
 "args": [0.0],
 "method": &"play"
 }]
@@ -902,9 +905,12 @@ tracks/4/path = NodePath("Audio/DashDown")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(3.86667),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(2.11667, 3.86667),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [0.0],
+"method": &"play"
+}, {
 "args": [0.0],
 "method": &"play"
 }]
@@ -936,9 +942,12 @@ tracks/6/path = NodePath("Audio/JumpSound")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(8.00002, 9.00002, 10),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(2.13333, 8.00002, 9.00002, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
+"args": [0.0],
+"method": &"play"
+}, {
 "args": [0.0],
 "method": &"play"
 }, {

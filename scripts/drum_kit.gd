@@ -124,6 +124,8 @@ func _start_intro():
 	fader.fade_in()
 	await get_tree().create_timer(1.0).timeout
 	Music.stream = load("res://assets/music/spider/SpiderIntro_PreMidiTrack.wav")
+	midi_player_audio.file ="res://assets/music/spider/SpiderIntro_PreMidiTrack.wav"
+	midi_player_audio.play()
 	Music.volume_db = -10
 	
 	#Music.play()
@@ -146,7 +148,7 @@ func _start_game():
 	midi_player_spawn.volume_db = 0.0
 	midi_player_audio.volume_db = 0.0
 	
-	
+	midi_player_audio.file ="res://assets/music/spider/The Jazzy Arachnid FINAL.wav.WAV"
 	midi_player_audio.play()
 	start_playing_at_ms = (
 		Time.get_ticks_msec()
@@ -279,7 +281,7 @@ func _on_hit(progress):
 		
 		$drum.call(animation_player[note2frame.keys()[circle_index]].call)
 		
-		score += 100 if progress > 97 else 75 if progress > 95 else 50 if progress > 85 else 25 #perfect / great / good/ ok 
+		score += 100 if progress > 95 else 75 if progress > 90 else 50 if progress > 85 else 25 #perfect / great / good/ ok 
 		
 		if progress > 90:
 		
