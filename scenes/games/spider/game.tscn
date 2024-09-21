@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bftshukdr7kvc" path="res://assets/images/spider/arrow_button_down1.png" id="3_ixuiy"]
 [ext_resource type="Texture2D" uid="uid://cc8be2pd767ca" path="res://assets/images/spider/arrow_button_up2 (1).png" id="4_v0iha"]
 [ext_resource type="Texture2D" uid="uid://bpqxfc0je01t0" path="res://assets/images/spider/arrow_button_left1.png" id="5_mwjlf"]
-[ext_resource type="Texture2D" uid="uid://6owhimlkbywh" path="res://assets/images/spider/arrow_button_up1.png" id="6_powvk"]
+[ext_resource type="Texture2D" uid="uid://dne3uf3uyahp7" path="res://assets/images/spider/crash.png" id="6_powvk"]
 [ext_resource type="Texture2D" uid="uid://cplajcmqflkyk" path="res://assets/images/spider/arrow_button_right1.png" id="7_eq3bg"]
 [ext_resource type="Texture2D" uid="uid://b7wkqfqkcft77" path="res://assets/images/spider/arrow_button_left3.png" id="8_0y54t"]
 [ext_resource type="PackedScene" uid="uid://ckle1vf4x84ci" path="res://scenes/games/spider/drum.tscn" id="9_v7oro"]

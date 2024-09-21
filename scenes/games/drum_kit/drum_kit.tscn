@@ -3,19 +3,19 @@
 [ext_resource type="Script" path="res://scripts/drum_kit.gd" id="1_lr0ke"]
 [ext_resource type="Script" path="res://addons/radial_progress/RadialProgress.gd" id="2_w4bkx"]
 [ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="3_hyg1d"]
-[ext_resource type="Texture2D" uid="uid://cc8be2pd767ca" path="res://assets/drums/arrow_button_up2 (1).png" id="4_arinc"]
-[ext_resource type="Texture2D" uid="uid://bpqxfc0je01t0" path="res://assets/drums/arrow_button_left1.png" id="4_hwvan"]
-[ext_resource type="Texture2D" uid="uid://cplajcmqflkyk" path="res://assets/drums/arrow_button_right1.png" id="5_p564x"]
-[ext_resource type="PackedScene" uid="uid://ckle1vf4x84ci" path="res://scenes/games/drum_kit/drum.tscn" id="5_tjp5h"]
-[ext_resource type="Texture2D" uid="uid://b7wkqfqkcft77" path="res://assets/drums/arrow_button_left3.png" id="6_e3qc3"]
+[ext_resource type="Texture2D" uid="uid://cc8be2pd767ca" path="res://assets/images/spider/arrow_button_up2 (1).png" id="4_arinc"]
+[ext_resource type="Texture2D" uid="uid://bpqxfc0je01t0" path="res://assets/images/spider/arrow_button_left1.png" id="4_hwvan"]
+[ext_resource type="Texture2D" uid="uid://cplajcmqflkyk" path="res://assets/images/spider/arrow_button_right1.png" id="5_p564x"]
+[ext_resource type="PackedScene" uid="uid://ckle1vf4x84ci" path="res://scenes/games/spider/drum.tscn" id="5_tjp5h"]
+[ext_resource type="Texture2D" uid="uid://b7wkqfqkcft77" path="res://assets/images/spider/arrow_button_left3.png" id="6_e3qc3"]
 [ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="6_utpvi"]
-[ext_resource type="Texture2D" uid="uid://dck5dl640evl5" path="res://assets/drums/spider.png" id="7_t3yau"]
+[ext_resource type="Texture2D" uid="uid://dck5dl640evl5" path="res://assets/images/spider/spider.png" id="7_t3yau"]
 [ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="10_c5u3y"]
-[ext_resource type="PackedScene" uid="uid://b0njtks5rulkw" path="res://scenes/controls.tscn" id="10_i36f8"]
-[ext_resource type="Texture2D" uid="uid://d1ta3alhajfft" path="res://assets/drums/spider_hi_tom.png" id="12_57pa6"]
-[ext_resource type="Texture2D" uid="uid://cog4ndjdt8tp0" path="res://assets/drums/spider_idle.png" id="12_xyrb7"]
-[ext_resource type="Texture2D" uid="uid://b405mn81jsbb4" path="res://assets/drums/spider_low_tim.png" id="13_cgbdg"]
-[ext_resource type="Texture2D" uid="uid://cibm5cvctlrsj" path="res://assets/drums/spider_tom.png" id="15_8kan2"]
+[ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="10_mbu7e"]
+[ext_resource type="Texture2D" uid="uid://c8h0in7q6voee" path="res://assets/drums/spider_hi_tom.png" id="12_57pa6"]
+[ext_resource type="Texture2D" uid="uid://yjkd8crkdg6o" path="res://assets/drums/spider_idle.png" id="12_xyrb7"]
+[ext_resource type="Texture2D" uid="uid://ciaxhcdibm1ju" path="res://assets/drums/spider_low_tim.png" id="13_cgbdg"]
+[ext_resource type="Texture2D" uid="uid://bc3mmyxfyjuql" path="res://assets/drums/spider_tom.png" id="15_8kan2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7ep26"]
 shader = ExtResource("3_hyg1d")
@@ -563,7 +563,7 @@ volume_db = 0.0
 soundfont = "res://assets/demo/music/8bit.sf2"
 bus = &"Music"
 
-[node name="Controls" parent="." instance=ExtResource("10_i36f8")]
+[node name="Controls" parent="." instance=ExtResource("10_mbu7e")]
 
 [node name="spider" type="AnimatedSprite2D" parent="."]
 z_index = 5

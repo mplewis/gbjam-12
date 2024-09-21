@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dne3uf3uyahp7"
-path="res://.godot/imported/crash.png-a6783300c34f4d2448f86d595aca5a86.ctex"
+uid="uid://d4gn2cc4ewova"
+path="res://.godot/imported/eek.png-ee855a5ddf623466b0ba0463e5f683e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/spider/crash.png"
-dest_files=["res://.godot/imported/crash.png-a6783300c34f4d2448f86d595aca5a86.ctex"]
+source_file="res://assets/images/spider/eek.png"
+dest_files=["res://.godot/imported/eek.png-ee855a5ddf623466b0ba0463e5f683e1.ctex"]
 
 [params]
 

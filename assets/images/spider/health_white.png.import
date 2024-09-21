@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dne3uf3uyahp7"
-path="res://.godot/imported/crash.png-a6783300c34f4d2448f86d595aca5a86.ctex"
+uid="uid://dxraxy8llrd8g"
+path="res://.godot/imported/health_white.png-3f697713e26068894d701c6820dfaa5e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/spider/crash.png"
-dest_files=["res://.godot/imported/crash.png-a6783300c34f4d2448f86d595aca5a86.ctex"]
+source_file="res://assets/images/spider/health_white.png"
+dest_files=["res://.godot/imported/health_white.png-3f697713e26068894d701c6820dfaa5e.ctex"]
 
 [params]
 

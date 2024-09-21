@@ -23,6 +23,7 @@ const SCENE_TXN = "cinematics/scene_transition"
 const GAME_SCENES = [
 	"games/t_rex/t_rex_game",
 	"games/vampire/vampire_game",
+	"games/spider/spider_intro"
 ]
 
 var current_campaign = null
