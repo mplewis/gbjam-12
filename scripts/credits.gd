@@ -27,7 +27,6 @@ var pages = [
 
 
 func _ready():
-	SceneMgr.set_appropriate_window_size()
 	GBtn.on_left.connect(_on_left)
 	GBtn.on_right.connect(_on_right)
 	GBtn.on_a.connect(_on_a)

@@ -2,16 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4fnmkckwngnm"
+<<<<<<<< HEAD:assets/images/spider/Tom.png.import
+uid="uid://dr7pg6sicf0do"
+path="res://.godot/imported/Tom.png-d56d2e0c695dfeaff313eb9580c197dd.ctex"
+========
+uid="uid://cfxg4fvcd18t3"
 path="res://.godot/imported/candy_up.png-2fa73e34c971195c1910deacf1e2d8f3.ctex"
+>>>>>>>> spider_room:assets/t_rex_candy/candy_up.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<<< HEAD:assets/images/spider/Tom.png.import
+source_file="res://assets/images/spider/Tom.png"
+dest_files=["res://.godot/imported/Tom.png-d56d2e0c695dfeaff313eb9580c197dd.ctex"]
+========
 source_file="res://assets/t_rex_candy/candy_up.png"
 dest_files=["res://.godot/imported/candy_up.png-2fa73e34c971195c1910deacf1e2d8f3.ctex"]
+>>>>>>>> spider_room:assets/t_rex_candy/candy_up.png.import
 
 [params]
 

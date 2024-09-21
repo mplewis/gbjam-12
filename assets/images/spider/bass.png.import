@@ -2,16 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<<< HEAD:assets/images/spider/bass.png.import
 uid="uid://v3iqjmwuqmom"
 path="res://.godot/imported/bass.png-ce05f81bb7e196f6bb19f54333c0af8a.ctex"
+========
+uid="uid://c2dn2j8cwcc7e"
+path="res://.godot/imported/controls_demo.png-786b61124220c18fbd9a0bfff457bfa1.ctex"
+>>>>>>>> spider_room:assets/ui/controls_demo.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<<< HEAD:assets/images/spider/bass.png.import
 source_file="res://assets/images/spider/bass.png"
 dest_files=["res://.godot/imported/bass.png-ce05f81bb7e196f6bb19f54333c0af8a.ctex"]
+========
+source_file="res://assets/ui/controls_demo.png"
+dest_files=["res://.godot/imported/controls_demo.png-786b61124220c18fbd9a0bfff457bfa1.ctex"]
+>>>>>>>> spider_room:assets/ui/controls_demo.png.import
 
 [params]
 

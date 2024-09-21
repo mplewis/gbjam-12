@@ -1,8 +1,16 @@
+<<<<<<<< HEAD:scenes/games/t_rex/candy_arrow.tscn
 [gd_scene load_steps=5 format=3 uid="uid://el1x3ef6nvft"]
 
 [ext_resource type="Script" path="res://scripts/candy_arrow.gd" id="1_1kxm8"]
 [ext_resource type="Texture2D" uid="uid://kpruc7nx3fq8" path="res://assets/images/t_rex/food_test.png" id="2_u32ed"]
 [ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="3_qpogp"]
+========
+[gd_scene load_steps=5 format=3 uid="uid://v4cukti18rrm"]
+
+[ext_resource type="Script" path="res://scripts/candy_arrow.gd" id="1_lwqn3"]
+[ext_resource type="Texture2D" uid="uid://kpruc7nx3fq8" path="res://assets/t_rex_candy/food_test.png" id="2_0lnim"]
+[ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="2_53kln"]
+>>>>>>>> spider_room:scenes/games/t_rex_candy/candy_arrow.tscn
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o4mrv"]
 radius = 2.0
@@ -13,7 +21,11 @@ gravity_scale = 0.0
 script = ExtResource("1_1kxm8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+<<<<<<<< HEAD:scenes/games/t_rex/candy_arrow.tscn
 texture = ExtResource("2_u32ed")
+========
+texture = ExtResource("2_0lnim")
+>>>>>>>> spider_room:scenes/games/t_rex_candy/candy_arrow.tscn
 offset = Vector2(0, 0.5)
 hframes = 4
 

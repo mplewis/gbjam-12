@@ -15,7 +15,6 @@ var index := 0
 
 
 func _ready():
-	SceneMgr.set_appropriate_window_size()
 	GBtn.on_b.connect(_on_b)
 	GBtn.on_up.connect(_on_up)
 	GBtn.on_down.connect(_on_down)

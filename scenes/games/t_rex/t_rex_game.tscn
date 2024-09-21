@@ -313,6 +313,7 @@ intro_text = "ROAR!! I’ve got a hunger, and the only prescription… is more c
 win_text = "Oh my god. Why did you feed me so much candy? I can’t believe you threw that all in my mouth. I need to go sit down..."
 lose_text = "I’m not finished, my stomach is still grumbling! I need you to stay right there and--hey, don't run away from ME!!"
 fullness_threshold = -1
+skip_to_song_end = true
 
 [node name="Notes" parent="." instance=ExtResource("2_qgi35")]
 file = "res://assets/music/t_rex/TREXMidi.mid"

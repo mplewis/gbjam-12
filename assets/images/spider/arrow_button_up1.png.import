@@ -2,16 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<<< HEAD:assets/images/spider/arrow_button_up1.png.import
 uid="uid://6owhimlkbywh"
 path="res://.godot/imported/arrow_button_up1.png-3b32f959355ccf964e955de914003e18.ctex"
+========
+uid="uid://bh8r8xldtv7l4"
+path="res://.godot/imported/Background.png-7fe9abc7e6c0f484daad3253d140e790.ctex"
+>>>>>>>> spider_room:assets/t_rex_candy/Background.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<<< HEAD:assets/images/spider/arrow_button_up1.png.import
 source_file="res://assets/images/spider/arrow_button_up1.png"
 dest_files=["res://.godot/imported/arrow_button_up1.png-3b32f959355ccf964e955de914003e18.ctex"]
+========
+source_file="res://assets/t_rex_candy/Background.png"
+dest_files=["res://.godot/imported/Background.png-7fe9abc7e6c0f484daad3253d140e790.ctex"]
+>>>>>>>> spider_room:assets/t_rex_candy/Background.png.import
 
 [params]
 
