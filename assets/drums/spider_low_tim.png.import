@@ -2,26 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< Updated upstream:assets/drums/spider_low_tim.png.import
-uid="uid://b405mn81jsbb4"
+uid="uid://bptmrykkksuuq"
 path="res://.godot/imported/spider_low_tim.png-11d1cd437793e0a63aeecbdeb1ad2645.ctex"
-=======
-uid="uid://dsoyx0rg37d5n"
-path="res://.godot/imported/spider_low_tim.png-8a98af943b9a108b8e290f3133ef171b.ctex"
->>>>>>> Stashed changes:assets/images/spider/spider_low_tim.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<< Updated upstream:assets/drums/spider_low_tim.png.import
 source_file="res://assets/drums/spider_low_tim.png"
 dest_files=["res://.godot/imported/spider_low_tim.png-11d1cd437793e0a63aeecbdeb1ad2645.ctex"]
-=======
-source_file="res://assets/images/spider/spider_low_tim.png"
-dest_files=["res://.godot/imported/spider_low_tim.png-8a98af943b9a108b8e290f3133ef171b.ctex"]
->>>>>>> Stashed changes:assets/images/spider/spider_low_tim.png.import
 
 [params]
 

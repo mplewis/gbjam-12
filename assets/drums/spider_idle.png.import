@@ -2,26 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< Updated upstream:assets/drums/spider_idle.png.import
-uid="uid://cog4ndjdt8tp0"
+uid="uid://b4i5vu804yrkx"
 path="res://.godot/imported/spider_idle.png-e640e72a5a36a798b1aaeccdd833bc18.ctex"
-=======
-uid="uid://bf3rn2bec6je2"
-path="res://.godot/imported/spider_idle.png-d3e37a307f0f0f9336210434d48d789e.ctex"
->>>>>>> Stashed changes:assets/images/spider/spider_idle.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<< Updated upstream:assets/drums/spider_idle.png.import
 source_file="res://assets/drums/spider_idle.png"
 dest_files=["res://.godot/imported/spider_idle.png-e640e72a5a36a798b1aaeccdd833bc18.ctex"]
-=======
-source_file="res://assets/images/spider/spider_idle.png"
-dest_files=["res://.godot/imported/spider_idle.png-d3e37a307f0f0f9336210434d48d789e.ctex"]
->>>>>>> Stashed changes:assets/images/spider/spider_idle.png.import
 
 [params]
 

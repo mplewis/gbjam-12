@@ -2,26 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< Updated upstream:assets/drums/spider_tom.png.import
-uid="uid://cibm5cvctlrsj"
+uid="uid://cjdgcwo3hlwdt"
 path="res://.godot/imported/spider_tom.png-c53892ac75754c20e467131fd2fae201.ctex"
-=======
-uid="uid://bi8n8hmll4xls"
-path="res://.godot/imported/spider_tom.png-0b598c884a9491ca0b5175efc24130f9.ctex"
->>>>>>> Stashed changes:assets/images/spider/spider_tom.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<< Updated upstream:assets/drums/spider_tom.png.import
 source_file="res://assets/drums/spider_tom.png"
 dest_files=["res://.godot/imported/spider_tom.png-c53892ac75754c20e467131fd2fae201.ctex"]
-=======
-source_file="res://assets/images/spider/spider_tom.png"
-dest_files=["res://.godot/imported/spider_tom.png-0b598c884a9491ca0b5175efc24130f9.ctex"]
->>>>>>> Stashed changes:assets/images/spider/spider_tom.png.import
 
 [params]
 

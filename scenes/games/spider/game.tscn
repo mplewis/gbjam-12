@@ -1,0 +1,255 @@
+[gd_scene load_steps=24 format=3 uid="uid://l387o4ltq2ns"]
+
+[ext_resource type="Script" path="res://scripts/drum_kit.gd" id="1_kc4al"]
+[ext_resource type="Script" path="res://addons/radial_progress/RadialProgress.gd" id="2_6xelb"]
+[ext_resource type="Texture2D" uid="uid://bftshukdr7kvc" path="res://assets/images/spider/arrow_button_down1.png" id="3_ixuiy"]
+[ext_resource type="Texture2D" uid="uid://cc8be2pd767ca" path="res://assets/images/spider/arrow_button_up2 (1).png" id="4_v0iha"]
+[ext_resource type="Texture2D" uid="uid://bpqxfc0je01t0" path="res://assets/images/spider/arrow_button_left1.png" id="5_mwjlf"]
+[ext_resource type="Texture2D" uid="uid://6owhimlkbywh" path="res://assets/images/spider/arrow_button_up1.png" id="6_powvk"]
+[ext_resource type="Texture2D" uid="uid://cplajcmqflkyk" path="res://assets/images/spider/arrow_button_right1.png" id="7_eq3bg"]
+[ext_resource type="Texture2D" uid="uid://b7wkqfqkcft77" path="res://assets/images/spider/arrow_button_left3.png" id="8_0y54t"]
+[ext_resource type="PackedScene" uid="uid://ckle1vf4x84ci" path="res://scenes/games/spider/drum.tscn" id="9_v7oro"]
+[ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="10_34gcb"]
+[ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="11_1oew2"]
+[ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="12_6atpg"]
+[ext_resource type="Texture2D" uid="uid://dck5dl640evl5" path="res://assets/images/spider/spider.png" id="13_jck3n"]
+[ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="14_kf3w5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7ep26"]
+shader = ExtResource("10_34gcb")
+shader_parameter/threshold1 = 0.25
+shader_parameter/threshold2 = 0.5
+shader_parameter/threshold3 = 0.75
+shader_parameter/color1 = Color(0.0313726, 0.0941176, 0.12549, 1)
+shader_parameter/color2 = Color(0.203922, 0.407843, 0.337255, 1)
+shader_parameter/color3 = Color(0.533333, 0.752941, 0.439216, 1)
+shader_parameter/color4 = Color(0.878431, 0.972549, 0.815686, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gon7l"]
+atlas = ExtResource("13_jck3n")
+region = Rect2(0, 0, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osm4o"]
+atlas = ExtResource("13_jck3n")
+region = Rect2(160, 0, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vd2e6"]
+atlas = ExtResource("13_jck3n")
+region = Rect2(320, 0, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_son6f"]
+atlas = ExtResource("13_jck3n")
+region = Rect2(0, 144, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbu7h"]
+atlas = ExtResource("13_jck3n")
+region = Rect2(160, 144, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r12sy"]
+atlas = ExtResource("13_jck3n")
+region = Rect2(320, 144, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q44do"]
+atlas = ExtResource("13_jck3n")
+region = Rect2(0, 288, 160, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kk3i1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gon7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osm4o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vd2e6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_son6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lbu7h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r12sy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q44do")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="DrumKit" type="Node2D" node_paths=PackedStringArray("spider")]
+script = ExtResource("1_kc4al")
+spider = NodePath("spider")
+
+[node name="Circles" type="Control" parent="."]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_top = 13.0
+offset_right = 39.0
+offset_bottom = 53.0
+
+[node name="Progress1" type="Control" parent="Circles"]
+z_index = 2
+layout_mode = 3
+anchors_preset = 0
+offset_left = 87.0
+offset_top = 87.0
+offset_right = 127.0
+offset_bottom = 127.0
+script = ExtResource("2_6xelb")
+radius = 10.0
+thickness = 3.0
+bg_color = Color(0, 0, 0, 1)
+bar_color = Color(1, 1, 1, 1)
+
+[node name="Progress2" type="Control" parent="Circles"]
+z_index = 2
+layout_mode = 3
+anchors_preset = 0
+offset_left = 42.0
+offset_top = 32.0
+offset_right = 82.0
+offset_bottom = 72.0
+script = ExtResource("2_6xelb")
+radius = 10.0
+thickness = 3.0
+bg_color = Color(0, 0, 0, 1)
+bar_color = Color(1, 1, 1, 1)
+
+[node name="Progress3" type="Control" parent="Circles"]
+z_index = 2
+layout_mode = 3
+anchors_preset = 0
+offset_left = 52.0
+offset_top = 60.0
+offset_right = 92.0
+offset_bottom = 100.0
+script = ExtResource("2_6xelb")
+radius = 10.0
+thickness = 3.0
+bg_color = Color(0, 0, 0, 1)
+bar_color = Color(1, 1, 1, 1)
+
+[node name="Progress4" type="Control" parent="Circles"]
+z_index = 2
+layout_mode = 3
+anchors_preset = 0
+offset_left = 135.0
+offset_top = 75.0
+offset_right = 175.0
+offset_bottom = 115.0
+script = ExtResource("2_6xelb")
+radius = 10.0
+thickness = 3.0
+bg_color = Color(0, 0, 0, 1)
+bar_color = Color(1, 1, 1, 1)
+
+[node name="Progress5" type="Control" parent="Circles"]
+z_index = 2
+layout_mode = 3
+anchors_preset = 0
+offset_left = 17.0
+offset_top = 118.0
+offset_right = 57.0
+offset_bottom = 158.0
+script = ExtResource("2_6xelb")
+radius = 10.0
+thickness = 3.0
+bg_color = Color(0, 0, 0, 1)
+bar_color = Color(1, 1, 1, 1)
+
+[node name="Progress6" type="Control" parent="Circles"]
+z_index = 2
+layout_mode = 3
+anchors_preset = 0
+offset_left = 145.0
+offset_top = 15.0
+offset_right = 185.0
+offset_bottom = 55.0
+script = ExtResource("2_6xelb")
+radius = 10.0
+thickness = 3.0
+bg_color = Color(0, 0, 0, 1)
+bar_color = Color(1, 1, 1, 1)
+
+[node name="kick" type="Sprite2D" parent="Circles"]
+z_index = 2
+position = Vector2(87, 87)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_ixuiy")
+
+[node name="splash" type="Sprite2D" parent="Circles"]
+z_index = 2
+position = Vector2(145, 15)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_v0iha")
+
+[node name="hat" type="Sprite2D" parent="Circles"]
+z_index = 2
+position = Vector2(17, 118)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_mwjlf")
+
+[node name="crash" type="Sprite2D" parent="Circles"]
+z_index = 2
+position = Vector2(42, 32)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("6_powvk")
+
+[node name="Right" type="Sprite2D" parent="Circles"]
+z_index = 2
+position = Vector2(135, 75)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("7_eq3bg")
+
+[node name="Left" type="Sprite2D" parent="Circles"]
+z_index = 2
+position = Vector2(52, 60)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("8_0y54t")
+
+[node name="drum" parent="." instance=ExtResource("9_v7oro")]
+z_index = -1
+position = Vector2(80, 71)
+
+[node name="RecolorLayer" type="CanvasLayer" parent="."]
+
+[node name="RecolorShader" type="ColorRect" parent="RecolorLayer"]
+material = SubResource("ShaderMaterial_7ep26")
+offset_right = 160.0
+offset_bottom = 256.0
+
+[node name="MidiPlayerSpawn" parent="." instance=ExtResource("11_1oew2")]
+file = "res://assets/demo/music/A-Foggy-Day-(Jazz-Gitaar-Trio).mid"
+soundfont = "res://assets/demo/music/8bit.sf2"
+bus = &"Music"
+muted = true
+
+[node name="MidiPlayerAudio" parent="." instance=ExtResource("11_1oew2")]
+file = "res://assets/demo/music/A-Foggy-Day-(Jazz-Gitaar-Trio).mid"
+playing = true
+volume_db = 0.0
+soundfont = "res://assets/demo/music/8bit.sf2"
+bus = &"Music"
+
+[node name="Controls" parent="." instance=ExtResource("12_6atpg")]
+
+[node name="spider" type="AnimatedSprite2D" parent="."]
+z_index = 3
+position = Vector2(81, 71)
+sprite_frames = SubResource("SpriteFrames_kk3i1")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Score" type="Label" parent="UI"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("14_kf3w5")
+text = "Score: 0"

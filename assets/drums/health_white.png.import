@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dxraxy8llrd8g"
-path="res://.godot/imported/health_white.png-3f697713e26068894d701c6820dfaa5e.ctex"
+path="res://.godot/imported/health_white.png-a603c5dfea5131133553a49da6ceaea6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/spider/health_white.png"
-dest_files=["res://.godot/imported/health_white.png-3f697713e26068894d701c6820dfaa5e.ctex"]
+source_file="res://assets/drums/health_white.png"
+dest_files=["res://.godot/imported/health_white.png-a603c5dfea5131133553a49da6ceaea6.ctex"]
 
 [params]
 
