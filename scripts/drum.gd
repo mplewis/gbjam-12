@@ -12,6 +12,11 @@ func _ready():
 	pass # Replace with function body.
 
 @onready var player_objects = [$kick,$snare, $high_tom, $tom,  $low_tom]
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

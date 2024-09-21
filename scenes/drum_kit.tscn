@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream:scenes/drum_kit.tscn
 [gd_scene load_steps=22 format=3 uid="uid://dhq78wpv6tbxg"]
+=======
+[gd_scene load_steps=24 format=3 uid="uid://l387o4ltq2ns"]
+>>>>>>> Stashed changes:scenes/games/spider/game.tscn
 
 [ext_resource type="Script" path="res://scripts/drum_kit.gd" id="1_lr0ke"]
 [ext_resource type="Script" path="res://addons/radial_progress/RadialProgress.gd" id="2_w4bkx"]

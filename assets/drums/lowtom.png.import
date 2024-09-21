@@ -2,16 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< Updated upstream:assets/drums/lowtom.png.import
 uid="uid://g5kk0u1sk6dq"
 path="res://.godot/imported/lowtom.png-5671c48a70cc4a5d42c0f3676b7b3d38.ctex"
+=======
+uid="uid://5rfe4ech6g4a"
+path="res://.godot/imported/lowtom.png-8263edb2d2d4cc128fff4ec5174cc669.ctex"
+>>>>>>> Stashed changes:assets/images/spider/lowtom.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<< Updated upstream:assets/drums/lowtom.png.import
 source_file="res://assets/drums/lowtom.png"
 dest_files=["res://.godot/imported/lowtom.png-5671c48a70cc4a5d42c0f3676b7b3d38.ctex"]
+=======
+source_file="res://assets/images/spider/lowtom.png"
+dest_files=["res://.godot/imported/lowtom.png-8263edb2d2d4cc128fff4ec5174cc669.ctex"]
+>>>>>>> Stashed changes:assets/images/spider/lowtom.png.import
 
 [params]
 
