@@ -7,13 +7,13 @@ const KICK_NOTE_LOW = 33
 const KICK_NOTE_HIGH = 37
 const SNARE_NOTE_LOW = 30
 const SNARE_NOTE_HIGH = 39#41
-const TOM_NOTE_LOW = 39#41
-const TOM_NOTE_HIGH = 47#50#46
+const TOM_NOTE_LOW = 49#41
+const TOM_NOTE_HIGH = 55#50#46
 
-const LOW_TOM_NOTE_LOW = 55#41
-const LOW_TOM_NOTE_HIGH = 65#50#46
-const HAT_NOTE_LOW = 49#40#42
-const HAT_NOTE_HIGH = 55#50#52
+const LOW_TOM_NOTE_LOW = 75#41
+const LOW_TOM_NOTE_HIGH = 85#50#46
+const HAT_NOTE_LOW = 60#40#42
+const HAT_NOTE_HIGH = 70#50#52
 const CRASH_NOTE_LOW = 60
 const CRASH_NOTE_HIGH = 70
 const SPLASH_NOTE_LOW = 52
@@ -91,8 +91,8 @@ var animation_player := {
 var wait_timer = 2.0
 var start_timer = 0
 
-var difficulty = 500
-var miss_buffer = 10.0/60.0
+var difficulty = 150
+var miss_buffer = 20.0/60.0
 
 
 
@@ -126,7 +126,7 @@ func _start_intro():
 	Music.stream = load("res://assets/music/spider/SpiderIntro_PreMidiTrack.wav")
 	Music.volume_db = -10
 	
-	Music.play()
+	#Music.play()
 
 	DialogueMgr.show(intro_text)
 	await DialogueMgr.on_close
@@ -145,15 +145,20 @@ func _start_game():
 	
 	midi_player_spawn.volume_db = 0.0
 	midi_player_audio.volume_db = 0.0
+	
+	
 	midi_player_audio.play()
-	midi_player_spawn.play()
 	start_playing_at_ms = (
 		Time.get_ticks_msec()
 		+ (ARROW_SPAWN_TO_HIT_SEC - (AudioCal.audio_offset + MAGIC_NUMBER_MIDI_DELAY)) * 1000.0
 	)
+	
+	
 	for circle in circles_parent.get_children():
 		circles.append(circle)
 	start_timer = Time.get_ticks_msec()
+	await get_tree().create_timer(2.0/60.0).timeout
+	midi_player_spawn.play()
 func _process(delta: float) -> void:
 	
 	
@@ -176,7 +181,7 @@ func _process(delta: float) -> void:
 	if HealthMgr.health <=0:
 		HealthMgr.on_health_reset.emit()
 	if is_spider_waiting:
-		var new_progress = circles[circle_index].progress + delta * 150	# 200 maestro 175 jazzer 125 mid 50 Noob difficulty
+		var new_progress = circles[circle_index].progress + delta * difficulty	# 200 maestro 175 jazzer 125 mid 50 Noob difficulty
 		#print(new_progress)
 	
 		while new_progress > 100:
@@ -271,10 +276,15 @@ func _on_miss():
 	
 func _on_hit(progress):
 		instruments[circle_index].play()
-		Nice[0 if circle_index < 2 else 1].modulate.a = 1.0
+		
 		$drum.call(animation_player[note2frame.keys()[circle_index]].call)
 		
 		score += 100 if progress > 97 else 75 if progress > 95 else 50 if progress > 85 else 25 #perfect / great / good/ ok 
+		
+		if progress > 90:
+		
+			Nice[0 if circle_index < 2 else 1].modulate.a = 1.0
+		
 		combo += 1
 		is_spider_waiting = false
 		spider.frame = 0
