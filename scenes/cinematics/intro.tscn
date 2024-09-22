@@ -814,7 +814,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_scxlu")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 9.0
 }]
@@ -1025,7 +1025,8 @@ texture = ExtResource("7_og408")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Cinematic/Spider"]
 position = Vector2(80, 73)
 sprite_frames = SubResource("SpriteFrames_rnsxo")
-frame_progress = 0.541296
+frame = 8
+frame_progress = 1.0
 
 [node name="SpiderText" type="Label" parent="Cinematic"]
 visible = false
