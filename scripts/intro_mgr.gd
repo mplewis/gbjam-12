@@ -11,8 +11,8 @@ var is_backing
 func _ready() -> void:
 	GBtn.on_a_hold.connect(_on_a_hold)
 	GBtn.on_a_release.connect(_on_a_release)
-	GBtn.on_b_hold.connect(_on_b_hold)
-	GBtn.on_b_release.connect(_on_b_release)
+	#GBtn.on_b_hold.connect(_on_b_hold)
+	#GBtn.on_b_release.connect(_on_b_release)
 	
 	
 	fade_in()

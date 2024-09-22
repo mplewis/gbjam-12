@@ -112,12 +112,12 @@ func _ready():
 	GBtn.on_a.connect(_on_a)
 	GBtn.on_b.connect(_on_b)
 	
-	HealthMgr.on_health_reset.connect(_on_health_reset)
+	#HealthMgr.on_health_reset.connect(_on_health_reset)
 	HealthMgr.on_health_drain.connect(_on_health_drain)
 	
 	midi_player_spawn.midi_event.connect(_on_midi_event)
 	
-	Music.finished.connect(music_end)
+#	Music.finished.connect(music_end)
 	midi_player_audio.finished.connect(music_end)
 
 
@@ -159,16 +159,16 @@ func _process(delta: float) -> void:
 	Score.text = "SCoR: %d\nCoMb: %d" % [score, combo]
 	
 	
-	
-	health_bar.frame = 10-int(float(HealthMgr.health/ HealthMgr.health_max)*10 )
+	if HealthMgr.health >=0:
+		health_bar.frame = 10-int(float(HealthMgr.health/ HealthMgr.health_max)*10 )
 	
 	
 	if is_spider_waiting || !spider.is_playing():
 		
 		spider.play(spider_animations[circle_index])
 	
-	if HealthMgr.health <=0:
-		HealthMgr.on_health_reset.emit()
+	#if HealthMgr.health <=0:
+		#HealthMgr.on_health_reset.emit()
 	await get_tree().create_timer(miss_buffer).timeout && floor(circles[circle_index].progress )== 100 && (start_timer+wait_timer*1000<Time.get_ticks_msec() ) && midi_player_spawn.playing
 	if is_spider_waiting:
 		
@@ -239,20 +239,37 @@ var miss_index = 0
 
 func music_end():
 	midi_player_spawn.stop()
+#	midi_player_audio.stop()
+	
+	health_bar.visible = false
+	var result = CampaignMgr.GameResult.WIN
 	if HealthMgr.health > 0:
 		on_win()
+		result = CampaignMgr.GameResult.WIN
 	else:
-		HealthMgr.on_health_reset.emit()
+		result = CampaignMgr.GameResult.LOSE
+		#HealthMgr.on_health_reset.emit()
+		on_lose()
+	fader.fade_out()
+	await fader.fade_complete
+	CampaignMgr.game_over.emit(result)
+	CampaignMgr.scene_complete.emit()
+func on_lose():
+	
 
+	DialogueMgr.show(lose_text)
+	audio_lose.play()
+	await audio_lose.finished
+	await  DialogueMgr.on_close
+	
 func on_win():
 	
 	DialogueMgr.show(win_text)
 	audio_win.play()
 	await audio_win.finished
+	await  DialogueMgr.on_close
 	
-	fader.fade_out()
-	await fader.fade_complete
-	CampaignMgr.scene_complete.emit()
+	
 func _on_miss():
 	$Audio/Miss.play()
 	combo = 0	
@@ -263,7 +280,8 @@ func _on_miss():
 	circles[circle_index].progress = 100.0
 	
 	circle_index = 0
-	HealthMgr.on_health_drain.emit()
+	if HealthMgr.health > 0:
+		HealthMgr.on_health_drain.emit()
 	player_miss = true
 	$drum.shake_length = 1.7
 	
@@ -291,19 +309,8 @@ func _on_hit(progress):
 func _on_health_drain():
 	HealthMgr.health-= HealthMgr.health_drain
 
-func _on_health_reset():
-	Music.stop()
-	midi_player_audio.stop()
-	HealthMgr.health= HealthMgr.health_max
-	health_bar.visible = false
-	DialogueMgr.show(lose_text)
-	audio_lose.play()
-	await audio_lose.finished
+
 	
-	#await DialogueMgr.on_close
-	
-	
-	get_tree().reload_current_scene()
 
 			
 func _on_midi_event(channel, event):
