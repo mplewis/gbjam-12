@@ -228,8 +228,9 @@ func _despawn(body: Node):
 
 func _on_music_end():
 	notes.stop()
+	var win = health > 0
 
-	if health > 0:
+	if win:
 		DialogueMgr.show(win_text)
 		audio_win.play()
 		await audio_win.finished
@@ -243,6 +244,9 @@ func _on_music_end():
 
 	fader.fade_out()
 	await fader.fade_complete
+
+	var result = CampaignMgr.GameResult.WIN if win else CampaignMgr.GameResult.LOSE
+	CampaignMgr.game_over.emit(result)
 	CampaignMgr.scene_complete.emit()
 
 
