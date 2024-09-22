@@ -9,6 +9,7 @@ const ANIM_FADE_DURATION = 1.5  # sec
 @export var win_text: String
 @export var lose_text: String
 @export var spawn_to_hit_sec: float = 0.8
+@export var send_to_scoring_area_sec: float = 0.2
 @export var threshold: int = 10
 @export var skip_to_song_end: bool = false
 
@@ -42,6 +43,9 @@ var score := 0
 @onready var dr_anim_tree: AnimationTree = $Dracula/AnimationTree
 @onready var dr_anim_sm: AnimationNodeStateMachinePlayback = dr_anim_tree.get("parameters/playback")
 
+@onready var score_area: Area2D = $ScoreArea
+@onready var splash_ring: AnimatedSprite2D = $ScoreArea/SplashRing
+
 @onready var progress_fg: Sprite2D = $ProgressContainer/ProgressFG
 @onready var progress_fg_full: Sprite2D = $ProgressContainer/ProgressFGFull
 @onready var progress_fg_empty_pos_x: float = progress_fg.position.x
@@ -61,6 +65,7 @@ func _ready():
 
 	despawner.body_entered.connect(_despawn)
 	nice_trigger.body_entered.connect(_on_entered_nice_area)
+	score_area.body_entered.connect(_on_score)
 	pc.body_entered.connect(_on_hit)
 
 	nice_anim.modulate.a = 0.0
@@ -208,6 +213,9 @@ func _trash_throwable(item: CollisionObject2D):
 
 
 func _on_hit(body: Node):
+	if body.scoring:
+		return
+
 	_trash_throwable(body)
 	body.hit_player = true
 	you_suck_anim.modulate.a = 1.0
@@ -220,12 +228,30 @@ func _on_entered_nice_area(body: Node):
 	if body.hit_player:
 		return
 
-	_incr_score()
+	body.modulate.a = 0.5
 	_show_nice()
+	_send_to_scoring_area(body)
+
+
+func _send_to_scoring_area(body: RigidBody2D):
+	body.scoring = true
+	body.gravity_scale = 0.0
+	var curr := body.global_position
+	var tgt := score_area.global_position
+	body.linear_velocity = (tgt - curr) / send_to_scoring_area_sec
+
+
+func _on_score(body: Node):
+	_incr_score()
+	if splash_ring.is_playing():
+		splash_ring.stop()
+	splash_ring.play()
+	body.queue_free()
 
 
 func _incr_score():
 	score += 1
+	print(score)
 	var pct: float = clamp(score / float(threshold), 0, 100)
 	var pos_x = progress_fg_empty_pos_x + pct * (progress_fg_full_pos_x - progress_fg_empty_pos_x)
 	var scale_x = (

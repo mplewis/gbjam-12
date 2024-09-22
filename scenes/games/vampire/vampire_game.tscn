@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=3 uid="uid://bqkg7u5vvf66y"]
+[gd_scene load_steps=131 format=3 uid="uid://bqkg7u5vvf66y"]
 
 [ext_resource type="Script" path="res://scripts/vampire_game.gd" id="1_66y2c"]
 [ext_resource type="Script" path="res://addons/midi/MidiPlayer.gd" id="2_fom2f"]
@@ -28,6 +28,8 @@
 [ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="26_fqufp"]
 [ext_resource type="Texture2D" uid="uid://o0rjnu2agyio" path="res://assets/ui/white.png" id="26_r7ph4"]
 [ext_resource type="Texture2D" uid="uid://cuu78vl3qe7oq" path="res://assets/ui/black.png" id="27_dcyj7"]
+[ext_resource type="Texture2D" uid="uid://di1achfy06u80" path="res://assets/images/t_rex/ring_sprite_sheet.png" id="27_mfv2y"]
+[ext_resource type="Texture2D" uid="uid://c1dqf3khga4ke" path="res://assets/ui/transparent.png" id="28_scwyb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ibiie"]
 size = Vector2(20, 200)
@@ -814,6 +816,69 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ssyr"]
+radius = 4.12311
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1j0e"]
+atlas = ExtResource("27_mfv2y")
+region = Rect2(0, 0, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbca3"]
+atlas = ExtResource("27_mfv2y")
+region = Rect2(34, 0, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76amu"]
+atlas = ExtResource("27_mfv2y")
+region = Rect2(68, 0, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_np71s"]
+atlas = ExtResource("27_mfv2y")
+region = Rect2(102, 0, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bhje"]
+atlas = ExtResource("27_mfv2y")
+region = Rect2(136, 0, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpmhf"]
+atlas = ExtResource("27_mfv2y")
+region = Rect2(170, 0, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kt5h"]
+atlas = ExtResource("27_mfv2y")
+region = Rect2(204, 0, 34, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7kalq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1j0e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbca3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76amu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_np71s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bhje")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpmhf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kt5h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_scwyb")
+}],
+"loop": false,
+"name": &"burst",
+"speed": 30.0
+}]
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0vlu2"]
 shader = ExtResource("25_bakm6")
 shader_parameter/threshold1 = 0.119
@@ -829,7 +894,7 @@ script = ExtResource("1_66y2c")
 intro_text = "Who said you could enter my backyard--I mean, courtyard? I will make you rue the day you touched all my stuff!"
 win_text = "How could you have dodged all that junk--I mean, my precision weaponry? You hid your skills well. Ngh-- Go!"
 lose_text = "Muahaha. I've trained in throwing lawn junk for millenia. You'll never leave this house alive!"
-skip_to_song_end = true
+threshold = 175
 
 [node name="Notes" type="Node" parent="."]
 script = ExtResource("2_fom2f")
@@ -901,7 +966,7 @@ position = Vector2(0.5, 0)
 texture = ExtResource("11_d6cuy")
 hframes = 6
 vframes = 3
-frame = 3
+frame = 2
 
 [node name="Hitbox" type="CollisionShape2D" parent="PC"]
 position = Vector2(2, -3)
@@ -1087,6 +1152,23 @@ texture = ExtResource("26_r7ph4")
 position = Vector2(-0.495967, 0)
 scale = Vector2(0.00806566, 0.6)
 texture = ExtResource("26_r7ph4")
+
+[node name="ScoreArea" type="Area2D" parent="."]
+position = Vector2(27, 137)
+collision_layer = 0
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea"]
+position = Vector2(0, 6)
+scale = Vector2(3.16, 1)
+shape = SubResource("CircleShape2D_4ssyr")
+
+[node name="SplashRing" type="AnimatedSprite2D" parent="ScoreArea"]
+position = Vector2(-7, 0)
+sprite_frames = SubResource("SpriteFrames_7kalq")
+animation = &"burst"
+frame = 7
+frame_progress = 1.0
 
 [node name="RecolorLayer" type="CanvasLayer" parent="."]
 
