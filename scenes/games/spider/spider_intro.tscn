@@ -1088,7 +1088,6 @@ script = ExtResource("1_vxuvb")
 scene_path = "games/spider/spider_game"
 
 [node name="Fader" parent="." instance=ExtResource("4_ciaur")]
-visible = false
 z_index = 1
 position = Vector2(2, 56)
 
@@ -1133,11 +1132,13 @@ bg_color = Color(0, 0, 0, 1)
 bar_color = Color(1, 1, 1, 1)
 
 [node name="A_button" type="Sprite2D" parent="."]
+visible = false
 z_index = 8
 position = Vector2(64, 56)
 texture = ExtResource("8_24f6w")
 
 [node name="B_button" type="Sprite2D" parent="."]
+visible = false
 z_index = 8
 position = Vector2(-61, 56)
 texture = ExtResource("5_56t3c")

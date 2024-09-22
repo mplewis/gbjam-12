@@ -6,19 +6,19 @@ const ARROW_SPAWN_TO_HIT_SEC = 0.8
 #CONST INSTRUMENT = MIDI NOTE NUMBER
 const KICK_NOTE_LOW = 33
 const KICK_NOTE_HIGH = 37
-const SNARE_NOTE_LOW = 30
-const SNARE_NOTE_HIGH = 39  #41
-const TOM_NOTE_LOW = 49  #41
-const TOM_NOTE_HIGH = 55  #50#46
+const SNARE_NOTE_LOW = 36
+const SNARE_NOTE_HIGH = 37  #41
+const TOM_NOTE_LOW = 94  #41
+const TOM_NOTE_HIGH = 96  #50#46
 
-const LOW_TOM_NOTE_LOW = 75  #41
-const LOW_TOM_NOTE_HIGH = 85  #50#46
-const HAT_NOTE_LOW = 60  #40#42
-const HAT_NOTE_HIGH = 70  #50#52
+const LOW_TOM_NOTE_LOW = 77  #41
+const LOW_TOM_NOTE_HIGH = 78  #50#46
+const HAT_NOTE_LOW = 63 #40#42
+const HAT_NOTE_HIGH = 64  #50#52
 const CRASH_NOTE_LOW = 60
-const CRASH_NOTE_HIGH = 70
+const CRASH_NOTE_HIGH = 80
 const SPLASH_NOTE_LOW = 52
-const SPLASH_NOTE_HIGH = 60
+const SPLASH_NOTE_HIGH = 110
 const ANIM_FADE_DURATION = 1.5  # sec
 
 # Determined by experimentation.
@@ -153,10 +153,10 @@ func _process(delta: float) -> void:
 	Nice[1].modulate.a -= fade_amt
 	Eek[0].modulate.a -= fade_amt
 	Eek[1].modulate.a -= fade_amt
-	Score.text = "SCoR: %d\nCoMb: %d" % [score, combo]
+	#Score.text = "SCoR: %d\nCoMb: %d" % [score, combo]
 
 	if HealthMgr.health >= 0:
-		health_bar.frame = 10 - int(float(HealthMgr.health / HealthMgr.health_max) * 10)
+		health_bar.frame = 20 - int(float(HealthMgr.health / HealthMgr.health_max) * 20)
 
 	if is_spider_waiting || !spider.is_playing():
 		spider.play(spider_animations[circle_index])
@@ -322,6 +322,7 @@ func _on_midi_event(channel, event):
 
 		for i in note2frame.keys():
 			#SETS SPIDER TO NOTE GIVEN MIDI NOTE NUMBER
+			print(event.note)
 			if (
 				_find_note_range(i, event.note)
 				&& start_timer + wait_timer * 1000 < Time.get_ticks_msec()
