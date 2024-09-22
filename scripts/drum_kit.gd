@@ -253,6 +253,7 @@ func on_win():
 
 	fader.fade_out()
 	await fader.fade_complete
+	CampaignMgr.game_over.emit(CampaignMgr.GameResult.WIN)
 	CampaignMgr.scene_complete.emit()
 
 
@@ -301,9 +302,8 @@ func _on_health_reset():
 	audio_lose.play()
 	await audio_lose.finished
 
-	#await DialogueMgr.on_close
-
-	get_tree().reload_current_scene()
+	CampaignMgr.game_over.emit(CampaignMgr.GameResult.LOSE)
+	CampaignMgr.scene_complete.emit()
 
 
 func _on_midi_event(channel, event):
