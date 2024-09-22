@@ -131,21 +131,29 @@ func tally(dir: String):
 	score_and_remove(goal, dir)
 
 
-func score_and_remove(area: Area2D, dir: String) -> int:
+func score_and_remove(area: Area2D, dir: String):
 	assert(dir in ["L", "D", "U", "R"], "Invalid direction: %s" % dir)
 
-	var count := 0
-	var candies = area.get_overlapping_bodies()
-	for body: PhysicsBody2D in candies:
-		var candy: CandyArrowFollower = body.get_parent()
-		if candy.dir_str != dir:
-			continue
-		count += 1
-
+	var bodies = area.get_overlapping_bodies()
+	var candy := _select_leftmost_candy_for_dir(bodies, dir)
+	if candy:
 		_punt(candy)
 		candy.queue_free()
 
-	return count
+
+func _select_leftmost_candy_for_dir(bodies, dir) -> CandyArrowFollower:
+	var applicable_candies = []
+	for body: PhysicsBody2D in bodies:
+		var candy: CandyArrowFollower = body.get_parent()
+		if candy.dir_str == dir:
+			applicable_candies.append(candy)
+
+	var leftmost_candy: CandyArrowFollower = null
+	for candy in applicable_candies:
+		if not leftmost_candy or candy.global_position.x < leftmost_candy.global_position.x:
+			leftmost_candy = candy
+
+	return leftmost_candy
 
 
 func _on_midi_event(_channel, event):
