@@ -426,7 +426,7 @@ visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
-text = "He couldn’t defeat them and alter his fate. The challenges posed were simply too great."
+text = "He couldn't defeat them and alter his fate. The challenges posed were simply too great."
 
 [node name="Animation" type="AnimatedSprite2D" parent="Cinematic"]
 position = Vector2(80, 72)

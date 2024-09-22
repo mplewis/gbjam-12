@@ -1034,7 +1034,7 @@ layout_mode = 0
 offset_right = 308.0
 offset_bottom = 16.0
 theme = ExtResource("3_04prh")
-text = "I’ve got a nice web set up for you across the drum kit. Why don’t you stay with me here... forever?
+text = "I've got a nice web set up for you across the drum kit. Why don't you stay with me here... forever?
 "
 
 [node name="PCScared" type="AnimatedSprite2D" parent="Cinematic"]

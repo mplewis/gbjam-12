@@ -369,7 +369,7 @@ visible = false
 layout_mode = 0
 offset_right = 769.0
 offset_bottom = 23.0
-text = "It’s been a house party this whole time? I almost scared myself to death!"
+text = "It's been a house party this whole time? I almost scared myself to death!"
 
 [node name="Ending" type="Control" parent="Cinematic"]
 visible = false
@@ -397,7 +397,7 @@ visible = false
 layout_mode = 0
 offset_right = 769.0
 offset_bottom = 23.0
-text = "I’m going to have the worst hangover tomorrow..."
+text = "I'm going to have the worst hangover tomorrow..."
 
 [node name="RecolorLayer" type="CanvasLayer" parent="."]
 

@@ -547,8 +547,8 @@ animations = [{
 [node name="DrumKit" type="Node2D" node_paths=PackedStringArray("spider", "health_bar")]
 script = ExtResource("1_1ue35")
 intro_text = "The curtains are raised, the percussion is ready. Are you prepared to play the last drum solo of your life?"
-win_text = "I must admit, those were beats fit for royalty! I have decided to let you pass… leave, before I change my mind."
-lose_text = "I’ve heard worse drum solos, but not many… Ugh. Go. Leave this place before I decide you need lessons."
+win_text = "I must admit, those were beats fit for royalty! I have decided to let you pass... leave, before I change my mind."
+lose_text = "I've heard worse drum solos, but not many... Ugh. Go. Leave this place before I decide you need lessons."
 spider = NodePath("spider")
 health_bar = NodePath("Health")
 

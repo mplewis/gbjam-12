@@ -826,7 +826,7 @@ shader_parameter/color4 = Color(0.372549, 0.780392, 0.364706, 1)
 script = ExtResource("1_66y2c")
 intro_text = "Who said you could enter my backyard--I mean, courtyard? I will make you rue the day you touched all my stuff!"
 win_text = "How could you have dodged all that junk--I mean, my precision weaponry? You hid your skills well. Ngh-- Go!"
-lose_text = "Muahaha. I’ve trained in throwing lawn junk for millenia. You'll never leave this house alive!"
+lose_text = "Muahaha. I've trained in throwing lawn junk for millenia. You'll never leave this house alive!"
 
 [node name="Notes" type="Node" parent="."]
 script = ExtResource("2_fom2f")

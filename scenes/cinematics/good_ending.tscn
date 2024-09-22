@@ -322,7 +322,7 @@ visible = false
 layout_mode = 0
 offset_right = 769.0
 offset_bottom = 23.0
-text = "I know there’s a secret of that house I haven’t discovered... I have to go back to defeat all the monsters!
+text = "I know there's a secret of that house I haven't discovered... I have to go back to defeat all the monsters!
 "
 
 [node name="RecolorLayer" type="CanvasLayer" parent="."]
