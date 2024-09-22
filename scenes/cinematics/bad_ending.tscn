@@ -460,6 +460,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("4_svopb")
 
 [node name="Label4" type="Label" parent="Cinematic"]
+visible = false
 layout_mode = 0
 offset_right = 769.0
 offset_bottom = 23.0
