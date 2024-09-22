@@ -39,6 +39,33 @@ size = Vector2(20, 144)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lx3wf"]
 size = Vector2(25, 47)
 
+[sub_resource type="Animation" id="Animation_mfxon"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Hitbox:shape:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(25, 47)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hitbox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, -3)]
+}
+
 [sub_resource type="Animation" id="Animation_oowma"]
 resource_name = "crouch"
 length = 0.16
@@ -285,33 +312,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [Vector2(25, 47)]
-}
-
-[sub_resource type="Animation" id="Animation_mfxon"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Hitbox:shape:size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(25, 47)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Hitbox:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(2, -3)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4jtho"]
@@ -827,7 +827,6 @@ script = ExtResource("1_66y2c")
 intro_text = "Who said you could enter my backyard--I mean, courtyard? I will make you rue the day you touched all my stuff!"
 win_text = "How could you have dodged all that junk--I mean, my precision weaponry? You hid your skills well. Ngh-- Go!"
 lose_text = "Muahaha. I’ve trained in throwing lawn junk for millenia. You'll never leave this house alive!"
-skip_to_song_end = true
 
 [node name="Notes" type="Node" parent="."]
 script = ExtResource("2_fom2f")
@@ -899,7 +898,7 @@ position = Vector2(0.5, 0)
 texture = ExtResource("11_d6cuy")
 hframes = 6
 vframes = 3
-frame = 14
+frame = 4
 
 [node name="Hitbox" type="CollisionShape2D" parent="PC"]
 position = Vector2(2, -3)
