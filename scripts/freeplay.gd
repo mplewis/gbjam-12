@@ -1,13 +1,7 @@
-class_name Menu
+class_name Freeplay
 extends Control
 
-var menu_items := {
-	"campaign": "New Game",
-	"freeplay": "Freeplay",
-	"calibrate": "Audio Calibration",
-	"options": "Options",
-	"credits": "Credits",
-}
+var menu_items := {"trex": "T-Rex Candy", "vampire": "Vampire Dodge", "spider": "Spider Drum Solo"}
 var selected := 0
 
 @onready var menu_items_label: Label = %MenuItems
@@ -17,6 +11,7 @@ func _ready():
 	GBtn.on_up.connect(up)
 	GBtn.on_down.connect(down)
 	GBtn.on_a.connect(select)
+	GBtn.on_b.connect(back)
 	update_menu()
 
 
@@ -49,21 +44,17 @@ func select():
 	safe_call("_on_menu_%s" % item)
 
 
-func _on_menu_campaign():
-	CampaignMgr.start_campaign()
+func back():
+	SceneMgr.close()
 
 
-func _on_menu_freeplay():
-	SceneMgr.open("ui/freeplay")
+func _on_menu_trex():
+	CampaignMgr.start_freeplay(CampaignMgr.Game.T_REX)
 
 
-func _on_menu_calibrate():
-	SceneMgr.open("ui/calibrate")
+func _on_menu_vampire():
+	CampaignMgr.start_freeplay(CampaignMgr.Game.VAMPIRE)
 
 
-func _on_menu_options():
-	SceneMgr.open("ui/options")
-
-
-func _on_menu_credits():
-	SceneMgr.open("ui/credits")
+func _on_menu_spider():
+	CampaignMgr.start_freeplay(CampaignMgr.Game.SPIDER)

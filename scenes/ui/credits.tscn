@@ -7,15 +7,15 @@
 [ext_resource type="Texture2D" uid="uid://dkve2mjwjrxaj" path="res://assets/ui/arrow_right.png" id="8_iqbwa"]
 [ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="8_vtt8h"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7fog1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0gih4"]
 shader = ExtResource("7_6gyib")
-shader_parameter/threshold1 = 0.25
+shader_parameter/threshold1 = 0.167
 shader_parameter/threshold2 = 0.5
-shader_parameter/threshold3 = 0.75
-shader_parameter/color1 = Color(0.0313726, 0.0941176, 0.12549, 1)
-shader_parameter/color2 = Color(0.203922, 0.407843, 0.337255, 1)
-shader_parameter/color3 = Color(0.533333, 0.752941, 0.439216, 1)
-shader_parameter/color4 = Color(0.878431, 0.972549, 0.815686, 1)
+shader_parameter/threshold3 = 0.833
+shader_parameter/color1 = Color(0.184314, 0, 0.188235, 1)
+shader_parameter/color2 = Color(0.376471, 0.145098, 0.470588, 1)
+shader_parameter/color3 = Color(0.945098, 0.556863, 0.113725, 1)
+shader_parameter/color4 = Color(0.960784, 0.941176, 0.529412, 1)
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -147,7 +147,7 @@ layout_mode = 2
 [node name="RecolorLayer" type="CanvasLayer" parent="."]
 
 [node name="RecolorShader" type="ColorRect" parent="RecolorLayer"]
-material = SubResource("ShaderMaterial_7fog1")
+material = SubResource("ShaderMaterial_0gih4")
 offset_right = 160.0
 offset_bottom = 256.0
 

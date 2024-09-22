@@ -13,7 +13,8 @@ func _ready():
 func open(scene_name: String) -> void:
 	var path := "res://scenes/%s.tscn" % scene_name
 	scene_paths.push_back(path)
-	get_tree().change_scene_to_file(path)
+	var status := get_tree().change_scene_to_file(path)
+	assert(status == OK, "Failed to open scene %s: %s" % [path, status])
 
 
 ## Close the current scene and return to the previous one.

@@ -23,18 +23,25 @@ enum GameResult {
 	LOSE,
 }
 
+enum Game {
+	T_REX,
+	VAMPIRE,
+	SPIDER,
+}
+
 const SCENE_TXN = "cinematics/scene_transition"
 
-const GAME_SCENES = [
-	"games/t_rex/t_rex_game",
-	"games/vampire/vampire_game",
-	"games/spider/spider_intro"
-]
+var game_scenes = {
+	Game.T_REX: "games/t_rex/t_rex_game",
+	Game.VAMPIRE: "games/vampire/vampire_game",
+	Game.SPIDER: "games/spider/spider_intro"
+}
 
 var current_campaign = null
 var current_campaign_results: Array[GameResult] = []
 var step := 0
 var busy := false
+var freeplay_active := false
 
 
 func start_campaign():
@@ -44,9 +51,9 @@ func start_campaign():
 	current_campaign.push_back([CampaignAction.TRANSITION, false, false, true])
 	current_campaign.push_back([CampaignAction.RUN_SCENE, "cinematics/intro"])
 
-	var game_scenes := GAME_SCENES.duplicate()
-	game_scenes.shuffle()
-	for scene in game_scenes:
+	var scenes := game_scenes.values().duplicate()
+	scenes.shuffle()
+	for scene in scenes:
 		current_campaign.push_back([CampaignAction.TRANSITION, true, true, true])
 		current_campaign.push_back([CampaignAction.RUN_SCENE, scene])
 
@@ -55,6 +62,12 @@ func start_campaign():
 	current_campaign.push_back([CampaignAction.RETURN_TO_MENU])
 
 	print(current_campaign)
+
+
+func start_freeplay(game: Game):
+	freeplay_active = true
+	var scene_name = game_scenes[game]
+	_inst_and_replace_scene(scene_name)
 
 
 func _ready():
@@ -99,8 +112,7 @@ func _process(_delta):
 			_next()
 
 		[CampaignAction.RETURN_TO_MENU]:
-			_inst_and_replace_scene("ui/menu")
-			current_campaign = null
+			_return_to_menu()
 
 		_:
 			assert(false, "Unknown action: %s" % step)
@@ -113,6 +125,15 @@ func _next():
 
 func _on_scene_complete():
 	print("Scene complete")
+
+	if freeplay_active:
+		freeplay_active = false
+		_return_to_menu()
+
+
+func _return_to_menu():
+	_inst_and_replace_scene("ui/menu")
+	current_campaign = null
 
 
 func _on_game_over(result: GameResult):
