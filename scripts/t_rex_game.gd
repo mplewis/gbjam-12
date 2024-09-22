@@ -7,6 +7,8 @@ extends Node2D
 const MAGIC_NUMBER_MIDI_DELAY := 0.16
 ## How fast the hit animation fades out
 const HIT_ANIM_FADE_RATE := 2.0
+## Players are not allowed to input for this long after a miss (sec)
+const MISS_COOLDOWN := 0.3
 
 @export var intro_text: String
 @export var win_text: String
@@ -17,6 +19,8 @@ const HIT_ANIM_FADE_RATE := 2.0
 
 var start_playing_music_at_ms = null
 var fullness := 0
+## Players are not allowed to input for this long after a miss (sec)
+var miss_duration := 0.0
 
 @onready var notes: MidiPlayer = $Notes
 @onready var audio_intro: AudioStreamPlayer = $Audio/Intro
@@ -93,6 +97,7 @@ func _start_game():
 
 func _process(delta: float):
 	hit_anim.modulate.a -= delta * HIT_ANIM_FADE_RATE
+	miss_duration = max(0.0, miss_duration - delta)
 	_ensure_start_music()
 
 
@@ -130,6 +135,9 @@ func _on_right():
 
 
 func tally(dir: String):
+	if miss_duration > 0:
+		return
+
 	pc_anim_sm.travel("punch")
 	score_and_remove(goal, dir)
 
@@ -139,9 +147,13 @@ func score_and_remove(area: Area2D, dir: String):
 
 	var bodies = area.get_overlapping_bodies()
 	var candy := _select_leftmost_candy_for_dir(bodies, dir)
-	if candy:
-		_punt(candy)
-		candy.queue_free()
+
+	if not candy:
+		miss_duration = MISS_COOLDOWN
+		return
+
+	_punt(candy)
+	candy.queue_free()
 
 
 func _select_leftmost_candy_for_dir(bodies, dir) -> CandyArrowFollower:
