@@ -54,7 +54,6 @@ var trex_anim_sm: AnimationNodeStateMachinePlayback = trex_anim_tree.get("parame
 
 
 func _ready():
-	# TODO: Add button masher cooldown
 	GBtn.on_left.connect(_on_left)
 	GBtn.on_down.connect(_on_down)
 	GBtn.on_up.connect(_on_up)
@@ -113,9 +112,6 @@ func _ensure_start_music():
 			audio_music.seek(audio_music.stream.get_length() - 10.0)
 
 		start_playing_music_at_ms = null
-
-
-# TODO: Handle completion of audio
 
 
 func _on_left():
