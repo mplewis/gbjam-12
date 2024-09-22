@@ -76,7 +76,6 @@ func _start_intro():
 	DialogueMgr.show(intro_text)
 	await DialogueMgr.on_close
 
-	# TODO: Install audio intro when we get the assets
 	# HACK: Gappy transition into game music
 	audio_intro["parameters/looping"] = false
 	while audio_intro.playing:
