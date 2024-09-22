@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://4amvym6imhv6"]
+[gd_scene load_steps=8 format=3 uid="uid://4amvym6imhv6"]
 
 [ext_resource type="Script" path="res://scripts/scene_transition.gd" id="1_afx0u"]
 [ext_resource type="AudioStream" uid="uid://cining1sqwr8d" path="res://assets/sfx/Door_Open_Four_Steps_Door_Close.mp3" id="2_7o43x"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://c8v8ln5n6kr5x" path="res://assets/sfx/Door_Close.mp3" id="4_masfh"]
 [ext_resource type="AudioStream" uid="uid://b01l6jmjb7flb" path="res://assets/sfx/Four_Steps.mp3" id="5_hafsm"]
 [ext_resource type="Texture2D" uid="uid://cuu78vl3qe7oq" path="res://assets/ui/black.png" id="6_oueqt"]
+[ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="7_gw6oa"]
 
 [node name="SceneTransition" type="Control"]
 layout_mode = 3
@@ -40,3 +41,5 @@ layout_mode = 0
 offset_right = 160.0
 offset_bottom = 256.0
 texture = ExtResource("6_oueqt")
+
+[node name="Controls" parent="." instance=ExtResource("7_gw6oa")]
