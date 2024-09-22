@@ -1167,9 +1167,10 @@ offset_bottom = 256.0
 
 [node name="Controls" parent="." instance=ExtResource("3_74ehg")]
 
-[node name="Audio" type="Node" parent="."]
+[node name="Audio" type="Node2D" parent="."]
 
 [node name="Footsteps" type="AudioStreamPlayer2D" parent="Audio"]
+position = Vector2(80, 0)
 stream = ExtResource("10_v78yh")
 autoplay = true
 
