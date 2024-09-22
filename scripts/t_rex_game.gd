@@ -19,6 +19,7 @@ var start_playing_music_at_ms = null
 var fullness := 0
 
 @onready var notes: MidiPlayer = $Notes
+@onready var audio_intro: AudioStreamPlayer = $Audio/Intro
 @onready var audio_music: AudioStreamPlayer = $Audio/Music
 @onready var audio_win: AudioStreamPlayer = $Audio/Win
 @onready var audio_lose: AudioStreamPlayer = $Audio/Lose
@@ -77,9 +78,9 @@ func _start_intro():
 
 	# TODO: Install audio intro when we get the assets
 	# HACK: Gappy transition into game music
-	# audio_intro["parameters/looping"] = false
-	# while audio_intro.playing:
-	# 	await get_tree().create_timer(0.1).timeout
+	audio_intro["parameters/looping"] = false
+	while audio_intro.playing:
+		await get_tree().create_timer(0.1).timeout
 
 	_start_game()
 
