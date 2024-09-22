@@ -25,15 +25,18 @@ var fullness := 0
 
 @onready var spawner: CandyArrowFollower = %CandyArrowSpawner
 @onready var goal: Area2D = $Goal
+@onready var goal_splash: AnimatedSprite2D = $Goal/SplashRingFixed
 @onready var chomp_trigger: Area2D = %ChompTrigger
 
 @onready var hit_anim: AnimatedSprite2D = $HitAnim
+@onready var trex: Sprite2D = $TRex
 @onready var trex_anim_tree: AnimationTree = %TRexAnimTree
 @onready
 var trex_anim_sm: AnimationNodeStateMachinePlayback = trex_anim_tree.get("parameters/playback")
 @onready var pc_anim_tree: AnimationTree = %PCAnimTree
 @onready var pc_anim_sm: AnimationNodeStateMachinePlayback = pc_anim_tree.get("parameters/playback")
 @onready var splash_ring: AnimatedSprite2D = $SplashRing
+@onready var splash_ring_dest: Node2D = $SplashRingDest
 
 @onready var fullness_progress: Sprite2D = $FullnessMeter/FullnessProgress
 @onready var fullness_progress_0pct_pos := fullness_progress.position
@@ -178,20 +181,23 @@ func _on_midi_event(_channel, event):
 
 func _punt(candy: CandyArrowFollower):
 	var puntable := candy.spawn_puntable()
+	if goal_splash.is_playing():
+		goal_splash.stop()
+	goal_splash.play()
 	add_child(puntable)
 
 
 func _on_candy_chompable(candy: CandyArrowPuntable):
 	_incr_fullness()
 
-	trex_anim_sm.travel("chomp")
+	trex_anim_sm.start("chomp", true)
 	hit_anim.modulate.a = 1.0
 
 	var sr: AnimatedSprite2D = splash_ring.duplicate()
 	sr.global_position = candy.global_position
-	sr.play()
 	sr.animation_finished.connect(func(): sr.queue_free())
 	add_child(sr)
+	sr.play()
 
 	candy.queue_free()
 
