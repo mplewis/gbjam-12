@@ -12,7 +12,7 @@ class_name RadialProgress
 @export var nb_points: int = 32
 
 func _draw() -> void:
-	var angle: float = (progress / max_value) * TAU
+	var angle: float = ((progress / max_value) if progress >=0 || progress <=100 else 0) * TAU 
 	if ring:
 		draw_ring_arc(Vector2.ZERO, radius, radius-thickness, 0.0, TAU, bg_color)
 		draw_ring_arc(Vector2.ZERO, radius, radius-thickness, 0.0, angle, bar_color)
@@ -46,7 +46,8 @@ func draw_circle_arc(center: Vector2, radius: float, angle_from: float,\
 	for i in range(nb_points + 1):
 		var angle_point: float = a + float(i) * b
 		points_arc.push_back(center + Vector2(cos(angle_point), sin(angle_point)) * radius)
-	draw_polygon(points_arc, colors)
+	if !points_arc.is_empty():
+		draw_polygon(points_arc, colors)
 
 
 func draw_ring_arc(center: Vector2, radius1: float, radius2: float,\

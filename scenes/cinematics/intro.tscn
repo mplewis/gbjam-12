@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=3 uid="uid://hnka8ov1yi72"]
+[gd_scene load_steps=132 format=3 uid="uid://hnka8ov1yi72"]
 
 [ext_resource type="PackedScene" uid="uid://crxje5adebltx" path="res://scenes/components/cinematic.tscn" id="1_2j34y"]
 [ext_resource type="AudioStream" uid="uid://r6nm7a4124fj" path="res://assets/music/menu/menu_and_lightning.mp3" id="2_474vq"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dtkgqvjp7y3p" path="res://assets/images/spider/cuteTrantula_grayscale.png" id="7_og408"]
 [ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="8_kspfe"]
 [ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="9_d54k6"]
+[ext_resource type="Texture2D" uid="uid://dh83ialg1j3v0" path="res://assets/images/spider/cuteTrantulaintro_scene.png" id="10_201vw"]
 [ext_resource type="Texture2D" uid="uid://u8qpl7qp7sia" path="res://assets/images/intro/Intro3-Sheet.png" id="10_w3c41"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uyuww"]
@@ -747,6 +748,77 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tswom"]
+atlas = ExtResource("10_201vw")
+region = Rect2(640, 720, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykr80"]
+atlas = ExtResource("10_201vw")
+region = Rect2(800, 720, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqms2"]
+atlas = ExtResource("10_201vw")
+region = Rect2(960, 720, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ai35t"]
+atlas = ExtResource("10_201vw")
+region = Rect2(1120, 720, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqaod"]
+atlas = ExtResource("10_201vw")
+region = Rect2(0, 864, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1477"]
+atlas = ExtResource("10_201vw")
+region = Rect2(160, 864, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_om1yv"]
+atlas = ExtResource("10_201vw")
+region = Rect2(320, 864, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fa57"]
+atlas = ExtResource("10_201vw")
+region = Rect2(480, 864, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_scxlu"]
+atlas = ExtResource("10_201vw")
+region = Rect2(640, 864, 160, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rnsxo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tswom")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ykr80")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqms2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ai35t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqaod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1477")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_om1yv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fa57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_scxlu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_uxajf"]
 atlas = ExtResource("10_w3c41")
 region = Rect2(0, 0, 160, 144)
@@ -938,16 +1010,22 @@ theme = ExtResource("3_04prh")
 text = "Mwahaha! You think you can leave my mansion so soon? You must stay... FOR DINNER!"
 
 [node name="Spider" type="Control" parent="Cinematic"]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = SubResource("GDScript_c0qj7")
 
 [node name="TextureRect" type="TextureRect" parent="Cinematic/Spider"]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("7_og408")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Cinematic/Spider"]
+position = Vector2(80, 73)
+sprite_frames = SubResource("SpriteFrames_rnsxo")
+frame_progress = 0.541296
 
 [node name="SpiderText" type="Label" parent="Cinematic"]
 visible = false

@@ -22,26 +22,28 @@ var input_state = {
 @onready var btn_right: TouchScreenButton = $Right
 
 @onready var input_map = {
-	"ui_gameboy_a": btn_a,
-	"ui_gameboy_b": btn_b,
-	"ui_gameboy_select": btn_select,
-	"ui_gameboy_start": btn_start,
-	"ui_up": btn_up,
-	"ui_down": btn_down,
-	"ui_left": btn_left,
-	"ui_right": btn_right,
+	btn_a:"ui_gameboy_a" ,
+	btn_b:"ui_gameboy_b" ,
+	btn_select:"ui_gameboy_select" ,
+	btn_start:"ui_gameboy_start" ,
+	btn_up:"ui_up",
+	btn_down:"ui_down" ,
+	btn_left:"ui_left" ,
+	btn_right:"ui_right" 
 }
 
-
-func _process(_delta):
-	for action in input_map.keys():
-		var button = input_map[action]
-		var is_p = button.is_pressed()
-		var was_p = input_state[action]
-
-		if is_p and !was_p:
-			Input.action_press(action)
-			input_state[action] = true
-		elif was_p and !is_p:
-			Input.action_release(action)
-			input_state[action] = false
+func _ready() -> void:
+	for btn in get_children():
+		
+		btn.pressed.connect(set_action_press.bind(btn))
+		btn.released.connect(set_action_release.bind(btn))
+	pass
+func set_action_press(btn):
+	
+	Input.action_press(input_map[btn])
+	
+	input_state[btn] = true
+	
+func set_action_release(btn):
+	Input.action_release(input_map[btn])
+	input_state[btn] = false

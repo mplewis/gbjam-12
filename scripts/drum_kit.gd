@@ -252,6 +252,7 @@ func music_end():
 		result = CampaignMgr.GameResult.LOSE
 		#HealthMgr.on_health_reset.emit()
 		on_lose()
+	await DialogueMgr.on_close
 	fader.fade_out()
 	await fader.fade_complete
 	CampaignMgr.game_over.emit(result)
@@ -262,14 +263,14 @@ func on_lose():
 	DialogueMgr.show(lose_text)
 	audio_lose.play()
 	await audio_lose.finished
-	await DialogueMgr.on_close
+	
 
 
 func on_win():
 	DialogueMgr.show(win_text)
 	audio_win.play()
 	await audio_win.finished
-	await DialogueMgr.on_close
+	
 
 
 func _on_miss():
