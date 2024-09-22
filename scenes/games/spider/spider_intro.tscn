@@ -1170,40 +1170,51 @@ offset_bottom = 256.0
 [node name="Audio" type="Node2D" parent="."]
 
 [node name="Footsteps" type="AudioStreamPlayer2D" parent="Audio"]
-position = Vector2(80, 0)
 stream = ExtResource("10_v78yh")
 autoplay = true
+bus = &"SFX"
 
 [node name="Scare" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("11_ox7hr")
+bus = &"SFX"
 
 [node name="impact" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("12_16vp0")
+bus = &"SFX"
 
 [node name="hiss" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("13_n4upn")
+bus = &"SFX"
 
 [node name="smoke" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("14_w7cju")
+bus = &"SFX"
 
 [node name="woosh" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("15_jpd3w")
+bus = &"SFX"
 
 [node name="DoorOpen" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("11_prxpr")
+bus = &"SFX"
 
 [node name="Lightning" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("12_b4i4m")
+bus = &"SFX"
 
 [node name="DashDown" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("15_jpd3w")
+bus = &"SFX"
 
 [node name="SnareLand" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("14_5eo4h")
+bus = &"SFX"
 
 [node name="JumpSound" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("13_swt6s")
+bus = &"SFX"
 
-[node name="Menu_music" type="AudioStreamPlayer2D" parent="Audio"]
+[node name="Groove" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("16_mesek")
 autoplay = true
+bus = &"Music"
