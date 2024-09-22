@@ -1,4 +1,4 @@
-[gd_scene load_steps=117 format=3 uid="uid://bqkg7u5vvf66y"]
+[gd_scene load_steps=118 format=3 uid="uid://bqkg7u5vvf66y"]
 
 [ext_resource type="Script" path="res://scripts/vampire_game.gd" id="1_66y2c"]
 [ext_resource type="Script" path="res://addons/midi/MidiPlayer.gd" id="2_fom2f"]
@@ -37,7 +37,7 @@ size = Vector2(189, 20)
 size = Vector2(20, 144)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lx3wf"]
-size = Vector2(32, 58)
+size = Vector2(25, 47)
 
 [sub_resource type="Animation" id="Animation_oowma"]
 resource_name = "crouch"
@@ -65,7 +65,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.08),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Vector2(6.5, 21.5), Vector2(-1, 30)]
+"values": [Vector2(6.5, 21.5), Vector2(26, 30)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -77,7 +77,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.08),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Vector2(33, 45), Vector2(90, 28)]
+"values": [Vector2(33, 45), Vector2(36, 28)]
 }
 
 [sub_resource type="Animation" id="Animation_4x7vw"]
@@ -107,7 +107,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2(90, 28)]
+"values": [Vector2(36, 28)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -119,7 +119,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2(-1, 30)]
+"values": [Vector2(26, 30)]
 }
 
 [sub_resource type="Animation" id="Animation_6pk6r"]
@@ -149,7 +149,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2(2, 15)]
+"values": [Vector2(8.5, 15)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -161,7 +161,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2(32, 58)]
+"values": [Vector2(19, 58)]
 }
 
 [sub_resource type="Animation" id="Animation_al32f"]
@@ -190,7 +190,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.08),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Vector2(2, 2), Vector2(2.5, -16.5)]
+"values": [Vector2(2, -3), Vector2(2.5, -16.5)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -202,7 +202,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.08),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Vector2(32, 56), Vector2(65, 41)]
+"values": [Vector2(25, 47), Vector2(65, 41)]
 }
 
 [sub_resource type="Animation" id="Animation_ht6yr"]
@@ -231,7 +231,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2(33, 45)]
+"values": [Vector2(19, 45)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -243,7 +243,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2(6.5, 21.5)]
+"values": [Vector2(7.5, 21.5)]
 }
 
 [sub_resource type="Animation" id="Animation_mrg45"]
@@ -272,7 +272,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2(2, 2)]
+"values": [Vector2(2, -3)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -284,11 +284,39 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2(32, 56)]
+"values": [Vector2(25, 47)]
+}
+
+[sub_resource type="Animation" id="Animation_mfxon"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Hitbox:shape:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(25, 47)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hitbox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, -3)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4jtho"]
 _data = {
+"RESET": SubResource("Animation_mfxon"),
 "crouch": SubResource("Animation_oowma"),
 "crouching": SubResource("Animation_4x7vw"),
 "idle": SubResource("Animation_6pk6r"),
@@ -354,7 +382,7 @@ states/uncrouch/position = Vector2(507.7, 257.435)
 states/unjump/node = SubResource("AnimationNodeAnimation_cp4eh")
 states/unjump/position = Vector2(599.85, 143.85)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_wy102"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_enk1d"), "idle", "crouch", SubResource("AnimationNodeStateMachineTransition_t4o7b"), "uncrouch", "idle", SubResource("AnimationNodeStateMachineTransition_mji2r"), "crouch", "crouching", SubResource("AnimationNodeStateMachineTransition_lbghu"), "crouching", "uncrouch", SubResource("AnimationNodeStateMachineTransition_txtx8"), "jump", "unjump", SubResource("AnimationNodeStateMachineTransition_8bxqe"), "unjump", "idle", SubResource("AnimationNodeStateMachineTransition_s80ph")]
-graph_offset = Vector2(-278.32, -37.225)
+graph_offset = Vector2(-177.52, -114.475)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_65hwl"]
 atlas = ExtResource("12_sbgle")
@@ -796,7 +824,7 @@ shader_parameter/color4 = Color(0.372549, 0.780392, 0.364706, 1)
 
 [node name="VampireGame" type="Node2D"]
 script = ExtResource("1_66y2c")
-intro_text = "Who said you could enter my backyard--I mean, courtyard? I will make you rue the day you entered without permission!"
+intro_text = "Who said you could enter my backyard--I mean, courtyard? I will make you rue the day you touched all my stuff!"
 win_text = "How could you have dodged all that junk--I mean, my precision weaponry? You hid your skills well. Ngh-- Go!"
 lose_text = "Muahaha. I’ve trained in throwing lawn junk for millenia. You'll never leave this house alive!"
 skip_to_song_end = true
@@ -837,6 +865,7 @@ bus = &"SFX"
 
 [node name="Miss" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("9_0f3ov")
+bus = &"Music"
 
 [node name="BG" type="Sprite2D" parent="."]
 position = Vector2(80, 72)
@@ -870,10 +899,10 @@ position = Vector2(0.5, 0)
 texture = ExtResource("11_d6cuy")
 hframes = 6
 vframes = 3
-frame = 4
+frame = 14
 
 [node name="Hitbox" type="CollisionShape2D" parent="PC"]
-position = Vector2(2, 15)
+position = Vector2(2, -3)
 shape = SubResource("RectangleShape2D_lx3wf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PC"]

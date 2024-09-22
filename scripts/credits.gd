@@ -1,29 +1,52 @@
 class_name Credits
 extends Control
 
+var page = 0
+var pages = [
+	[
+		"10jū",
+		["tenju.itch.io", "https://tenju.itch.io/"],
+		["Game Design", "Programming", "Animation"]
+	],
+	[
+		"Chris Adepoju",
+		["olumedli.itch.io", "https://olumedli.itch.io/"],
+		["Sound Design", "Music Composition"]
+	],
+	[
+		"Rajel Aran",
+		["oldbytes.space/\n@rajelaran", "https://oldbytes.space/@rajelaran"],
+		["Object Sprites"]
+	],
+	[
+		"Luciano Comassetto",
+		["purepolygon.itch.io", "https://purepolygon.itch.io/"],
+		["Character Design", "Sprites", "Animation"]
+	],
+	[
+		"Alexander Connelly",
+		["aconnellybusiness.\nwixsite.com", "https://aconnellybusiness.wixsite.com/connellyaudio"],
+		["Composition", "Sound Design"]
+	],
+	[
+		"Christian Cop",
+		["christiancopmusic.com", "https://www.christiancopmusic.com/"],
+		["Sound Editing", "Audio Direction"]
+	],
+	[
+		"Matt Lewis",
+		["mplewis.com", "https://mplewis.com"],
+		["Project Management", "Game Design", "Programming"]
+	],
+	["Neb-ula", ["neb-ula.itch.io", "https://neb-ula.itch.io/"], ["Background", "objects"]],
+	["Jakob Wilson", null, ["Game Design", "Visual Design"]],
+]
+
 @onready var title_label: Label = %Title
 @onready var body_label: Label = %Body
 @onready var arrow_left: TextureRect = %ArrowLeft
 @onready var arrow_right: TextureRect = %ArrowRight
 @onready var hint_right: Label = %HintRight
-
-var page = 0
-var pages = [
-	["Matt Lewis", ["mplewis.com", "https://mplewis.com"], ["Game Design", "Programming"]],
-	["Poopsy", null, ["Art Design", "Music"]],
-	[
-		"Moopsy",
-		null,
-		[
-			"Moral Support",
-			"Cheerleading",
-			"Impromptu Therapy",
-			"Grocery Getting",
-			"Ranked Smurfing",
-			"General Pranks"
-		]
-	],
-]
 
 
 func _ready():

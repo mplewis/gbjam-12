@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://c3xyq5tra3eyx"]
+[gd_scene load_steps=56 format=3 uid="uid://c3xyq5tra3eyx"]
 
 [ext_resource type="Script" path="res://scripts/t_rex_game.gd" id="1_dh214"]
 [ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="2_qgi35"]
@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="8_yoofu"]
 [ext_resource type="Texture2D" uid="uid://3ob2pl0l5gyq" path="res://assets/images/t_rex/Hit_spriteSheet.png" id="14_loms7"]
 [ext_resource type="PackedScene" uid="uid://dk28jnwyfy0aj" path="res://scenes/components/fader.tscn" id="14_w8p5c"]
+[ext_resource type="Texture2D" uid="uid://4gb486kj0kqn" path="res://assets/images/t_rex/FullnessMeter.png" id="17_wbaii"]
+[ext_resource type="Texture2D" uid="uid://o0rjnu2agyio" path="res://assets/ui/white.png" id="18_eqmgw"]
 
 [sub_resource type="Curve2D" id="Curve2D_cq7oq"]
 _data = {
@@ -210,88 +212,84 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="Animation" id="Animation_m06n2"]
+[sub_resource type="Animation" id="Animation_ohwan"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../TRex:frame")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [1]
 }
 
-[sub_resource type="Animation" id="Animation_ev383"]
+[sub_resource type="Animation" id="Animation_murxh"]
 resource_name = "chomp"
-length = 0.64
+length = 0.56
 step = 0.08
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../TRex:frame")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7]
+"values": [0, 1, 2, 3, 4, 5, 6]
 }
 
-[sub_resource type="Animation" id="Animation_a22us"]
+[sub_resource type="Animation" id="Animation_3b5p6"]
 resource_name = "idle"
-length = 1.06
+length = 0.7
 loop_mode = 1
-step = 0.1333
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../TRex:frame")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1333, 0.2666, 0.3999, 0.5332, 0.6665, 0.7998, 0.9331),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [8, 9, 10, 11, 12, 13, 14, 15]
+"values": [7, 8, 9, 10, 11, 12, 13]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_mix54"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8sqp3"]
 _data = {
-"RESET": SubResource("Animation_m06n2"),
-"chomp": SubResource("Animation_ev383"),
-"idle": SubResource("Animation_a22us")
+"RESET": SubResource("Animation_ohwan"),
+"chomp": SubResource("Animation_murxh"),
+"idle": SubResource("Animation_3b5p6")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ah4q8"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hweff"]
 animation = &"chomp"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_apew2"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qfyty"]
 animation = &"idle"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d4gjx"]
-break_loop_at_end = true
-reset = false
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r1mvu"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dolwp"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pshil"]
 switch_mode = 2
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o5u2n"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rtyf2"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_1a7vl"]
-states/Start/position = Vector2(200, 100.25)
-states/chomp/node = SubResource("AnimationNodeAnimation_ah4q8")
-states/chomp/position = Vector2(602.727, 99.9231)
-states/idle/node = SubResource("AnimationNodeAnimation_apew2")
-states/idle/position = Vector2(417.008, 99.8463)
-transitions = ["chomp", "idle", SubResource("AnimationNodeStateMachineTransition_d4gjx"), "idle", "chomp", SubResource("AnimationNodeStateMachineTransition_o5u2n"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_rtyf2")]
-graph_offset = Vector2(-326.679, 39.495)
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_4hkte"]
+states/chomp/node = SubResource("AnimationNodeAnimation_hweff")
+states/chomp/position = Vector2(736, 99.5)
+states/idle/node = SubResource("AnimationNodeAnimation_qfyty")
+states/idle/position = Vector2(479, 101.5)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_r1mvu"), "idle", "chomp", SubResource("AnimationNodeStateMachineTransition_dolwp"), "chomp", "idle", SubResource("AnimationNodeStateMachineTransition_pshil")]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gtjr3"]
 radius = 8.0
@@ -312,7 +310,7 @@ script = ExtResource("1_dh214")
 intro_text = "ROAR!! I’ve got a hunger, and the only prescription… is more candy! Stand by that belt and throw it at my chompers!!"
 win_text = "Oh my god. Why did you feed me so much candy? I can’t believe you threw that all in my mouth. I need to go sit down..."
 lose_text = "I’m not finished, my stomach is still grumbling! I need you to stay right there and--hey, don't run away from ME!!"
-fullness_threshold = -1
+fullness_threshold = 300
 skip_to_song_end = true
 
 [node name="Notes" parent="." instance=ExtResource("2_qgi35")]
@@ -325,12 +323,15 @@ muted = true
 
 [node name="Music" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("4_vuuns")
+bus = &"Music"
 
 [node name="Win" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("5_8iljc")
+bus = &"Music"
 
 [node name="Lose" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("3_2kau2")
+bus = &"Music"
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(80, 72)
@@ -401,18 +402,18 @@ position = Vector2(89, 114)
 texture = ExtResource("7_5nfyv")
 hframes = 8
 vframes = 3
-frame = 12
+frame = 1
 
 [node name="TRexAnimPlayer" type="AnimationPlayer" parent="TRex"]
-root_node = NodePath("")
+unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_mix54")
+"": SubResource("AnimationLibrary_8sqp3")
 }
 
 [node name="TRexAnimTree" type="AnimationTree" parent="TRex"]
 unique_name_in_owner = true
-root_node = NodePath("")
-tree_root = SubResource("AnimationNodeStateMachine_1a7vl")
+root_node = NodePath("%TRexAnimTree/..")
+tree_root = SubResource("AnimationNodeStateMachine_4hkte")
 anim_player = NodePath("../TRexAnimPlayer")
 
 [node name="ChompTrigger" type="Area2D" parent="TRex"]
@@ -425,6 +426,21 @@ collision_mask = 2
 position = Vector2(112, 92)
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_gtjr3")
+
+[node name="FullnessMeter" type="Sprite2D" parent="."]
+position = Vector2(143, 20.5)
+texture = ExtResource("17_wbaii")
+
+[node name="FullnessProgress" type="Sprite2D" parent="FullnessMeter"]
+position = Vector2(10, 16.125)
+scale = Vector2(7.99999, 1.25)
+texture = ExtResource("18_eqmgw")
+
+[node name="FullnessProgressFull" type="Sprite2D" parent="FullnessMeter"]
+visible = false
+position = Vector2(10, 0.125001)
+scale = Vector2(7.99999, 33.25)
+texture = ExtResource("18_eqmgw")
 
 [node name="Fader" parent="." instance=ExtResource("14_w8p5c")]
 visible = false

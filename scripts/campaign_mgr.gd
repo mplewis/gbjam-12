@@ -1,10 +1,15 @@
 extends Node
 
-## Call `CampaignMgr.scene_complete.emit()` when your music minigame
+## Call `CampaignMgr.scene_complete.emit()` when your scene
 ## is done and you're ready to move onto the next one -
 ## ending dialogue is complete, fadeout is done, etc.
 @warning_ignore("UNUSED_SIGNAL")
 signal scene_complete
+
+## Call `CampaignMgr.scene_complete.emit()` when your music minigame
+## is done and you've determined if the player has won or lost.
+@warning_ignore("UNUSED_SIGNAL")
+signal game_over(GameResult)
 
 enum CampaignAction {
 	TRANSITION,
@@ -23,7 +28,7 @@ const SCENE_TXN = "cinematics/scene_transition"
 const GAME_SCENES = [
 	"games/t_rex/t_rex_game",
 	"games/vampire/vampire_game",
-	"games/spider/spider_intro"
+	# "games/spider/spider_intro"
 ]
 
 var current_campaign = null
@@ -54,6 +59,7 @@ func start_campaign():
 
 func _ready():
 	scene_complete.connect(_on_scene_complete)
+	game_over.connect(_on_game_over)
 
 
 func _process(_delta):
@@ -93,7 +99,7 @@ func _process(_delta):
 			_next()
 
 		[CampaignAction.RETURN_TO_MENU]:
-			_inst_and_replace_scene("menu")
+			_inst_and_replace_scene("ui/menu")
 			current_campaign = null
 
 		_:
@@ -107,6 +113,12 @@ func _next():
 
 func _on_scene_complete():
 	print("Scene complete")
+
+
+func _on_game_over(result: GameResult):
+	current_campaign_results.push_back(result)
+	var r = "Win" if result == GameResult.WIN else "Lose"
+	print("Game result submitted: %s" % r)
 
 
 func _inst_scene(scene_name: String) -> Node:

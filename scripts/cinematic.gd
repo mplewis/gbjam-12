@@ -6,6 +6,7 @@ enum CinematicAction {
 	HIDE,
 	FADE_IN,
 	HOLD,
+	WAIT_FOR_ANIM_TO_FINISH,
 	FADE_OUT,
 	DIALOGUE,
 	CALL_METHOD_ON_SLIDE,
@@ -48,6 +49,9 @@ func _ready():
 
 		if child is Label:
 			steps.push_back([CinematicAction.DIALOGUE, child.text])
+
+		if lastSlide and lastSlide.has_signal("animation_finished") and not lastSlide.sprite_frames.get_animation_loop("default"):
+			steps.push_back([CinematicAction.WAIT_FOR_ANIM_TO_FINISH, lastSlide])
 
 		if lastSlide:
 			steps.push_back([CinematicAction.FADE_OUT])
@@ -93,6 +97,8 @@ func _process(_delta):
 		[CinematicAction.SHOW, var child]:
 			if child.has_method("show"):
 				child.show()
+			if child.has_method("play"):
+				child.play()
 			_next()
 
 		[CinematicAction.HIDE, var child]:
@@ -109,6 +115,12 @@ func _process(_delta):
 		[CinematicAction.HOLD]:
 			busy = true
 			get_tree().create_timer(HOLD_DURATION).timeout.connect(_next)
+
+		[CinematicAction.WAIT_FOR_ANIM_TO_FINISH, var child]:
+			busy = true
+			if child.is_playing():
+				await child.animation_finished
+			_next()
 
 		[CinematicAction.FADE_OUT]:
 			busy = true
