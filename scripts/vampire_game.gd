@@ -60,7 +60,7 @@ func _ready():
 	notes.midi_event.connect(_on_midi_event)
 
 	despawner.body_entered.connect(_despawn)
-	nice_trigger.body_entered.connect(_on_dodged)
+	nice_trigger.body_entered.connect(_on_entered_nice_area)
 	pc.body_entered.connect(_on_hit)
 
 	nice_anim.modulate.a = 0.0
@@ -209,13 +209,17 @@ func _trash_throwable(item: CollisionObject2D):
 
 func _on_hit(body: Node):
 	_trash_throwable(body)
+	body.hit_player = true
 	you_suck_anim.modulate.a = 1.0
 	damage_remain_s = DAMAGED_DURATION
 	if not audio_miss.playing:
 		audio_miss.play()
 
 
-func _on_dodged(_body: Node):
+func _on_entered_nice_area(body: Node):
+	if body.hit_player:
+		return
+
 	_incr_score()
 	_show_nice()
 

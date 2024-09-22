@@ -1,4 +1,4 @@
-[gd_scene load_steps=119 format=3 uid="uid://bqkg7u5vvf66y"]
+[gd_scene load_steps=120 format=3 uid="uid://bqkg7u5vvf66y"]
 
 [ext_resource type="Script" path="res://scripts/vampire_game.gd" id="1_66y2c"]
 [ext_resource type="Script" path="res://addons/midi/MidiPlayer.gd" id="2_fom2f"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://dw6dhebhyndfi" path="res://assets/sfx/Miss.wav" id="9_0f3ov"]
 [ext_resource type="Texture2D" uid="uid://bokk1qiyhpuqr" path="res://assets/images/vampire/Dracula_background.png" id="10_qb0qd"]
 [ext_resource type="Texture2D" uid="uid://blgpqqhfwgucj" path="res://assets/images/vampire/PC-animation-Sheet.png" id="11_d6cuy"]
+[ext_resource type="Script" path="res://scripts/thrown_item.gd" id="12_7xk8f"]
 [ext_resource type="Texture2D" uid="uid://btmlgof1iqfjl" path="res://assets/images/vampire/ground_barrel.png" id="12_sbgle"]
 [ext_resource type="Texture2D" uid="uid://b6mh4j0gxextp" path="res://assets/images/vampire/ground_chomper.png" id="13_ar7ni"]
 [ext_resource type="Texture2D" uid="uid://cwpcni4n03tiq" path="res://assets/images/vampire/ground_brick.png" id="14_4ia6u"]
@@ -900,6 +901,7 @@ position = Vector2(0.5, 0)
 texture = ExtResource("11_d6cuy")
 hframes = 6
 vframes = 3
+frame = 3
 
 [node name="Hitbox" type="CollisionShape2D" parent="PC"]
 position = Vector2(2, -3)
@@ -924,6 +926,7 @@ position = Vector2(4, 120)
 collision_layer = 5
 collision_mask = 0
 gravity_scale = 0.0
+script = ExtResource("12_7xk8f")
 
 [node name="Barrel" type="AnimatedSprite2D" parent="ItemsBG/Barrel"]
 sprite_frames = SubResource("SpriteFrames_6d3qd")
@@ -937,6 +940,7 @@ position = Vector2(4, 120)
 collision_layer = 5
 collision_mask = 0
 gravity_scale = 0.0
+script = ExtResource("12_7xk8f")
 
 [node name="Chomper" type="AnimatedSprite2D" parent="ItemsBG/Chomper"]
 sprite_frames = SubResource("SpriteFrames_fh276")
@@ -950,6 +954,7 @@ position = Vector2(4, 122)
 collision_layer = 5
 collision_mask = 0
 gravity_scale = 0.0
+script = ExtResource("12_7xk8f")
 
 [node name="Brick" type="Sprite2D" parent="ItemsBG/Brick"]
 texture = ExtResource("14_4ia6u")
@@ -962,6 +967,7 @@ position = Vector2(4, 120)
 collision_layer = 5
 collision_mask = 0
 gravity_scale = 0.0
+script = ExtResource("12_7xk8f")
 
 [node name="Banana" type="Sprite2D" parent="ItemsBG/Banana"]
 texture = ExtResource("15_1bc10")
@@ -978,6 +984,7 @@ position = Vector2(4, 70)
 collision_layer = 5
 collision_mask = 0
 gravity_scale = 0.0
+script = ExtResource("12_7xk8f")
 
 [node name="Bat1" type="AnimatedSprite2D" parent="ItemsFG/Bat1"]
 sprite_frames = SubResource("SpriteFrames_ueedb")
@@ -991,6 +998,7 @@ position = Vector2(4, 70)
 collision_layer = 5
 collision_mask = 0
 gravity_scale = 0.0
+script = ExtResource("12_7xk8f")
 
 [node name="Bat2" type="AnimatedSprite2D" parent="ItemsFG/Bat2"]
 sprite_frames = SubResource("SpriteFrames_6x7q5")
@@ -1004,6 +1012,7 @@ position = Vector2(4, 70)
 collision_layer = 5
 collision_mask = 0
 gravity_scale = 0.0
+script = ExtResource("12_7xk8f")
 
 [node name="Glider" type="AnimatedSprite2D" parent="ItemsFG/Glider"]
 sprite_frames = SubResource("SpriteFrames_ishvy")
@@ -1018,6 +1027,7 @@ position = Vector2(4, 70)
 collision_layer = 5
 collision_mask = 0
 gravity_scale = 0.0
+script = ExtResource("12_7xk8f")
 
 [node name="Pan" type="AnimatedSprite2D" parent="ItemsFG/Pan"]
 sprite_frames = SubResource("SpriteFrames_hr0or")
