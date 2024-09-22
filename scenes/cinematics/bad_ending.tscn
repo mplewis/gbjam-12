@@ -1,8 +1,9 @@
-[gd_scene load_steps=62 format=3 uid="uid://v02ipwhsrtq7"]
+[gd_scene load_steps=63 format=3 uid="uid://v02ipwhsrtq7"]
 
 [ext_resource type="Texture2D" uid="uid://b81syv4q20fi4" path="res://assets/images/intro/Ending_bad-Sheet.png" id="1_5y2bb"]
 [ext_resource type="PackedScene" uid="uid://crxje5adebltx" path="res://scenes/components/cinematic.tscn" id="1_7idpb"]
 [ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="1_adr3v"]
+[ext_resource type="AudioStream" uid="uid://bjpg7j2hlv4g7" path="res://assets/music/endings/Bad Ending.mp3" id="1_ixq21"]
 [ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="2_dhqf5"]
 [ext_resource type="Texture2D" uid="uid://o0rjnu2agyio" path="res://assets/ui/white.png" id="3_2wpvt"]
 [ext_resource type="Texture2D" uid="uid://ctlnu8fs1mne2" path="res://assets/images/intro/BADEND.png" id="4_svopb"]
@@ -403,6 +404,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="BadEnding" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_ixq21")
+autoplay = true
+bus = &"Music"
+parameters/looping = true
 
 [node name="Cinematic" parent="." instance=ExtResource("1_7idpb")]
 layout_mode = 1

@@ -21,15 +21,19 @@ door_close = true
 
 [node name="DoorOpenFourStepsDoorClose" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_7o43x")
+bus = &"SFX"
 
 [node name="DoorOpen" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_w7obq")
+bus = &"SFX"
 
 [node name="FourSteps" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_hafsm")
+bus = &"SFX"
 
 [node name="DoorClose" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_masfh")
+bus = &"SFX"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0

@@ -863,6 +863,7 @@ layout_mode = 1
 [node name="BGM" type="AudioStreamPlayer" parent="Cinematic"]
 stream = ExtResource("2_474vq")
 autoplay = true
+bus = &"Music"
 parameters/looping = false
 
 [node name="SettingText" type="Label" parent="Cinematic"]

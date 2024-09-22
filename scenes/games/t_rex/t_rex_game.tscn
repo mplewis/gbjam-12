@@ -323,12 +323,15 @@ muted = true
 
 [node name="Music" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("4_vuuns")
+bus = &"Music"
 
 [node name="Win" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("5_8iljc")
+bus = &"Music"
 
 [node name="Lose" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("3_2kau2")
+bus = &"Music"
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(80, 72)
