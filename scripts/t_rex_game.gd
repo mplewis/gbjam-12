@@ -35,6 +35,13 @@ var trex_anim_sm: AnimationNodeStateMachinePlayback = trex_anim_tree.get("parame
 @onready var pc_anim_sm: AnimationNodeStateMachinePlayback = pc_anim_tree.get("parameters/playback")
 @onready var splash_ring: AnimatedSprite2D = $SplashRing
 
+@onready var fullness_progress: Sprite2D = $FullnessMeter/FullnessProgress
+@onready var fullness_progress_0pct_pos := fullness_progress.position
+@onready var fullness_progress_0pct_scale := fullness_progress.scale
+@onready var fullness_progress_100pct: Sprite2D = $FullnessMeter/FullnessProgressFull
+@onready var fullness_progress_100pct_pos := fullness_progress_100pct.position
+@onready var fullness_progress_100pct_scale := fullness_progress_100pct.scale
+
 @onready var fader: Fader = $Fader
 
 
@@ -53,6 +60,7 @@ func _ready():
 	spawner.hide()
 	hit_anim.modulate.a = 0.0
 	hit_anim.play()
+	_render_fullness()
 
 	_start_intro()
 
@@ -166,8 +174,7 @@ func _punt(candy: CandyArrowFollower):
 
 
 func _on_candy_chompable(candy: CandyArrowPuntable):
-	fullness += 1
-	# print(fullness)
+	_incr_fullness()
 
 	trex_anim_sm.travel("chomp")
 	hit_anim.modulate.a = 1.0
@@ -179,6 +186,22 @@ func _on_candy_chompable(candy: CandyArrowPuntable):
 	add_child(sr)
 
 	candy.queue_free()
+
+
+func _incr_fullness():
+	fullness += 1
+	_render_fullness()
+
+
+func _render_fullness():
+	var f_pct := float(fullness) / fullness_threshold
+	f_pct = clamp(f_pct, 0.0, 1.0)
+	var zero_pos_y = fullness_progress_0pct_pos.y
+	var hund_pos_y = fullness_progress_100pct_pos.y
+	var zero_scl_y = fullness_progress_0pct_scale.y
+	var hund_scl_y = fullness_progress_100pct_scale.y
+	fullness_progress.position.y = zero_pos_y + f_pct * (hund_pos_y - zero_pos_y)
+	fullness_progress.scale.y = zero_scl_y + f_pct * (hund_scl_y - zero_scl_y)
 
 
 func _on_music_end():
