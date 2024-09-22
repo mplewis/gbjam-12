@@ -93,7 +93,6 @@ layout_mode = 2
 alignment = 1
 
 [node name="Hints L" type="Label" parent="UI/Control/HBoxContainer/VBoxContainer/Hints"]
-visible = false
 layout_mode = 2
 theme = ExtResource("4_up8lg")
 text = "B: Back"

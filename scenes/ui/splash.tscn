@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://s80q0e6mjbbf"]
+
+[ext_resource type="Script" path="res://scripts/splash.gd" id="1_5qayo"]
+[ext_resource type="Texture2D" uid="uid://cuu78vl3qe7oq" path="res://assets/ui/black.png" id="1_ovskf"]
+[ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="2_x4gjb"]
+[ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="3_hte3h"]
+[ext_resource type="Texture2D" uid="uid://b0cwc68ucw1yv" path="res://assets/images/intro/MonsterBeat_Title2.png" id="4_im3b4"]
+[ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="4_u8n41"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6exnr"]
+shader = ExtResource("2_x4gjb")
+shader_parameter/threshold1 = 0.167
+shader_parameter/threshold2 = 0.5
+shader_parameter/threshold3 = 0.833
+shader_parameter/color1 = Color(0.156863, 0.137255, 0.156863, 1)
+shader_parameter/color2 = Color(0.329412, 0.360784, 0.494118, 1)
+shader_parameter/color3 = Color(0.772549, 0.411765, 0.505882, 1)
+shader_parameter/color4 = Color(0.639216, 0.635294, 0.603922, 1)
+
+[node name="Splash" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5qayo")
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 144.0
+texture = ExtResource("1_ovskf")
+
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(81, 58)
+scale = Vector2(1.83333, 1.83333)
+texture = ExtResource("4_im3b4")
+
+[node name="PressStart" type="Label" parent="."]
+layout_mode = 0
+offset_top = 115.0
+offset_right = 160.0
+offset_bottom = 138.0
+theme = ExtResource("4_u8n41")
+text = "Press START"
+horizontal_alignment = 1
+
+[node name="RecolorLayer" type="CanvasLayer" parent="."]
+
+[node name="RecolorShader" type="ColorRect" parent="RecolorLayer"]
+material = SubResource("ShaderMaterial_6exnr")
+offset_right = 160.0
+offset_bottom = 256.0
+
+[node name="Controls" parent="." instance=ExtResource("3_hte3h")]

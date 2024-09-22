@@ -17,6 +17,7 @@ func _ready():
 	GBtn.on_up.connect(up)
 	GBtn.on_down.connect(down)
 	GBtn.on_a.connect(select)
+	GBtn.on_b.connect(back)
 	update_menu()
 
 
@@ -47,6 +48,10 @@ func select():
 	UiSounds.select()
 	var item = menu_items.keys()[selected]
 	safe_call("_on_menu_%s" % item)
+
+
+func back():
+	SceneMgr.close()
 
 
 func _on_menu_campaign():
