@@ -8,7 +8,7 @@ const JUMP_STR = 120
 const GRAVITY_STR = 480
 
 var menu_items := {
-	"campaign": "Start New Campaign",
+	"campaign": "New Game",
 	"calibrate": "Audio Calibration",
 	"options": "Options",
 	"credits": "Credits",

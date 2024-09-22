@@ -28,7 +28,7 @@ const SCENE_TXN = "cinematics/scene_transition"
 const GAME_SCENES = [
 	"games/t_rex/t_rex_game",
 	"games/vampire/vampire_game",
-	"games/spider/spider_intro"
+	# "games/spider/spider_intro"
 ]
 
 var current_campaign = null
@@ -99,7 +99,7 @@ func _process(_delta):
 			_next()
 
 		[CampaignAction.RETURN_TO_MENU]:
-			_inst_and_replace_scene("menu")
+			_inst_and_replace_scene("ui/menu")
 			current_campaign = null
 
 		_:

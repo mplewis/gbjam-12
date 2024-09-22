@@ -212,11 +212,8 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="Animation" id="Animation_3b5p6"]
-resource_name = "idle"
-length = 0.7
-loop_mode = 1
-step = 0.1
+[sub_resource type="Animation" id="Animation_ohwan"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -224,10 +221,10 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [7, 8, 9, 10, 11, 12, 13]
+"values": [1]
 }
 
 [sub_resource type="Animation" id="Animation_murxh"]
@@ -247,8 +244,11 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6]
 }
 
-[sub_resource type="Animation" id="Animation_ohwan"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_3b5p6"]
+resource_name = "idle"
+length = 0.7
+loop_mode = 1
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -256,10 +256,10 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [1]
+"values": [7, 8, 9, 10, 11, 12, 13]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8sqp3"]
@@ -311,6 +311,7 @@ intro_text = "ROAR!! I’ve got a hunger, and the only prescription… is more c
 win_text = "Oh my god. Why did you feed me so much candy? I can’t believe you threw that all in my mouth. I need to go sit down..."
 lose_text = "I’m not finished, my stomach is still grumbling! I need you to stay right there and--hey, don't run away from ME!!"
 fullness_threshold = 300
+skip_to_song_end = true
 
 [node name="Notes" parent="." instance=ExtResource("2_qgi35")]
 file = "res://assets/music/t_rex/TREXMidi.mid"
