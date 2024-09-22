@@ -9,13 +9,13 @@ const ANIM_FADE_DURATION = 1.5  # sec
 @export var win_text: String
 @export var lose_text: String
 @export var spawn_to_hit_sec: float = 0.8
-@export var max_health: int = 10
+@export var threshold: int = 10
 @export var skip_to_song_end: bool = false
 
 var start_playing_music_at_ms = null
-
 var last_spawned_item: Node = null
 var damage_remain_s := 0.0
+var score := 0
 
 @onready var spawners_bg: Array[Node] = $ItemsBG.get_children()
 @onready var spawners_fg: Array[Node] = $ItemsFG.get_children()
@@ -26,7 +26,6 @@ var damage_remain_s := 0.0
 @onready var pc: Area2D = $PC
 @onready var nice_anim: AnimatedSprite2D = $Nice
 @onready var you_suck_anim: AnimatedSprite2D = $YouSuck
-@onready var hearts_row: HeartsRow = $HeartsRow
 @onready var fader: Fader = $Fader
 
 @onready var notes: MidiPlayer = $Notes
@@ -43,7 +42,12 @@ var damage_remain_s := 0.0
 @onready var dr_anim_tree: AnimationTree = $Dracula/AnimationTree
 @onready var dr_anim_sm: AnimationNodeStateMachinePlayback = dr_anim_tree.get("parameters/playback")
 
-@onready var health := max_health
+@onready var progress_fg: Sprite2D = $ProgressContainer/ProgressFG
+@onready var progress_fg_full: Sprite2D = $ProgressContainer/ProgressFGFull
+@onready var progress_fg_empty_pos_x: float = progress_fg.position.x
+@onready var progress_fg_full_pos_x: float = progress_fg_full.position.x
+@onready var progress_fg_empty_scale_x: float = progress_fg.scale.x
+@onready var progress_fg_full_scale_x: float = progress_fg_full.scale.x
 
 
 func _ready():
@@ -59,7 +63,6 @@ func _ready():
 	nice_trigger.body_entered.connect(_on_dodged)
 	pc.body_entered.connect(_on_hit)
 
-	hearts_row.total = max_health
 	nice_anim.modulate.a = 0.0
 	you_suck_anim.modulate.a = 0.0
 
@@ -92,7 +95,6 @@ func _process(delta: float):
 	var fade_amt := delta / ANIM_FADE_DURATION
 	nice_anim.modulate.a -= fade_amt
 	you_suck_anim.modulate.a -= fade_amt
-	hearts_row.health = health
 
 	_ensure_start_music()
 	_handle_damage(delta)
@@ -208,13 +210,28 @@ func _trash_throwable(item: CollisionObject2D):
 func _on_hit(body: Node):
 	_trash_throwable(body)
 	you_suck_anim.modulate.a = 1.0
-	health = max(0, health - 1)
 	damage_remain_s = DAMAGED_DURATION
 	if not audio_miss.playing:
 		audio_miss.play()
 
 
 func _on_dodged(_body: Node):
+	_incr_score()
+	_show_nice()
+
+
+func _incr_score():
+	score += 1
+	var pct: float = clamp(score / float(threshold), 0, 100)
+	var pos_x = progress_fg_empty_pos_x + pct * (progress_fg_full_pos_x - progress_fg_empty_pos_x)
+	var scale_x = (
+		progress_fg_empty_scale_x + pct * (progress_fg_full_scale_x - progress_fg_empty_scale_x)
+	)
+	progress_fg.position.x = min(progress_fg_full_pos_x, pos_x)
+	progress_fg.scale.x = min(progress_fg_full_scale_x, scale_x)
+
+
+func _show_nice():
 	if nice_anim.modulate.a > 0:
 		return
 	if damage_remain_s > 0:
@@ -228,7 +245,7 @@ func _despawn(body: Node):
 
 func _on_music_end():
 	notes.stop()
-	var win = health > 0
+	var win = score >= threshold
 
 	if win:
 		DialogueMgr.show(win_text)
