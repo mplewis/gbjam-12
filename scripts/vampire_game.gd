@@ -251,7 +251,10 @@ func _on_score(body: Node):
 
 func _incr_score():
 	score += 1
-	print(score)
+	_update_progress_bar()
+
+
+func _update_progress_bar():
 	var pct: float = clamp(score / float(threshold), 0, 100)
 	var pos_x = progress_fg_empty_pos_x + pct * (progress_fg_full_pos_x - progress_fg_empty_pos_x)
 	var scale_x = (
