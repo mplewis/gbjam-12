@@ -50,7 +50,7 @@ func _ready():
 		if child is Label:
 			steps.push_back([CinematicAction.DIALOGUE, child.text])
 
-		if lastSlide && lastSlide.has_signal("animation_finished"):
+		if lastSlide and lastSlide.has_signal("animation_finished") and not lastSlide.sprite_frames.get_animation_loop("default"):
 			steps.push_back([CinematicAction.WAIT_FOR_ANIM_TO_FINISH, lastSlide])
 
 		if lastSlide:
