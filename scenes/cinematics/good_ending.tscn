@@ -1,4 +1,17 @@
-[gd_scene format=3 uid="uid://bnohktiy6tetg"]
+[gd_scene load_steps=4 format=3 uid="uid://bnohktiy6tetg"]
+
+[ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="1_8ldq0"]
+[ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="2_uji1r"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jvw7k"]
+shader = ExtResource("1_8ldq0")
+shader_parameter/threshold1 = 0.167
+shader_parameter/threshold2 = 0.5
+shader_parameter/threshold3 = 0.833
+shader_parameter/color1 = Color(0.121569, 0.192157, 0.27451, 1)
+shader_parameter/color2 = Color(0.972549, 0.478431, 0.431373, 1)
+shader_parameter/color3 = Color(0.968627, 0.643137, 0.67451, 1)
+shader_parameter/color4 = Color(0.905882, 0.905882, 0.796078, 1)
 
 [node name="GoodEnding" type="Control"]
 layout_mode = 3
@@ -13,3 +26,12 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Good Ending placeholder"
+
+[node name="RecolorLayer" type="CanvasLayer" parent="."]
+
+[node name="RecolorShader" type="ColorRect" parent="RecolorLayer"]
+material = SubResource("ShaderMaterial_jvw7k")
+offset_right = 160.0
+offset_bottom = 256.0
+
+[node name="Controls" parent="." instance=ExtResource("2_uji1r")]

@@ -1,4 +1,17 @@
-[gd_scene format=3 uid="uid://v02ipwhsrtq7"]
+[gd_scene load_steps=4 format=3 uid="uid://v02ipwhsrtq7"]
+
+[ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="1_adr3v"]
+[ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="2_dhqf5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yk8bi"]
+shader = ExtResource("1_adr3v")
+shader_parameter/threshold1 = 0.167
+shader_parameter/threshold2 = 0.5
+shader_parameter/threshold3 = 0.833
+shader_parameter/color1 = Color(0.12549, 0.0392157, 0.105882, 1)
+shader_parameter/color2 = Color(0.294118, 0.129412, 0.172549, 1)
+shader_parameter/color3 = Color(0.6, 0.392157, 0.298039, 1)
+shader_parameter/color4 = Color(0.792157, 0.670588, 0.313726, 1)
 
 [node name="BadEnding" type="Control"]
 layout_mode = 3
@@ -13,3 +26,12 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Bad Ending placeholder"
+
+[node name="RecolorLayer" type="CanvasLayer" parent="."]
+
+[node name="RecolorShader" type="ColorRect" parent="RecolorLayer"]
+material = SubResource("ShaderMaterial_yk8bi")
+offset_right = 160.0
+offset_bottom = 256.0
+
+[node name="Controls" parent="." instance=ExtResource("2_dhqf5")]
