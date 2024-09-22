@@ -310,7 +310,7 @@ script = ExtResource("1_dh214")
 intro_text = "ROAR!! I’ve got a hunger, and the only prescription… is more candy! Stand by that belt and throw it at my chompers!!"
 win_text = "Oh my god. Why did you feed me so much candy? I can’t believe you threw that all in my mouth. I need to go sit down..."
 lose_text = "I’m not finished, my stomach is still grumbling! I need you to stay right there and--hey, don't run away from ME!!"
-fullness_threshold = 50
+fullness_threshold = 300
 
 [node name="Notes" parent="." instance=ExtResource("2_qgi35")]
 file = "res://assets/music/t_rex/TREXMidi.mid"
@@ -423,18 +423,6 @@ position = Vector2(112, 92)
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_gtjr3")
 
-[node name="Fader" parent="." instance=ExtResource("14_w8p5c")]
-visible = false
-
-[node name="RecolorLayer" type="CanvasLayer" parent="."]
-
-[node name="RecolorShader" type="ColorRect" parent="RecolorLayer"]
-material = SubResource("ShaderMaterial_7fog1")
-offset_right = 160.0
-offset_bottom = 256.0
-
-[node name="Controls" parent="." instance=ExtResource("8_yoofu")]
-
 [node name="FullnessMeter" type="Sprite2D" parent="."]
 position = Vector2(143, 20.5)
 texture = ExtResource("17_wbaii")
@@ -449,3 +437,15 @@ visible = false
 position = Vector2(10, 0.125001)
 scale = Vector2(7.99999, 33.25)
 texture = ExtResource("18_eqmgw")
+
+[node name="Fader" parent="." instance=ExtResource("14_w8p5c")]
+visible = false
+
+[node name="RecolorLayer" type="CanvasLayer" parent="."]
+
+[node name="RecolorShader" type="ColorRect" parent="RecolorLayer"]
+material = SubResource("ShaderMaterial_7fog1")
+offset_right = 160.0
+offset_bottom = 256.0
+
+[node name="Controls" parent="." instance=ExtResource("8_yoofu")]
