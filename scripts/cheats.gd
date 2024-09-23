@@ -49,7 +49,7 @@ func select():
 
 
 func back():
-	SceneMgr.reset()
+	CampaignMgr.reset_game()
 
 
 func _on_menu_bad_end():

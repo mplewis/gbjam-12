@@ -113,7 +113,7 @@ func _process(_delta):
 
 		[CampaignAction.RESET_GAME]:
 			print("Executing RESET_GAME as campaign step")
-			_reset_game()
+			reset_game()
 
 		_:
 			assert(false, "Unknown action: %s" % step)
@@ -135,16 +135,17 @@ func _on_scene_complete():
 	if freeplay_active:
 		print("Freeplay ended, resetting game")
 		freeplay_active = false
-		_reset_game()
+		reset_game()
 		return
 
 	# HACK: Rescue the game from orphaned scenes
 	if not current_campaign:
 		print("Current campaign does not exist, resetting game")
-		_reset_game()
+		reset_game()
 
 
-func _reset_game():
+func reset_game():
+	print("Resetting game")
 	current_campaign = null
 	current_campaign_results = []
 	step = 0
