@@ -15,9 +15,9 @@ const LOW_TOM_NOTE_LOW = 77  #41
 const LOW_TOM_NOTE_HIGH = 78  #50#46
 const HAT_NOTE_LOW = 63  #40#42
 const HAT_NOTE_HIGH = 64  #50#52
-const CRASH_NOTE_LOW = 60
-const CRASH_NOTE_HIGH = 80
-const SPLASH_NOTE_LOW = 52
+const CRASH_NOTE_LOW = 40
+const CRASH_NOTE_HIGH = 55
+const SPLASH_NOTE_LOW = 80
 const SPLASH_NOTE_HIGH = 110
 const ANIM_FADE_DURATION = 1.5  # sec
 
@@ -119,8 +119,8 @@ func _ready():
 
 	midi_player_spawn.midi_event.connect(_on_midi_event)
 
-#	Music.finished.connect(music_end)
-	midi_player_audio.finished.connect(music_end)
+	Music.finished.connect(music_end)
+	#midi_player_audio.finished.connect(music_end)
 
 
 func _start_intro():
@@ -137,16 +137,17 @@ func _start_intro():
 func _start_game():
 	midi_player_spawn.volume_db = 0.0
 	midi_player_audio.volume_db = 0.0
-
-	midi_player_audio.play()
-
+	Music.volume_db = 15
+	#midi_player_audio.play()
+	Music.play()
 	for circle in circles_parent.get_children():
 		circles.append(circle)
 	start_timer = Time.get_ticks_msec()
 	await get_tree().create_timer(2.0 / 60.0).timeout  #NOTE SPAWN DELAY
 	midi_player_spawn.play()
 
-
+var progress_start_time = 0
+var is_progress_waiting = false
 func _process(delta: float) -> void:
 	var fade_amt := delta / ANIM_FADE_DURATION
 	Nice[0].modulate.a -= fade_amt
@@ -161,15 +162,17 @@ func _process(delta: float) -> void:
 	if is_spider_waiting || !spider.is_playing():
 		spider.play(spider_animations[circle_index])
 
-	#if HealthMgr.health <=0:
-	#HealthMgr.on_health_reset.emit()
-	(
+	
+	(#I think this breaks mobile 
 		await get_tree().create_timer(miss_buffer).timeout
 		&& floor(circles[circle_index].progress) == 100
 		&& (start_timer + wait_timer * 1000 < Time.get_ticks_msec())
 		&& midi_player_spawn.playing
 	)
-	if is_spider_waiting:
+	
+	
+	
+	if is_spider_waiting  :
 		var new_progress = circles[circle_index].progress - delta * difficulty
 		#print(new_progress)
 
@@ -180,13 +183,16 @@ func _process(delta: float) -> void:
 
 		circles[circle_index].progress = new_progress
 		circle_index = 0 if !is_spider_waiting else circle_index
+		progress_start_time = 0
 	if player_miss || !is_spider_waiting:
 		$drum.call("shake_object", miss_index)
 
 
 func _on_start():
-	SceneMgr.scene_paths.pop_back()
-	SceneMgr.close()
+	#PAUSE BUTTON
+	pass
+	#SceneMgr.scene_paths.pop_back()
+	#SceneMgr.close()
 
 
 func _on_left():
@@ -207,6 +213,7 @@ func _on_right():
 
 func _on_up():
 	miss_index = 0
+	#print("get_break"+str(midi_player_spawn.position))
 	pass
 	#get_tally(1)
 
@@ -317,9 +324,12 @@ func _on_midi_event(channel, event):
 			await get_tree().create_timer(miss_buffer).timeout
 			#$Notes.play()
 			player_miss = false
+		#print(event.note)
 
 		for i in note2frame.keys():
 			#SETS SPIDER TO NOTE GIVEN MIDI NOTE NUMBER
+			
+			#FORCE BREAKS midi_player_audio.position != randi_range(865,1010) &&
 			if (
 				_find_note_range(i, event.note)
 				&& start_timer + wait_timer * 1000 < Time.get_ticks_msec()

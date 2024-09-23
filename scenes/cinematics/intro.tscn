@@ -1,4 +1,4 @@
-[gd_scene load_steps=133 format=3 uid="uid://hnka8ov1yi72"]
+[gd_scene load_steps=132 format=3 uid="uid://hnka8ov1yi72"]
 
 [ext_resource type="PackedScene" uid="uid://crxje5adebltx" path="res://scenes/components/cinematic.tscn" id="1_2j34y"]
 [ext_resource type="AudioStream" uid="uid://6a7au84vys4g" path="res://assets/music/menu/GB Halloween Intro Theme FINAL.wav" id="2_ru1px"]
@@ -791,10 +791,6 @@ region = Rect2(320, 864, 160, 144)
 atlas = ExtResource("10_201vw")
 region = Rect2(480, 864, 160, 144)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_scxlu"]
-atlas = ExtResource("10_201vw")
-region = Rect2(640, 864, 160, 144)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_rnsxo"]
 animations = [{
 "frames": [{
@@ -821,13 +817,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2fa57")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_scxlu")
 }],
 "loop": false,
 "name": &"default",
-"speed": 9.0
+"speed": 6.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uxajf"]
@@ -1036,7 +1029,7 @@ texture = ExtResource("7_og408")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Cinematic/Spider"]
 position = Vector2(80, 73)
 sprite_frames = SubResource("SpriteFrames_rnsxo")
-frame = 8
+frame = 7
 frame_progress = 1.0
 
 [node name="SpiderText" type="Label" parent="Cinematic"]
