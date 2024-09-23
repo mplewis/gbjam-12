@@ -13,7 +13,7 @@ const TOM_NOTE_HIGH = 96  #50#46
 
 const LOW_TOM_NOTE_LOW = 77  #41
 const LOW_TOM_NOTE_HIGH = 78  #50#46
-const HAT_NOTE_LOW = 63 #40#42
+const HAT_NOTE_LOW = 63  #40#42
 const HAT_NOTE_HIGH = 64  #50#52
 const CRASH_NOTE_LOW = 60
 const CRASH_NOTE_HIGH = 80
@@ -263,14 +263,12 @@ func on_lose():
 	DialogueMgr.show(lose_text)
 	audio_lose.play()
 	await audio_lose.finished
-	
 
 
 func on_win():
 	DialogueMgr.show(win_text)
 	audio_win.play()
 	await audio_win.finished
-	
 
 
 func _on_miss():
@@ -322,7 +320,6 @@ func _on_midi_event(channel, event):
 
 		for i in note2frame.keys():
 			#SETS SPIDER TO NOTE GIVEN MIDI NOTE NUMBER
-			print(event.note)
 			if (
 				_find_note_range(i, event.note)
 				&& start_timer + wait_timer * 1000 < Time.get_ticks_msec()
