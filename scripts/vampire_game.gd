@@ -2,13 +2,14 @@ class_name VampireGame
 extends Node2D
 
 const DAMAGED_FLASH_RATE = 0.12  # sec period
-const DAMAGED_DURATION = 1.5  # sec
 const ANIM_FADE_DURATION = 1.5  # sec
 
 @export var intro_text: String
 @export var win_text: String
 @export var lose_text: String
+@export var jump_canceling: bool = false
 @export var spawn_to_hit_sec: float = 0.8
+@export var damage_invuln_sec: float = 1.0
 @export var press_on_beat_offset_sec: float = 0.0
 @export var send_to_scoring_area_sec: float = 0.2
 @export var threshold: int = 10
@@ -141,7 +142,8 @@ func _on_up():
 
 
 func _on_up_release():
-	pc_anim_sm.start("unjump")
+	if jump_canceling:
+		pc_anim_sm.start("unjump")
 
 
 func _on_down():
@@ -219,7 +221,7 @@ func _on_hit(body: Node):
 	_trash_throwable(body)
 	body.hit_player = true
 	you_suck_anim.modulate.a = 1.0
-	damage_remain_s = DAMAGED_DURATION
+	damage_remain_s = damage_invuln_sec
 	if not audio_miss.playing:
 		audio_miss.play()
 

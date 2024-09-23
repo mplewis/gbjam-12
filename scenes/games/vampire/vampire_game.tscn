@@ -197,7 +197,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_al32f"]
 resource_name = "jump"
-length = 0.72
+length = 0.3
 step = 0.12
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -894,6 +894,7 @@ script = ExtResource("1_66y2c")
 intro_text = "Who said you could enter my backyard--I mean, courtyard? I will make you rue the day you touched all my stuff!"
 win_text = "How could you have dodged all that junk--I mean, my precision weaponry? You hid your skills well. Ngh-- Go!"
 lose_text = "Muahaha. I've trained in throwing lawn junk for millenia. You'll never leave this house alive!"
+press_on_beat_offset_sec = 0.25
 threshold = 175
 
 [node name="Notes" type="Node" parent="."]
@@ -952,6 +953,7 @@ position = Vector2(104.5, 190)
 shape = SubResource("RectangleShape2D_7bpd8")
 
 [node name="NiceTrigger" type="Area2D" parent="."]
+position = Vector2(-7, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NiceTrigger"]
 position = Vector2(0, 72)
@@ -966,7 +968,7 @@ position = Vector2(0.5, 0)
 texture = ExtResource("11_d6cuy")
 hframes = 6
 vframes = 3
-frame = 2
+frame = 4
 
 [node name="Hitbox" type="CollisionShape2D" parent="PC"]
 position = Vector2(2, -3)
