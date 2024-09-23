@@ -376,6 +376,7 @@ script = ExtResource("1_dh214")
 intro_text = "ROAR!! I've got a hunger, and the only prescription... is more candy! Stand by that belt and throw it at my chompers!!"
 win_text = "Oh my god. Why did you feed me so much candy? I can't believe you threw that all in my mouth. I need to go sit down..."
 lose_text = "I'm not finished, my stomach is still grumbling! I need you to stay right there and--hey, don't run away from ME!!"
+spawn_to_hit_sec = 3.5
 fullness_threshold = 300
 
 [node name="Notes" parent="." instance=ExtResource("2_qgi35")]

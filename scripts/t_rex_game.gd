@@ -79,11 +79,6 @@ func _start_intro():
 	DialogueMgr.show(intro_text)
 	await DialogueMgr.on_close
 
-	# HACK: Gappy transition into game music
-	audio_intro["parameters/looping"] = false
-	while audio_intro.playing:
-		await get_tree().create_timer(0.1).timeout
-
 	_start_game()
 
 
@@ -106,6 +101,9 @@ func _ensure_start_music():
 		and Time.get_ticks_msec() >= start_playing_music_at_ms
 		and not audio_music.playing
 	):
+		# HACK: Jagged transition into game music
+		audio_intro.stop()
+
 		audio_music.play()
 
 		if skip_to_song_end:
