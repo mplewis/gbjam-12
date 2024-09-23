@@ -475,6 +475,12 @@ offset_right = 769.0
 offset_bottom = 23.0
 text = "But perhaps one more try could set him right, uncovering the secret of this terrible night?"
 
+[node name="ThankYou" type="Label" parent="Cinematic"]
+visible = false
+offset_right = 769.0
+offset_bottom = 23.0
+text = "(Thank you so much for playing! --The Crow and Friends team)"
+
 [node name="RecolorLayer" type="CanvasLayer" parent="."]
 
 [node name="RecolorShader" type="ColorRect" parent="RecolorLayer"]

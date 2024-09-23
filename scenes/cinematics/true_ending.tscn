@@ -1,7 +1,8 @@
-[gd_scene load_steps=52 format=3 uid="uid://cce1dipkryy50"]
+[gd_scene load_steps=53 format=3 uid="uid://cce1dipkryy50"]
 
 [ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="1_ft4ry"]
 [ext_resource type="PackedScene" uid="uid://crxje5adebltx" path="res://scenes/components/cinematic.tscn" id="1_ppri5"]
+[ext_resource type="AudioStream" uid="uid://bwvtj08juyk7" path="res://assets/music/endings/TrueEndingMusic.mp3" id="2_5f6qi"]
 [ext_resource type="Texture2D" uid="uid://bs3hvu61xkjcw" path="res://assets/images/intro/Ending_true-Sheet.png" id="2_b7b52"]
 [ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="2_iiaih"]
 [ext_resource type="Texture2D" uid="uid://o0rjnu2agyio" path="res://assets/ui/white.png" id="3_bjxvh"]
@@ -337,6 +338,10 @@ grow_vertical = 2
 [node name="Cinematic" parent="." instance=ExtResource("1_ppri5")]
 layout_mode = 1
 
+[node name="BGM" type="AudioStreamPlayer" parent="Cinematic"]
+stream = ExtResource("2_5f6qi")
+parameters/looping = true
+
 [node name="Label" type="Label" parent="Cinematic"]
 visible = false
 layout_mode = 0
@@ -398,6 +403,13 @@ layout_mode = 0
 offset_right = 769.0
 offset_bottom = 23.0
 text = "I'm going to have the worst hangover tomorrow..."
+
+[node name="ThankYou" type="Label" parent="Cinematic"]
+visible = false
+layout_mode = 0
+offset_right = 769.0
+offset_bottom = 23.0
+text = "(Thank you so much for playing! --The Crow and Friends team)"
 
 [node name="RecolorLayer" type="CanvasLayer" parent="."]
 

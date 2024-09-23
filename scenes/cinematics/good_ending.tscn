@@ -330,6 +330,12 @@ offset_bottom = 23.0
 text = "I know there's a secret of that house I haven't discovered... I have to go back to defeat all the monsters!
 "
 
+[node name="ThankYou" type="Label" parent="Cinematic"]
+visible = false
+offset_right = 769.0
+offset_bottom = 23.0
+text = "(Thank you so much for playing! --The Crow and Friends team)"
+
 [node name="RecolorLayer" type="CanvasLayer" parent="."]
 
 [node name="RecolorShader" type="ColorRect" parent="RecolorLayer"]
