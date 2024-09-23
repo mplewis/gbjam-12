@@ -1,7 +1,7 @@
-[gd_scene load_steps=132 format=3 uid="uid://hnka8ov1yi72"]
+[gd_scene load_steps=133 format=3 uid="uid://hnka8ov1yi72"]
 
 [ext_resource type="PackedScene" uid="uid://crxje5adebltx" path="res://scenes/components/cinematic.tscn" id="1_2j34y"]
-[ext_resource type="AudioStream" uid="uid://r6nm7a4124fj" path="res://assets/music/menu/menu_and_lightning.mp3" id="2_474vq"]
+[ext_resource type="AudioStream" uid="uid://6a7au84vys4g" path="res://assets/music/menu/GB Halloween Intro Theme FINAL.wav" id="2_ru1px"]
 [ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="3_04prh"]
 [ext_resource type="Texture2D" uid="uid://bcfkf76b0uxgs" path="res://assets/images/intro/Intro1Paper-Sheet.png" id="4_ievds"]
 [ext_resource type="Texture2D" uid="uid://dv3qxqn45klp3" path="res://assets/images/intro/Intro2-Sheet.png" id="4_l3lp8"]
@@ -13,6 +13,17 @@
 [ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="9_d54k6"]
 [ext_resource type="Texture2D" uid="uid://dh83ialg1j3v0" path="res://assets/images/spider/cuteTrantulaintro_scene.png" id="10_201vw"]
 [ext_resource type="Texture2D" uid="uid://u8qpl7qp7sia" path="res://assets/images/intro/Intro3-Sheet.png" id="10_w3c41"]
+
+[sub_resource type="GDScript" id="GDScript_fk35o"]
+script/source = "extends Control
+
+@onready var bgm: AudioStreamPlayer = $BGM
+
+
+func _process(_delta):
+	if not bgm.playing:
+		bgm.play()
+"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uyuww"]
 atlas = ExtResource("5_j7pvx")
@@ -928,15 +939,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = SubResource("GDScript_fk35o")
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ru1px")
+autoplay = true
+bus = &"Music"
 
 [node name="Cinematic" parent="." instance=ExtResource("1_2j34y")]
 layout_mode = 1
-
-[node name="BGM" type="AudioStreamPlayer" parent="Cinematic"]
-stream = ExtResource("2_474vq")
-autoplay = true
-bus = &"Music"
-parameters/looping = false
 
 [node name="SettingText" type="Label" parent="Cinematic"]
 visible = false
@@ -1049,7 +1060,7 @@ layout_mode = 0
 offset_right = 180.0
 offset_bottom = 16.0
 theme = ExtResource("3_04prh")
-text = "Everyone in this place keeps trying to eat me! I gotta get out of this monster house!"
+text = "Everyone in this place wants to eat me! I gotta get out of this monster house!"
 
 [node name="RecolorLayer" type="CanvasLayer" parent="."]
 
