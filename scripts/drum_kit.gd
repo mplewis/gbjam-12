@@ -44,6 +44,8 @@ const MAGIC_NUMBER_MIDI_DELAY = 0.16
 @export var lose_text: String
 @export var spider = AnimatedSprite2D.new()
 @export var health_bar = AnimatedSprite2D.new()
+@export var skip_to_victory := false
+
 @onready var note2frame = {
 	[SNARE_NOTE_LOW, SNARE_NOTE_HIGH]: 0,
 	[HAT_NOTE_LOW, HAT_NOTE_HIGH]: 1,
@@ -146,8 +148,11 @@ func _start_game():
 	await get_tree().create_timer(2.0 / 60.0).timeout  #NOTE SPAWN DELAY
 	midi_player_spawn.play()
 
+
 var progress_start_time = 0
 var is_progress_waiting = false
+
+
 func _process(delta: float) -> void:
 	var fade_amt := delta / ANIM_FADE_DURATION
 	Nice[0].modulate.a -= fade_amt
@@ -162,17 +167,14 @@ func _process(delta: float) -> void:
 	if is_spider_waiting || !spider.is_playing():
 		spider.play(spider_animations[circle_index])
 
-	
-	(#I think this breaks mobile 
+	(  #I think this breaks mobile
 		await get_tree().create_timer(miss_buffer).timeout
 		&& floor(circles[circle_index].progress) == 100
 		&& (start_timer + wait_timer * 1000 < Time.get_ticks_msec())
 		&& midi_player_spawn.playing
 	)
-	
-	
-	
-	if is_spider_waiting  :
+
+	if is_spider_waiting:
 		var new_progress = circles[circle_index].progress - delta * difficulty
 		#print(new_progress)
 
@@ -310,6 +312,10 @@ func _on_hit(progress):
 
 	circle_index = 0
 
+	if skip_to_victory:
+		Music.stop()
+		music_end()
+
 
 func _on_health_drain():
 	HealthMgr.health -= HealthMgr.health_drain
@@ -328,7 +334,7 @@ func _on_midi_event(channel, event):
 
 		for i in note2frame.keys():
 			#SETS SPIDER TO NOTE GIVEN MIDI NOTE NUMBER
-			
+
 			#FORCE BREAKS midi_player_audio.position != randi_range(865,1010) &&
 			if (
 				_find_note_range(i, event.note)
