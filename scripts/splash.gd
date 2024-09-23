@@ -7,13 +7,14 @@ const BLINK_DURATION = 1.5  # sec; period to blink the PRESS START label
 var groove_started := false
 
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
-@onready var press_start: Label = $PressStart
+@onready var press_start: Label = $House/PressStart
+@onready var bgm: AudioStreamPlayer = $BGM
 @onready var groove: AudioStreamPlayer = $Groove
 
 
 func _ready():
 	GBtn.on_start.connect(_on_start)
-	GBtn.on_a.connect(_on_start)
+	anim_player.animation_finished.connect(_on_animation_finished)
 
 	anim_player.play("intro")
 
@@ -28,7 +29,15 @@ func _process(_delta):
 
 
 func _on_start():
-	SceneMgr.open("ui/menu")
+	bgm.stop()
+	groove_started = false
+	groove.stop()
+	anim_player.play("fade_away")
+
+
+func _on_animation_finished(anim_name: String):
+	if anim_name == "fade_away":
+		SceneMgr.open("ui/menu")
 
 
 func _start_groove():
