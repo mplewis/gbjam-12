@@ -19,11 +19,12 @@ var last_loop := 0.0
 
 var info_tmpl = "
 Offset: %0.2f
+
 Press A on the high note
-Press B to reset
-Use arrows to
-manually calibrate
-Press START to exit
+
+B: Reset calibration
+D-Pad: Manual calib.
+Start: Exit
 ".strip_edges()
 
 
