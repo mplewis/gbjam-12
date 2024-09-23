@@ -266,6 +266,7 @@ grow_vertical = 2
 stream = ExtResource("1_d6uwm")
 autoplay = true
 bus = &"Music"
+parameters/looping = true
 
 [node name="Cinematic" parent="." instance=ExtResource("1_7rn51")]
 layout_mode = 1

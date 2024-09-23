@@ -59,7 +59,8 @@ layout_mode = 2
 [node name="Title" type="Label" parent="UI/Control/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_ejnwy")
-text = "CHEAT MENU"
+text = "CHEAT MENU
+(for cool people only)"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 

@@ -335,13 +335,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Cinematic" parent="." instance=ExtResource("1_ppri5")]
-layout_mode = 1
-
-[node name="BGM" type="AudioStreamPlayer" parent="Cinematic"]
+[node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_5f6qi")
+autoplay = true
 bus = &"Music"
 parameters/looping = true
+
+[node name="Cinematic" parent="." instance=ExtResource("1_ppri5")]
+layout_mode = 1
 
 [node name="Label" type="Label" parent="Cinematic"]
 visible = false
