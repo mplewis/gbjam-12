@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://baimtvta0dnun" path="res://assets/music/vampire/VampireLose.mp3" id="6_b6yk8"]
 [ext_resource type="AudioStream" uid="uid://mkbo6ui1kcld" path="res://assets/music/vampire/VampireDuck.mp3" id="7_suotu"]
 [ext_resource type="AudioStream" uid="uid://sn6ud3bckriy" path="res://assets/music/vampire/VampireJump.mp3" id="8_4ug0y"]
-[ext_resource type="AudioStream" uid="uid://dw6dhebhyndfi" path="res://assets/music/spider/Miss.wav" id="9_0f3ov"]
+[ext_resource type="AudioStream" uid="uid://dw6dhebhyndfi" path="res://assets/sfx/Miss.wav" id="9_0f3ov"]
 [ext_resource type="Texture2D" uid="uid://bokk1qiyhpuqr" path="res://assets/images/vampire/Dracula_background.png" id="10_qb0qd"]
 [ext_resource type="Texture2D" uid="uid://blgpqqhfwgucj" path="res://assets/images/vampire/PC-animation-Sheet.png" id="11_d6cuy"]
 [ext_resource type="Script" path="res://scripts/thrown_item.gd" id="12_7xk8f"]
@@ -197,7 +197,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_al32f"]
 resource_name = "jump"
-length = 0.3
+length = 0.35
 step = 0.12
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -894,7 +894,7 @@ script = ExtResource("1_66y2c")
 intro_text = "Who said you could enter my backyard--I mean, courtyard? I will make you rue the day you touched all my stuff!"
 win_text = "How could you have dodged all that junk--I mean, my precision weaponry? You hid your skills well. Ngh-- Go!"
 lose_text = "Muahaha. I've trained in throwing lawn junk for millenia. You'll never leave this house alive!"
-press_on_beat_offset_sec = 0.25
+press_on_beat_offset_sec = 0.6
 threshold = 175
 
 [node name="Notes" type="Node" parent="."]
@@ -968,7 +968,7 @@ position = Vector2(0.5, 0)
 texture = ExtResource("11_d6cuy")
 hframes = 6
 vframes = 3
-frame = 1
+frame = 4
 
 [node name="Hitbox" type="CollisionShape2D" parent="PC"]
 position = Vector2(2, -3)
