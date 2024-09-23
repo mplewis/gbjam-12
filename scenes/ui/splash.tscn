@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cuu78vl3qe7oq" path="res://assets/ui/black.png" id="1_ovskf"]
 [ext_resource type="AudioStream" uid="uid://brju01k3gpy2s" path="res://assets/music/menu/GB Halloween Groove Song.wav" id="2_beqsl"]
 [ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="2_x4gjb"]
-[ext_resource type="AudioStream" uid="uid://bsbu3u2f2snrh" path="res://assets/sfx/Lightning.mp3" id="3_el5yx"]
+[ext_resource type="AudioStream" uid="uid://bsbu3u2f2snrh" path="res://assets/music/spider/Lightning.mp3" id="3_el5yx"]
 [ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="3_hte3h"]
 [ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="4_u8n41"]
 [ext_resource type="Texture2D" uid="uid://cmke4q0gjos1h" path="res://assets/images/splash/SplashLightning-Sheet.png" id="6_8ufqs"]

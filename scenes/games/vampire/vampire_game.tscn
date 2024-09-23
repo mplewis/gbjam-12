@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://baimtvta0dnun" path="res://assets/music/vampire/VampireLose.mp3" id="6_b6yk8"]
 [ext_resource type="AudioStream" uid="uid://mkbo6ui1kcld" path="res://assets/music/vampire/VampireDuck.mp3" id="7_suotu"]
 [ext_resource type="AudioStream" uid="uid://sn6ud3bckriy" path="res://assets/music/vampire/VampireJump.mp3" id="8_4ug0y"]
-[ext_resource type="AudioStream" uid="uid://dw6dhebhyndfi" path="res://assets/sfx/Miss.wav" id="9_0f3ov"]
+[ext_resource type="AudioStream" uid="uid://dw6dhebhyndfi" path="res://assets/music/spider/Miss.wav" id="9_0f3ov"]
 [ext_resource type="Texture2D" uid="uid://bokk1qiyhpuqr" path="res://assets/images/vampire/Dracula_background.png" id="10_qb0qd"]
 [ext_resource type="Texture2D" uid="uid://blgpqqhfwgucj" path="res://assets/images/vampire/PC-animation-Sheet.png" id="11_d6cuy"]
 [ext_resource type="Script" path="res://scripts/thrown_item.gd" id="12_7xk8f"]
@@ -968,7 +968,7 @@ position = Vector2(0.5, 0)
 texture = ExtResource("11_d6cuy")
 hframes = 6
 vframes = 3
-frame = 3
+frame = 1
 
 [node name="Hitbox" type="CollisionShape2D" parent="PC"]
 position = Vector2(2, -3)
