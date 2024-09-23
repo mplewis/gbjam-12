@@ -9,6 +9,7 @@ const ANIM_FADE_DURATION = 1.5  # sec
 @export var win_text: String
 @export var lose_text: String
 @export var spawn_to_hit_sec: float = 0.8
+@export var press_on_beat_offset_sec: float = 0.0
 @export var send_to_scoring_area_sec: float = 0.2
 @export var threshold: int = 10
 @export var skip_to_song_end: bool = false
@@ -91,9 +92,8 @@ func _start_intro():
 
 func _start_game():
 	notes.play()
-	start_playing_music_at_ms = (
-		Time.get_ticks_msec() + int((spawn_to_hit_sec - AudioCal.total_audio_offset()) * 1000)
-	)
+	var offset := spawn_to_hit_sec - AudioCal.total_audio_offset() - press_on_beat_offset_sec
+	start_playing_music_at_ms = (Time.get_ticks_msec() + int(offset * 1000))
 
 
 func _process(delta: float):
