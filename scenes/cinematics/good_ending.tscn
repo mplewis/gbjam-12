@@ -285,12 +285,14 @@ frame_progress = 1.0
 
 [node name="Label2" type="Label" parent="Cinematic"]
 visible = false
+layout_mode = 0
 offset_right = 627.0
 offset_bottom = 23.0
 text = "Body was mended, insanity prevented, but his mind, alas, wasn't truly contented."
 
 [node name="CINE_HOLD_BEFORE" type="Label" parent="Cinematic/Label2"]
 visible = false
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "3.0"
@@ -332,6 +334,7 @@ text = "I know there's a secret of that house I haven't discovered... I have to 
 
 [node name="ThankYou" type="Label" parent="Cinematic"]
 visible = false
+layout_mode = 0
 offset_right = 769.0
 offset_bottom = 23.0
 text = "(Thank you so much for playing! --The Crow and Friends team)"

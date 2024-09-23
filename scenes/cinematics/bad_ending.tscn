@@ -477,6 +477,7 @@ text = "But perhaps one more try could set him right, uncovering the secret of t
 
 [node name="ThankYou" type="Label" parent="Cinematic"]
 visible = false
+layout_mode = 0
 offset_right = 769.0
 offset_bottom = 23.0
 text = "(Thank you so much for playing! --The Crow and Friends team)"

@@ -304,11 +304,14 @@ grow_vertical = 2
 script = ExtResource("1_5qayo")
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
 
 [node name="Lightning" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
 
 [node name="Groove" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_beqsl")
+bus = &"Music"
 
 [node name="BG" type="TextureRect" parent="."]
 layout_mode = 0
