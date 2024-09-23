@@ -434,22 +434,19 @@ sprite_frames = SubResource("SpriteFrames_6jcet")
 frame = 52
 frame_progress = 1.0
 
-[node name="CINE_DWELL" type="Label" parent="Cinematic/Animation"]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "2.0"
-
-[node name="Control" type="Control" parent="Cinematic"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="Label3" type="Label" parent="Cinematic"]
 visible = false
 layout_mode = 0
 offset_right = 769.0
 offset_bottom = 23.0
 text = "Demons and monsters and ghouls arise, sending this lad to face his demise..."
+
+[node name="CINE_HOLD_BEFORE" type="Label" parent="Cinematic/Label3"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "4.0"
 
 [node name="Ending" type="Control" parent="Cinematic"]
 anchors_preset = 0

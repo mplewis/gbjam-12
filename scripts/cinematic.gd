@@ -14,7 +14,7 @@ enum CinematicAction {
 }
 
 @export var FADE_DURATION = 0.5
-@export var HOLD_DURATION = 2.0
+@export var DEFAULT_HOLD_DURATION = 2.0
 
 @onready var bg: TextureRect = %BG
 @onready var fader: TextureRect = %Fader
@@ -41,31 +41,47 @@ func _ready():
 			child.hide()
 	assert(len(children) > 0, "Cinematic must have at least one child.")
 
-	var lastSlide: CanvasItem = null
+	var last_slide: CanvasItem = null
+	var last_slide_meta = null
 	for slide in children:
+		var slide_meta = parse_cine_meta(slide)
+		print(slide_meta)
+
 		if slide is AudioStreamPlayer:
 			steps.push_back([CinematicAction.PLAY_AUDIO, slide])
 			continue
 
 		if slide is Label:
+			if 'HOLD_BEFORE' in slide_meta:
+				var duration = slide_meta['HOLD_BEFORE']
+				steps.push_back([CinematicAction.HOLD, duration])
 			steps.push_back([CinematicAction.DIALOGUE, slide.text])
 
-		if lastSlide and lastSlide.has_signal("animation_finished") and not lastSlide.sprite_frames.get_animation_loop("default"):
-			steps.push_back([CinematicAction.WAIT_FOR_ANIM_TO_FINISH, lastSlide])
+		if last_slide and last_slide.has_signal("animation_finished") and not last_slide.sprite_frames.get_animation_loop("default"):
+			steps.push_back([CinematicAction.WAIT_FOR_ANIM_TO_FINISH, last_slide])
+			if last_slide_meta and 'HOLD' in last_slide_meta:
+				var duration = last_slide_meta['HOLD']
+				steps.push_back([CinematicAction.HOLD, duration])
 
-		if lastSlide:
+		if last_slide:
 			steps.push_back([CinematicAction.FADE_OUT])
-			steps.push_back([CinematicAction.HIDE, lastSlide])
-			lastSlide = null
+			steps.push_back([CinematicAction.HIDE, last_slide])
+			last_slide = null
 
 		if slide is not Label:
 			steps.push_back([CinematicAction.SHOW, slide])
 			steps.push_back([CinematicAction.CALL_METHOD_ON_SLIDE, slide, "on_fade_in"])
 			steps.push_back([CinematicAction.FADE_IN])
-			steps.push_back([CinematicAction.HOLD])
-			lastSlide = slide
 
-	if lastSlide:
+			var hold_duration = DEFAULT_HOLD_DURATION
+			if slide_meta and 'HOLD' in slide_meta:
+				hold_duration = slide_meta['HOLD']
+			steps.push_back([CinematicAction.HOLD, hold_duration])
+
+			last_slide = slide
+			last_slide_meta = slide_meta
+
+	if last_slide:
 		steps.push_back([CinematicAction.FADE_OUT])
 
 	DialogueMgr.on_close.connect(_next)
@@ -80,6 +96,22 @@ func _skip_to_end():
 	fader.modulate.a = 1.0
 	busy = false
 	step_idx = len(steps)
+
+
+func parse_cine_meta(node: Node) -> Dictionary:
+	var meta = {}
+	for child in node.get_children():
+		if child.name.begins_with("CINE_"):
+			assert('text' in child, "CINE_ meta node must be a Label with a text value.")
+			var key = child.name.substr(5)
+			var raw = child.text.strip_edges()
+			if raw.is_valid_int():
+				meta[key] = raw.to_int()
+			elif raw.is_valid_float():
+				meta[key] = raw.to_float()
+			else:
+				meta[key] = raw
+	return meta
 
 
 func _process(_delta):
@@ -113,9 +145,9 @@ func _process(_delta):
 			tween.tween_property(fader, "modulate:a", 0.0, FADE_DURATION)
 			tween.finished.connect(_next)
 
-		[CinematicAction.HOLD]:
+		[CinematicAction.HOLD, var duration]:
 			busy = true
-			get_tree().create_timer(HOLD_DURATION).timeout.connect(_next)
+			get_tree().create_timer(duration).timeout.connect(_next)
 
 		[CinematicAction.WAIT_FOR_ANIM_TO_FINISH, var slide]:
 			busy = true
