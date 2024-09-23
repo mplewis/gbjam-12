@@ -108,7 +108,10 @@ func _process(_delta):
 
 
 func _check_cheat_code():
-	if get_tree().get_current_scene().get_name() == "Cheats":
+	var scene = get_tree().get_current_scene()
+	if not scene:
+		return false
+	if scene.get_name() == "Cheats":
 		return false
 
 	if len(last_pressed) < len(cheat_code):
