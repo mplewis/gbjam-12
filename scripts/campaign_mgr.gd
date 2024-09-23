@@ -36,6 +36,7 @@ var game_scenes = {
 	Game.VAMPIRE: "games/vampire/vampire_game",
 	Game.SPIDER: "games/spider/spider_intro"
 }
+var scene_order = [Game.T_REX, Game.VAMPIRE, Game.SPIDER]
 
 var current_campaign = null
 var current_campaign_results: Array[GameResult] = []
@@ -51,11 +52,9 @@ func start_campaign():
 	current_campaign.push_back([CampaignAction.TRANSITION, false, false, true])
 	current_campaign.push_back([CampaignAction.RUN_SCENE, "cinematics/intro"])
 
-	var scenes := game_scenes.values().duplicate()
-	scenes.shuffle()
-	for scene in scenes:
+	for game in scene_order:
 		current_campaign.push_back([CampaignAction.TRANSITION, true, true, true])
-		current_campaign.push_back([CampaignAction.RUN_SCENE, scene])
+		current_campaign.push_back([CampaignAction.RUN_SCENE, game_scenes[game]])
 
 	current_campaign.push_back([CampaignAction.TRANSITION, true, true, false])
 	current_campaign.push_back([CampaignAction.SHOW_ENDING])
