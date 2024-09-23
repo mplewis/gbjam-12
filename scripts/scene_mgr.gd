@@ -30,6 +30,12 @@ func close() -> void:
 	UiSounds.cancel()
 
 
+## Reset to the game's initial state and clear any pushed scenes.
+func reset():
+	_ready()
+	open("ui/splash")
+
+
 ## Singleton callable to resize the window appropriately for desktop development.
 func _set_appropriate_window_size() -> void:
 	if resized:

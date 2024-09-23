@@ -1,13 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bs0ucq7uj35vy"]
+[gd_scene load_steps=6 format=3 uid="uid://dohahiiqpi5l4"]
 
-[ext_resource type="Script" path="res://scripts/menu.gd" id="1_ugpda"]
-[ext_resource type="AudioStream" uid="uid://diuc6tr3qjnnt" path="res://assets/music/menu/MenuLoop.mp3" id="2_bfov4"]
-[ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="4_up8lg"]
-[ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="5_111ew"]
-[ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="9_t76tr"]
+[ext_resource type="Script" path="res://scripts/cheats.gd" id="1_bgssm"]
+[ext_resource type="Theme" uid="uid://ffvkc1fawd3o" path="res://themes/default.tres" id="3_ejnwy"]
+[ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="4_d0ckc"]
+[ext_resource type="PackedScene" uid="uid://bp7i043fy7n2j" path="res://scenes/components/controls.tscn" id="5_stf2f"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_275c7"]
-shader = ExtResource("5_111ew")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lsr5x"]
+shader = ExtResource("4_d0ckc")
 shader_parameter/threshold1 = 0.167
 shader_parameter/threshold2 = 0.5
 shader_parameter/threshold3 = 0.833
@@ -16,16 +15,14 @@ shader_parameter/color2 = Color(0.376471, 0.145098, 0.470588, 1)
 shader_parameter/color3 = Color(0.945098, 0.556863, 0.113725, 1)
 shader_parameter/color4 = Color(0.960784, 0.941176, 0.529412, 1)
 
-[node name="Menu" type="Control"]
+[node name="Cheats" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-script = ExtResource("1_ugpda")
-
-[node name="BGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_bfov4")
-autoplay = true
-bus = &"Music"
-parameters/looping = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bgssm")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -43,7 +40,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("4_up8lg")
+theme = ExtResource("3_ejnwy")
 alignment = 1
 
 [node name="MarginL" type="Control" parent="UI/Control/HBoxContainer"]
@@ -53,7 +50,7 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource("4_up8lg")
+theme = ExtResource("3_ejnwy")
 
 [node name="MarginT" type="Control" parent="UI/Control/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 10)
@@ -61,10 +58,8 @@ layout_mode = 2
 
 [node name="Title" type="Label" parent="UI/Control/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("4_up8lg")
-text = "MONSTER BEATS
-by Crow & Friends
-for GBJAM 12"
+theme = ExtResource("3_ejnwy")
+text = "CHEAT MENU"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
@@ -76,7 +71,7 @@ size_flags_vertical = 3
 [node name="MenuItems" type="Label" parent="UI/Control/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme = ExtResource("4_up8lg")
+theme = ExtResource("3_ejnwy")
 text = "> Line 1 <
 Big menu item
 Another item here"
@@ -94,8 +89,8 @@ alignment = 1
 
 [node name="Hints L" type="Label" parent="UI/Control/HBoxContainer/VBoxContainer/Hints"]
 layout_mode = 2
-theme = ExtResource("4_up8lg")
-text = "B: Back"
+theme = ExtResource("3_ejnwy")
+text = "B: Reset"
 
 [node name="Flex Space" type="Control" parent="UI/Control/HBoxContainer/VBoxContainer/Hints"]
 layout_mode = 2
@@ -103,7 +98,7 @@ size_flags_horizontal = 3
 
 [node name="Hints R" type="Label" parent="UI/Control/HBoxContainer/VBoxContainer/Hints"]
 layout_mode = 2
-theme = ExtResource("4_up8lg")
+theme = ExtResource("3_ejnwy")
 text = "A: Select"
 
 [node name="MarginB" type="Control" parent="UI/Control/HBoxContainer/VBoxContainer"]
@@ -117,9 +112,9 @@ layout_mode = 2
 [node name="RecolorLayer" type="CanvasLayer" parent="."]
 
 [node name="RecolorShader" type="ColorRect" parent="RecolorLayer"]
-material = SubResource("ShaderMaterial_275c7")
+material = SubResource("ShaderMaterial_lsr5x")
 offset_right = 160.0
 offset_bottom = 256.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Controls" parent="." instance=ExtResource("9_t76tr")]
+[node name="Controls" parent="." instance=ExtResource("5_stf2f")]
