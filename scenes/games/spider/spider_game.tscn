@@ -695,7 +695,8 @@ bar_color = Color(1, 1, 1, 1)
 [node name="drum" parent="." instance=ExtResource("3_lnd3m")]
 position = Vector2(80, 72)
 
-[node name="Audio" type="Node" parent="."]
+[node name="Audio" type="Node2D" parent="."]
+position = Vector2(80, 72)
 
 [node name="Snare" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("4_1u55e")
