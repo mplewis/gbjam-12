@@ -262,7 +262,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GoodEndFirstPass" type="AudioStreamPlayer" parent="."]
+[node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_d6uwm")
 autoplay = true
 bus = &"Music"
@@ -283,18 +283,17 @@ sprite_frames = SubResource("SpriteFrames_7xyro")
 frame = 39
 frame_progress = 1.0
 
-[node name="Control" type="Control" parent="Cinematic"]
-visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="Label2" type="Label" parent="Cinematic"]
 visible = false
-layout_mode = 0
-offset_right = 40.0
+offset_right = 627.0
 offset_bottom = 23.0
 text = "Body was mended, insanity prevented, but his mind, alas, wasn't truly contented."
+
+[node name="CINE_HOLD_BEFORE" type="Label" parent="Cinematic/Label2"]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+text = "3.0"
 
 [node name="Label3" type="Label" parent="Cinematic"]
 visible = false
