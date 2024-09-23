@@ -434,6 +434,11 @@ sprite_frames = SubResource("SpriteFrames_6jcet")
 frame = 52
 frame_progress = 1.0
 
+[node name="CINE_DWELL" type="Label" parent="Cinematic/Animation"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "2.0"
+
 [node name="Control" type="Control" parent="Cinematic"]
 anchors_preset = 0
 offset_right = 40.0

@@ -42,13 +42,13 @@ func _ready():
 	assert(len(children) > 0, "Cinematic must have at least one child.")
 
 	var lastSlide: CanvasItem = null
-	for child in children:
-		if child is AudioStreamPlayer:
-			steps.push_back([CinematicAction.PLAY_AUDIO, child])
+	for slide in children:
+		if slide is AudioStreamPlayer:
+			steps.push_back([CinematicAction.PLAY_AUDIO, slide])
 			continue
 
-		if child is Label:
-			steps.push_back([CinematicAction.DIALOGUE, child.text])
+		if slide is Label:
+			steps.push_back([CinematicAction.DIALOGUE, slide.text])
 
 		if lastSlide and lastSlide.has_signal("animation_finished") and not lastSlide.sprite_frames.get_animation_loop("default"):
 			steps.push_back([CinematicAction.WAIT_FOR_ANIM_TO_FINISH, lastSlide])
@@ -58,12 +58,12 @@ func _ready():
 			steps.push_back([CinematicAction.HIDE, lastSlide])
 			lastSlide = null
 
-		if child is not Label:
-			steps.push_back([CinematicAction.SHOW, child])
-			steps.push_back([CinematicAction.CALL_METHOD_ON_SLIDE, child, "on_fade_in"])
+		if slide is not Label:
+			steps.push_back([CinematicAction.SHOW, slide])
+			steps.push_back([CinematicAction.CALL_METHOD_ON_SLIDE, slide, "on_fade_in"])
 			steps.push_back([CinematicAction.FADE_IN])
 			steps.push_back([CinematicAction.HOLD])
-			lastSlide = child
+			lastSlide = slide
 
 	if lastSlide:
 		steps.push_back([CinematicAction.FADE_OUT])
@@ -92,18 +92,19 @@ func _process(_delta):
 		return
 
 	var step = steps[step_idx]
+	print(step)
 
 	match step:
-		[CinematicAction.SHOW, var child]:
-			if child.has_method("show"):
-				child.show()
-			if child.has_method("play"):
-				child.play()
+		[CinematicAction.SHOW, var slide]:
+			if slide.has_method("show"):
+				slide.show()
+			if slide.has_method("play"):
+				slide.play()
 			_next()
 
-		[CinematicAction.HIDE, var child]:
-			if child.has_method("hide"):
-				child.hide()
+		[CinematicAction.HIDE, var slide]:
+			if slide.has_method("hide"):
+				slide.hide()
 			_next()
 
 		[CinematicAction.FADE_IN]:
@@ -116,10 +117,10 @@ func _process(_delta):
 			busy = true
 			get_tree().create_timer(HOLD_DURATION).timeout.connect(_next)
 
-		[CinematicAction.WAIT_FOR_ANIM_TO_FINISH, var child]:
+		[CinematicAction.WAIT_FOR_ANIM_TO_FINISH, var slide]:
 			busy = true
-			if child.is_playing():
-				await child.animation_finished
+			if slide.is_playing():
+				await slide.animation_finished
 			_next()
 
 		[CinematicAction.FADE_OUT]:
