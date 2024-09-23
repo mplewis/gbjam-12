@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cj70nrhhf2m4x"
+path="res://.godot/imported/Good End First Pass.mp3-380db20c83cddb36d375f3f23bad28b8.mp3str"
+
+[deps]
+
+source_file="res://assets/music/endings/Good End First Pass.mp3"
+dest_files=["res://.godot/imported/Good End First Pass.mp3-380db20c83cddb36d375f3f23bad28b8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

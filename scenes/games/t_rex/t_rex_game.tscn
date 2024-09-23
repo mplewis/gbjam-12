@@ -389,6 +389,7 @@ muted = true
 [node name="Intro" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("3_t2d62")
 autoplay = true
+max_polyphony = 2
 parameters/looping = true
 
 [node name="Music" type="AudioStreamPlayer" parent="Audio"]

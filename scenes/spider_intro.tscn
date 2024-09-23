@@ -9,7 +9,7 @@
 [ext_resource type="Shader" path="res://shaders/recolor.gdshader" id="4_cwcf5"]
 [ext_resource type="Texture2D" uid="uid://cc8be2pd767ca" path="res://assets/images/spider/arrow_button_up2 (1).png" id="5_56t3c"]
 [ext_resource type="Texture2D" uid="uid://bpqxfc0je01t0" path="res://assets/images/spider/arrow_button_left1.png" id="8_24f6w"]
-[ext_resource type="AudioStream" uid="uid://b01l6jmjb7flb" path="res://assets/music/spider/Four_Steps.mp3" id="10_v78yh"]
+[ext_resource type="AudioStream" uid="uid://b01l6jmjb7flb" path="res://assets/sfx/Four_Steps.mp3" id="10_v78yh"]
 [ext_resource type="AudioStream" uid="uid://8wf1dte2j4dx" path="res://assets/music/spider/DoorOpen.mp3" id="11_prxpr"]
 [ext_resource type="AudioStream" uid="uid://bsbu3u2f2snrh" path="res://assets/music/spider/Lightning.mp3" id="12_b4i4m"]
 [ext_resource type="AudioStream" uid="uid://mkbo6ui1kcld" path="res://assets/music/vampire/VampireDuck.mp3" id="13_ec1xo"]
