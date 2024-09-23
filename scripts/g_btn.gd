@@ -77,8 +77,15 @@ var state = {
 	"ui_right": false,
 }
 
+var cheat_code = ["up", "up", "down", "down", "left", "right", "left", "right", "b", "a"]
+var last_pressed = []
+
 
 func _process(_delta):
+	if _check_cheat_code():
+		_open_cheat_menu()
+		return
+
 	if DialogueMgr.current:
 		if Input.is_action_just_pressed(DIALOGUE_ADVANCE_BTN):
 			DialogueMgr.on_advance.emit()
@@ -93,7 +100,32 @@ func _process(_delta):
 			if !state[x]:
 				emit_signal("on_%s" % short)
 				state[x] = true
+				_push_cheat_code(short)
 		else:
 			if state[x]:
 				emit_signal("on_%s_release" % short)
 			state[x] = false
+
+
+func _check_cheat_code():
+	if get_tree().get_current_scene().get_name() == "Cheats":
+		return false
+
+	if len(last_pressed) < len(cheat_code):
+		return false
+
+	for x in len(cheat_code):
+		if last_pressed[x] != cheat_code[x]:
+			return false
+
+	return true
+
+
+func _push_cheat_code(short: String):
+	last_pressed.push_back(short)
+	while len(last_pressed) > len(cheat_code):
+		last_pressed.pop_front()
+
+
+func _open_cheat_menu():
+	SceneMgr.open("ui/cheats")

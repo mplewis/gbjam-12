@@ -15,7 +15,7 @@ enum CampaignAction {
 	TRANSITION,
 	RUN_SCENE,
 	SHOW_ENDING,
-	RETURN_TO_MENU,
+	RESET_GAME,
 }
 
 enum GameResult {
@@ -59,7 +59,7 @@ func start_campaign():
 
 	current_campaign.push_back([CampaignAction.TRANSITION, true, true, false])
 	current_campaign.push_back([CampaignAction.SHOW_ENDING])
-	current_campaign.push_back([CampaignAction.RETURN_TO_MENU])
+	current_campaign.push_back([CampaignAction.RESET_GAME])
 
 	print(current_campaign)
 
@@ -111,8 +111,8 @@ func _process(_delta):
 			await scene_complete
 			_next()
 
-		[CampaignAction.RETURN_TO_MENU]:
-			_return_to_menu()
+		[CampaignAction.RESET_GAME]:
+			_reset_game()
 
 		_:
 			assert(false, "Unknown action: %s" % step)
@@ -128,12 +128,18 @@ func _on_scene_complete():
 
 	if freeplay_active:
 		freeplay_active = false
-		_return_to_menu()
+		_reset_game()
+		return
+
+	# HACK: Rescue the game from orphaned scenes
+	if not current_campaign:
+		_reset_game()
 
 
-func _return_to_menu():
-	_inst_and_replace_scene("ui/menu")
+func _reset_game():
 	current_campaign = null
+	current_campaign_results = []
+	SceneMgr.reset()
 
 
 func _on_game_over(result: GameResult):
