@@ -103,6 +103,7 @@ func _ensure_start_music():
 	):
 		# HACK: Jagged transition into game music
 		audio_intro.stop()
+		audio_intro["parameters.looping"] = false
 
 		audio_music.play()
 

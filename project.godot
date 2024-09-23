@@ -47,6 +47,7 @@ AudioCal="*res://scripts/audio_cal.gd"
 DialogueMgr="*res://scripts/dialogue_mgr.gd"
 HealthMgr="*res://scripts/health_mgr.gd"
 CampaignMgr="*res://scripts/campaign_mgr.gd"
+WebAudioLoopFixer="*res://scripts/web_audio_loop_fixer.gd"
 
 [display]
 
