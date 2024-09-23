@@ -4,12 +4,15 @@ extends Control
 
 const BLINK_DURATION = 1.5  # sec; period to blink the PRESS START label
 
+@onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var press_start: Label = $PressStart
 
 
 func _ready():
 	GBtn.on_start.connect(_on_start)
 	GBtn.on_a.connect(_on_start)
+
+	anim_player.play("intro")
 
 
 func _process(_delta):
