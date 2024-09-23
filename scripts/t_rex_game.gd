@@ -103,7 +103,9 @@ func _ensure_start_music():
 	):
 		# HACK: Jagged transition into game music
 		audio_intro.stop()
-		audio_intro["parameters.looping"] = false
+		# HACK: This keeps looping on web, even when you set looping to false.
+		# This is due to the WebAudioLoopFixer and I don't have time to debug the issue.
+		audio_intro.get_parent().remove_child(audio_intro)
 
 		audio_music.play()
 
