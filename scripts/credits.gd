@@ -1,7 +1,11 @@
+## Credits page showing who worked on this game
+
 class_name Credits
 extends Control
 
 var page = 0
+
+## Schema: [name, [link, url] | null, [roles]]
 var pages = [
 	[
 		"10jū",

@@ -1,3 +1,5 @@
+## Splash (title) screen for the game.
+
 @tool
 class_name Splash
 extends Control
@@ -46,5 +48,7 @@ func start_groove():
 	groove_started = true
 
 
+## Called by the animation player to synchronize the PRESS START initial blink
+## with the lightning animation.
 func show_press_start():
 	show_press_start_at = Time.get_ticks_msec()

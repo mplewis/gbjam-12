@@ -48,6 +48,7 @@ func _on_start():
 	SceneMgr.close()
 
 
+## Press A on the beat to calibrate your audio delay.
 func _on_a():
 	print_timing("down")
 
@@ -71,10 +72,14 @@ func _on_a():
 	update_label()
 
 
+## Reset calibration
 func _on_b():
 	offsets.clear()
 	AudioCal.audio_offset = 0.0
 	update_label()
+
+
+# Manual calibration
 
 
 func _on_up():
@@ -95,6 +100,7 @@ func _on_left():
 func _on_right():
 	AudioCal.audio_offset += 0.1
 	update_label()
+
 
 func update_label():
 	info.text = info_tmpl % AudioCal.audio_offset

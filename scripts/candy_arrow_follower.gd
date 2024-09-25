@@ -1,5 +1,16 @@
+## This candy arrow for the T-Rex game lives on a Path2D and can
+## spawn "puntable" copies of itself when the player hits it.
+
 class_name CandyArrowFollower
 extends PathFollow2D
+
+## The target path onto which to spawn candies
+@export var path: Path2D
+
+var template := true  # Template objects live in the scene editor and are not active.
+var rate_per_sec := 0.0  # how much to add to goal_pos per second
+var dirs = ["D", "L", "R", "U"]
+var dir_str := "?"
 
 @onready var hitbox: CollisionShape2D = $Body/Hitbox
 @onready var up_sprite: AnimatedSprite2D = $Up
@@ -7,17 +18,10 @@ extends PathFollow2D
 @onready var left_sprite: AnimatedSprite2D = $Left
 @onready var right_sprite: AnimatedSprite2D = $Right
 
-var dirs = ["D", "L", "R", "U"]
 @onready var sprites = [down_sprite, left_sprite, right_sprite, up_sprite]
 
 ## Goal position is based on the spawner's `progress` position
 @onready var goal_progress_ratio := progress_ratio
-## The target path onto which to spawn candies
-@export var path: Path2D
-
-var template := true
-var rate_per_sec := 0.0  # how much to add to goal_pos per second
-var dir_str := "?"
 
 
 func _ready():
@@ -44,6 +48,7 @@ func _process(delta):
 	hitbox.global_position = global_position
 
 
+## Spawn a candy arrow follower on the path at the given direction and distance.
 func spawn(dir: int, to_hit_sec: float) -> CandyArrowFollower:
 	var sprite: AnimatedSprite2D = sprites[dir]
 	assert(sprite, "Invalid direction: %d" % dir)
@@ -67,6 +72,7 @@ func spawn(dir: int, to_hit_sec: float) -> CandyArrowFollower:
 	return x
 
 
+## We punted the candy arrow. Spawn a puntable candy at the same position.
 func spawn_puntable() -> CandyArrowPuntable:
 	var active_sprite: AnimatedSprite2D
 	for s in sprites:

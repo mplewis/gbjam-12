@@ -1,3 +1,7 @@
+## HACK: Looping audio doesn't always loop on the Godot Web platform.
+## Find all AudioStreamPlayer nodes set to loop in the entire tree
+## and force them to loop.
+
 extends Node
 
 const CHECK_EVERY_MS = 100

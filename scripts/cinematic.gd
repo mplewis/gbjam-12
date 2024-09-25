@@ -1,3 +1,5 @@
+## A Cinematic is a sequence of slides that are shown in order, with optional dialogue and audio.
+
 class_name Cinematic
 extends Control
 
@@ -13,10 +15,13 @@ enum CinematicAction {
 	PLAY_AUDIO,
 }
 
+## How long the fade in/out transition lasts, in sec
 @export var FADE_DURATION = 0.5
+## By default, how long to hold on a slide before continuing, in sec
 @export var DEFAULT_HOLD_DURATION = 2.0
 
 @onready var bg: TextureRect = %BG
+## Global fader - a black `TextureRect` on which we tween opacity to 1 to "fade out" and 0 to "fade in" content
 @onready var fader: TextureRect = %Fader
 var children: Array[Node] = []
 
@@ -47,33 +52,41 @@ func _ready():
 		var slide_meta = parse_cine_meta(slide)
 		print(slide_meta)
 
+		# Play audio
 		if slide is AudioStreamPlayer:
 			steps.push_back([CinematicAction.PLAY_AUDIO, slide])
 			continue
 
+		# Present Labels as dialogue boxes
 		if slide is Label:
+			# Use `CINE_HOLD_BEFORE` to allow an animation to play out before popping the dialogue box up
 			if 'HOLD_BEFORE' in slide_meta:
 				var duration = slide_meta['HOLD_BEFORE']
 				steps.push_back([CinematicAction.HOLD, duration])
 			steps.push_back([CinematicAction.DIALOGUE, slide.text])
 
 		if last_slide and last_slide.has_signal("animation_finished") and not last_slide.sprite_frames.get_animation_loop("default"):
+			# Wait for animations to finish
 			steps.push_back([CinematicAction.WAIT_FOR_ANIM_TO_FINISH, last_slide])
+			# Use `CINE_HOLD` to freeze on the last frame before continuing
 			if last_slide_meta and 'HOLD' in last_slide_meta:
 				var duration = last_slide_meta['HOLD']
 				steps.push_back([CinematicAction.HOLD, duration])
 
+		# Fade out the previous slide
 		if last_slide:
 			steps.push_back([CinematicAction.FADE_OUT])
 			steps.push_back([CinematicAction.HIDE, last_slide])
 			last_slide = null
 
+		# Fade in the next slide
 		if slide is not Label:
 			steps.push_back([CinematicAction.SHOW, slide])
 			steps.push_back([CinematicAction.CALL_METHOD_ON_SLIDE, slide, "on_fade_in"])
 			steps.push_back([CinematicAction.FADE_IN])
 
 			var hold_duration = DEFAULT_HOLD_DURATION
+			# Use `CINE_HOLD` to freeze before continuing
 			if slide_meta and 'HOLD' in slide_meta:
 				hold_duration = slide_meta['HOLD']
 			steps.push_back([CinematicAction.HOLD, hold_duration])
@@ -98,6 +111,10 @@ func _skip_to_end():
 	step_idx = len(steps)
 
 
+## You can add meta tags to a node to control the cinematic sequence.
+## Meta tags are Label child nodes with names starting with `CINE_`
+## and the text body value which is parsed into a string, int, or float.
+## All meta tags are returned in a dictionary.
 func parse_cine_meta(node: Node) -> Dictionary:
 	var meta = {}
 	for child in node.get_children():

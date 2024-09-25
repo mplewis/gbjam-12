@@ -1,3 +1,5 @@
+## Cheats menu that allows everyone to see all the endings.
+
 class_name Cheats
 extends Control
 

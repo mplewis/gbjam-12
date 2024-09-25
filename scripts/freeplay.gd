@@ -1,3 +1,5 @@
+## Menu to select a game to play in freeplay mode, outside of the campaign.
+
 class_name Freeplay
 extends Control
 

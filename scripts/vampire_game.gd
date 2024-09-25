@@ -1,7 +1,11 @@
+## Scene for the game where you dodge items thrown at you by the vampire.
+
 class_name VampireGame
 extends Node2D
 
+## The flash rate for the player character when damaged
 const DAMAGED_FLASH_RATE = 0.12  # sec period
+## The duration of the fade-out for the "nice" and "you suck" animations
 const ANIM_FADE_DURATION = 1.5  # sec
 
 @export var intro_text: String
@@ -120,6 +124,8 @@ func _ensure_start_music():
 		start_playing_music_at_ms = null
 
 
+## On collision with an item, blink the PC and don't allow
+## collisions during the invuln state (free points).
 func _handle_damage(delta: float):
 	if damage_remain_s <= 0:
 		pc.modulate.a = 1
@@ -187,6 +193,7 @@ func _spawn_item(fg: bool):
 	target.add_child(item)
 
 
+## Pick a spawner for the appropriate direction that wasn't the last thrown item.
 func _pick_spawner(fg: bool) -> RigidBody2D:
 	dr_anim_sm.travel("toss")
 
@@ -207,6 +214,8 @@ func _start_anim(item: Node):
 			child.play()
 
 
+## A throwable collided with the player. Let it fall to the ground and
+## remove it from the scoring collision layer.
 func _trash_throwable(item: CollisionObject2D):
 	item.gravity_scale = 1.0
 	for child in item.get_children():
@@ -214,6 +223,7 @@ func _trash_throwable(item: CollisionObject2D):
 			child.collision_layer -= 1
 
 
+## The player was hit by a throwable. Make them invulnerable and trash the item.
 func _on_hit(body: Node):
 	if body.scoring:
 		return
@@ -226,6 +236,7 @@ func _on_hit(body: Node):
 		audio_miss.play()
 
 
+## Player dodged this item. Send it to the scoring area.
 func _on_entered_nice_area(body: Node):
 	if body.hit_player:
 		return
@@ -235,6 +246,7 @@ func _on_entered_nice_area(body: Node):
 	_send_to_scoring_area(body)
 
 
+## Send the item to the scoring area.
 func _send_to_scoring_area(body: RigidBody2D):
 	body.scoring = true
 	body.gravity_scale = 0.0
@@ -243,6 +255,7 @@ func _send_to_scoring_area(body: RigidBody2D):
 	body.linear_velocity = (tgt - curr) / send_to_scoring_area_sec
 
 
+## Score an item that just entered the scoring area.
 func _on_score(body: Node):
 	_incr_score()
 	if splash_ring.is_playing():
@@ -256,6 +269,7 @@ func _incr_score():
 	_update_progress_bar()
 
 
+## Hacky way to implement a progress bar out of a stretched sprite.
 func _update_progress_bar():
 	var pct: float = clamp(score / float(threshold), 0, 100)
 	var pos_x = progress_fg_empty_pos_x + pct * (progress_fg_full_pos_x - progress_fg_empty_pos_x)
@@ -266,6 +280,7 @@ func _update_progress_bar():
 	progress_fg.scale.x = min(progress_fg_full_scale_x, scale_x)
 
 
+## Show the "Nice" text above the player on dodge.
 func _show_nice():
 	if nice_anim.modulate.a > 0:
 		return
@@ -278,6 +293,7 @@ func _despawn(body: Node):
 	body.queue_free()
 
 
+## Handle game over.
 func _on_music_end():
 	notes.stop()
 	var win = score >= threshold
@@ -302,5 +318,6 @@ func _on_music_end():
 	CampaignMgr.scene_complete.emit()
 
 
+## Modulo function that works with floats.
 func fmod(a: float, b: float) -> float:
 	return a - b * floor(a / b)

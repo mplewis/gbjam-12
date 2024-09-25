@@ -1,3 +1,6 @@
+## Global vars to set and manage the volume of the music and SFX buses
+## from 0-10 instead of in decibels. 0 is always muted.
+
 extends Node
 
 const DB_LOWER = -30

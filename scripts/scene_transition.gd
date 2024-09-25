@@ -1,3 +1,6 @@
+## A cinematic scene transition script that plays sound effects as the
+## in-story player character walks between minigame rooms.
+
 class_name SceneTransition
 extends Control
 

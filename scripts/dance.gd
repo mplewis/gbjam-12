@@ -8,6 +8,11 @@ const ARROW_SPAWN_TO_HIT_SEC = 0.8
 # (which seems to be very close to real life!) and in the actual game, here.
 const MAGIC_NUMBER_MIDI_DELAY = 0.16
 
+var start_playing_at_ms: float
+var started = false
+var score = 0
+var combo = 0
+
 @onready var midi_player_spawn: MidiPlayer = $MidiPlayerSpawn
 @onready var midi_player_audio: MidiPlayer = $MidiPlayerAudio
 @onready var GoalL: Goal = $GoalL
@@ -20,11 +25,6 @@ const MAGIC_NUMBER_MIDI_DELAY = 0.16
 @onready var Judgment: Sprite2D = $Judgment
 
 @onready var spawners = [ArrowL, ArrowC, ArrowR]
-
-var start_playing_at_ms: float
-var started = false
-var score = 0
-var combo = 0
 
 
 func _ready():

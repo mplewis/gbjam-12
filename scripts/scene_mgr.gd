@@ -1,3 +1,7 @@
+## Manage scenes in the game in a push-pop stack. We used this a little bit for
+## nested menus (Credits, Options, etc.), but the main paradigm for scene
+## management ended up being `CampaignMgr`.
+
 extends Node
 
 var resized = false
@@ -49,6 +53,7 @@ func _set_appropriate_window_size() -> void:
 	resized = true
 
 
+## Pick the largest possible scale for the developer's screen.
 func _select_scale() -> int:
 	var screen_size = DisplayServer.screen_get_size()
 	var window_size = get_window().size

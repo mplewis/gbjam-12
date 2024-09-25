@@ -5,11 +5,11 @@ extends Control
 @export var health: int = 7
 @export var total: int = 10
 
+var heart_nodes: Array[TextureRect] = []
+
 @onready var container: HBoxContainer = $Container
 @onready var heart_empty: TextureRect = $HeartEmpty
 @onready var heart_full: TextureRect = $HeartFull
-
-var heart_nodes: Array[TextureRect] = []
 
 
 func _process(_delta):

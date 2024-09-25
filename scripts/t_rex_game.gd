@@ -1,3 +1,5 @@
+## Scene for the game where you punch candies off a conveyor belt into the T-Rex's mouth.
+
 class_name TRexGame
 extends Node2D
 
@@ -131,6 +133,7 @@ func _on_right():
 	tally("R")
 
 
+## Handle a player input for candies that match the given direction.
 func tally(dir: String):
 	if miss_duration > 0:
 		return
@@ -139,6 +142,7 @@ func tally(dir: String):
 	score_and_remove(goal, dir)
 
 
+## Score and remove candy followers that match the given direction.
 func score_and_remove(area: Area2D, dir: String):
 	assert(dir in ["L", "D", "U", "R"], "Invalid direction: %s" % dir)
 
@@ -153,6 +157,8 @@ func score_and_remove(area: Area2D, dir: String):
 	candy.queue_free()
 
 
+## If there are more than one candy on the belt matching the input direction,
+## pick the leftmost one.
 func _select_leftmost_candy_for_dir(bodies, dir) -> CandyArrowFollower:
 	var applicable_candies = []
 	for body: PhysicsBody2D in bodies:
@@ -188,6 +194,7 @@ func _on_midi_event(_channel, event):
 	spawner.spawn(dir_i, spawn_to_hit_sec)
 
 
+## Player successfully hit a candy. Spawn the puntable counterpart.
 func _punt(candy: CandyArrowFollower):
 	var puntable := candy.spawn_puntable()
 	if goal_splash.is_playing():
@@ -196,6 +203,7 @@ func _punt(candy: CandyArrowFollower):
 	add_child(puntable)
 
 
+## A punted candy has hit the T-Rex. Make them eat it and score the candy.
 func _on_candy_chompable(candy: CandyArrowPuntable):
 	_incr_fullness()
 
@@ -211,11 +219,13 @@ func _on_candy_chompable(candy: CandyArrowPuntable):
 	candy.queue_free()
 
 
+## Increment the fullness meter and update the UI.
 func _incr_fullness():
 	fullness += 1
 	_render_fullness()
 
 
+## Hacky way to build a progress bar out of a stretched sprite.
 func _render_fullness():
 	var f_pct := float(fullness) / fullness_threshold
 	f_pct = clamp(f_pct, 0.0, 1.0)
@@ -227,6 +237,7 @@ func _render_fullness():
 	fullness_progress.scale.y = zero_scl_y + f_pct * (hund_scl_y - zero_scl_y)
 
 
+## Handle game over.
 func _on_music_end():
 	notes.stop()
 	var win = fullness >= fullness_threshold

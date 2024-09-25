@@ -1,6 +1,9 @@
 class_name DodgeStuff
 extends Node2D
 
+var score := 0
+var items_hit_player: Array[Node] = []
+
 @onready var spawners: Array[Node] = $Items.get_children()
 @onready var despawner: Area2D = $Despawner
 @onready var spawned_items: Node2D = $SpawnedItems
@@ -10,9 +13,6 @@ extends Node2D
 @onready var score_label: Label = $Score
 
 @onready var positions: Array[Sprite2D] = [standing, jumping, crouching]
-
-var score := 0
-var items_hit_player: Array[Node] = []
 
 
 func _ready():

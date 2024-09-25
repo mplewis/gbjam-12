@@ -2,12 +2,14 @@
 class_name Goal
 extends Node2D
 
+signal on_miss(body: Node2D)
+
 enum SCORE { GREAT, GOOD, OK, MISS }
 const BLINK_DURATION = 0.05
 
-signal on_miss(body: Node2D)
-
 @export var sprite_rotation_deg: float = 0.0
+
+var blink_until = null
 
 @onready var sprite: Sprite2D = $Sprite
 @onready var score_great: Area2D = $ScoreGreat
@@ -15,8 +17,6 @@ signal on_miss(body: Node2D)
 @onready var score_ok: Area2D = $ScoreOK
 @onready var catch_miss: Area2D = $CatchMiss
 @onready var blink: ColorRect = $Blink
-
-var blink_until = null
 
 
 func _ready():

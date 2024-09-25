@@ -1,3 +1,5 @@
+## Options menu which allows the user to set Music and SFX volume.
+
 class_name Options
 extends Control
 

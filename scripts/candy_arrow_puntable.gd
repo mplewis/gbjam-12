@@ -1,3 +1,6 @@
+## When the candy arrow is punched by the player, we create a copy of the candy with
+## the no-arrow sprite, then apply gravity and kick it toward the dinosaur's mouth.
+
 @tool
 class_name CandyArrowPuntable
 extends RigidBody2D
@@ -5,10 +8,10 @@ extends RigidBody2D
 const UP_STR = 300
 const RIGHT_STR = 100
 
+@export var texture: Texture2D
+
 @onready var sprite: Sprite2D = $Sprite
 @onready var hitbox: CollisionShape2D = $Hitbox
-
-@export var texture: Texture2D
 
 
 func _ready():

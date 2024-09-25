@@ -1,3 +1,5 @@
+## Main menu for the game.
+
 class_name Menu
 extends Control
 

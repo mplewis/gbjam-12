@@ -1,3 +1,6 @@
+## The UI box which shows the user a single page of dialogue.
+## Does not scroll, please keep text bounded to one screen.
+
 @tool
 class_name DialogueBox
 extends Control
@@ -14,6 +17,11 @@ const SCREEN_BOTTOM = 144  # Y coordinate of bottom of screen, where our dialog 
 ## The text to display in the dialogue box.
 @export var text: String = ""
 
+var start_idx := 0
+var now := 0.0
+var last_goal_chars := 0
+var complete := false
+
 @onready var beeble: AudioStreamPlayer = $Beeble
 @onready var bg: TextureRect = %BG
 @onready var pos: Control = %Pos
@@ -22,11 +30,6 @@ const SCREEN_BOTTOM = 144  # Y coordinate of bottom of screen, where our dialog 
 @onready var body: Label = %Text
 
 @onready var orig_x: float = arrow.position.x
-
-var start_idx := 0
-var now := 0.0
-var last_goal_chars := 0
-var complete := false
 
 
 func _ready():

@@ -1,3 +1,7 @@
+## GBtn manages Gameboy button inputs consistently, regardless of whether
+## they come from touch screen or keyboard. Manipulating `Input` signals
+## doesn't work properly, so always bind against GBtn to get game inputs.
+
 extends Node
 
 # Compiler can't tell that these signals are used by dynamic dispatch
@@ -86,6 +90,7 @@ func _process(_delta):
 		_open_cheat_menu()
 		return
 
+	## Treat dialogue boxes as modals which intercept all input.
 	if DialogueMgr.current:
 		if Input.is_action_just_pressed(DIALOGUE_ADVANCE_BTN):
 			DialogueMgr.on_advance.emit()
@@ -107,6 +112,7 @@ func _process(_delta):
 			state[x] = false
 
 
+## Globally listen for the Konami code and open the cheat menu when it's entered.
 func _check_cheat_code():
 	var scene = get_tree().get_current_scene()
 	if not scene:

@@ -10,13 +10,13 @@ const DIR_SPRITES = ["L", "R", "U", "D"]
 @export var duration_to_goal_sec: float = 0.0
 @export var active := false
 
-@onready var sprite: Sprite2D = $Sprite2D
-@onready var label_node: Label = $Label
-
 var punted := false
 var alive_sec := 0.0
 var reached_goal := false
 var vel: Vector2 = Vector2.ZERO
+
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var label_node: Label = $Label
 
 
 func _ready():
